@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://xq400ern4unp"]
+
+[ext_resource type="Script" path="res://scripts/world/area_minigame.gd" id="1_1rkp5"]
+[ext_resource type="Texture2D" uid="uid://s4gll867oc4p" path="res://assets/Controls/start_image_button.png" id="2_4abnf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wt6j8"]
+radius = 45.0
+
+[node name="area_minigame" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_1rkp5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wt6j8")
+
+[node name="start_button" type="TouchScreenButton" parent="."]
+texture_filter = 1
+position = Vector2(-23, -38)
+scale = Vector2(1.41176, 1.23077)
+texture_normal = ExtResource("2_4abnf")
+action = "ui_start_minigame"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]

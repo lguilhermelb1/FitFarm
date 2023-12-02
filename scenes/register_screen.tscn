@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=3 uid="uid://2c7e4tsthixk"]
+
+[ext_resource type="Script" path="res://scripts/register_screen.gd" id="1_0h1d0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k27mc"]
+font_color = Color(1, 0, 0, 1)
+shadow_size = 3
+
+[node name="register_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_0h1d0")
+
+[node name="Username" type="TextEdit" parent="."]
+layout_mode = 0
+offset_right = 355.0
+offset_bottom = 38.0
+placeholder_text = "E-mail"
+
+[node name="UsernameErrorMessage" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 40.0
+offset_right = 348.0
+offset_bottom = 63.0
+label_settings = SubResource("LabelSettings_k27mc")
+
+[node name="Password" type="TextEdit" parent="."]
+layout_mode = 0
+offset_top = 65.0
+offset_right = 355.0
+offset_bottom = 103.0
+placeholder_text = "Senha"
+
+[node name="PasswordErrorMessage" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 104.0
+offset_right = 350.0
+offset_bottom = 127.0
+label_settings = SubResource("LabelSettings_k27mc")
+
+[node name="ConfirmPassword" type="TextEdit" parent="."]
+layout_mode = 0
+offset_top = 129.0
+offset_right = 355.0
+offset_bottom = 167.0
+placeholder_text = "Confirmar senha"
+
+[node name="ConfirmPasswordErrorMessage" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 169.0
+offset_right = 348.0
+offset_bottom = 192.0
+label_settings = SubResource("LabelSettings_k27mc")
+
+[node name="PIN" type="TextEdit" parent="."]
+layout_mode = 0
+offset_top = 194.0
+offset_right = 355.0
+offset_bottom = 232.0
+placeholder_text = "PIN"
+
+[node name="PINErrorMessage" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 234.0
+offset_right = 350.0
+offset_bottom = 257.0
+label_settings = SubResource("LabelSettings_k27mc")
+
+[node name="Create" type="Button" parent="."]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 265.0
+offset_right = 355.0
+offset_bottom = 302.0
+text = "Finalizar"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="Create" to="." method="_on_create_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

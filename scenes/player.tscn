@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj8crjcbpsbi2"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_m2fcm"]
+[ext_resource type="Texture2D" uid="uid://ddt62o64tsj5n" path="res://assets/Bug_Invaders_Assets/Spray Bottle.png" id="2_ifa7n"]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(30, 52)
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_m2fcm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ifa7n")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, 22)
+polygon = PackedVector2Array(-16, -59, -16, -54, -12, -54, -12, -49, -13, -47, -13, -42, -14, -41, -14, -39, -12, -39, -12, -42, -11, -42, -10, -45, -8, -47, -8, -50, -7, -50, -5, -48, -3, -47, -3, -44, -3, -38, -4, -37, -4, -33, -3, -32, -3, -28, -4, -26, -5, -23, -6, -21, -8, -18, -10, -16, -13, -13, -15, -9, -16, 3, -16, 17, -12, 18, 4, 18, 14, 18, 15, 15, 15, -6, 15, -12, 14, -14, 14, -19, 13, -22, 12, -27, 11, -31, 9, -38, 9, -48, 13, -51, 13, -54, 10, -58, 8, -60, -16, -60)
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(1, -54)

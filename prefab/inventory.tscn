@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxf1tkn5jih6v"]
+
+[ext_resource type="Texture2D" uid="uid://0wwy8yh8kota" path="res://assets/Tiny Wonder UI Free/background_label.png" id="1_j55tf"]
+[ext_resource type="Script" path="res://scripts/inventory_base.gd" id="3_xak58"]
+[ext_resource type="Texture2D" uid="uid://vn4uun7jc1pw" path="res://assets/Tiny Wonder UI Free/exit_icon.png" id="4_yebsg"]
+
+[node name="Inventory" type="Control"]
+z_index = 1
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -82.0
+offset_top = -29.0
+offset_right = 107.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(94.1303, 29.9301)
+scale = Vector2(4.46998, 2.14785)
+texture = ExtResource("1_j55tf")
+
+[node name="exit_store_button" type="TouchScreenButton" parent="."]
+texture_filter = 1
+position = Vector2(12, 13)
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("4_yebsg")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(145, 45)
+layout_mode = 0
+offset_left = 27.0
+offset_top = 7.0
+offset_right = 172.0
+offset_bottom = 52.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(145, 50)
+layout_mode = 2
+theme_override_constants/h_separation = 65
+theme_override_constants/v_separation = 50
+columns = 2
+script = ExtResource("3_xak58")
+
+[connection signal="pressed" from="exit_store_button" to="ScrollContainer/GridContainer" method="_on_exit_store_button_pressed"]

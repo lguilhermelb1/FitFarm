@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce0ht2e7r088u"]
+
+[ext_resource type="Script" path="res://prefab/vegetable_grid_container.gd" id="1_slhyg"]
+
+[node name="vegetable_grid_container" type="GridContainer" groups=["plantacao"]]
+offset_right = 76.0
+offset_bottom = 60.0
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 35
+columns = 4
+script = ExtResource("1_slhyg")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Control3" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Control4" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Control5" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Control6" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Control7" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Control8" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Control9" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Control10" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Control11" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Control12" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8

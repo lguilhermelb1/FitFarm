@@ -1,0 +1,98 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgvxt36w0hysg"]
+
+[ext_resource type="Script" path="res://scripts/fuga_bichinhos/game_over_label.gd" id="1_qyu3s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_no1ny"]
+bg_color = Color(0.862745, 0.607843, 0.384314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="game_over_label" type="Node2D"]
+z_index = 1
+script = ExtResource("1_qyu3s")
+
+[node name="Panel" type="Panel" parent="."]
+texture_filter = 1
+offset_left = -63.0
+offset_top = -63.0
+offset_right = 70.0
+offset_bottom = 52.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_no1ny")
+metadata/_edit_use_anchors_ = true
+
+[node name="status" type="Label" parent="Panel"]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 1.0
+offset_right = 166.0
+offset_bottom = 39.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Game Over"
+metadata/_edit_use_anchors_ = true
+
+[node name="pontos" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0154135
+anchor_top = 0.147826
+anchor_right = 0.995721
+anchor_bottom = 0.282609
+offset_left = -0.0500002
+offset_right = 127.51
+offset_bottom = 22.5
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 25
+text = "Pontuação: 00000000"
+metadata/_edit_use_anchors_ = true
+
+[node name="cristais" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0748872
+anchor_top = 0.295652
+anchor_right = 0.884887
+anchor_bottom = 0.491652
+offset_left = 0.04
+offset_right = 109.19
+offset_bottom = 23.625
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 25
+text = "Cristais: 00000000"
+metadata/_edit_use_anchors_ = true
+
+[node name="retry" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.232669
+anchor_top = 0.478261
+anchor_right = 0.752092
+anchor_bottom = 0.695652
+offset_left = 0.0549984
+offset_right = 67.53
+offset_bottom = 25.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 30
+text = "Reiniciar"
+metadata/_edit_use_anchors_ = true
+
+[node name="exit" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24797
+anchor_top = 0.73913
+anchor_right = 0.72897
+anchor_bottom = 0.956522
+offset_left = 0.0199986
+offset_right = 62.49
+offset_bottom = 25.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 30
+text = "Sair"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Panel/retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Panel/exit" to="." method="_on_exit_pressed"]
