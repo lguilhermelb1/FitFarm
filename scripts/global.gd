@@ -2,8 +2,8 @@ extends Node2D
 class_name global_variables
 
 # Pegar da base de dados
-var cristais = 300
-var moedas = 300
+var cristais = 900
+var moedas = 9000
 var user_id = ""
 var pin = ""
 var tempo_final: Timer

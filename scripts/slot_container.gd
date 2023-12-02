@@ -33,39 +33,47 @@ func _on_gui_input(event):
 	if event is InputEventScreenTouch and event.is_pressed():
 		
 		if ((_pagamento == "cristal" and _global.get_cristals() >= int($preco.text)) \
-		or (_pagamento == "coin" and _global.get_moedas() >= int($preco.text))):
+			or (_pagamento == "coin" and _global.get_moedas() >= int($preco.text))):
 		
 			var file_name = $icon.texture.get_path().get_file().replace(".png", "")
 			
 			if file_name== "coin":
 				efetuar_pagamento()
 				_global.add_coins(20)	
-				_label_moedas.text = "%08d" % _global.get_moedas()		
+				_label_moedas.text = "%08d" % _global.get_moedas()	
+			
+			elif file_name == "celeiro":
+				var area_insercao = get_tree().get_first_node_in_group("insercao_celeiro")
+				print(area_insercao.transform)
+				print(area_insercao.get_node("CollisionShape2D").transform)
+				
+				if area_insercao != null:
+					var node_celeiro = load("res://prefab/celeiro.tscn").instantiate()
+					node_celeiro.position = area_insercao.transform.origin
+					print(node_celeiro.position)
+					get_tree().get_root().add_child(node_celeiro)
+					area_insercao.queue_free()
+					efetuar_pagamento()
 			else:
-				var node_animal = load("res://actors/" + file_name + ".tscn")
+				var node_animal = load("res://actors/" + file_name + ".tscn").instantiate()
 				var container = _celeiro_vazio()
-				print(container)
 												
 				if node_animal != null and container != null:
-						var animal = node_animal.instantiate()
-						animal.z_index = 0
-						animal.set_script(load("res://scripts/animal_script.gd"))
-		
-						print(container.get_node("area2d/collision").transform)
-						animal.position = container.get_node("area2d/collision").transform.origin
-	
-						container.get_node("area2d").add_child(animal)
+						node_animal.z_index = 0
+						node_animal.set_script(load("res://scripts/animal_script.gd"))
+						node_animal.position = container.get_node("area2d/collision").transform.origin
+						container.get_node("area2d").add_child(node_animal)
 						efetuar_pagamento()
 						
 				elif node_animal == null:
-					var main_container = _container_nao_lotado()
+					container = _container_nao_lotado()
 				
-					if main_container != null:
+					if container != null:
 						var node_vegetable = load("res://prefab/vegetable.tscn").instantiate()
 						
 						node_vegetable.get_node("main_image").texture = $icon.texture
 						node_vegetable.z_index = 0
-						main_container.inserir(node_vegetable)
+						container.inserir(node_vegetable)
 						node_vegetable.start()
 						
 						efetuar_pagamento()

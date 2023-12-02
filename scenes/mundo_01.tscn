@@ -5054,15 +5054,17 @@ position = Vector2(330, 200)
 position = Vector2(479, 9)
 
 [node name="area_insercao_animal" type="Area2D" parent="." groups=["insercao_celeiro"]]
+position = Vector2(824, 56)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area_insercao_animal"]
-position = Vector2(827, 75)
+position = Vector2(-2, 3)
 shape = SubResource("RectangleShape2D_m27er")
 
 [node name="area_insercao_animal2" type="Area2D" parent="." groups=["insercao_celeiro"]]
+position = Vector2(832, 267)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area_insercao_animal2"]
-position = Vector2(830, 292)
+position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_m27er")
 
 [connection signal="pressed" from="camera/Control/button_label_inventory" to="." method="_on_button_label_inventory_pressed"]
