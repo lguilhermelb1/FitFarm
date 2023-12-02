@@ -2,7 +2,6 @@ extends Control
 
 var webApiKey = "AIzaSyCpyA9AMffZszLkUhiKPq7VoMFEq-syef4"
 var loginUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key="
-var Global = preload("res://scripts/global.gd")
 
 # Função login e sign up
 func _login(url: String, email: String, password: String):
@@ -17,6 +16,7 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 	
 	if response_code == 200:
 		var user_id = response.localId
+		#Global.user_id = user_id
 		
 		# Agora você pode usar o user_id para recuperar dados específicos do usuário no Firebase
 		
@@ -44,11 +44,18 @@ func _on_request_user_data_completed(result, response_code, headers, body):
 		print("Dados do usuário salvos com sucesso!")
 		var user_data = JSON.parse_string(body.get_string_from_utf8())
 		
+		var key = user_data.keys()[0]
+		var user = user_data[key]
+		
+		print(str(user["pin"]))
+		print(user["moedas"])
+		print(user["cristais"])
+		print(Global)
+		
 		# Atualize as variáveis globais com os dados do usuário
-		Global.user_id = user_data.user_id
-		Global.pin = user_data.pin
-		Global.moedas = user_data.moedas
-		Global.cristais = user_data.cristais
+		Global.set_pin(str(user["pin"]))
+		Global.moedas = user["moedas"]
+		Global.cristais = user["cristais"]
 		
 		# Agora você pode acessar essas variáveis globais em qualquer lugar do seu projeto
 		
@@ -82,3 +89,7 @@ func _on_login_pressed():
 	var email = $Username.text
 	var password = $Password.text
 	_login(url, email, password)
+
+
+func getGlobal():
+	return Global

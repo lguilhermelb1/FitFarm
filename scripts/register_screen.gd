@@ -21,7 +21,6 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 		
 		save_user_data(user_id, pin)
 		
-		get_tree().change_scene_to_file("res://scenes/mundo_01.tscn")
 	else:
 		print(response.error.message)
 		if response.error.message == "INVALID_EMAIL":
@@ -37,6 +36,11 @@ func save_user_data(user_id, pin):
 	var saveUserDataUrl = "https://db-nutricamp-default-rtdb.firebaseio.com/usuarios/" + user_id + ".json"
 	var url = saveUserDataUrl
 	
+	# Solicitação para salvar dados no Realtime Database
+	var request = HTTPRequest.new()
+	add_child(request)
+	request.request_completed.connect(self._on_request_save_user_data_completed)
+	
 	# Dados iniciais do usuário
 	var jsonObject = JSON.new()
 	var initial_data = jsonObject.stringify({
@@ -45,17 +49,14 @@ func save_user_data(user_id, pin):
 		"cristais": 50  # Valor inicial para cristais (ajuste conforme necessário)
 	})
 
-	# Solicitação para salvar dados no Realtime Database
-	var request = HTTPRequest.new()
-	add_child(request)
-
 	var headers = ['Content-Type: application/json']
-	request.request_completed.connect(_on_request_save_user_data_completed)
+	
 	request.request(url, headers, HTTPClient.METHOD_POST, initial_data)
 
 # Função chamada quando a solicitação de salvar dados do usuário é concluída
 func _on_request_save_user_data_completed(result, response_code, headers, body):
 	if response_code == 200:
+		get_tree().change_scene_to_file("res://scenes/mundo_01.tscn")
 		print("Dados do usuário salvos com sucesso!")
 	else:
 		print("Falha ao salvar dados do usuário:", response_code)
