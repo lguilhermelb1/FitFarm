@@ -10,8 +10,6 @@ const SPEED = 130.0
 @onready var points_sound := $audio/points_sound as AudioStreamPlayer
 @onready var collect_sound := $audio/collect_sound as AudioStreamPlayer
 @onready var footsteps := $audio/footsteps as AudioStreamPlayer
-
-@onready var Global := $Global
 var direction
 
 
@@ -47,7 +45,3 @@ func _set_state():
 
 func follow_camera(camera):
 	remote.remote_path = camera.get_path()
-
-
-func getGlobal():
-	return Global

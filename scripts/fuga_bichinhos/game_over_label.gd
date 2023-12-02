@@ -5,7 +5,6 @@ var transition = null
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-
 func _on_retry_pressed():
 	get_tree().reload_current_scene()
 	

@@ -13,7 +13,7 @@ var transition  = null
 
 func _ready():
 	game_over_label.visible = false
-	timer.wait_time = 120
+	timer.wait_time = 5
 	timer.start()
 
 func _process(delta):
@@ -28,8 +28,8 @@ func _on_timer_timeout():
 	game_over_label.visible = true
 	anim.play("game_over_anim")
 	
-func set_scores(s: int, c: int):
-	cristais.text = "Cristais: %08d" % c
+func set_scores(s: int):
+	cristais.text = "Cristais: %08d" % Global.cristais
 	pontos.text = "Pontuação: %08d" % s 
 
 func setTransition(t: Transition):

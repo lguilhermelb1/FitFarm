@@ -7,9 +7,9 @@ extends Node2D
 
 # 640 x 320
 func _ready():	
-	$camera/Inventory/ScrollContainer/GridContainer.main_update(player.getGlobal())
+	$camera/Inventory/ScrollContainer/GridContainer.main_update()
 	inv.visible = false
-		
+
 	get_window().size = Vector2(640, 320)
 	player.position = Vector2(330,200)
 	
@@ -22,5 +22,5 @@ func _on_button_label_inventory_pressed():
 		inv.visible = true
 
 func update_values():
-	$camera/Control/label_cristais.text = "%08d" % player.getGlobal().get_cristals()
-	$camera/Control/label_moedas.text = "%08d" % player.getGlobal().get_moedas()
+	$camera/Control/label_cristais.text = "%08d" % Global.cristais
+	$camera/Control/label_moedas.text = "%08d" % Global.moedas

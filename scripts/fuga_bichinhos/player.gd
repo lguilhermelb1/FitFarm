@@ -136,12 +136,12 @@ func ganhar_pontos():
 	
 	if scores % 200 == 0:
 		cristal_score_anim.play("fade_in")
-		cristais += 100
+		Global.cristais += 100
 		cristals_sound.play()
 	else:
 		points_sound.play()		
 	
-	cronometro.set_scores(scores, cristais)
+	cronometro.set_scores(scores)
 	atualizar_placar()
 
 func atualizar_placar():

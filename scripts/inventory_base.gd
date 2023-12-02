@@ -59,7 +59,7 @@ var inventory = [
 	
 	{
 		name = "Barn",
-		price = 800,
+		price = 0,
 		payment="cristal",
 		scale=0.15,
 		icon_scale=0.15,
@@ -68,18 +68,16 @@ var inventory = [
 ]
 
 
-func main_update(g):
+func main_update():
 	for x in len(inventory):
-		_update_slot(x, g)
+		_update_slot(x)
 	
 	if get_child_count() % 2 == 1 and get_child_count() > 2:
 		custom_minimum_size[1] = 50 * (get_child_count() - 2)
 	else:
 		custom_minimum_size[1] = 50 * (get_child_count()/2)
 
-
-
-func _update_slot(pos, glb):
+func _update_slot(pos):
 	var slt = load("res://prefab/slot.tscn").instantiate()
 	
 	slt.get_node("icon").texture = load(inventory[pos]['path'])
@@ -95,8 +93,6 @@ func _update_slot(pos, glb):
 	slt.get_node("pagamento").transform[1][1] = inventory[pos]['scale']
 	
 	slt.get_node("preco").text = str(inventory[pos]['price'])
-	
-	slt.setGlobal(glb)
 	add_child(slt)
 
 
