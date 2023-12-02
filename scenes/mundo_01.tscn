@@ -4884,10 +4884,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m27er"]
-size = Vector2(205.375, 134.5)
+size = Vector2(170.688, 113.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16q4f"]
-size = Vector2(207, 135)
+size = Vector2(161.5, 104.5)
 
 [node name="Mundo01" type="Node2D"]
 script = ExtResource("1_8so22")
@@ -5054,10 +5054,10 @@ position = Vector2(159, 167)
 position = Vector2(330, 200)
 
 [node name="celeiro" parent="." instance=ExtResource("14_xgvew")]
-position = Vector2(479, 9)
+position = Vector2(482, 9)
 
 [node name="area_insercao_animal" type="Area2D" parent="." groups=["insercao_celeiro"]]
-position = Vector2(805, 77)
+position = Vector2(776, 75)
 collision_layer = 2
 collision_mask = 21
 
@@ -5065,7 +5065,7 @@ collision_mask = 21
 shape = SubResource("RectangleShape2D_m27er")
 
 [node name="area_insercao_animal_2" type="Area2D" parent="." groups=["insercao_celeiro"]]
-position = Vector2(764, 263)
+position = Vector2(770, 243)
 collision_layer = 2
 collision_mask = 21
 
