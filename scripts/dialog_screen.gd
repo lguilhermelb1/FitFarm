@@ -24,7 +24,6 @@ var _steps = 0.05
 @onready var _dialog  := $Dialog_Control/dialog as RichTextLabel
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	create_dialog()
 

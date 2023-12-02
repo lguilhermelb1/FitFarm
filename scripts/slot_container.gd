@@ -19,29 +19,22 @@ func setGlobal(glb):
 	_global = glb
 
 
-func verificacao():
-	if ((_pagamento == "cristal" and _global.get_cristals() >= int($preco.text)) 
-	or (_pagamento == "coin" and _global.get_moedas() >= int($preco.text)) ):
-		return true
-	else:
-		return false
-
-
 func efetuar_pagamento():
 	if (_pagamento == "cristal"):
 		_global.remove_cristals(int($preco.text))
 		_label_cristals.text = "%08d" % _global.get_cristals()
-
+		
 	elif (_pagamento == "coin"):
 		_global.remove_coins(int($preco.text))
 		_label_moedas.text = "%08d" % _global.get_moedas()
 
 
 func _on_gui_input(event):
-	
 	if event is InputEventScreenTouch and event.is_pressed():
 		
-		if verificacao():
+		if ((_pagamento == "cristal" and _global.get_cristals() >= int($preco.text)) \
+		or (_pagamento == "coin" and _global.get_moedas() >= int($preco.text))):
+		
 			var file_name = $icon.texture.get_path().get_file().replace(".png", "")
 			
 			if file_name== "coin":
@@ -50,14 +43,18 @@ func _on_gui_input(event):
 				_label_moedas.text = "%08d" % _global.get_moedas()		
 			else:
 				var node_animal = load("res://actors/" + file_name + ".tscn")
-			
-				if node_animal != null:
+				var container = _celeiro_vazio()
+				print(container)
+												
+				if node_animal != null and container != null:
 						var animal = node_animal.instantiate()
 						animal.z_index = 0
 						animal.set_script(load("res://scripts/animal_script.gd"))
-						animal.position = get_tree().get_root().get_child(0).get_node("area_insercao_animal/CollisionShape2D").position
-				
-						get_tree().get_root().get_child(0).add_child(animal)
+		
+						print(container.get_node("area2d/collision").transform)
+						animal.position = container.get_node("area2d/collision").transform.origin
+	
+						container.get_node("area2d").add_child(animal)
 						efetuar_pagamento()
 						
 				elif node_animal == null:
@@ -83,6 +80,18 @@ func _container_nao_lotado() -> vegetables_grid:
 			break
 	return null			
 		
+		
+func _celeiro_vazio() -> barn:
+	for celeiro in get_tree().get_nodes_in_group("celeiro"):
+		print(celeiro)
+		if celeiro.lotado() == false:
+			return celeiro
+			break
+	return null		
+
+
+
+
 		
 func _mudanca_texto(frase: String):
 	$timer.wait_time = 5

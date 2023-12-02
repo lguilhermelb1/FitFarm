@@ -1,11 +1,9 @@
 extends StaticBody2D
+class_name barn
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
+func lotado():
+	print($area2d.get_overlapping_bodies())
+	print($area2d.get_overlapping_areas())
+	return len($area2d.get_overlapping_areas()) ==4
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

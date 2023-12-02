@@ -18,9 +18,7 @@ func _ready():
 	
 		
 func _process(delta):
-	if !actions.is_stopped():
-		print(rd)
-		
+	if !actions.is_stopped():		
 		if rd == 0:
 			direction.x = 1
 			direction.y = 0
