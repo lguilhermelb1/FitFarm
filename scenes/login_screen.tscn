@@ -25,12 +25,13 @@ offset_right = 348.0
 offset_bottom = 63.0
 label_settings = SubResource("LabelSettings_i8j3e")
 
-[node name="Password" type="TextEdit" parent="."]
+[node name="Password" type="LineEdit" parent="."]
 layout_mode = 0
 offset_top = 65.0
 offset_right = 355.0
 offset_bottom = 103.0
 placeholder_text = "Senha"
+secret = true
 
 [node name="PasswordErrorMessage" type="Label" parent="."]
 layout_mode = 0

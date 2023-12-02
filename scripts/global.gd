@@ -4,6 +4,8 @@ class_name global_variables
 # Pegar da base de dados
 var cristais = 300
 var moedas = 300
+var user_id = ""
+var pin = ""
 var tempo_final: Timer
 
 
