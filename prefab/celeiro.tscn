@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://rntdfc31ug5f"]
+
+[ext_resource type="Script" path="res://scripts/celeiro.gd" id="1_k5233"]
+[ext_resource type="Texture2D" uid="uid://byw8pgdwr33eu" path="res://assets/Objects/celeiro.png" id="1_r20xd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v35vp"]
+size = Vector2(8.40625, 134)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5xb6"]
+size = Vector2(7, 134)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qpot"]
+size = Vector2(194, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1xoe"]
+size = Vector2(193, 101)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsthk"]
+size = Vector2(194, 17)
+
+[node name="celeiro" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 23
+script = ExtResource("1_k5233")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(105, 68)
+texture = ExtResource("1_r20xd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.20313, 68)
+shape = SubResource("RectangleShape2D_v35vp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(205.5, 68)
+shape = SubResource("RectangleShape2D_w5xb6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(105, 9)
+shape = SubResource("RectangleShape2D_2qpot")
+
+[node name="area2d" type="Area2D" parent="." groups=["area_animal"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area2d"]
+position = Vector2(105.5, 68)
+shape = SubResource("RectangleShape2D_s1xoe")
+debug_color = Color(0, 1, 0, 0.419608)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(105, 126.5)
+shape = SubResource("RectangleShape2D_bsthk")
