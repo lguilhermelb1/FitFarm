@@ -10,9 +10,4 @@ func _ready():
 	elif name == "objeto_celeiro2":
 		$CollisionShape2D.shape.size.x = 8
 		$CollisionShape2D.shape.size.y = 8
-				
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
