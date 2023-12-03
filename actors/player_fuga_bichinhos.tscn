@@ -128,10 +128,10 @@ shape = SubResource("CapsuleShape2D_wwbsc")
 
 [node name="pontuacao" type="Label" parent="."]
 z_index = 1
-offset_left = 66.0
-offset_top = -68.5
-offset_right = 202.0
-offset_bottom = -23.5
+offset_left = 34.5
+offset_top = -69.5
+offset_right = 170.5
+offset_bottom = -24.5
 scale = Vector2(0.55, 0.55)
 theme_override_font_sizes/font_size = 30
 text = "00000000"
@@ -188,6 +188,15 @@ volume_db = -20.0
 [node name="footsteps" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("12_c3l6o")
 volume_db = -15.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = -122.5
+offset_top = -65.0
+offset_right = 64.5
+offset_bottom = -34.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 17
+text = "Tempo Restante: 00:00"
 
 [connection signal="body_entered" from="animal_detector" to="." method="_on_animal_detector_body_entered"]
 [connection signal="body_exited" from="animal_detector" to="." method="_on_animal_detector_body_exited"]

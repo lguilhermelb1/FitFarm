@@ -4941,7 +4941,7 @@ layer_6/z_index = 0
 layer_6/tile_data = PackedInt32Array(33, 2, 0)
 
 [node name="area_insercao_animal" type="Area2D" parent="." groups=["insercao_celeiro"]]
-position = Vector2(723, 7)
+position = Vector2(730, 7)
 collision_layer = 2
 collision_mask = 21
 
@@ -4950,7 +4950,7 @@ position = Vector2(117.328, 67.6875)
 shape = SubResource("RectangleShape2D_m27er")
 
 [node name="area_insercao_animal_2" type="Area2D" parent="." groups=["insercao_celeiro"]]
-position = Vector2(729, 220)
+position = Vector2(734, 235)
 collision_layer = 2
 collision_mask = 21
 

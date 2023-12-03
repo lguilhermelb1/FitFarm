@@ -32,10 +32,3 @@ func play_open_door():
 	elif sprite == "celeiro_fechado":
 		$AnimationPlayer.play("door")
 		#await($AnimationPlayer.animation_finished)
-	
-	
-	
-	
-	
-
-

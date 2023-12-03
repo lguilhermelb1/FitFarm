@@ -9,11 +9,12 @@ extends Node2D
 func _ready():	
 	$camera/Inventory/ScrollContainer/GridContainer.main_update()
 	inv.visible = false
-	
-	print($celeiro.global_position)
-
+				
 	get_window().size = Vector2(640, 320)
 	player.position = Vector2(330,200)
+	
+	#$camera/Control/label_tempo_final.text = "%02d : %02d" % [int(Global.tempo_final.time_left/60), 
+	#											int(fmod(Global.tempo_final.time_left, 60))]
 	
 	player.follow_camera(camera) 
 	update_values()
@@ -22,6 +23,7 @@ func _ready():
 func _on_button_label_inventory_pressed():
 	if (get_tree().get_root().get_node("Dialog_Node") == null):
 		inv.visible = true
+
 
 func update_values():
 	$camera/Control/label_cristais.text = "%08d" % Global.cristais

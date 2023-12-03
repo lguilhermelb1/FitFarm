@@ -4,7 +4,6 @@ var _pagamento = null
 var _label_cristals = null
 var _label_moedas = null
 
-
 func _ready():
 	$result.visible = false
 	_label_cristals = get_tree().get_root().get_child(1).get_node("camera").get_node("Control").get_node("label_cristais")
@@ -85,7 +84,6 @@ func _container_nao_lotado() -> vegetables_grid:
 		
 func _celeiro_vazio() -> barn:
 	for celeiro in get_tree().get_nodes_in_group("celeiro"):
-		print(celeiro)
 		if celeiro.lotado() == false:
 			return celeiro
 			break

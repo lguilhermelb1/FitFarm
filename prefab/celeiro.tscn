@@ -84,7 +84,7 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(36, -0.25, 0, 0.25, 0, 28.5, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(36, -0.25, 0, 0.25, 0, 28, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4)
 }
 tracks/4/type = "bezier"
@@ -106,7 +106,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjwt0"]
-size = Vector2(31, 29)
+size = Vector2(33.5, 29)
 
 [node name="celeiro" type="StaticBody2D" groups=["celeiro"]]
 collision_layer = 2
@@ -156,7 +156,7 @@ libraries = {
 position = Vector2(63, 124)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area_porta"]
-position = Vector2(1.5, 0.5)
+position = Vector2(1.25, 0)
 shape = SubResource("RectangleShape2D_qjwt0")
 
 [node name="objeto_celeiro" parent="." instance=ExtResource("4_aer3l")]

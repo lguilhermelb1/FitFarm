@@ -50,7 +50,7 @@ func _on_request_user_data_completed(result, response_code, headers, body):
 		print(str(user["pin"]))
 		print(user["moedas"])
 		print(user["cristais"])
-		print(Global)
+		print(Global.tempo_final)
 		
 		# Atualize as variáveis globais com os dados do usuário
 		Global.set_pin(str(user["pin"]))
@@ -58,7 +58,6 @@ func _on_request_user_data_completed(result, response_code, headers, body):
 		Global.cristais = user["cristais"]
 		
 		# Agora você pode acessar essas variáveis globais em qualquer lugar do seu projeto
-		
 		get_tree().change_scene_to_file("res://scenes/mundo_01.tscn")
 	else:
 		handle_data_error(response_code)
@@ -89,7 +88,6 @@ func _on_login_pressed():
 	var email = $Username.text
 	var password = $Password.text
 	_login(url, email, password)
-
 
 func getGlobal():
 	return Global
