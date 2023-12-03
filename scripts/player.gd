@@ -12,7 +12,6 @@ signal died
 var shoot_scene = preload("res://scenes/shoot.tscn")
 
 var shoot_cd := false
-
 var hp = 3
 
 func _process(delta):
@@ -32,9 +31,14 @@ func _physics_process(_delta):
 	global_position = global_position.clamp(Vector2.ZERO, get_viewport_rect().size)
 
 func shoot():
-	print("X")
 	spray_shot.emit(shoot_scene, muzzle.global_position)
 
 func die():
 	died.emit()
 	queue_free()
+
+func set_cristal_score_label(value:int):
+	$cristal_score/main_label/label.text = "+ %02d" % str(value)
+	$cristal_score/anim.play("fade_in")
+	$audio.play()
+	await ($cristal_score/anim.animation_finished)

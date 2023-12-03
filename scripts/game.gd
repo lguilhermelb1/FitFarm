@@ -1,5 +1,4 @@
 extends Node2D
-
 @export var bug_scenes: Array[PackedScene] = []
 
 @onready var player_spawn = $PlayerSpawn
@@ -23,12 +22,14 @@ var score := 0:
 		
 var high_score
 var points = 0
+var cristais
 
 func _ready():
 	get_tree().paused = false
 	get_window().size = Vector2(515, 650)
 	gameOverScreen.visible = true
-	
+	$UILayer/Comfirm_Exit.visible = false
+
 	var save_file = FileAccess.open('user://save.data', FileAccess.READ)
 	if save_file != null:
 		high_score = save_file.get_32()
@@ -46,6 +47,7 @@ func _ready():
 	animation.play("fade_out")
 	await(animation.animation_finished)
 	gameOverScreen.visible = false
+	$UILayer/Comfirm_Exit.setPlayer(self)
 	
 func save_game():
 	var save_file = FileAccess.open('user://save.data', FileAccess.WRITE)
@@ -77,6 +79,16 @@ func _on_bug_spwan_timer_timeout():
 func _on_bug_died(points):
 	hitSound.play()
 	score += points
+	
+	if score % 150 == 0:
+		cristais += 20
+		player.set_cristal_score_label(20)
+		Global.cristais += cristais
+	elif score % 250 == 0:
+		cristais += 50
+		player.set_cristal_score_label(50)
+		Global.cristais += cristais
+				
 	if score > high_score:
 		high_score = score
 
@@ -89,8 +101,17 @@ func _on_player_died():
 	animation.play("show_label")
 	await(animation.animation_finished)
 
+
 func _on_exit_button_pressed():
-	gameOverScreen.visible = true		
-	animation.play("fade_in")
-	await(animation.animation_finished)
-	get_tree().change_scene_to_file("res://scenes/mundo_01.tscn")
+	print(gameOverScreen.visible)
+	if gameOverScreen.visible == true:
+		$UILayer/Comfirm_Exit.visible = true
+		$UILayer/anim.play("open")
+
+		#animation.play("fade_in")
+		#await(animation.animation_finished)
+		#get_tree().change_scene_to_file("res://scenes/mundo_01.tscn")
+
+
+func perder_progresso():
+	Global.cristais -= cristais

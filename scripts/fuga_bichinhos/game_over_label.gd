@@ -8,7 +8,7 @@ func _ready():
 func _on_retry_pressed():
 	get_tree().reload_current_scene()
 	
-func set_transition(t: Transition):
+func setTransition(t: Transition):
 	transition = t
 
 func _on_exit_pressed():

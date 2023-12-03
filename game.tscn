@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://3wb7xfvlv6oh"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_3t6yw"]
+[ext_resource type="PackedScene" uid="uid://dj8crjcbpsbi2" path="res://scenes/player.tscn" id="2_3bdsq"]
+[ext_resource type="PackedScene" uid="uid://c0najr07e3fsp" path="res://scenes/hud.tscn" id="4_elgqs"]
+[ext_resource type="PackedScene" uid="uid://dy3f3kwqe8h8d" path="res://scenes/bug.tscn" id="4_mvnpw"]
+[ext_resource type="AudioStream" uid="uid://cdj4e2rxnrfm1" path="res://sounds/spray.mp3" id="4_r23fd"]
+[ext_resource type="PackedScene" uid="uid://csapt74of15b4" path="res://scenes/speedest_bug.tscn" id="4_xsioy"]
+[ext_resource type="AudioStream" uid="uid://ccd6twuqcfmb2" path="res://sounds/hit.mp3" id="5_ixwd8"]
+[ext_resource type="PackedScene" uid="uid://cxgf3ic563c1i" path="res://scenes/game_over_screen.tscn" id="5_kxfi0"]
+[ext_resource type="Texture2D" uid="uid://d0dpnjr05s5ov" path="res://assets/Bug_Invaders_Assets/Background.png" id="6_15vs8"]
+[ext_resource type="Texture2D" uid="uid://caswup5a0t7yp" path="res://assets/Tiny Wonder UI Free/exit_button.png" id="9_rkbve"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_3t6yw")
+bug_scenes = Array[PackedScene]([ExtResource("4_mvnpw"), ExtResource("4_xsioy")])
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="Shoot" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_r23fd")
+
+[node name="Hit" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_ixwd8")
+volume_db = -3.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(0.994231, 1)
+texture = ExtResource("6_15vs8")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 520, 650)
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="UILayer" instance=ExtResource("4_elgqs")]
+
+[node name="GameOverScreen" parent="UILayer" instance=ExtResource("5_kxfi0")]
+anchors_preset = -1
+anchor_left = 0.002
+anchor_top = -0.003
+anchor_right = 0.002
+anchor_bottom = -0.003
+offset_left = -0.28
+offset_top = -0.04
+offset_right = 519.72
+offset_bottom = 649.96
+
+[node name="exit_button" type="TouchScreenButton" parent="UILayer"]
+texture_filter = 1
+position = Vector2(19, 10)
+scale = Vector2(3.25, 2.9375)
+texture_normal = ExtResource("9_rkbve")
+
+[node name="BugSpwanTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Player" parent="." groups=["player_bug_invader"] instance=ExtResource("2_3bdsq")]
+position = Vector2(232, -68)
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(288, 394)
+
+[node name="ShootContainer" type="Node2D" parent="."]
+
+[node name="BugContainer" type="Node2D" parent="."]
+
+[connection signal="pressed" from="UILayer/exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="timeout" from="BugSpwanTimer" to="." method="_on_bug_spwan_timer_timeout"]

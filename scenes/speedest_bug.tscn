@@ -1,12 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://csapt74of15b4"]
+[gd_scene load_steps=4 format=3 uid="uid://dtl5epi5x6ap2"]
 
-[ext_resource type="PackedScene" uid="uid://dy3f3kwqe8h8d" path="res://scenes/bug.tscn" id="1_hh5e6"]
-[ext_resource type="Texture2D" uid="uid://ho1ickey3dxd" path="res://assets/Bug_Invaders_Assets/SpeedestBug.png" id="2_5g1gm"]
+[ext_resource type="Texture2D" uid="uid://ho1ickey3dxd" path="res://assets/Bug_Invaders_Assets/SpeedestBug.png" id="1_8oo87"]
+[ext_resource type="Script" path="res://scripts/bug.gd" id="1_o4n8c"]
 
-[node name="Speedest_bug" instance=ExtResource("1_hh5e6")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_qxj1g"]
+radius = 21.02
+
+[node name="Speedest_bug" type="Area2D"]
+script = ExtResource("1_o4n8c")
 speed = 400
-hp = 1
-points = 100
 
-[node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_5g1gm")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.744, 0.744)
+texture = ExtResource("1_8oo87")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
+shape = SubResource("CircleShape2D_qxj1g")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -42)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

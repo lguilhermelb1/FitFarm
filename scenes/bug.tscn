@@ -1,29 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy3f3kwqe8h8d"]
+[gd_scene load_steps=4 format=3 uid="uid://bmj62wnmw54q3"]
 
-[ext_resource type="Script" path="res://scripts/bug.gd" id="1_y26wh"]
-[ext_resource type="Texture2D" uid="uid://ugnh8ip16ih4" path="res://assets/Bug_Invaders_Assets/Bug.png" id="2_vrdra"]
+[ext_resource type="Script" path="res://scripts/bug.gd" id="1_5f65e"]
+[ext_resource type="Texture2D" uid="uid://ugnh8ip16ih4" path="res://assets/Bug_Invaders_Assets/Bug.png" id="2_blsxv"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2f1pf"]
-radius = 21.0238
+[sub_resource type="CircleShape2D" id="CircleShape2D_acguy"]
+radius = 21.02
 
 [node name="Bug" type="Area2D"]
-collision_layer = 2
-collision_mask = 5
-script = ExtResource("1_y26wh")
+script = ExtResource("1_5f65e")
 hp = 2
 points = 50
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 9.53674e-07)
-scale = Vector2(0.744444, 0.744444)
-texture = ExtResource("2_vrdra")
+texture_filter = 1
+scale = Vector2(0.744, 0.744)
+texture = ExtResource("2_blsxv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
-shape = SubResource("CircleShape2D_2f1pf")
+shape = SubResource("CircleShape2D_acguy")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -42)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj8crjcbpsbi2"]
+[gd_scene load_steps=5 format=3 uid="uid://dj8crjcbpsbi2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_m2fcm"]
 [ext_resource type="Texture2D" uid="uid://ddt62o64tsj5n" path="res://assets/Bug_Invaders_Assets/Spray Bottle.png" id="2_ifa7n"]
+[ext_resource type="PackedScene" uid="uid://c4qx728klsocd" path="res://prefab/cristal_score.tscn" id="3_dx0rg"]
+[ext_resource type="AudioStream" uid="uid://bpwu2fy28buy4" path="res://sounds/collectcoin-6075.mp3" id="4_xravk"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player_bug_invader"]]
 position = Vector2(30, 52)
 collision_mask = 2
 motion_mode = 1
@@ -19,3 +21,9 @@ polygon = PackedVector2Array(-16, -59, -16, -54, -12, -54, -12, -49, -13, -47, -
 
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(1, -54)
+
+[node name="cristal_score" parent="." instance=ExtResource("3_dx0rg")]
+position = Vector2(-40, 1)
+
+[node name="audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xravk")

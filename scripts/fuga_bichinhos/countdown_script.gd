@@ -5,6 +5,7 @@ class_name cronometro
 @onready var timer := $timer as Timer
 @onready var anim := $anim as AnimationPlayer
 @onready var game_over_label := $game_over_label as Node2D
+@onready var confirm_exit := $Comfirm_Exit as Node2D
 @onready var cristais := $game_over_label/Panel/cristais as Label
 @onready var pontos := $game_over_label/Panel/pontos as Label
 @onready var timeout := $timeout as AudioStreamPlayer
@@ -33,11 +34,13 @@ func set_scores(s: int, cr: int):
 	pontos.text = "Pontuação: %08d" % s 
 
 func setTransition(t: Transition):
-	transition = t
+	game_over_label.set_transition(t)
 
 func _on_exit_button_pressed():
-	transition.change_scene("res://scenes/mundo_01.tscn")
+	if $game_over_label.visible == false:
+		confirm_exit.visible=true
+		anim.play("exit_label")
 
 func _on_anim_animation_finished(anim_name):
-	if anim_name == 'game_over_anim':
+	if anim_name == 'game_over_anim' or anim_name == 'exit_label':
 		get_tree().paused=true

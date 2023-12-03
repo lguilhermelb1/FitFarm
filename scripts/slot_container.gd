@@ -25,6 +25,7 @@ func efetuar_pagamento():
 
 
 func _on_gui_input(event):
+	
 	if event is InputEventScreenTouch and event.is_pressed():
 		
 		if ((_pagamento == "cristal" and Global.cristais >= int($preco.text)) \
@@ -49,10 +50,11 @@ func _on_gui_input(event):
 					efetuar_pagamento()
 					area_insercao.queue_free()
 			else:
-				var node_animal = load("res://actors/" + file_name + ".tscn").instantiate()
+				var node_animal = load("res://actors/" + file_name + ".tscn")
 				var container = _celeiro_vazio()
-												
+									
 				if node_animal != null and container != null:
+						node_animal = node_animal.instantiate()
 						node_animal.z_index = 0
 						node_animal.set_script(load("res://scripts/animal_script.gd"))
 						node_animal.position = container.get_node("area2d/collision").transform.origin
@@ -64,7 +66,6 @@ func _on_gui_input(event):
 				
 					if container != null:
 						var node_vegetable = load("res://prefab/vegetable.tscn").instantiate()
-						
 						node_vegetable.get_node("main_image").texture = $icon.texture
 						node_vegetable.z_index = 0
 						container.inserir(node_vegetable)

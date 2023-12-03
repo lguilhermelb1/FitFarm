@@ -1,66 +1,108 @@
-[gd_scene load_steps=11 format=3 uid="uid://3wb7xfvlv6oh"]
+[gd_scene load_steps=13 format=3 uid="uid://b8rn7vwnv4rum"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_3t6yw"]
-[ext_resource type="PackedScene" uid="uid://dj8crjcbpsbi2" path="res://scenes/player.tscn" id="2_3bdsq"]
-[ext_resource type="PackedScene" uid="uid://c0najr07e3fsp" path="res://scenes/hud.tscn" id="4_elgqs"]
-[ext_resource type="PackedScene" uid="uid://dy3f3kwqe8h8d" path="res://scenes/bug.tscn" id="4_mvnpw"]
-[ext_resource type="AudioStream" uid="uid://cdj4e2rxnrfm1" path="res://sounds/spray.mp3" id="4_r23fd"]
-[ext_resource type="PackedScene" uid="uid://csapt74of15b4" path="res://scenes/speedest_bug.tscn" id="4_xsioy"]
-[ext_resource type="AudioStream" uid="uid://ccd6twuqcfmb2" path="res://sounds/hit.mp3" id="5_ixwd8"]
-[ext_resource type="PackedScene" uid="uid://cxgf3ic563c1i" path="res://scenes/game_over_screen.tscn" id="5_kxfi0"]
-[ext_resource type="Texture2D" uid="uid://d0dpnjr05s5ov" path="res://assets/Bug_Invaders_Assets/Background.png" id="6_15vs8"]
-[ext_resource type="Texture2D" uid="uid://caswup5a0t7yp" path="res://assets/Tiny Wonder UI Free/exit_button.png" id="9_rkbve"]
+[ext_resource type="AudioStream" uid="uid://cdj4e2rxnrfm1" path="res://sounds/spray.mp3" id="2_yfrse"]
+[ext_resource type="AudioStream" uid="uid://ccd6twuqcfmb2" path="res://sounds/hit.mp3" id="3_b4tod"]
+[ext_resource type="Texture2D" uid="uid://d0dpnjr05s5ov" path="res://assets/Bug_Invaders_Assets/Background.png" id="4_un6lu"]
+[ext_resource type="PackedScene" uid="uid://c0najr07e3fsp" path="res://scenes/hud.tscn" id="5_4v7ia"]
+[ext_resource type="PackedScene" uid="uid://cxgf3ic563c1i" path="res://scenes/game_over_screen.tscn" id="6_tyb6v"]
+[ext_resource type="Texture2D" uid="uid://caswup5a0t7yp" path="res://assets/Tiny Wonder UI Free/exit_button.png" id="7_cjvs8"]
+[ext_resource type="PackedScene" uid="uid://dj8crjcbpsbi2" path="res://scenes/player.tscn" id="8_86cbf"]
+[ext_resource type="PackedScene" uid="uid://cnv86s1qb4u7a" path="res://prefab/comfirm_exit.tscn" id="8_uqtp7"]
+
+[sub_resource type="Animation" id="Animation_1st5e"]
+resource_name = "open"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Comfirm_Exit:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(2, 2)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Comfirm_Exit:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+
+[sub_resource type="Animation" id="Animation_boae5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Comfirm_Exit:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_63llm"]
+_data = {
+"RESET": SubResource("Animation_boae5"),
+"open": SubResource("Animation_1st5e")
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_3t6yw")
-bug_scenes = Array[PackedScene]([ExtResource("4_mvnpw"), ExtResource("4_xsioy")])
 
 [node name="SFX" type="Node2D" parent="."]
 
 [node name="Shoot" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("4_r23fd")
+stream = ExtResource("2_yfrse")
 
 [node name="Hit" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("5_ixwd8")
-volume_db = -3.0
+stream = ExtResource("3_b4tod")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
-[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-scale = Vector2(0.994231, 1)
-texture = ExtResource("6_15vs8")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(2.695, 3.05)
+texture = ExtResource("4_un6lu")
 centered = false
-region_enabled = true
-region_rect = Rect2(0, 0, 520, 650)
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
-[node name="HUD" parent="UILayer" instance=ExtResource("4_elgqs")]
+[node name="HUD" parent="UILayer" instance=ExtResource("5_4v7ia")]
 
-[node name="GameOverScreen" parent="UILayer" instance=ExtResource("5_kxfi0")]
-anchors_preset = -1
-anchor_left = 0.002
-anchor_top = -0.003
-anchor_right = 0.002
-anchor_bottom = -0.003
-offset_left = -0.28
-offset_top = -0.04
-offset_right = 519.72
-offset_bottom = 649.96
+[node name="GameOverScreen" parent="UILayer" instance=ExtResource("6_tyb6v")]
 
 [node name="exit_button" type="TouchScreenButton" parent="UILayer"]
 texture_filter = 1
-position = Vector2(19, 10)
-scale = Vector2(3.25, 2.9375)
-texture_normal = ExtResource("9_rkbve")
+position = Vector2(3, 1)
+scale = Vector2(3.4375, 3.3125)
+texture_normal = ExtResource("7_cjvs8")
+
+[node name="Comfirm_Exit" parent="UILayer" instance=ExtResource("8_uqtp7")]
+position = Vector2(174, 157)
+
+[node name="anim" type="AnimationPlayer" parent="UILayer"]
+libraries = {
+"": SubResource("AnimationLibrary_63llm")
+}
 
 [node name="BugSpwanTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 
-[node name="Player" parent="." groups=["player_bug_invader"] instance=ExtResource("2_3bdsq")]
+[node name="Player" parent="." instance=ExtResource("8_86cbf")]
 position = Vector2(232, -68)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
