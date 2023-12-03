@@ -11,8 +11,8 @@ func _on_area_2d_body_entered(body):
 		_dialog_screen.transform.origin[1] = transform.origin[1] - 70
 		get_tree().get_root().add_child(_dialog_screen)
 		
-
 func _on_area_2d_body_exited(body):
 	if body.is_in_group("player"):
 		if _dialog_screen != null:
 			_dialog_screen.queue_free()
+			

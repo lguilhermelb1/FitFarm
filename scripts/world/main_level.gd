@@ -12,6 +12,8 @@ func _ready():
 				
 	get_window().size = Vector2(640, 320)
 	player.position = Vector2(330,200)
+	$camera/Control/label_cristais.text = "%08d" % Global.cristais
+	$camera/Control/label_moedas.text = "%08d" % Global.moedas
 	
 	#$camera/Control/label_tempo_final.text = "%02d : %02d" % [int(Global.tempo_final.time_left/60), 
 	#											int(fmod(Global.tempo_final.time_left, 60))]

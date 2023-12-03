@@ -84,7 +84,6 @@ func _update_slot(pos):
 	slt.get_node("icon").transform[0][0] = inventory[pos]['icon_scale']
 	slt.get_node("icon").transform[1][1] = inventory[pos]['icon_scale']
 	
-	
 	slt.get_node("pagamento").texture = load("res://assets/Objects/Payment/" 
 										 + inventory[pos]['payment'] + ".png")
 										
