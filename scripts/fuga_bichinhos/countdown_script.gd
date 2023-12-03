@@ -14,7 +14,7 @@ var transition  = null
 
 func _ready():
 	game_over_label.visible = false
-	timer.wait_time = 120
+	timer.wait_time = 5
 	timer.start()
 
 func _process(delta):
@@ -39,8 +39,10 @@ func setTransition(t: Transition):
 func _on_exit_button_pressed():
 	if $game_over_label.visible == false:
 		confirm_exit.visible=true
-		anim.play("exit_label")
+		confirm_exit.get_node("anim").play("exit_label1")
+		await(confirm_exit.get_node("anim").animation_finished)
+		get_tree().paused=true
 
 func _on_anim_animation_finished(anim_name):
-	if anim_name == 'game_over_anim' or anim_name == 'exit_label':
+	if anim_name == 'game_over_anim':
 		get_tree().paused=true

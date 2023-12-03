@@ -13,6 +13,7 @@ func die():
 	queue_free()
 
 func _on_body_entered(body):
+	print(body)
 	if body is Player:
 		body.die()
 		die()

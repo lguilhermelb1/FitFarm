@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxgf3ic563c1i"]
+[gd_scene load_steps=8 format=3 uid="uid://cxgf3ic563c1i"]
 
 [ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_e742g"]
 
@@ -18,35 +18,6 @@ font_size = 35
 [sub_resource type="LabelSettings" id="LabelSettings_nimdr"]
 font_size = 35
 
-[sub_resource type="Animation" id="Animation_6t3ot"]
-resource_name = "fade_in"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-
-[sub_resource type="Animation" id="Animation_h6636"]
-resource_name = "fade_out"
-length = 1.2
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.2)
-}
-
 [sub_resource type="Animation" id="Animation_imy3n"]
 resource_name = "show_label"
 length = 0.4
@@ -60,7 +31,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.1, 0.1), Vector2(0.75, 0.75)]
+"values": [Vector2(0.1, 0.1), Vector2(1, 1)]
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -76,48 +47,31 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gl8un"]
 _data = {
-"fade_in": SubResource("Animation_6t3ot"),
-"fade_out": SubResource("Animation_h6636"),
 "show_label": SubResource("Animation_imy3n")
 }
 
 [node name="GameOverScreen" type="Control"]
-z_index = 2
+z_index = 1
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchor_left = 0.002
+anchor_right = 0.5
+anchor_bottom = 0.834
+offset_left = -0.28
+offset_top = 1.0
+offset_right = -319.0
+offset_bottom = -265.88
 script = ExtResource("1_e742g")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
-z_index = 2
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
 [node name="Panel" type="Panel" parent="."]
-modulate = Color(1, 1, 1, 0)
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.042
-anchor_top = 0.432
-anchor_right = 0.727
-anchor_bottom = 0.939
-offset_left = 60.16
-offset_top = -163.8
-offset_right = 178.96
-offset_bottom = -54.35
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 330.0
+offset_bottom = 273.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.1, 0.1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_0qdq8")
 
 [node name="GameOver" type="Label" parent="Panel"]
@@ -126,24 +80,25 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -150.833
+offset_left = -107.167
 offset_top = 18.6667
-offset_right = 160.167
+offset_right = 203.833
 offset_bottom = 95.6667
 grow_horizontal = 2
+scale = Vector2(0.7, 0.7)
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_dfny4")
 
 [node name="HighScore" type="Label" parent="Panel"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
+anchors_preset = -1
 anchor_right = 0.5
-offset_left = -221.5
-offset_top = 122.667
-offset_right = 221.5
-offset_bottom = 175.667
+offset_left = 16.0
+offset_top = 116.0
+offset_right = 295.0
+offset_bottom = 169.0
 grow_horizontal = 2
+scale = Vector2(0.7, 0.7)
 text = "MAIOR PONTUAÇÃO: 9999"
 label_settings = SubResource("LabelSettings_liq8o")
 
@@ -152,11 +107,12 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -206.833
-offset_top = 184.0
-offset_right = 226.167
-offset_bottom = 236.0
+offset_left = -153.833
+offset_top = 74.6667
+offset_right = 279.167
+offset_bottom = 126.667
 grow_horizontal = 2
+scale = Vector2(0.7, 0.7)
 text = "PONTUAÇÃO: 9999"
 label_settings = SubResource("LabelSettings_nimdr")
 horizontal_alignment = 1
@@ -168,12 +124,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -118.833
-offset_top = 131.167
-offset_right = 118.167
-offset_bottom = 195.167
+offset_left = -101.833
+offset_top = 69.3334
+offset_right = 168.167
+offset_bottom = 133.333
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.7, 0.7)
 theme_override_font_sizes/font_size = 40
 text = "Sair"
 
@@ -184,12 +141,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -117.5
-offset_top = 49.8333
-offset_right = 119.5
-offset_bottom = 112.833
+offset_left = -91.1667
+offset_top = 13.3333
+offset_right = 145.833
+offset_bottom = 76.3333
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.7, 0.7)
 theme_override_font_sizes/font_size = 40
 text = "Reiniciar"
 

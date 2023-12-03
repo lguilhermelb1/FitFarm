@@ -3,8 +3,8 @@ extends Node2D
 var transition : Transition = null
 var player = null
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	visible = true
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func setTransition(t: Transition):
@@ -19,5 +19,5 @@ func _on_yes_button_pressed():
 
 func _on_no_button_pressed():
 	visible=false
+	print("VV")
 	get_tree().paused=false
-	

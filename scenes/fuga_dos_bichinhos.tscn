@@ -2113,14 +2113,6 @@ libraries = {
 "": SubResource("AnimationLibrary_wcsjq")
 }
 
-[node name="Control" type="Control" parent="camera"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -213.0
-offset_top = -124.0
-offset_right = -173.0
-offset_bottom = -84.0
-
 [node name="game_fail" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_i8ajw")
 volume_db = -20.0

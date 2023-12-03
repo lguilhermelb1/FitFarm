@@ -10,6 +10,7 @@ extends Node2D
 @onready var animation = $UILayer/GameOverScreen/anim
 @onready var exit_button = $UILayer/HUD/exit_button
 
+@onready var transition = $UILayer/transition
 @onready var shootSound = $SFX/Shoot
 @onready var hitSound = $SFX/Hit
 
@@ -22,13 +23,11 @@ var score := 0:
 		
 var high_score
 var points = 0
-var cristais
+var cr = 0
 
 func _ready():
 	get_tree().paused = false
 	get_window().size = Vector2(515, 650)
-	gameOverScreen.visible = true
-	$UILayer/Comfirm_Exit.visible = false
 
 	var save_file = FileAccess.open('user://save.data', FileAccess.READ)
 	if save_file != null:
@@ -44,10 +43,12 @@ func _ready():
 	player.spray_shot.connect(_on_player_spray_shot)
 	player.died.connect(_on_player_died)
 	
-	animation.play("fade_out")
-	await(animation.animation_finished)
-	gameOverScreen.visible = false
+	gameOverScreen.visible=false
 	$UILayer/Comfirm_Exit.setPlayer(self)
+	print($UILayer/transition)
+	$UILayer/Comfirm_Exit.setTransition($UILayer/transition)
+	gameOverScreen.setTransition($UILayer/transition)
+		
 	
 func save_game():
 	var save_file = FileAccess.open('user://save.data', FileAccess.WRITE)
@@ -81,14 +82,14 @@ func _on_bug_died(points):
 	score += points
 	
 	if score % 150 == 0:
-		cristais += 20
+		cr += 20
+		Global.cristais += 20
 		player.set_cristal_score_label(20)
-		Global.cristais += cristais
 	elif score % 250 == 0:
-		cristais += 50
+		cr += 50
+		Global.cristais += 50
 		player.set_cristal_score_label(50)
-		Global.cristais += cristais
-				
+	
 	if score > high_score:
 		high_score = score
 
@@ -103,15 +104,12 @@ func _on_player_died():
 
 
 func _on_exit_button_pressed():
-	print(gameOverScreen.visible)
-	if gameOverScreen.visible == true:
-		$UILayer/Comfirm_Exit.visible = true
-		$UILayer/anim.play("open")
-
-		#animation.play("fade_in")
-		#await(animation.animation_finished)
-		#get_tree().change_scene_to_file("res://scenes/mundo_01.tscn")
+	if $UILayer/GameOverScreen.visible==false:
+		$UILayer/Comfirm_Exit.visible=true
+		$UILayer/Comfirm_Exit/anim.play("exit_label2")
+		get_tree().paused=true
+		await($UILayer/Comfirm_Exit/anim.animation_finished)
 
 
-func perder_progresso():
-	Global.cristais -= cristais
+func progresso_perdido():
+	Global.cristais -= cr
