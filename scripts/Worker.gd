@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 var _dialog_screen: DialogueCreation
 
+func _process(delta):
+	removed()
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
@@ -15,17 +17,10 @@ func _on_area_2d_body_exited(body):
 	if body.is_in_group("player"):
 		if _dialog_screen != null:
 			_dialog_screen.queue_free()
-
-func _process(delta):
-	give_coins()
-
-
-
-func give_coins():
-	if _dialog_screen != null and _dialog_screen._id == 2:
-		Global.moedas += 30
-		get_tree().get_root().get_child(1).get_node("camera").get_node("Control")\
-		.get_node("label_moedas").text = "%08d" % Global.moedas
-		break
-	
-		
+			
+func removed():
+	if _dialog_screen != null:
+		print(_dialog_screen._dialog.visible_ratio, "/", _dialog_screen._id== len(_dialog_screen.data)-1)
+		if _dialog_screen._dialog.visible_ratio == 1 and _dialog_screen._id == len(_dialog_screen.data)-1 \
+		and Input.is_action_just_pressed("ui_next"):
+			queue_free()
