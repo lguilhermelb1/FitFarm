@@ -4847,6 +4847,12 @@ sources/8 = SubResource("TileSetAtlasSource_gih0k")
 sources/9 = SubResource("TileSetAtlasSource_7k7yp")
 sources/11 = SubResource("TileSetAtlasSource_duexq")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m27er"]
+size = Vector2(229.344, 132.625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16q4f"]
+size = Vector2(215.875, 130.125)
+
 [sub_resource type="Animation" id="Animation_ijdqq"]
 resource_name = "fade_in"
 length = 1.3
@@ -4882,12 +4888,6 @@ _data = {
 "fade_in": SubResource("Animation_ijdqq"),
 "fade_out": SubResource("Animation_lktg8")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m27er"]
-size = Vector2(170.688, 113.25)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_16q4f"]
-size = Vector2(161.5, 104.5)
 
 [node name="Mundo01" type="Node2D"]
 script = ExtResource("1_8so22")
@@ -4940,11 +4940,32 @@ layer_6/y_sort_origin = 0
 layer_6/z_index = 0
 layer_6/tile_data = PackedInt32Array(33, 2, 0)
 
+[node name="area_insercao_animal" type="Area2D" parent="." groups=["insercao_celeiro"]]
+position = Vector2(723, 7)
+collision_layer = 2
+collision_mask = 21
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_insercao_animal"]
+position = Vector2(117.328, 67.6875)
+shape = SubResource("RectangleShape2D_m27er")
+
+[node name="area_insercao_animal_2" type="Area2D" parent="." groups=["insercao_celeiro"]]
+position = Vector2(729, 220)
+collision_layer = 2
+collision_mask = 21
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_insercao_animal_2"]
+position = Vector2(110.063, 65.9375)
+shape = SubResource("RectangleShape2D_16q4f")
+
 [node name="vegetable_grid_container" parent="." instance=ExtResource("20_jg8a1")]
 offset_left = -13.0
 offset_top = 323.0
 offset_right = 108.0
 offset_bottom = 429.0
+
+[node name="celeiro" parent="." instance=ExtResource("14_xgvew")]
+position = Vector2(482, 9)
 
 [node name="camera" type="Camera2D" parent="."]
 z_index = 5
@@ -4968,8 +4989,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
-offset_top = 2.0
-offset_right = 4.0
+offset_top = -1.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -5052,24 +5072,5 @@ position = Vector2(159, 167)
 
 [node name="player_world" parent="." instance=ExtResource("12_1kp32")]
 position = Vector2(330, 200)
-
-[node name="celeiro" parent="." instance=ExtResource("14_xgvew")]
-position = Vector2(482, 9)
-
-[node name="area_insercao_animal" type="Area2D" parent="." groups=["insercao_celeiro"]]
-position = Vector2(776, 75)
-collision_layer = 2
-collision_mask = 21
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="area_insercao_animal"]
-shape = SubResource("RectangleShape2D_m27er")
-
-[node name="area_insercao_animal_2" type="Area2D" parent="." groups=["insercao_celeiro"]]
-position = Vector2(770, 243)
-collision_layer = 2
-collision_mask = 21
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="area_insercao_animal_2"]
-shape = SubResource("RectangleShape2D_16q4f")
 
 [connection signal="pressed" from="camera/Control/button_label_inventory" to="." method="_on_button_label_inventory_pressed"]

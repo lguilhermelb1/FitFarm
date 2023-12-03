@@ -18,6 +18,7 @@ func _on_area_porta_body_entered(body):
 
 func _on_area_porta_body_exited(body):
 	permitido = false
+	print("F")
 	play_open_door()
 
 
@@ -26,11 +27,11 @@ func play_open_door():
 	print(sprite)
 	if sprite == "celeiro_aberto":
 		$AnimationPlayer.play_backwards("door")
-		await($AnimationPlayer.animation_finished)
+		#await($AnimationPlayer.animation_finished)
 		
 	elif sprite == "celeiro_fechado":
 		$AnimationPlayer.play("door")
-		await($AnimationPlayer.animation_finished)
+		#await($AnimationPlayer.animation_finished)
 	
 	
 	

@@ -9,6 +9,8 @@ extends Node2D
 func _ready():	
 	$camera/Inventory/ScrollContainer/GridContainer.main_update()
 	inv.visible = false
+	
+	print($celeiro.global_position)
 
 	get_window().size = Vector2(640, 320)
 	player.position = Vector2(330,200)

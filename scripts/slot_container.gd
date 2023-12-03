@@ -43,8 +43,8 @@ func _on_gui_input(event):
 								
 				if area_insercao != null:
 					var node_celeiro = load("res://prefab/celeiro.tscn").instantiate()
-					node_celeiro.position.x = area_insercao.transform.origin[0]-50
-					node_celeiro.position.y = area_insercao.transform.origin[1]-20
+					node_celeiro.position.x = area_insercao.global_position.x
+					node_celeiro.position.y = area_insercao.global_position.y
 					print(node_celeiro.position)
 					get_tree().get_root().add_child(node_celeiro)
 					efetuar_pagamento()

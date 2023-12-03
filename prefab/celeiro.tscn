@@ -1,26 +1,43 @@
-[gd_scene load_steps=14 format=3 uid="uid://rntdfc31ug5f"]
+[gd_scene load_steps=16 format=3 uid="uid://rntdfc31ug5f"]
 
 [ext_resource type="Script" path="res://scripts/celeiro.gd" id="1_k5233"]
 [ext_resource type="Texture2D" uid="uid://qmix6vglowo7" path="res://assets/Objects/celeiro_fechado.png" id="2_1pwb0"]
 [ext_resource type="Texture2D" uid="uid://in2qjujbmirm" path="res://assets/Objects/celeiro_aberto.png" id="3_75vwj"]
+[ext_resource type="PackedScene" uid="uid://f6gmm7aa0rx2" path="res://prefab/objeto_celeiro.tscn" id="4_aer3l"]
+[ext_resource type="Texture2D" uid="uid://cmta18yu5gch0" path="res://assets/Objects/water.png" id="5_gtcb1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v35vp"]
-size = Vector2(8.40625, 134)
+size = Vector2(8.40625, 132)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w5xb6"]
-size = Vector2(7.5, 134)
+size = Vector2(7.5, 132)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qpot"]
-size = Vector2(166, 16)
+size = Vector2(166, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1xoe"]
-size = Vector2(165, 101.5)
+size = Vector2(165, 102)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7l7n"]
-size = Vector2(56, 16)
+size = Vector2(56, 14.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gx61t"]
-size = Vector2(119, 16)
+size = Vector2(119, 14.5)
+
+[sub_resource type="Animation" id="Animation_7pt6f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_1pwb0")]
+}
 
 [sub_resource type="Animation" id="Animation_8qvfr"]
 resource_name = "door"
@@ -45,7 +62,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(56, -0.25, 0, 0.25, 0, 41, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(56, -0.25, 0, 0.25, 0, 40, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4)
 }
 tracks/2/type = "bezier"
@@ -56,7 +73,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(119, 0, 0, 0, 0, 95, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(119, 0, 0, 0, 0, 94, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4)
 }
 tracks/3/type = "bezier"
@@ -78,23 +95,8 @@ tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(123.5, -0.25, 0, 0.25, 0, 126.5, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(123.5, -0.25, 0, 0.25, 0, 127.5, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4)
-}
-
-[sub_resource type="Animation" id="Animation_7pt6f"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_1pwb0")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8dt1d"]
@@ -104,7 +106,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjwt0"]
-size = Vector2(32, 27)
+size = Vector2(31, 29)
 
 [node name="celeiro" type="StaticBody2D" groups=["celeiro"]]
 collision_layer = 2
@@ -133,16 +135,16 @@ collision_layer = 2
 collision_mask = 21
 
 [node name="collision" type="CollisionShape2D" parent="area2d"]
-position = Vector2(91.5, 67.25)
+position = Vector2(91.5, 67)
 shape = SubResource("RectangleShape2D_s1xoe")
 debug_color = Color(0, 1, 0, 0.419608)
 
 [node name="porta1" type="CollisionShape2D" parent="."]
-position = Vector2(36, 125.895)
+position = Vector2(36, 125)
 shape = SubResource("RectangleShape2D_n7l7n")
 
 [node name="porta2" type="CollisionShape2D" parent="."]
-position = Vector2(123.5, 126)
+position = Vector2(123.5, 125)
 shape = SubResource("RectangleShape2D_gx61t")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -151,11 +153,33 @@ libraries = {
 }
 
 [node name="area_porta" type="Area2D" parent="."]
+position = Vector2(63, 124)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area_porta"]
-position = Vector2(64, 126.5)
+position = Vector2(1.5, 0.5)
 shape = SubResource("RectangleShape2D_qjwt0")
+
+[node name="objeto_celeiro" parent="." instance=ExtResource("4_aer3l")]
+position = Vector2(163, 21)
+scale = Vector2(0.8, 0.8)
+collision_layer = 2
+collision_mask = 21
+
+[node name="CollisionShape2D" parent="objeto_celeiro" index="1"]
+position = Vector2(-3.05176e-05, -3.8147e-06)
+scale = Vector2(0.999999, 0.999999)
+
+[node name="objeto_celeiro2" parent="." instance=ExtResource("4_aer3l")]
+position = Vector2(34, 82)
+collision_layer = 2
+collision_mask = 21
+
+[node name="Sprite2D" parent="objeto_celeiro2" index="0"]
+texture = ExtResource("5_gtcb1")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="body_entered" from="area_porta" to="." method="_on_area_porta_body_entered"]
 [connection signal="body_exited" from="area_porta" to="." method="_on_area_porta_body_exited"]
+
+[editable path="objeto_celeiro"]
+[editable path="objeto_celeiro2"]
