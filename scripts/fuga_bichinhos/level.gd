@@ -7,14 +7,15 @@ extends Node2D
 @onready var cronometro = $player_fuga_bichinhos/Cronometro
 @onready var game_over_label = $player_fuga_bichinhos/Cronometro/game_over_label
 
+
 func _ready():	
 	get_tree().paused = false
 	get_window().size = Vector2(640, 320)
-	
+		
 	game_over_label.set_transition(transition)
 	cronometro.setTransition(transition)
 	player.follow_camera(camera) 
-	
+
 	
 func _on_insercao_body_entered(body):
 	if body.is_in_group("animal"):

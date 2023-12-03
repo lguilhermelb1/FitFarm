@@ -32,7 +32,7 @@ func _ready():
 	atualizar_placar()
 
 func _physics_process(delta):
-	
+	print(Global.cristais)
 	direction = Vector2(
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"), 
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
@@ -136,12 +136,13 @@ func ganhar_pontos():
 	
 	if scores % 200 == 0:
 		cristal_score_anim.play("fade_in")
+		cristais += 100
 		Global.cristais += 100
 		cristals_sound.play()
 	else:
 		points_sound.play()		
 	
-	cronometro.set_scores(scores)
+	cronometro.set_scores(scores, cristais)
 	atualizar_placar()
 
 func atualizar_placar():

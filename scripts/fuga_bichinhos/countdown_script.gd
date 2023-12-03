@@ -28,8 +28,8 @@ func _on_timer_timeout():
 	game_over_label.visible = true
 	anim.play("game_over_anim")
 	
-func set_scores(s: int):
-	cristais.text = "Cristais: %08d" % Global.cristais
+func set_scores(s: int, cr: int):
+	cristais.text = "Cristais: %08d" % cr
 	pontos.text = "Pontuação: %08d" % s 
 
 func setTransition(t: Transition):
