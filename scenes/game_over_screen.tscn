@@ -63,6 +63,7 @@ offset_bottom = -265.88
 script = ExtResource("1_e742g")
 
 [node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
@@ -72,6 +73,7 @@ offset_right = 330.0
 offset_bottom = 273.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.1, 0.1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_0qdq8")
 
 [node name="GameOver" type="Label" parent="Panel"]

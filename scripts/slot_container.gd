@@ -47,6 +47,9 @@ func _on_gui_input(event):
 					node_celeiro.position.y = area_insercao.global_position.y
 					print(node_celeiro.position)
 					get_tree().get_root().add_child(node_celeiro)
+					
+					Global.lista.append([node_celeiro, node_celeiro.global_position])
+											
 					efetuar_pagamento()
 					area_insercao.queue_free()
 			else:
@@ -59,7 +62,11 @@ func _on_gui_input(event):
 						node_animal.set_script(load("res://scripts/animal_script.gd"))
 						node_animal.position = container.get_node("area2d/collision").transform.origin
 						container.get_node("area2d").add_child(node_animal)
+						
+						Global.lista.append([node_animal, node_animal.name, node_animal.global_position])
+				
 						efetuar_pagamento()
+						
 						
 				elif node_animal == null:
 					container = _container_nao_lotado()
@@ -70,6 +77,8 @@ func _on_gui_input(event):
 						node_vegetable.z_index = 0
 						container.inserir(node_vegetable)
 						node_vegetable.start()
+						
+						Global.lista.append([node_vegetable, node_vegetable.global_position])
 						
 						efetuar_pagamento()
 		else:

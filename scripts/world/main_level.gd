@@ -15,10 +15,13 @@ func _ready():
 	$camera/Control/label_cristais.text = "%08d" % Global.cristais
 	$camera/Control/label_moedas.text = "%08d" % Global.moedas
 	
+	print(Global.tempo_final)
+	
 	#$camera/Control/label_tempo_final.text = "%02d : %02d" % [int(Global.tempo_final.time_left/60), 
 	#											int(fmod(Global.tempo_final.time_left, 60))]
-	
 	player.follow_camera(camera) 
+	
+	atualizar()
 	update_values()
 
 
@@ -30,3 +33,18 @@ func _on_button_label_inventory_pressed():
 func update_values():
 	$camera/Control/label_cristais.text = "%08d" % Global.cristais
 	$camera/Control/label_moedas.text = "%08d" % Global.moedas
+	
+
+func atualizar():
+	#[<Freed Object>, (573.5, 76)]
+	
+	for x in Global.lista:
+		if x != null:
+			print(x)
+			#x[0] = x[0].instantiate()
+			#get_tree().get_root().add_child(x[0])
+			
+
+func _process(delta):
+	atualizar()
+

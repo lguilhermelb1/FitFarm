@@ -132,7 +132,7 @@ _data = {
 "second_percent": SubResource("Animation_1ok5d")
 }
 
-[node name="vegetable" type="Node2D"]
+[node name="vegetable" type="Node2D" groups=["vegetable"]]
 script = ExtResource("1_pnrhs")
 
 [node name="main_image" type="Sprite2D" parent="."]
