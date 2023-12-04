@@ -73,7 +73,7 @@ func _on_player_spray_shot(shoot_scene, location):
 
 func _on_bug_spwan_timer_timeout():
 	var e = bug_scenes.pick_random().instantiate()
-	e.global_position = Vector2(randf_range(50, 500), 50)
+	e.global_position = Vector2(randf_range(50, 500), 0)
 	e.died.connect(_on_bug_died)
 	bug_container.add_child(e)
 
@@ -85,7 +85,7 @@ func _on_bug_died(points):
 		cr += 20
 		Global.cristais += 20
 		player.set_cristal_score_label(20)
-	elif score % 250 == 0:
+	elif score % 500 == 0:
 		cr += 50
 		Global.cristais += 50
 		player.set_cristal_score_label(50)
