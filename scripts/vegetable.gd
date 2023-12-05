@@ -1,27 +1,34 @@
 extends Node2D
 class_name vegetable_item
 
-@onready var anim := $anim as AnimationPlayer
-var _next_animation = ""
+var _status = "fade_in"
 
-func start():
-	anim.play("fade_in")
-	$timer.wait_time = 5
-	$timer.start()
+func get_status():
+	return self._status
+	
+func set_status(st: String):
+	self._status = st
+	
+func play_animation():
+	if self._status == "":
+		$main_image.visible=true
+	else:
+		print("STATUS: ", self._status)
+		$anim.play(self._status)
+		$timer.wait_time = 10
+		$timer.start()
 
 func _on_anim_animation_finished(anim_name):
 	if anim_name == "fade_in":
-		_next_animation = "second_percent"		
+		self._status = "second_percent"		
 	elif anim_name == "second_percent":
-		_next_animation = "final_percent"	
+		self._status = "final_percent"	
 	else:
-		_next_animation = ""
+		self._status = ""
+
 
 func _on_timer_timeout():
-	if (_next_animation == "second_percent" or _next_animation 
-	== "final_percent") and anim.is_playing() == false:
-		anim.play(_next_animation)
-		$timer.wait_time = 5
-		$timer.start()
+	if (_status == "second_percent" or _status == "final_percent") and $anim.is_playing() == false:
+		play_animation()
 	else:
 		$timer.stop()

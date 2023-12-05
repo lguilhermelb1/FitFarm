@@ -10,10 +10,12 @@ func lotado():
 func _sem_filhos() -> Control:
 	for x in get_children():
 		if x.get_child_count() == 0:
+			print("VALOR: ",x)
 			return x	
 	return null
 
 func inserir(nd: Node2D):
 	var nd_insercao = _sem_filhos()
 	if nd_insercao != null:
+		print("INSERIDO")
 		nd_insercao.add_child(nd)

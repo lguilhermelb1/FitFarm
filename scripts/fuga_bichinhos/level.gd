@@ -15,6 +15,7 @@ func _ready():
 	cronometro.get_node("Comfirm_Exit").setTransition(transition)	
 	cronometro.get_node("Comfirm_Exit").setPlayer(player)
 	cronometro.get_node("Comfirm_Exit").visible=false
+	
 	player.follow_camera(camera) 
 
 	
