@@ -7,10 +7,10 @@ extends Node2D
 
 # 640 x 320
 func _ready():	
-	print(Global.lista)
 	$camera/Inventory/ScrollContainer/GridContainer.main_update()
 	inv.visible = false
-				
+	atualizar()
+					
 	get_window().size = Vector2(640, 320)
 	player.position = Vector2(330,200)
 	$camera/Control/label_cristais.text = "%08d" % Global.cristais
@@ -20,7 +20,6 @@ func _ready():
 	#											int(fmod(Global.tempo_final.time_left, 60))]
 	player.follow_camera(camera) 
 	
-	atualizar()
 	update_values()
 
 
@@ -57,17 +56,15 @@ func atualizar():
 												
 			elif x['type'] == "vegetable":
 				nd.get_node("main_image").texture = load(x['icon'])
-				print(nd.visible)
-				nd.global_position = x['position'] 
-				nd.set_status(x['status'])
 				nd.z_index=0
+								
+				nd.set_status(x['status'])
+				self.get_node("vegetable_grid_container").inserir(nd)
 				
-				self.get_node("vegetable_grid_container").inserir(nd)	
-				nd.play_animation()
+				if nd.get_status() != " ":					
+					nd.play_animation()
 
 				
-				
-
 func _area_inserir():
 	for area in get_tree().get_nodes_in_group("insercao_celeiro"):
 		if area.get_child_count() == 1:

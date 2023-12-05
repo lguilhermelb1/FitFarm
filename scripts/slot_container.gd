@@ -37,7 +37,7 @@ func _on_gui_input(event):
 			if file_name== "coin":
 				efetuar_pagamento()
 				Global.add_coins(20)	
-				#_label_moedas.text = "%08d" % Global.moedas
+				_label_moedas.text = "%08d" % Global.moedas
 			
 			elif file_name == "celeiro":
 				var node_celeiro = load("res://prefab/celeiro.tscn").instantiate()

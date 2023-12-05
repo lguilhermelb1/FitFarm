@@ -11,10 +11,10 @@ func _ready():
 		
 	
 func change_scene(path: String):
+	_update_values()
 	get_tree().paused = true
 	animation.play("fade_in")
 	await(animation.animation_finished)
-	_update_values()
 	assert(get_tree().change_scene_to_file(path) == OK)
 
 func _update_values():
@@ -25,5 +25,8 @@ func _update_values():
 				if x.has('status'):
 					for v in get_tree().get_nodes_in_group("vegetable"):
 						if v.global_position == x['position']:
-							print(v, ";", v.get_status())
-							x['status'] = v.get_status()
+							if x['status'] == 'final_percent':
+								x['status'] = " "
+							else:							
+								print("New Status: ", v.get_status())
+								x['status'] = v.get_status()

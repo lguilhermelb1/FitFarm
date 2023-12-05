@@ -10,7 +10,7 @@ func set_status(st: String):
 	self._status = st
 	
 func play_animation():
-	if self._status == "":
+	if self._status == " ":
 		$main_image.visible=true
 	else:
 		print("STATUS: ", self._status)
@@ -24,7 +24,7 @@ func _on_anim_animation_finished(anim_name):
 	elif anim_name == "second_percent":
 		self._status = "final_percent"	
 	else:
-		self._status = ""
+		self._status = " "
 
 
 func _on_timer_timeout():
