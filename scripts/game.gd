@@ -20,7 +20,10 @@ var score := 0:
 	set(value):
 		score = value
 		hud.score = score
-		
+
+
+
+
 var high_score
 var points = 0
 var cr = 0
@@ -44,6 +47,11 @@ func _ready():
 	player.died.connect(_on_player_died)
 	
 	gameOverScreen.visible=false
+	
+	if Global.tempo_final != null:
+		$UILayer/HUD/Time_Left.text = "Tempo Restante: %02d : %02d" % [(int(Global.tempo_final.time_left/60)), 
+											(int(fmod(Global.time_left, 60)))]
+	
 	$UILayer/Comfirm_Exit.setPlayer(self)
 	print($UILayer/transition)
 	$UILayer/Comfirm_Exit.setTransition($UILayer/transition)
@@ -74,7 +82,7 @@ func _on_player_spray_shot(shoot_scene, location):
 
 func _on_bug_spwan_timer_timeout():
 	var e = bug_scenes.pick_random().instantiate()
-	e.global_position = Vector2(randf_range(50, 500), 0)
+	e.global_position = Vector2(randf_range(50, 515), 0)
 	e.died.connect(_on_bug_died)
 	bug_container.add_child(e)
 
@@ -104,13 +112,13 @@ func _on_player_died():
 	await(animation.animation_finished)
 
 
-func _on_exit_button_pressed():
+func progresso_perdido():
+	Global.cristais -= cr
+
+
+func _on_touch_screen_button_pressed():
 	if $UILayer/GameOverScreen.visible==false:
 		$UILayer/Comfirm_Exit.visible=true
 		$UILayer/Comfirm_Exit/anim.play("exit_label2")
 		get_tree().paused=true
 		await($UILayer/Comfirm_Exit/anim.animation_finished)
-
-
-func progresso_perdido():
-	Global.cristais -= cr

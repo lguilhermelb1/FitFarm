@@ -16,8 +16,10 @@ func _ready():
 	$camera/Control/label_cristais.text = "%08d" % Global.cristais
 	$camera/Control/label_moedas.text = "%08d" % Global.moedas
 	
-	#$camera/Control/label_tempo_final.text = "%02d : %02d" % [int(Global.tempo_final.time_left/60), 
-	#											int(fmod(Global.tempo_final.time_left, 60))]
+	#if global.tempo_final != null:
+	#	print("V")
+		#$camera/Control/label_tempo_final.text = "%02d : %02d" % [int(Global.tempo_final.time_left/60), 
+		#											int(fmod(Global.tempo_final.time_left, 60))]
 	player.follow_camera(camera) 
 	
 	update_values()
@@ -39,7 +41,7 @@ func atualizar():
 	for x in Global.lista:
 		if x != null:	
 			var nd = load(x['node']).instantiate()	
-			
+	
 			if x['type'] == 'animal':
 				nd.set_script(load("res://scripts/animal_script.gd"))
 				nd.global_position = x['position']		
@@ -55,15 +57,33 @@ func atualizar():
 					area_inserir.add_child(nd)
 												
 			elif x['type'] == "vegetable":
+				# dúvida na mudança de status
+				print("\n\n",  x['current_time'], ";\n 
+				Current Status: ", x['status'])
 				nd.get_node("main_image").texture = load(x['icon'])
 				nd.z_index=0
-								
-				nd.set_status(x['status'])
-				self.get_node("vegetable_grid_container").inserir(nd)
 				
-				if nd.get_status() != " ":					
+				nd.set_timer(x['current_time'])
+				self.get_node("vegetable_grid_container").inserir(nd)				
+				nd.set_status(x['status'])
+							
+				if nd.get_timer().time_left != 0 and x['status'] != 'final_percent' and x['status'] != ' ':
+					x['current_time'] = nd.get_timer().time_left
+					nd.get_timer().start()
+					
+				elif  nd.get_timer().time_left == 0 and x['status'] != 'final_percent' and x['status'] != ' ':
+					nd.change_animation(nd.get_status())
 					nd.play_animation()
-
+					print("Novo_Status: ", nd.get_status())
+					#x['status'] = nd.get_status()
+					
+				#nd.play_animation()
+				#print(nd.get_timer().paused)
+				#print(nd.get_timer().time_left, "/", nd.get_status(), "/", x['status'])
+				
+				if nd.get_status() != x['status']:
+					x['status'] = nd.get_status()
+	Global.att_db()			
 				
 func _area_inserir():
 	for area in get_tree().get_nodes_in_group("insercao_celeiro"):
@@ -72,5 +92,3 @@ func _area_inserir():
 			break
 	return null		
 	
-
-

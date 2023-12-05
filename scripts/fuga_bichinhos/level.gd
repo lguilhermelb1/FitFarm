@@ -16,6 +16,9 @@ func _ready():
 	cronometro.get_node("Comfirm_Exit").setPlayer(player)
 	cronometro.get_node("Comfirm_Exit").visible=false
 	
+	if Global.tempo_final != null:
+		$camera/time_control/label_time.text = "Tempo Restante: %02d : %02d" % [(int(Global.tempo_final.time_left/60)), 
+											(int(fmod(Global.time_left, 60)))]
 	player.follow_camera(camera) 
 
 	

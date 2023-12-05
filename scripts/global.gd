@@ -2,11 +2,11 @@ extends Node2D
 class_name global_variables
 
 # Pegar da base de dados
-var cristais = 0
+var cristais = 90
 var moedas = 0
 var user_id : String = ""
 var user_key : String = ""
-var pin : String = ""
+var pin : String = "397790"
 var tempo_final: Timer
 var lista = []
 	
@@ -42,11 +42,11 @@ func att_db():
 	var initial_data = jsonObject.stringify({
 		"pin": pin,
 		"moedas": moedas,  # Valor inicial para moedas (ajuste conforme necessário)
-		"cristais": cristais  # Valor inicial para cristais (ajuste conforme necessário)
+		"cristais": cristais,  # Valor inicial para cristais (ajuste conforme necessário)
+		"lista": lista
 	})
 
 	var headers = ['Content-Type: application/json']
-	
 	request.request(url, headers, HTTPClient.METHOD_PUT, initial_data)
 
 

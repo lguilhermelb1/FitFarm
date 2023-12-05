@@ -33,6 +33,9 @@ func _ready():
 	$cristal_score.transform['x'][0] = 1
 	$cristal_score.transform['y'][1] = 1
 	
+	
+	
+	
 
 func _physics_process(delta):
 	direction = Vector2(

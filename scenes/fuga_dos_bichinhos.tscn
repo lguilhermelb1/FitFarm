@@ -2113,6 +2113,23 @@ libraries = {
 "": SubResource("AnimationLibrary_wcsjq")
 }
 
+[node name="time_control" type="Control" parent="camera"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -130.0
+offset_top = -64.0
+offset_right = 38.0
+offset_bottom = -22.0
+
+[node name="label_time" type="Label" parent="camera/time_control"]
+z_index = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.31, 0.31)
+theme_override_font_sizes/font_size = 30
+text = "Tempo Restante: 00:00"
+
 [node name="game_fail" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_i8ajw")
 volume_db = -20.0

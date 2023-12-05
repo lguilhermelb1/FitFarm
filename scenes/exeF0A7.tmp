@@ -160,11 +160,10 @@ _data = {
 script = ExtResource("1_vibgd")
 
 [node name="transition" type="Control" parent="."]
-z_index = 4
 layout_mode = 3
 anchors_preset = 0
 offset_right = 641.0
-offset_bottom = 320.0
+offset_bottom = 326.0
 script = ExtResource("1_h5r45")
 
 [node name="ColorRect" type="ColorRect" parent="transition"]
@@ -174,10 +173,10 @@ anchors_preset = -1
 anchor_left = 0.501
 anchor_right = 1.501
 anchor_bottom = 1.5
-offset_left = -319.141
-offset_top = -1.0
-offset_right = -319.141
-offset_bottom = -164.0
+offset_left = -0.141022
+offset_top = 163.0
+offset_right = -0.141052
+offset_bottom = -3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -241,5 +240,3 @@ offset_top = 4.0
 offset_right = 269.0
 offset_bottom = 42.0
 placeholder_text = "Tempo"
-
-[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

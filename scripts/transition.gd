@@ -11,24 +11,18 @@ func _ready():
 		
 	
 func change_scene(path: String):
-	_update_values()
 	get_tree().paused = true
+	_update_values()
 	animation.play("fade_in")
 	await(animation.animation_finished)
 	assert(get_tree().change_scene_to_file(path) == OK)
 
 func _update_values():
-	print("UPDATE_VALUES")
 	if get_tree().current_scene.name == "Mundo01":
 		for x in Global.lista:
-			if x != null:
-				if x.has('status'):
-					for v in get_tree().get_nodes_in_group("vegetable"):
-						print(v.global_position, ";", x['position'])
-						if v.global_position == x['position']:
-							print(x['status'], '/', v.get_status())
-							if x['status'] == 'final_percent':
-								x['status'] = " "
-							else:							
-								print("New Status: ", v.get_status())
-								x['status'] = v.get_status()
+			for v in get_tree().get_nodes_in_group("vegetable"):
+				if v.global_position == x['position']:
+					v.get_node("timer").paused = true
+					x['current_time'] = v.get_node("timer").time_left	
+		
+	

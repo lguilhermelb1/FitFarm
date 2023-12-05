@@ -85,7 +85,8 @@ func _on_gui_input(event):
 							"node": "res://prefab/vegetable.tscn", 
 							"icon": node_vegetable.get_node("main_image").texture.get_path(),
 							"status": node_vegetable.get_status(), 
-							"position": node_vegetable.global_position})
+							"position": node_vegetable.global_position,
+							'current_time': 10})
 						
 						node_vegetable.play_animation()
 						efetuar_pagamento()
@@ -114,8 +115,6 @@ func _area_inserir():
 			break
 	return null			
 	
-	
-
 		
 func _mudanca_texto(frase: String):
 	$timer.wait_time = 5
