@@ -140,8 +140,8 @@ func ganhar_pontos():
 	
 	if scores % 200 == 0:
 		cristal_score_anim.play("fade_in")
-		cristais += 100
-		Global.cristais += 100
+		cristais += 50
+		Global.cristais += 50
 		cristals_sound.play()
 	else:
 		points_sound.play()		
