@@ -45,8 +45,8 @@ func save_user_data(user_id, pin):
 	var jsonObject = JSON.new()
 	var initial_data = jsonObject.stringify({
 		"pin": pin,
-		"moedas": 100,  # Valor inicial para moedas (ajuste conforme necessário)
-		"cristais": 50  # Valor inicial para cristais (ajuste conforme necessário)
+		"moedas": 0,  # Valor inicial para moedas (ajuste conforme necessário)
+		"cristais": 0  # Valor inicial para cristais (ajuste conforme necessário)
 	})
 
 	var headers = ['Content-Type: application/json']
@@ -56,7 +56,7 @@ func save_user_data(user_id, pin):
 # Função chamada quando a solicitação de salvar dados do usuário é concluída
 func _on_request_save_user_data_completed(result, response_code, headers, body):
 	if response_code == 200:
-		get_tree().change_scene_to_file("res://scenes/mundo_01.tscn")
+		get_tree().change_scene_to_file("res://scenes/login_screen.tscn")
 		print("Dados do usuário salvos com sucesso!")
 	else:
 		print("Falha ao salvar dados do usuário:", response_code)
@@ -85,3 +85,7 @@ func _on_create_pressed():
 		$ConfirmPasswordErrorMessage.text = "Senha diferente."
 	if pin == "" or pin.length() < 6:
 		$PINErrorMessage.text = "O tamanho do PIN deve ser maior ou igual a 6."
+
+
+func _on_back_pressed():
+	get_tree().change_scene_to_file("res://scenes/login_screen.tscn")

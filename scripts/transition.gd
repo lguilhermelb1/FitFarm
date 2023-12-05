@@ -24,7 +24,9 @@ func _update_values():
 			if x != null:
 				if x.has('status'):
 					for v in get_tree().get_nodes_in_group("vegetable"):
+						print(v.global_position, ";", x['position'])
 						if v.global_position == x['position']:
+							print(x['status'], '/', v.get_status())
 							if x['status'] == 'final_percent':
 								x['status'] = " "
 							else:							

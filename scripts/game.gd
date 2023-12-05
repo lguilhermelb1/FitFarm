@@ -53,6 +53,7 @@ func _ready():
 func save_game():
 	var save_file = FileAccess.open('user://save.data', FileAccess.WRITE)
 	save_file.store_32(high_score)
+	Global.att_db()
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("quit"):

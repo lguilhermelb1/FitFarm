@@ -28,6 +28,7 @@ func _on_timer_timeout():
 	timeout.play()
 	game_over_label.visible = true
 	anim.play("game_over_anim")
+	Global.att_db()
 	
 func set_scores(s: int, cr: int):
 	cristais.text = "Cristais: %08d" % cr
