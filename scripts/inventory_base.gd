@@ -59,7 +59,7 @@ var inventory = [
 	
 	{
 		name = "Barn",
-		price = 0,
+		price = 1000,
 		payment="cristal",
 		scale=0.15,
 		icon_scale=0.15,

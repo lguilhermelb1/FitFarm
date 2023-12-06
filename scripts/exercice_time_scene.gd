@@ -15,7 +15,6 @@ func _ready():
 
 func _on_button_pressed():
 	if Global.pin == $Control/PIN.text and $Control/Tempo.text != " ":
-		
 		Global.tempo_final.wait_time = int($Control/Tempo.text) * 60
 		$transition.change_scene("res://scenes/mundo_01.tscn")
 		print("V")

@@ -7,7 +7,6 @@ var _label_moedas = null
 func _ready():
 	$result.visible = false
 	await(get_tree().current_scene.name == "Mundo01")
-		
 	_label_cristals = get_tree().current_scene.get_node("camera").get_node("Control").get_node("label_cristais")
 	_label_moedas = get_tree().current_scene.get_node("camera").get_node("Control").get_node("label_moedas")
 
@@ -87,7 +86,7 @@ func _on_gui_input(event):
 							"icon": node_vegetable.get_node("main_image").texture.get_path(),
 							"status": node_vegetable.get_status(), 
 							"position": node_vegetable.global_position,
-							'current_time': 10})
+							'current_time': 7})
 						
 						node_vegetable.play_animation()
 						efetuar_pagamento()

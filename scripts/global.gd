@@ -2,7 +2,7 @@ extends Node2D
 class_name global_variables
 
 # Pegar da base de dados
-var cristais = 90
+var cristais = 60
 var moedas = 0
 var user_id : String = ""
 var user_key : String = ""

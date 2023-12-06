@@ -2,15 +2,13 @@ extends Node2D
 class_name vegetable_item
 
 var _status = "fade_in"
-var _current_time = 10
-var time: Timer = null
-
+var _current_time = 7
+@onready var time = $timer
 
 func _ready():
-	time = $timer
-	print(time, ";", $timer)
-		
-
+	print(time)
+	
+	
 func get_status():
 	return self._status
 
@@ -22,32 +20,39 @@ func get_timer() -> Timer:
 	return time
 
 func set_current_timer(t):
+	await(self.ready)	
 	_current_time = t
-	print(_current_time)
-
+	time.wait_time = _current_time
+	print("Novo_Wait_Time: ", time.wait_time)
 
 func play_animation():
 	$anim.play(self._status)
 	await($anim.is_playing())
-	$timer.wait_time = _current_time
-	$timer.start()
+	time.wait_time = _current_time
+	time.start()
 
 
 func _change_type():
+	await(self.ready)
+	print(self._status)
 	if self._status == "fade_in":
 		$main_image.vframes=3
 		$main_image.frame=2
 		$main_image.modulate.a=1
-			
-	elif self._status == "second_part":
+		time.start()
+		
+	elif self._status == "second_percent":
 		$main_image.vframes=2
 		$main_image.frame=1
 		$main_image.modulate.a=1
-						
+		print("WT_SP: ", time.wait_time)
+		time.start()
+								
 	elif self._status == "final_percent":
 		$main_image.vframes=1
 		$main_image.frame=1
 		$main_image.modulate.a=1
+		time.stop()
 
 
 func change_animation(animation_name):
@@ -62,9 +67,10 @@ func change_animation(animation_name):
 		$main_image.vframes=1
 		$main_image.frame=1
 		$main_image.modulate.a=1
-
+		time.stop()
 
 func _on_timer_timeout():
-	print("TIME_LEFT: ", $timer.time_left, "/", $timer.is_stopped())
-	print(self._status)
+	time.stop()
+	_current_time = 7
+	time.wait_time = _current_time
 	change_animation(self._status)

@@ -58,12 +58,13 @@ func atualizar():
 					area_inserir.add_child(nd)
 												
 			elif x['type'] == "vegetable":
+				print("Valor: ", x)
+				
 				nd.get_node("main_image").texture = load(x['icon'])
-				print(nd.get_children())
 				nd.set_current_timer(x['current_time'])		
-				nd.play_animation()				
-				self.get_node("vegetable_grid_container").inserir(nd)				
-				print("Paused: ", nd.get_timer().is_stopped())
+				nd.set_status(x['status'])		
+					
+				self.get_node("vegetable_grid_container").inserir(nd)
 				
 	Global.att_db()		
 
