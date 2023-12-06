@@ -9,13 +9,26 @@ var data: Dictionary = {
 	
 	1: {
 		"name": "Faz tudo",
-		"dialog": "Resolva algumas coisas"
+		"dialog": "O jogo irá ajudar a equilibrar o tempo de uso no celular
+		 com as práticas de atividade física"
 	},
 	
 	2: {
 		"name": "Faz tudo",
+		"dialog": "Eu preciso que você compre alguns recursos para melhorar a fazenda"
+	},
+	
+	3: {
+		"name": "Faz tudo",
+		"dialog": "Irei lhe dar algumas moedas para começar.Jogue nos minigames
+		 para conseguir cristais e desbloquear novos recursos"
+	},
+	
+	4: {
+		"name": "Faz tudo",
 		"dialog": "Tenha um bom dia"
 	}
+	
 }
 
 var _id = 0

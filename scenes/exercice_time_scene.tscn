@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1xcintysbmv4"]
+[gd_scene load_steps=11 format=3 uid="uid://d1xcintysbmv4"]
 
 [ext_resource type="Script" path="res://scripts/transition.gd" id="1_h5r45"]
 [ext_resource type="Script" path="res://scripts/exercice_time_scene.gd" id="1_vibgd"]
@@ -150,8 +150,12 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.8)
 }
 
+[sub_resource type="Animation" id="Animation_fqtwn"]
+length = 0.001
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b3cjq"]
 _data = {
+"RESET": SubResource("Animation_fqtwn"),
 "criacao_pin": SubResource("Animation_g7g85"),
 "opening": SubResource("Animation_xbteb")
 }
@@ -194,9 +198,9 @@ texture = ExtResource("3_p10q4")
 
 [node name="exercice_label" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_left = 300.0
+offset_left = 190.0
 offset_top = 120.0
-offset_right = 459.0
+offset_right = 349.0
 offset_bottom = 146.0
 scale = Vector2(1.5, 1.5)
 theme_override_colors/font_color = Color(0, 1, 0, 1)
@@ -224,6 +228,7 @@ offset_top = -30.0
 offset_right = 264.0
 offset_bottom = 8.0
 placeholder_text = "PIN"
+editable = false
 
 [node name="Button" type="Button" parent="Control"]
 modulate = Color(1, 1, 1, 0)
@@ -232,6 +237,7 @@ offset_left = 13.0
 offset_top = 59.0
 offset_right = 129.0
 offset_bottom = 90.0001
+disabled = true
 text = "Voltar ao Jogo"
 
 [node name="Tempo" type="TextEdit" parent="Control"]
@@ -243,5 +249,6 @@ offset_top = 4.0
 offset_right = 269.0
 offset_bottom = 42.0
 placeholder_text = "Tempo"
+editable = false
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

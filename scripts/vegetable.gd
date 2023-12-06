@@ -25,6 +25,7 @@ func set_current_timer(t):
 	time.wait_time = _current_time
 	print("Novo_Wait_Time: ", time.wait_time)
 
+
 func play_animation():
 	$anim.play(self._status)
 	await($anim.is_playing())

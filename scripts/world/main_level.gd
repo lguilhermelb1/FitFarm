@@ -10,16 +10,20 @@ func _ready():
 	$camera/Inventory/ScrollContainer/GridContainer.main_update()
 	inv.visible = false
 	atualizar()
-					
+		
 	get_window().size = Vector2(640, 320)
+	
+	# if Global.status == false:
+	# 	worker.queue_free()
+	
 	player.position = Vector2(330,200)
 	$camera/Control/label_cristais.text = "%08d" % Global.cristais
 	$camera/Control/label_moedas.text = "%08d" % Global.moedas
 	
-	#if global.tempo_final != null:
-	#	print("V")
-		#$camera/Control/label_tempo_final.text = "%02d : %02d" % [int(Global.tempo_final.time_left/60), 
-		#											int(fmod(Global.tempo_final.time_left, 60))]
+	if Global.tempo_final != null:
+		$camera/Control/label_tempo_final.text = "Tempo Restante: %02d : %02d" % \
+		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.time_left, 60)))]
+	
 	player.follow_camera(camera) 
 	
 	update_values()
@@ -35,9 +39,7 @@ func update_values():
 	$camera/Control/label_moedas.text = "%08d" % Global.moedas
 	
 
-func atualizar():	
-	# armazene valores de strings
-	
+func atualizar():		
 	for x in Global.lista:
 		if x != null:	
 			var nd = load(x['node']).instantiate()	
@@ -59,18 +61,13 @@ func atualizar():
 												
 			elif x['type'] == "vegetable":
 				print("Valor: ", x)
-				
 				nd.get_node("main_image").texture = load(x['icon'])
 				nd.set_current_timer(x['current_time'])		
-				nd.set_status(x['status'])		
-					
+				nd.set_status(x['status'])							
 				self.get_node("vegetable_grid_container").inserir(nd)
-				
 	Global.att_db()		
-
 	
 	
-				
 func _area_inserir():
 	for area in get_tree().get_nodes_in_group("insercao_celeiro"):
 		if area.get_child_count() == 1:
