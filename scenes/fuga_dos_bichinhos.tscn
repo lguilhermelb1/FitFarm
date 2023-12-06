@@ -2086,6 +2086,7 @@ z_index = 5
 position = Vector2(320, 160)
 
 [node name="transition" type="Control" parent="camera"]
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = -321.0
@@ -2096,6 +2097,7 @@ script = ExtResource("12_0qs3o")
 
 [node name="ColorRect" type="ColorRect" parent="camera/transition"]
 modulate = Color(1, 1, 1, 0)
+z_index = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2114,6 +2116,7 @@ libraries = {
 }
 
 [node name="time_control" type="Control" parent="camera"]
+z_index = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = -130.0
@@ -2122,7 +2125,6 @@ offset_right = 38.0
 offset_bottom = -22.0
 
 [node name="label_time" type="Label" parent="camera/time_control"]
-z_index = 1
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0

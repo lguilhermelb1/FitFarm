@@ -7,8 +7,9 @@ var _label_moedas = null
 func _ready():
 	$result.visible = false
 	await(get_tree().current_scene.name == "Mundo01")
-	_label_cristals = get_tree().get_root().get_child(1).get_node("camera").get_node("Control").get_node("label_cristais")
-	_label_moedas = get_tree().get_root().get_child(1).get_node("camera").get_node("Control").get_node("label_moedas")
+		
+	_label_cristals = get_tree().current_scene.get_node("camera").get_node("Control").get_node("label_cristais")
+	_label_moedas = get_tree().current_scene.get_node("camera").get_node("Control").get_node("label_moedas")
 
 
 func set_pagamento(tipo_pagamento: String):

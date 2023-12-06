@@ -4,6 +4,7 @@ extends Area2D
 @export var next_world = ""
 @onready var transition = $"../camera/transition"
 var _dentro_area = false
+@onready var inventory = $"../camera/Inventory"
 
 func _ready():
 	start_button.visible = false
@@ -18,5 +19,5 @@ func _on_body_exited(body):
 	_dentro_area = false
 
 func _on_start_button_pressed():
-	if _dentro_area == true:
+	if _dentro_area == true and inventory.visible==false: 
 		transition.change_scene(next_world)

@@ -5074,3 +5074,5 @@ position = Vector2(159, 167)
 position = Vector2(330, 200)
 
 [connection signal="pressed" from="camera/Control/button_label_inventory" to="." method="_on_button_label_inventory_pressed"]
+
+[editable path="camera/Inventory"]

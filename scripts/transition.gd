@@ -8,8 +8,8 @@ func _ready():
 	get_tree().paused = false
 	animation.play("fade_out")
 	await(animation.animation_finished)
-		
-	
+
+
 func change_scene(path: String):
 	get_tree().paused = true
 	_update_values()
@@ -22,7 +22,7 @@ func _update_values():
 		for x in Global.lista:
 			for v in get_tree().get_nodes_in_group("vegetable"):
 				if v.global_position == x['position']:
-					v.get_node("timer").paused = true
 					x['current_time'] = v.get_node("timer").time_left	
-		
+					x['status'] = v.get_status()
+					print("TRANSITION: ", x['current_time'], "/", x['status'], "/", v.get_status())
 	

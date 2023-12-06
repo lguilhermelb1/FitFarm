@@ -2,26 +2,35 @@ extends Node2D
 class_name vegetable_item
 
 var _status = "fade_in"
+var _current_time = 10
+var time: Timer = null
 
+
+func _ready():
+	time = $timer
+	print(time, ";", $timer)
+		
 
 func get_status():
 	return self._status
-	
 
-#func set_status(st: String):
-#	print("Novo_Status: ", st)
-	#print("Vframes: ", $main_image.vframes, "/Frames: ",
-	#$main_image.frame, "/ Modulate ", $main_image.modulate.a)
-	##self._status = st
-	#_change_type()
+func set_status(st: String):
+	self._status = st
+	_change_type()
+	
+func get_timer() -> Timer:
+	return time
+
+func set_current_timer(t):
+	_current_time = t
+	print(_current_time)
 
 
 func play_animation():
-	if self._status != " ":
-		$anim.play(self._status)
-		print($anim.is_playing())
-		await($anim.is_playing())
-		change_animation(self._status)
+	$anim.play(self._status)
+	await($anim.is_playing())
+	$timer.wait_time = _current_time
+	$timer.start()
 
 
 func _change_type():
@@ -29,39 +38,33 @@ func _change_type():
 		$main_image.vframes=3
 		$main_image.frame=2
 		$main_image.modulate.a=1
+			
 	elif self._status == "second_part":
 		$main_image.vframes=2
 		$main_image.frame=1
 		$main_image.modulate.a=1
-	elif self._status == "final_percent" or self._status == " ":
+						
+	elif self._status == "final_percent":
 		$main_image.vframes=1
 		$main_image.frame=1
 		$main_image.modulate.a=1
-		
-
-
-func get_timer():
-	return $timer
-
-func set_timer(t):
-	$timer.wait_time = t
 
 
 func change_animation(animation_name):
 	if animation_name == "fade_in":
 		self._status = "second_percent"
 		play_animation()
-		$timer.wait_time = 10
-		$timer.start()
 	elif animation_name == "second_percent":
 		self._status = "final_percent"	
 		play_animation()
-		$timer.wait_time = 10
-		$timer.start()
 	else:
-		self._status = " "
+		self._status = "final_percent"
+		$main_image.vframes=1
+		$main_image.frame=1
+		$main_image.modulate.a=1
 
 
 func _on_timer_timeout():
+	print("TIME_LEFT: ", $timer.time_left, "/", $timer.is_stopped())
+	print(self._status)
 	change_animation(self._status)
-

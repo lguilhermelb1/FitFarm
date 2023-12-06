@@ -53,7 +53,6 @@ func _ready():
 											(int(fmod(Global.time_left, 60)))]
 	
 	$UILayer/Comfirm_Exit.setPlayer(self)
-	print($UILayer/transition)
 	$UILayer/Comfirm_Exit.setTransition($UILayer/transition)
 	gameOverScreen.setTransition($UILayer/transition)
 		

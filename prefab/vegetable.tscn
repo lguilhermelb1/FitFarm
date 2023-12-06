@@ -44,7 +44,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_u24ln"]
 resource_name = "final_percent"
-length = 0.7
+length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -130,13 +130,10 @@ _data = {
 script = ExtResource("1_pnrhs")
 
 [node name="main_image" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 position = Vector2(13, 11)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_6w1yw")
-vframes = 3
-frame = 2
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
@@ -144,6 +141,7 @@ libraries = {
 }
 
 [node name="timer" type="Timer" parent="."]
+wait_time = 10.0
 
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
