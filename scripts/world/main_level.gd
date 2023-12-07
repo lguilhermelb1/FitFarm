@@ -12,7 +12,12 @@ func _ready():
 	atualizar()
 	Global.setTransition($camera/transition)
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
-	print("PAUSADO: ", Global.tempo_final.paused)
+	#timer.is_stopped()
+	
+	if Global.tempo_final.wait_time != 0 and Global.tempo_final.is_stopped():
+		Global.tempo_final.start()
+		print(Global.tempo_final.time_left)		
+		print("Started")
 				
 	get_window().size = Vector2(640, 320)
 	if Global.status == false:	
@@ -77,7 +82,7 @@ func _area_inserir():
 			return area
 			break
 	return null		
-	
+
 
 func update_timer():
 	if Global.tempo_final != null and Global.tempo_final.wait_time != 0:		

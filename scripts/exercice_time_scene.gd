@@ -4,13 +4,12 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
 	await(transition_animation.is_playing())
 	$animation.play("opening")
 	$Control/PIN.editable=false
 	$Control/Tempo.editable=false
 	$Control/Button.disabled=true
-	
+
 	await($animation.is_playing() == false)
 	
 	if name == 'Scene_SetTime':

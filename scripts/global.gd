@@ -7,17 +7,22 @@ var moedas = 0
 var user_id : String = ""
 var user_key : String = ""
 var pin : String = "365"
-var tempo_final: Timer = null
+var tempo_final : Timer
 var lista = []
 var status=true
 var transition: Transition
 
 
 func _ready():
+	print("Ready")
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	tempo_final = Timer.new()
-	tempo_final.connect("timeout", Callable(self, "on_tempo_final_timeout"))
-
+	add_child(tempo_final)
+	print(get_children())
+	tempo_final.timeout.connect(on_tempo_final_timeout)	
+	print(tempo_final.timeout.is_connected(on_tempo_final_timeout))
+	
+	
 func add_cristals(value):
 	cristais += value 
 
@@ -66,13 +71,14 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 		
 
 func on_tempo_final_timeout():
+	print("Encerrado")
 	tempo_final.stop()
 	
-	
+
 func setTransition(t: Transition):
 	self.transition = t
 
 
 func atualizar_tempo_transicao(tempo):
 	tempo_final.wait_time = tempo
-	tempo_final.start()
+	#tempo_final.start()
