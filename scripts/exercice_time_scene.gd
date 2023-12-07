@@ -31,6 +31,7 @@ func _ready():
 
 func _on_button_pressed():
 	if Global.pin == $Control/PIN.text and $Control/Tempo.text != " " :
-		Global.atualizar_tempo_transicao($transition, float(int($Control/Tempo.text) * 60))
-		print("K")
+		Global.setTransition($transition)
+		Global.atualizar_tempo_transicao(float(int($Control/Tempo.text) * 60))
+		print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
 		$transition.change_scene("res://scenes/mundo_01.tscn")

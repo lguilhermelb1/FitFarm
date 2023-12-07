@@ -14,6 +14,7 @@ var transition: Transition
 
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	tempo_final = Timer.new()
 	tempo_final.connect("timeout", Callable(self, "on_tempo_final_timeout"))
 
@@ -72,6 +73,6 @@ func setTransition(t: Transition):
 	self.transition = t
 
 
-func atualizar_tempo_transicao(start_time, tempo):
+func atualizar_tempo_transicao(tempo):
 	tempo_final.wait_time = tempo
 	tempo_final.start()

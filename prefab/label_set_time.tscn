@@ -228,10 +228,10 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 13.0
 offset_top = 59.0
-offset_right = 129.0
-offset_bottom = 90.0001
+offset_right = 114.0
+offset_bottom = 90.0
 disabled = true
-text = "Voltar ao Jogo"
+text = "Jogar"
 
 [node name="Tempo" type="TextEdit" parent="Control"]
 modulate = Color(1, 1, 1, 0)

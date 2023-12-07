@@ -11,6 +11,9 @@ func _ready():
 	inv.visible = false
 	atualizar()
 	Global.setTransition($camera/transition)
+	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
+	print("PAUSADO: ", Global.tempo_final.paused)
+				
 	get_window().size = Vector2(640, 320)
 	if Global.status == false:	
 		$Worker.queue_free()
@@ -77,7 +80,6 @@ func _area_inserir():
 	
 
 func update_timer():
-	if Global.tempo_final != null:		
-		print(Global.tempo_final.time_left)
+	if Global.tempo_final != null and Global.tempo_final.wait_time != 0:		
 		$camera/Control/label_tempo_final.text = "%02d : %02d" % \
 		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
