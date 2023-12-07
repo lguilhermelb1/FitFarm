@@ -2116,6 +2116,7 @@ libraries = {
 }
 
 [node name="time_control" type="Control" parent="camera"]
+process_mode = 3
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
@@ -2125,6 +2126,7 @@ offset_right = 38.0
 offset_bottom = -22.0
 
 [node name="label_time" type="Label" parent="camera/time_control"]
+process_mode = 3
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0

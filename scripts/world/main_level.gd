@@ -12,7 +12,6 @@ func _ready():
 	atualizar()
 	Global.setTransition($camera/transition)
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
-	#timer.is_stopped()
 	
 	if Global.tempo_final.wait_time != 0 and Global.tempo_final.is_stopped():
 		Global.tempo_final.start()
@@ -85,6 +84,6 @@ func _area_inserir():
 
 
 func update_timer():
-	if Global.tempo_final != null and Global.tempo_final.wait_time != 0:		
-		$camera/Control/label_tempo_final.text = "%02d : %02d" % \
+	if !Global.tempo_final.is_stopped():		
+		$camera/tempo_final/label_tempo_final.text = "%02d : %02d" % \
 		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]

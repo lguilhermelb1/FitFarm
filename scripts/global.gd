@@ -71,8 +71,8 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 		
 
 func on_tempo_final_timeout():
-	print("Encerrado")
 	tempo_final.stop()
+	tempo_final.wait_time=0
 	
 
 func setTransition(t: Transition):

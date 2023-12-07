@@ -21,9 +21,6 @@ var score := 0:
 		score = value
 		hud.score = score
 
-
-
-
 var high_score
 var points = 0
 var cr = 0
@@ -34,8 +31,8 @@ func _ready():
 	
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
 	print("PAUSADO: ", Global.tempo_final.paused)
-	await(Global.ready)
 	Global.setTransition(transition)
+	print(Global.tempo_final.wait_time)
 	
 	if Global.tempo_final.wait_time != 0 and Global.tempo_final.is_stopped():
 		Global.tempo_final.start()
@@ -56,7 +53,7 @@ func _ready():
 	player.died.connect(_on_player_died)
 	
 	gameOverScreen.visible=false
-		
+	atualizar_time()	
 	$UILayer/Comfirm_Exit.setPlayer(self)
 	$UILayer/Comfirm_Exit.setTransition($UILayer/transition)
 	gameOverScreen.setTransition($UILayer/transition)
@@ -122,6 +119,7 @@ func progresso_perdido():
 
 
 func _on_touch_screen_button_pressed():
+	print("V")
 	if $UILayer/GameOverScreen.visible==false:
 		$UILayer/Comfirm_Exit.visible=true
 		$UILayer/Comfirm_Exit/anim.play("exit_label2")
@@ -130,6 +128,6 @@ func _on_touch_screen_button_pressed():
 		
 
 func atualizar_time():
-	if Global.tempo_final != null and Global.tempo_final.wait_time != 0:
-		$UILayer/HUD/Time_Left.text = "Tempo Restante: %02d : %02d" % [
-			(int(Global.tempo_final.time_left/60)), (int(fmod(Global.time_left, 60)))]
+	#if Global.tempo_final != null and Global.tempo_final.wait_time != 0:
+	$UILayer/HUD/Time_Left.text = "Tempo Restante: %02d : %02d" % [
+			(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
