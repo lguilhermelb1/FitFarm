@@ -48,9 +48,7 @@ func _ready():
 	
 	gameOverScreen.visible=false
 	
-	if Global.tempo_final != null:
-		$UILayer/HUD/Time_Left.text = "Tempo Restante: %02d : %02d" % [(int(Global.tempo_final.time_left/60)), 
-											(int(fmod(Global.time_left, 60)))]
+	atualizar_time()
 	
 	$UILayer/Comfirm_Exit.setPlayer(self)
 	$UILayer/Comfirm_Exit.setTransition($UILayer/transition)
@@ -63,6 +61,8 @@ func save_game():
 	Global.att_db()
 	
 func _process(_delta):
+	atualizar_time()
+	
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 	elif Input.is_action_just_pressed("reset"):
@@ -121,3 +121,9 @@ func _on_touch_screen_button_pressed():
 		$UILayer/Comfirm_Exit/anim.play("exit_label2")
 		get_tree().paused=true
 		await($UILayer/Comfirm_Exit/anim.animation_finished)
+		
+
+func atualizar_time():
+	if Global.tempo_final != null:
+		$UILayer/HUD/Time_Left.text = "Tempo Restante: %02d : %02d" % [
+			(int(Global.tempo_final.time_left/60)), (int(fmod(Global.time_left, 60)))]

@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1xcintysbmv4"]
+[gd_scene load_steps=11 format=3 uid="uid://ttu3nub321ms"]
 
-[ext_resource type="Script" path="res://scripts/transition.gd" id="1_h5r45"]
-[ext_resource type="Script" path="res://scripts/exercice_time_scene.gd" id="1_vibgd"]
-[ext_resource type="Texture2D" uid="uid://d0dpnjr05s5ov" path="res://assets/Bug_Invaders_Assets/Background.png" id="3_p10q4"]
+[ext_resource type="Script" path="res://scripts/exercice_time_scene.gd" id="1_l4hs7"]
+[ext_resource type="Script" path="res://scripts/transition.gd" id="1_pk5f8"]
+[ext_resource type="Texture2D" uid="uid://d0dpnjr05s5ov" path="res://assets/Bug_Invaders_Assets/Background.png" id="2_ookny"]
 
 [sub_resource type="Animation" id="Animation_ijdqq"]
 resource_name = "fade_in"
@@ -160,8 +160,8 @@ _data = {
 "opening": SubResource("Animation_xbteb")
 }
 
-[node name="Exercice_Time_Scene" type="Node2D"]
-script = ExtResource("1_vibgd")
+[node name="Scene_SetTime" type="Node2D"]
+script = ExtResource("1_l4hs7")
 
 [node name="transition" type="Control" parent="."]
 z_index = 4
@@ -169,7 +169,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 641.0
 offset_bottom = 320.0
-script = ExtResource("1_h5r45")
+script = ExtResource("1_pk5f8")
 
 [node name="ColorRect" type="ColorRect" parent="transition"]
 modulate = Color(1, 1, 1, 0)
@@ -194,22 +194,15 @@ libraries = {
 [node name="background" type="Sprite2D" parent="."]
 position = Vector2(320.5, 160)
 scale = Vector2(3.205, 1.6)
-texture = ExtResource("3_p10q4")
+texture = ExtResource("2_ookny")
 
 [node name="exercice_label" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0)
 offset_left = 190.0
 offset_top = 120.0
-offset_right = 349.0
+offset_right = 369.0
 offset_bottom = 146.0
 scale = Vector2(1.5, 1.5)
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-text = "HORA DO EXERCÍCIO"
-
-[node name="animation" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_b3cjq")
-}
+text = "INSIRA O TEMPO LIMTE"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -250,5 +243,10 @@ offset_right = 269.0
 offset_bottom = 42.0
 placeholder_text = "Tempo"
 editable = false
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b3cjq")
+}
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

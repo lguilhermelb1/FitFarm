@@ -10,23 +10,23 @@ func _ready():
 	$camera/Inventory/ScrollContainer/GridContainer.main_update()
 	inv.visible = false
 	atualizar()
-		
+	Global.setTransition($camera/transition)
 	get_window().size = Vector2(640, 320)
-	
-	# if Global.status == false:
-	# 	worker.queue_free()
+	if Global.status == false:	
+		$Worker.queue_free()
 	
 	player.position = Vector2(330,200)
 	$camera/Control/label_cristais.text = "%08d" % Global.cristais
 	$camera/Control/label_moedas.text = "%08d" % Global.moedas
 	
-	if Global.tempo_final != null:
-		$camera/Control/label_tempo_final.text = "Tempo Restante: %02d : %02d" % \
-		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.time_left, 60)))]
+	update_timer()
 	
 	player.follow_camera(camera) 
-	
 	update_values()
+
+
+func _process(delta):
+	update_timer()
 
 
 func _on_button_label_inventory_pressed():
@@ -75,3 +75,9 @@ func _area_inserir():
 			break
 	return null		
 	
+
+func update_timer():
+	if Global.tempo_final != null:		
+		print(Global.tempo_final.time_left)
+		$camera/Control/label_tempo_final.text = "%02d : %02d" % \
+		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]

@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_3t6yw"]
 [ext_resource type="PackedScene" uid="uid://dj8crjcbpsbi2" path="res://scenes/player.tscn" id="2_3bdsq"]
 [ext_resource type="PackedScene" uid="uid://c0najr07e3fsp" path="res://scenes/hud.tscn" id="4_elgqs"]
-[ext_resource type="PackedScene" uid="uid://dy3f3kwqe8h8d" path="res://scenes/bug.tscn" id="4_mvnpw"]
+[ext_resource type="PackedScene" uid="uid://bmj62wnmw54q3" path="res://scenes/bug.tscn" id="4_mvnpw"]
 [ext_resource type="AudioStream" uid="uid://cdj4e2rxnrfm1" path="res://sounds/spray.mp3" id="4_r23fd"]
-[ext_resource type="PackedScene" uid="uid://csapt74of15b4" path="res://scenes/speedest_bug.tscn" id="4_xsioy"]
+[ext_resource type="PackedScene" uid="uid://dtl5epi5x6ap2" path="res://scenes/speedest_bug.tscn" id="4_xsioy"]
 [ext_resource type="AudioStream" uid="uid://ccd6twuqcfmb2" path="res://sounds/hit.mp3" id="5_ixwd8"]
 [ext_resource type="PackedScene" uid="uid://cxgf3ic563c1i" path="res://scenes/game_over_screen.tscn" id="5_kxfi0"]
 [ext_resource type="Texture2D" uid="uid://d0dpnjr05s5ov" path="res://assets/Bug_Invaders_Assets/Background.png" id="6_15vs8"]
@@ -40,12 +40,9 @@ region_rect = Rect2(0, 0, 520, 650)
 [node name="HUD" parent="UILayer" instance=ExtResource("4_elgqs")]
 
 [node name="GameOverScreen" parent="UILayer" instance=ExtResource("5_kxfi0")]
-anchors_preset = -1
-anchor_left = 0.002
 anchor_top = -0.003
 anchor_right = 0.002
 anchor_bottom = -0.003
-offset_left = -0.28
 offset_top = -0.04
 offset_right = 519.72
 offset_bottom = 649.96
@@ -60,7 +57,7 @@ texture_normal = ExtResource("9_rkbve")
 wait_time = 2.0
 autostart = true
 
-[node name="Player" parent="." groups=["player_bug_invader"] instance=ExtResource("2_3bdsq")]
+[node name="Player" parent="." instance=ExtResource("2_3bdsq")]
 position = Vector2(232, -68)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]

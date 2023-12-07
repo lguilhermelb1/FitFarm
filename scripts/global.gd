@@ -2,14 +2,21 @@ extends Node2D
 class_name global_variables
 
 # Pegar da base de dados
-var cristais = 60
+var cristais = 0
 var moedas = 0
 var user_id : String = ""
 var user_key : String = ""
-var pin : String = "397790"
-var tempo_final: Timer
+var pin : String = "365"
+var tempo_final: Timer = null
 var lista = []
-	
+var status=true
+var transition: Transition
+
+
+func _ready():
+	tempo_final = Timer.new()
+	tempo_final.connect("timeout", Callable(self, "on_tempo_final_timeout"))
+
 func add_cristals(value):
 	cristais += value 
 
@@ -55,3 +62,16 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 		print("Dados do usuário salvos com sucesso!")
 	else:
 		print("Falha ao salvar dados do usuário:", response_code)
+		
+
+func on_tempo_final_timeout():
+	tempo_final.stop()
+	
+	
+func setTransition(t: Transition):
+	self.transition = t
+
+
+func atualizar_tempo_transicao(start_time, tempo):
+	tempo_final.wait_time = tempo
+	tempo_final.start()

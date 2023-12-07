@@ -28,7 +28,6 @@ var data: Dictionary = {
 		"name": "Faz tudo",
 		"dialog": "Tenha um bom dia"
 	}
-	
 }
 
 var _id = 0
@@ -75,6 +74,7 @@ func create_dialog():
 
 
 func give_coins():
+	Global.status=false
 	Global.moedas += 30
 	get_tree().get_root().get_child(1).get_node("camera").get_node("Control")\
 	.get_node("label_moedas").text = "%08d" % Global.moedas
