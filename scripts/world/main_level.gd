@@ -12,16 +12,17 @@ func _ready():
 
 	Global.setTransition($camera/transition)
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
-	
-	$camera/tempo_final.process_mode = Node.PROCESS_MODE_ALWAYS
-	$camera/tempo_final/label_tempo_final.process_mode = Node.PROCESS_MODE_ALWAYS
-	
 	atualizar()
 		
+	if Global.time_label == null:
+		Global.time_label = Label.new()
+		
+	Global.time_label.position = Vector2(-60,-70)
+	Global.time_label.scale = Vector2(.6, .6)
+	$camera/Control.add_child(Global.time_label)
 	Global.tempo_final.start()
-	print(Global.tempo_final.time_left)		
 	print("Started")
-				
+	
 	get_window().size = Vector2(640, 320)
 	if Global.status == false:	
 		$Worker.queue_free()
@@ -30,14 +31,12 @@ func _ready():
 	$camera/Control/label_cristais.text = "%08d" % Global.cristais
 	$camera/Control/label_moedas.text = "%08d" % Global.moedas
 	
-	update_timer()
-	
 	player.follow_camera(camera) 
 	update_values()
 
 
-func _process(delta):
-	update_timer()
+#func _process(delta):
+#	Global.setLabelTime()
 
 
 func _on_button_label_inventory_pressed():
@@ -49,7 +48,7 @@ func update_values():
 	$camera/Control/label_cristais.text = "%08d" % Global.cristais
 	$camera/Control/label_moedas.text = "%08d" % Global.moedas
 	
-
+	
 func atualizar():		
 	for x in Global.lista:
 		if x != null:	
@@ -88,8 +87,8 @@ func _area_inserir():
 	return null		
 
 
-func update_timer():
-	if Global.tempo_final != null:		
-		$camera/tempo_final/label_tempo_final.text = "%02d : %02d" % \
-		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
-		Global.tempo_final.wait_time = Global.tempo_final.time_left
+#func update_timer():
+#	if Global.tempo_final != null:		
+#		$camera/tempo_final/label_tempo_final.text = "%02d : %02d" % \
+#		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
+#		Global.tempo_final.wait_time = Global.tempo_final.time_left

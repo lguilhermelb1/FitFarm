@@ -30,14 +30,20 @@ func _ready():
 	get_window().size = Vector2(515, 650)
 	
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
-	print("PAUSADO: ", Global.tempo_final.paused)
+	print(Global.time_label)
 	
-	$UILayer.process_mode = Node.PROCESS_MODE_ALWAYS
-	$UILayer/HUD.process_mode = Node.PROCESS_MODE_ALWAYS
-	$UILayer/HUD/Time_Left.process_mode = Node.PROCESS_MODE_ALWAYS
-
+	if Global.time_label == null:
+		Global.createTimeLabel()
+	
 	Global.setTransition(transition)
+	print(Global.time_label)
 		
+	Global.time_label.position = Vector2(170,30)
+	Global.time_label.scale = Vector2(1.3, 1.3)
+	Global.setLabelTime()
+	print(Global.time_label.get_theme_font("empty"))
+		
+	$UILayer/HUD.add_child(Global.time_label)
 	Global.tempo_final.start()
 	print("Started")
 	
@@ -56,7 +62,6 @@ func _ready():
 	player.died.connect(_on_player_died)
 	
 	gameOverScreen.visible=false
-	$UILayer/HUD.atualizar_time($UILayer/HUD/Time_Left)
 	$UILayer/Comfirm_Exit.setPlayer(self)
 	$UILayer/Comfirm_Exit.setTransition($UILayer/transition)
 	gameOverScreen.setTransition($UILayer/transition)
@@ -68,7 +73,7 @@ func save_game():
 	Global.att_db()
 	
 func _process(_delta):
-	$UILayer/HUD.atualizar_time($UILayer/HUD/Time_Left)
+	
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 	elif Input.is_action_just_pressed("reset"):
@@ -78,6 +83,7 @@ func _process(_delta):
 		timer.wait_time -= _delta * 0.005
 	elif timer.wait_time < 0.5:
 		timer.wait_time = 0.5
+	
 
 func _on_player_spray_shot(shoot_scene, location):
 	var shoot = shoot_scene.instantiate()
@@ -85,11 +91,13 @@ func _on_player_spray_shot(shoot_scene, location):
 	shoot_container.add_child(shoot)
 	shootSound.play()
 
+
 func _on_bug_spwan_timer_timeout():
 	var e = bug_scenes.pick_random().instantiate()
 	e.global_position = Vector2(randf_range(50, 515), 0)
 	e.died.connect(_on_bug_died)
 	bug_container.add_child(e)
+
 
 func _on_bug_died(points):
 	hitSound.play()
@@ -125,11 +133,5 @@ func _on_touch_screen_button_pressed():
 	if $UILayer/GameOverScreen.visible==false:
 		$UILayer/Comfirm_Exit.visible=true
 		$UILayer/Comfirm_Exit/anim.play("exit_label2")
-		get_tree().get_first_node_in_group("ui_layer").process_mode = Node.PROCESS_MODE_ALWAYS		
-		get_tree().paused=true
-		$UILayer/HUD.atualizar_time($UILayer/HUD/Time_Left)
-			
+		get_tree().paused=true			
 		await($UILayer/Comfirm_Exit/anim.animation_finished)
-
-#$UILayer/HUD/Time_Left
-
