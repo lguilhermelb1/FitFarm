@@ -197,9 +197,10 @@ scale = Vector2(3.205, 1.6)
 texture = ExtResource("2_ookny")
 
 [node name="exercice_label" type="Label" parent="."]
-offset_left = 190.0
+modulate = Color(1, 1, 1, 0)
+offset_left = 300.0
 offset_top = 120.0
-offset_right = 369.0
+offset_right = 479.0
 offset_bottom = 146.0
 scale = Vector2(1.5, 1.5)
 text = "INSIRA O TEMPO LIMTE"
@@ -251,7 +252,6 @@ offset_top = -42.0
 offset_right = 243.0
 offset_bottom = -16.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "dd"
 
 [node name="Error_Time_Message" type="Label" parent="Control"]
 layout_mode = 0
@@ -260,7 +260,6 @@ offset_top = 21.0
 offset_right = 271.0
 offset_bottom = 47.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "gg"
 
 [node name="animation" type="AnimationPlayer" parent="."]
 libraries = {

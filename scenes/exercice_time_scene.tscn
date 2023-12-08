@@ -197,9 +197,10 @@ scale = Vector2(3.205, 1.6)
 texture = ExtResource("3_p10q4")
 
 [node name="exercice_label" type="Label" parent="."]
-offset_left = 190.0
+modulate = Color(1, 1, 1, 0)
+offset_left = 300.0
 offset_top = 120.0
-offset_right = 349.0
+offset_right = 459.0
 offset_bottom = 146.0
 scale = Vector2(1.5, 1.5)
 theme_override_colors/font_color = Color(0, 1, 0, 1)
@@ -246,7 +247,6 @@ offset_top = -42.0
 offset_right = 260.0
 offset_bottom = -16.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "dd"
 
 [node name="Tempo" type="TextEdit" parent="Control"]
 modulate = Color(1, 1, 1, 0)
@@ -266,6 +266,5 @@ offset_top = 22.0
 offset_right = 274.0
 offset_bottom = 48.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "gg"
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
