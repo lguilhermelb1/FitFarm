@@ -9,13 +9,15 @@ extends Node2D
 func _ready():	
 	$camera/Inventory/ScrollContainer/GridContainer.main_update()
 	inv.visible = false
-	atualizar()
+
 	Global.setTransition($camera/transition)
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
 	
 	$camera/tempo_final.process_mode = Node.PROCESS_MODE_ALWAYS
 	$camera/tempo_final/label_tempo_final.process_mode = Node.PROCESS_MODE_ALWAYS
 	
+	atualizar()
+		
 	Global.tempo_final.start()
 	print(Global.tempo_final.time_left)		
 	print("Started")
@@ -55,11 +57,11 @@ func atualizar():
 			nd.z_index=0
 					
 			if x['type'] == 'animal':
-				var animal_node = load(x['node']).instantiate()
-				animal_node.set_script(load("res://scripts/animal_script.gd"))
-				animal_node.global_position = x['position']		
+				print("VALOR_ANIMAL: ", x)
+				nd.set_script(load(x['script']))
+				nd.global_position = x['position']		
 				self.add_child(nd)	
-					
+				
 			elif x['type'] == 'celeiro':
 				nd.global_position = x['position'] 
 				var area_inserir = _area_inserir()
@@ -69,12 +71,13 @@ func atualizar():
 					area_inserir.add_child(nd)
 												
 			elif x['type'] == "vegetable":
-				print("Valor: ", x)
 				nd.get_node("main_image").texture = load(x['icon'])
 				nd.set_current_timer(x['current_time'])		
-				nd.set_status(x['status'])							
+				nd.set_status(x['status'])					
 				self.get_node("vegetable_grid_container").inserir(nd)
+	
 	Global.att_db()		
+	
 	
 	
 func _area_inserir():

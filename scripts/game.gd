@@ -56,7 +56,7 @@ func _ready():
 	player.died.connect(_on_player_died)
 	
 	gameOverScreen.visible=false
-	atualizar_time()	
+	$UILayer/HUD.atualizar_time($UILayer/HUD/Time_Left)
 	$UILayer/Comfirm_Exit.setPlayer(self)
 	$UILayer/Comfirm_Exit.setTransition($UILayer/transition)
 	gameOverScreen.setTransition($UILayer/transition)
@@ -68,7 +68,7 @@ func save_game():
 	Global.att_db()
 	
 func _process(_delta):
-	atualizar_time()
+	$UILayer/HUD.atualizar_time($UILayer/HUD/Time_Left)
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 	elif Input.is_action_just_pressed("reset"):
@@ -125,12 +125,11 @@ func _on_touch_screen_button_pressed():
 	if $UILayer/GameOverScreen.visible==false:
 		$UILayer/Comfirm_Exit.visible=true
 		$UILayer/Comfirm_Exit/anim.play("exit_label2")
+		get_tree().get_first_node_in_group("ui_layer").process_mode = Node.PROCESS_MODE_ALWAYS		
 		get_tree().paused=true
+		$UILayer/HUD.atualizar_time($UILayer/HUD/Time_Left)
+			
 		await($UILayer/Comfirm_Exit/anim.animation_finished)
-		
 
-func atualizar_time():
-	#if Global.tempo_final != null and Global.tempo_final.wait_time != 0:
-	$UILayer/HUD/Time_Left.text = "Tempo Restante: %02d : %02d" % [
-			(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
-	Global.tempo_final.wait_time = Global.tempo_final.time_left
+#$UILayer/HUD/Time_Left
+

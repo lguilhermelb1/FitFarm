@@ -38,7 +38,8 @@ func _on_gui_input(event):
 				efetuar_pagamento()
 				Global.add_coins(20)	
 				_label_moedas.text = "%08d" % Global.moedas
-			
+				Global.att_db()
+									
 			elif file_name == "celeiro":
 				var node_celeiro = load("res://prefab/celeiro.tscn").instantiate()
 				var area_insercao = _area_inserir()
@@ -65,10 +66,12 @@ func _on_gui_input(event):
 						node_animal.position = container.get_node("area2d/collision").transform.origin
 											
 						container.get_node("area2d").add_child(node_animal)
-						
+						print("GB: ", node_animal.global_position)
 						Global.lista.append({"type": "animal",
 						"node": "res://actors/" + file_name + ".tscn", 
-						"position": node_animal.global_position})								
+						"script": "res://scripts/animal_script.gd",
+						"position": node_animal.global_position})	
+						Global.att_db()								
 						efetuar_pagamento()
 						
 				elif node_animal == null:
@@ -87,7 +90,7 @@ func _on_gui_input(event):
 							"status": node_vegetable.get_status(), 
 							"position": node_vegetable.global_position,
 							'current_time': 7})
-						
+						Global.att_db()
 						node_vegetable.play_animation()
 						efetuar_pagamento()
 		else:

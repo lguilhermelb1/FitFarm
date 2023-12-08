@@ -240,6 +240,7 @@ disabled = true
 text = "Voltar ao Jogo"
 
 [node name="Error_message" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = -88.0
 offset_top = -42.0
 offset_right = 260.0

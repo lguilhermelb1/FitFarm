@@ -35,7 +35,6 @@ func play_animation():
 
 func _change_type():
 	await(self.ready)
-	print(self._status)
 	if self._status == "fade_in":
 		$main_image.vframes=3
 		$main_image.frame=2
@@ -53,6 +52,7 @@ func _change_type():
 		$main_image.vframes=1
 		$main_image.frame=1
 		$main_image.modulate.a=1
+		print("K")
 		time.stop()
 
 

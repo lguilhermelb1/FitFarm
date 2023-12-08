@@ -4,6 +4,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_window().size = Vector2(640, 320)
+		
 	await(transition_animation.is_playing())
 	$animation.play("opening")
 	$Control/PIN.editable=false
@@ -43,8 +45,7 @@ func _on_button_pressed():
 		$Control/Error_Time_Message.visible=true
 		await(get_tree().create_timer(3).timeout)
 		$Control/Error_Time_Message.visible=false
-	
-	
+
 	if Global.pin == $Control/PIN.text and $Control/Tempo.text != "":
 		Global.setTransition($transition)
 		Global.atualizar_tempo_transicao(float(int($Control/Tempo.text) * 60))

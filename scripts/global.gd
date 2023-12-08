@@ -14,7 +14,6 @@ var transition: Transition
 
 
 func _ready():
-	print("Ready")
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	tempo_final = Timer.new()
 	add_child(tempo_final)

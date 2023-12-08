@@ -13,3 +13,10 @@ func _ready():
 func _process(delta):
 	pass
 
+func atualizar_time(text_label):
+	if Global.tempo_final != null:
+		text_label.text = "Tempo Restante: %02d : %02d" % \
+		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
+		Global.tempo_final.wait_time = Global.tempo_final.time_left
+
+

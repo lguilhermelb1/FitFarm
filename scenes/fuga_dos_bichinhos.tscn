@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dwbf4c74ulg76"]
+[gd_scene load_steps=27 format=3 uid="uid://dwbf4c74ulg76"]
 
 [ext_resource type="Texture2D" uid="uid://btm1bsuapgweu" path="res://assets/Tilesets/spring tilemap.png" id="1_ctbqj"]
 [ext_resource type="Script" path="res://scripts/fuga_bichinhos/level.gd" id="1_qv4wa"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d4hok1wcbn5ic" path="res://assets/Objects/farm objects free.png" id="5_743yd"]
 [ext_resource type="Texture2D" uid="uid://c7ck8ixxkk2ty" path="res://assets/Tilesets/autumn items.png" id="6_8yy1r"]
 [ext_resource type="Texture2D" uid="uid://dn3ju1jcx3tpc" path="res://assets/Tilesets/summer and spring items.png" id="7_qiv47"]
+[ext_resource type="Script" path="res://scripts/node_time.gd" id="10_en4cv"]
 [ext_resource type="PackedScene" uid="uid://c66quc748td7v" path="res://prefab/spawner.tscn" id="10_xdh7j"]
 [ext_resource type="AudioStream" uid="uid://ngnp4p2gnmrh" path="res://sounds/game-fail-90322.mp3" id="11_i8ajw"]
 [ext_resource type="Script" path="res://scripts/transition.gd" id="12_0qs3o"]
@@ -2116,7 +2117,11 @@ libraries = {
 "": SubResource("AnimationLibrary_wcsjq")
 }
 
-[node name="time_control" type="Control" parent="camera"]
+[node name="node_time" type="Node2D" parent="camera"]
+process_mode = 3
+script = ExtResource("10_en4cv")
+
+[node name="time_control" type="Control" parent="camera/node_time"]
 process_mode = 3
 z_index = 1
 layout_mode = 3
@@ -2126,7 +2131,7 @@ offset_top = -64.0
 offset_right = 38.0
 offset_bottom = -22.0
 
-[node name="label_time" type="Label" parent="camera/time_control"]
+[node name="label_time" type="Label" parent="camera/node_time/time_control"]
 process_mode = 3
 layout_mode = 0
 offset_right = 40.0

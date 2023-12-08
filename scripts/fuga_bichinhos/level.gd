@@ -11,10 +11,8 @@ func _ready():
 	get_tree().paused = false
 	get_window().size = Vector2(640, 320)
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
-	
-	$camera/time_control.process_mode = Node.PROCESS_MODE_ALWAYS
-	$camera/time_control/label_time.process_mode = Node.PROCESS_MODE_ALWAYS
-	
+
+
 	Global.setTransition(transition)
 	cronometro.get_node("game_over_label").setTransition(transition)
 	cronometro.get_node("Comfirm_Exit").setTransition(transition)	
@@ -26,15 +24,16 @@ func _ready():
 	print("Started")
 	
 	if Global.tempo_final != null:
-		$camera/time_control/label_time.text = "Tempo Restante: %02d : %02d" % \
+		$camera/node_time/time_control/label_time.text = "Tempo Restante: %02d : %02d" % \
 		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
+		Global.tempo_final.wait_time = Global.tempo_final.time_left
 		
 	player.follow_camera(camera) 
 
 
 func _process(delta):
 	if Global.tempo_final != null:
-		$camera/time_control/label_time.text = "Tempo Restante: %02d : %02d" % \
+		$camera/node_time/time_control/label_time.text = "Tempo Restante: %02d : %02d" % \
 		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
 		Global.tempo_final.wait_time = Global.tempo_final.time_left
 

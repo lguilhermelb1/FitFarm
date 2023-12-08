@@ -34,7 +34,6 @@ func _process(delta):
 		else:
 			direction = Vector2.ZERO
 		
-		print(rd)
 		velocity = direction * SPEED
 		
 		if velocity != Vector2.ZERO and !footsteps.playing:
