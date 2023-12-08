@@ -16,9 +16,9 @@ func _ready():
 	await($animation.is_playing() == false)
 	
 	if name == 'Scene_SetTime':
-		await(get_tree().create_timer(5).timeout)
+		await(get_tree().create_timer(3).timeout)
 	else:
-		await(get_tree().create_timer(40).timeout)
+		await(get_tree().create_timer(5).timeout)
 	
 	$animation.play("criacao_pin")
 	$Control/PIN.visible=true
