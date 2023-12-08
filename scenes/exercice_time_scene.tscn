@@ -79,7 +79,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(13, 59), Vector2(13, 45)]
+"values": [Vector2(13, 59), Vector2(13, 65)]
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -113,7 +113,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-86, 4), Vector2(-89, -14)]
+"values": [Vector2(-86, 4), Vector2(-90, -14)]
 }
 tracks/6/type = "bezier"
 tracks/6/imported = false
@@ -197,7 +197,6 @@ scale = Vector2(3.205, 1.6)
 texture = ExtResource("3_p10q4")
 
 [node name="exercice_label" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0)
 offset_left = 190.0
 offset_top = 120.0
 offset_right = 349.0
@@ -240,6 +239,14 @@ offset_bottom = 90.0001
 disabled = true
 text = "Voltar ao Jogo"
 
+[node name="Error_message" type="Label" parent="Control"]
+offset_left = -88.0
+offset_top = -42.0
+offset_right = 260.0
+offset_bottom = -16.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "dd"
+
 [node name="Tempo" type="TextEdit" parent="Control"]
 modulate = Color(1, 1, 1, 0)
 z_index = 1
@@ -250,5 +257,14 @@ offset_right = 269.0
 offset_bottom = 42.0
 placeholder_text = "Tempo"
 editable = false
+
+[node name="Error_Time_Message" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -86.0
+offset_top = 22.0
+offset_right = 274.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "gg"
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

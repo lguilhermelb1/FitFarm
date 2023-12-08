@@ -58,7 +58,7 @@ func _on_request_user_data_completed(result, response_code, headers, body):
 		print(Global.cristais)
 		
 		# Agora você pode acessar essas variáveis globais em qualquer lugar do seu projeto
-		get_tree().change_scene_to_file("res://scenes/mundo_01.tscn")
+		get_tree().change_scene_to_file("res://prefab/label_set_time.tscn")
 	else:
 		handle_data_error(response_code)
 		print("Falha ao salvar dados do usuário:", response_code)

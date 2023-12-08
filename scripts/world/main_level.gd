@@ -13,10 +13,12 @@ func _ready():
 	Global.setTransition($camera/transition)
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
 	
-	if Global.tempo_final.wait_time != 0 and Global.tempo_final.is_stopped():
-		Global.tempo_final.start()
-		print(Global.tempo_final.time_left)		
-		print("Started")
+	$camera/tempo_final.process_mode = Node.PROCESS_MODE_ALWAYS
+	$camera/tempo_final/label_tempo_final.process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	Global.tempo_final.start()
+	print(Global.tempo_final.time_left)		
+	print("Started")
 				
 	get_window().size = Vector2(640, 320)
 	if Global.status == false:	
@@ -84,6 +86,7 @@ func _area_inserir():
 
 
 func update_timer():
-	if !Global.tempo_final.is_stopped():		
+	if Global.tempo_final != null:		
 		$camera/tempo_final/label_tempo_final.text = "%02d : %02d" % \
 		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
+		Global.tempo_final.wait_time = Global.tempo_final.time_left

@@ -11,19 +11,21 @@ func _ready():
 	get_tree().paused = false
 	get_window().size = Vector2(640, 320)
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
-		
+	
+	$camera/time_control.process_mode = Node.PROCESS_MODE_ALWAYS
+	$camera/time_control/label_time.process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	Global.setTransition(transition)
 	cronometro.get_node("game_over_label").setTransition(transition)
 	cronometro.get_node("Comfirm_Exit").setTransition(transition)	
 	cronometro.get_node("Comfirm_Exit").setPlayer(player)
 	cronometro.get_node("Comfirm_Exit").visible=false
 	
-	if Global.tempo_final.wait_time != 0 and Global.tempo_final.is_stopped():
-		Global.tempo_final.start()
-		print(Global.tempo_final.time_left)
-		print("Started")
+	Global.tempo_final.start()
+	print(Global.tempo_final.time_left)
+	print("Started")
 	
-	if Global.tempo_final != null and Global.tempo_final.wait_time != 0:
+	if Global.tempo_final != null:
 		$camera/time_control/label_time.text = "Tempo Restante: %02d : %02d" % \
 		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
 		
@@ -31,9 +33,10 @@ func _ready():
 
 
 func _process(delta):
-	if Global.tempo_final != null and Global.tempo_final.wait_time != 0:
+	if Global.tempo_final != null:
 		$camera/time_control/label_time.text = "Tempo Restante: %02d : %02d" % \
 		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
+		Global.tempo_final.wait_time = Global.tempo_final.time_left
 
 func _on_insercao_body_entered(body):
 	if body.is_in_group("animal"):

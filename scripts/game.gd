@@ -31,12 +31,15 @@ func _ready():
 	
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
 	print("PAUSADO: ", Global.tempo_final.paused)
-	Global.setTransition(transition)
-	print(Global.tempo_final.wait_time)
 	
-	if Global.tempo_final.wait_time != 0 and Global.tempo_final.is_stopped():
-		Global.tempo_final.start()
-		print("Started")
+	$UILayer.process_mode = Node.PROCESS_MODE_ALWAYS
+	$UILayer/HUD.process_mode = Node.PROCESS_MODE_ALWAYS
+	$UILayer/HUD/Time_Left.process_mode = Node.PROCESS_MODE_ALWAYS
+
+	Global.setTransition(transition)
+		
+	Global.tempo_final.start()
+	print("Started")
 	
 	var save_file = FileAccess.open('user://save.data', FileAccess.READ)
 	if save_file != null:
@@ -65,7 +68,7 @@ func save_game():
 	Global.att_db()
 	
 func _process(_delta):
-	
+	atualizar_time()
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 	elif Input.is_action_just_pressed("reset"):
@@ -119,7 +122,6 @@ func progresso_perdido():
 
 
 func _on_touch_screen_button_pressed():
-	print("V")
 	if $UILayer/GameOverScreen.visible==false:
 		$UILayer/Comfirm_Exit.visible=true
 		$UILayer/Comfirm_Exit/anim.play("exit_label2")
@@ -131,3 +133,4 @@ func atualizar_time():
 	#if Global.tempo_final != null and Global.tempo_final.wait_time != 0:
 	$UILayer/HUD/Time_Left.text = "Tempo Restante: %02d : %02d" % [
 			(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
+	Global.tempo_final.wait_time = Global.tempo_final.time_left

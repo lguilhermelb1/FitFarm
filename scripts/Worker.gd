@@ -20,7 +20,6 @@ func _on_area_2d_body_exited(body):
 			
 func removed():
 	if _dialog_screen != null:
-		print(_dialog_screen._dialog.visible_ratio, "/", _dialog_screen._id== len(_dialog_screen.data)-1)
 		if _dialog_screen._dialog.visible_ratio == 1 and _dialog_screen._id == len(_dialog_screen.data)-1 \
 		and Input.is_action_just_pressed("ui_next"):
 			queue_free()

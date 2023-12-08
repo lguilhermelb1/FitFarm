@@ -2082,6 +2082,7 @@ shape = SubResource("RectangleShape2D_w6olh")
 debug_color = Color(0.952941, 0, 0.556863, 0.419608)
 
 [node name="camera" type="Camera2D" parent="."]
+process_mode = 3
 z_index = 5
 position = Vector2(320, 160)
 

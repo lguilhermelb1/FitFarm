@@ -9,11 +9,12 @@ func _ready():
 	$Control/PIN.editable=false
 	$Control/Tempo.editable=false
 	$Control/Button.disabled=true
-
+	$Control/Error_message.visible=false
+	$Control/Error_Time_Message.visible=false
 	await($animation.is_playing() == false)
 	
 	if name == 'Scene_SetTime':
-		await(get_tree().create_timer(10).timeout)
+		await(get_tree().create_timer(5).timeout)
 	else:
 		await(get_tree().create_timer(40).timeout)
 	
@@ -28,9 +29,25 @@ func _ready():
 	$Control/Button.disabled=false
 
 
+
 func _on_button_pressed():
-	if Global.pin == $Control/PIN.text and $Control/Tempo.text != " " :
+	
+	if Global.pin != $Control/PIN.text:
+		$Control/Error_message.text = "PIN INVÁLIDO, INSIRA NOVAMENTE"
+		$Control/Error_message.visible=true
+		await(get_tree().create_timer(3).timeout)
+		$Control/Error_message.visible=false
+	
+	if $Control/Tempo.text == "":
+		$Control/Error_Time_Message.text = "TEMPO LIMITE INVÁLIDO, INSIRA NOVAMENTE"
+		$Control/Error_Time_Message.visible=true
+		await(get_tree().create_timer(3).timeout)
+		$Control/Error_Time_Message.visible=false
+	
+	
+	if Global.pin == $Control/PIN.text and $Control/Tempo.text != "":
 		Global.setTransition($transition)
 		Global.atualizar_tempo_transicao(float(int($Control/Tempo.text) * 60))
 		print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
 		$transition.change_scene("res://scenes/mundo_01.tscn")
+	
