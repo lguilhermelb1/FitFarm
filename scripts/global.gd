@@ -19,6 +19,7 @@ func _ready():
 	tempo_final = Timer.new()
 	createTimeLabel()
 	self.time_label.process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	add_child(tempo_final)
 
 	tempo_final.timeout.connect(on_tempo_final_timeout)	
@@ -27,6 +28,7 @@ func _ready():
 
 func createTimeLabel():
 	self.time_label = Label.new()
+	self.time_label.visible=false
 
 
 func _process(delta):
@@ -97,6 +99,8 @@ func atualizar_tempo_transicao(tempo):
 
 
 func setLabelTime():
-	self.time_label.text = "Tempo Restante: %02d : %02d" % [(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
-	
+	if Global.tempo_final.time_left <= 150:	
+		self.time_label.visible=true
+		self.time_label.text = "Tempo Restante: %02d : %02d" % [(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
+
 	Global.tempo_final.wait_time = Global.tempo_final.time_left	

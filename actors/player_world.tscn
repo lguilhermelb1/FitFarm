@@ -8,10 +8,10 @@
 [ext_resource type="AudioStream" uid="uid://sp3ykjtvkb8r" path="res://sounds/pop-1-35897.mp3" id="6_851lj"]
 [ext_resource type="AudioStream" uid="uid://dbj6q1aaaq6vk" path="res://sounds/070255_footsteps-on-grass-39950.mp3" id="7_56bu7"]
 [ext_resource type="PackedScene" uid="uid://dgc2fb00vlvsl" path="res://prefab/controls_world.tscn" id="8_nvr3f"]
-[ext_resource type="PackedScene" uid="uid://ywykg1a4c5op" path="res://prefab/global.tscn" id="9_w1b17"]
+[ext_resource type="PackedScene" uid="uid://cjp3t65n1trvh" path="res://prefab/global.tscn" id="9_w1b17"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lt41r"]
-radius = 5.75
+radius = 5.25
 height = 17.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2wobf"]
@@ -121,7 +121,7 @@ volume_db = -20.0
 
 [node name="footsteps" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("7_56bu7")
-volume_db = -15.0
+volume_db = -10.0
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

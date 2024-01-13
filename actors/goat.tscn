@@ -467,7 +467,7 @@ shape = SubResource("CircleShape2D_tl43c")
 
 [node name="footsteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ryw2y")
-volume_db = -20.0
+volume_db = -30.0
 
 [node name="actions" type="Timer" parent="."]
 

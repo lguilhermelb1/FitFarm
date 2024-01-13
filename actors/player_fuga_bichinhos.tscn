@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://sp3ykjtvkb8r" path="res://sounds/pop-1-35897.mp3" id="12_v75i0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wwbsc"]
-radius = 6.25
+radius = 4.75
 height = 18.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2wobf"]
@@ -176,18 +176,19 @@ position = Vector2(0.5, -13)
 
 [node name="cristals_sound" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("10_gk47x")
+volume_db = -3.0
 
 [node name="points_sound" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("11_jp81h")
-volume_db = -20.0
+volume_db = -20.333
 
 [node name="collect_sound" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("12_v75i0")
-volume_db = -20.0
+volume_db = -10.0
 
 [node name="footsteps" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("12_c3l6o")
-volume_db = -15.0
+volume_db = -10.0
 
 [connection signal="body_entered" from="animal_detector" to="." method="_on_animal_detector_body_entered"]
 [connection signal="body_exited" from="animal_detector" to="." method="_on_animal_detector_body_exited"]

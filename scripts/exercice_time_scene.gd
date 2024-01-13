@@ -45,10 +45,16 @@ func _on_button_pressed():
 		$Control/Error_Time_Message.visible=true
 		await(get_tree().create_timer(3).timeout)
 		$Control/Error_Time_Message.visible=false
-
-	if Global.pin == $Control/PIN.text and $Control/Tempo.text != "":
+		
+	elif int($Control/Tempo.text) < 20 or int($Control/Tempo.text) > 120:
+		$Control/Error_Time_Message.text = "O TEMPO LIMITE DEVE SER ENTRE 20 e 120 minutos"
+		$Control/Error_Time_Message.visible=true
+		await(get_tree().create_timer(3).timeout)
+		$Control/Error_Time_Message.visible=false
+		
+	if Global.pin == $Control/PIN.text and $Control/Tempo.text != "" \
+	and int($Control/Tempo.text) >= 20 and int($Control/Tempo.text) <= 120:
 		Global.setTransition($transition)
 		Global.atualizar_tempo_transicao(float(int($Control/Tempo.text) * 60))
 		print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
 		$transition.change_scene("res://scenes/mundo_01.tscn")
-	
