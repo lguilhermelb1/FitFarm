@@ -5,8 +5,8 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_window().size = Vector2(640, 320)
-		
 	await(transition_animation.is_playing())
+	
 	$animation.play("opening")
 	$Control/PIN.editable=false
 	$Control/Tempo.editable=false
