@@ -18,6 +18,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 
 func _on_area_entered(area):
+	print("Area: ", area)
 	if area is Bug:
 		area.take_damage(damage)
 		queue_free()

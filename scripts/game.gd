@@ -31,7 +31,8 @@ func _ready():
 	
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
 	print(Global.time_label)
-	
+
+
 	if Global.time_label == null:
 		Global.createTimeLabel()
 	
@@ -73,7 +74,6 @@ func save_game():
 	Global.att_db()
 	
 func _process(_delta):
-	
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 	elif Input.is_action_just_pressed("reset"):
@@ -94,7 +94,8 @@ func _on_player_spray_shot(shoot_scene, location):
 
 func _on_bug_spwan_timer_timeout():
 	var e = bug_scenes.pick_random().instantiate()
-	e.global_position = Vector2(randf_range(50, 515), 0)
+	#randf_range(50, 500)
+	e.global_position = Vector2(randf_range(-160, 275), 0)
 	e.died.connect(_on_bug_died)
 	bug_container.add_child(e)
 
