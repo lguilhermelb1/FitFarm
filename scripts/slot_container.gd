@@ -112,7 +112,7 @@ func _celeiro_vazio() -> barn:
 	return null		
 	
 func _area_inserir():
-	for area in get_tree().get_nodes_in_group("insercao_celeiro"):
+	for area in get_tree().get_nodes_in_group("insercao_celeiro"):		
 		if area.get_child_count() == 1:
 			return area
 			break

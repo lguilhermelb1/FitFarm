@@ -32,7 +32,8 @@ func _ready():
 	$camera/Control/label_moedas.text = "%08d" % Global.moedas
 	
 	player.follow_camera(camera) 
-	update_values()
+	#update_values()
+	_area_inserir()
 
 
 #func _process(delta):
@@ -78,7 +79,7 @@ func atualizar():
 	Global.att_db()		
 	
 	
-	
+# OBS: na area de inserir teria que verificar se a posição está dentro da area bloqueada
 func _area_inserir():
 	for area in get_tree().get_nodes_in_group("insercao_celeiro"):
 		if area.get_child_count() == 1:
@@ -86,6 +87,12 @@ func _area_inserir():
 			break
 	return null		
 
+
+#func checagem_area_bloqueada(area_posicao):
+#	var lt = get_node("mapa").get_used_cells_by_id(0, 4, Vector2(2,4))
+#	area_posicao = Vector2i(int(area_posicao[0]), int(area_posicao[1]))
+#	return area_posicao in lt
+	
 
 #func update_timer():
 #	if Global.tempo_final != null:		
