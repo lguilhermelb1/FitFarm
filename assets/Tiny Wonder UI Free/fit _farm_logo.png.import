@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://birmolls4wdu7"
-path="res://.godot/imported/coin_icon.png-fefbdfeded53889049255d2027db9029.ctex"
+uid="uid://ba78kj3sqixan"
+path="res://.godot/imported/fit _farm_logo.png-6abbe9d0ee7479b269ae30d470b01054.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tiny Wonder UI Free/coin_icon.png"
-dest_files=["res://.godot/imported/coin_icon.png-fefbdfeded53889049255d2027db9029.ctex"]
+source_file="res://assets/Tiny Wonder UI Free/fit _farm_logo.png"
+dest_files=["res://.godot/imported/fit _farm_logo.png-6abbe9d0ee7479b269ae30d470b01054.ctex"]
 
 [params]
 
