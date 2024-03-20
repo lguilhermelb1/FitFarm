@@ -18,7 +18,6 @@ func _on_area_porta_body_entered(body):
 
 func _on_area_porta_body_exited(body):
 	permitido = false
-	print("F")
 	play_open_door()
 
 
