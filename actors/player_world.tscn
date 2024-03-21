@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://btf74en0epjeg"]
+[gd_scene load_steps=21 format=3 uid="uid://btf74en0epjeg"]
 
 [ext_resource type="Script" path="res://scripts/world/player_world.gd" id="1_ksv7y"]
 [ext_resource type="Texture2D" uid="uid://b6q0cyfk13a7f" path="res://assets_v2/Tiny Wonder Farm Free/characters/main character/idle.png" id="2_syv51"]
@@ -8,7 +8,6 @@
 [ext_resource type="AudioStream" uid="uid://sp3ykjtvkb8r" path="res://sounds/pop-1-35897.mp3" id="6_851lj"]
 [ext_resource type="AudioStream" uid="uid://dbj6q1aaaq6vk" path="res://sounds/070255_footsteps-on-grass-39950.mp3" id="7_56bu7"]
 [ext_resource type="PackedScene" uid="uid://dgc2fb00vlvsl" path="res://prefab/controls_world.tscn" id="8_nvr3f"]
-[ext_resource type="PackedScene" uid="uid://cjp3t65n1trvh" path="res://prefab/global.tscn" id="9_w1b17"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lt41r"]
 radius = 5.25
@@ -134,5 +133,3 @@ animation = &"idle"
 
 [node name="controls_world" parent="." instance=ExtResource("8_nvr3f")]
 position = Vector2(-152, -49)
-
-[node name="Global" parent="." instance=ExtResource("9_w1b17")]
