@@ -1,5 +1,5 @@
 extends Node2D
-#class_name global_variables
+class_name global_variables
 
 # Pegar da base de dados
 var cristais = 0

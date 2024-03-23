@@ -4,6 +4,13 @@ extends Node2D
 @onready var player := $player_world as Main_Player
 @onready var inv = $camera/Inventory
 
+# Nos Terrenos o que falta
+# 1) adicionar os terrenos mais caros
+# 2) cronometro na forma de pagamento
+# 3) condição de inserir caso não esteja dentro da área planejada
+# 4) Atualziar os valores comprados no terreno
+# 5) Corrigr o bug do celeiro
+
 
 # 640 x 320
 func _ready():	

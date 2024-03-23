@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhgeajc2swsxm"]
+
+[ext_resource type="Script" path="res://scripts/configuracao_terreno.gd" id="1_eai0p"]
+[ext_resource type="PackedScene" uid="uid://dx8fst0wjvt7q" path="res://prefab/slot_terrain.tscn" id="2_j8wqh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_88qlu"]
+radius = 59.1354
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7s7rj"]
+size = Vector2(400, 528)
+
+[node name="Terreno_A_Comprar" type="Node2D" groups=["terreno"]]
+visibility_layer = 2
+script = ExtResource("1_eai0p")
+
+[node name="regiao_gamer" type="Area2D" parent="."]
+position = Vector2(-9, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="regiao_gamer"]
+position = Vector2(-163, -14)
+shape = SubResource("CircleShape2D_88qlu")
+
+[node name="slot_terrain" parent="regiao_gamer" instance=ExtResource("2_j8wqh")]
+position = Vector2(-186, -52)
+
+[node name="regiao" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="regiao"]
+position = Vector2(3, 0)
+shape = SubResource("RectangleShape2D_7s7rj")
+
+[connection signal="body_entered" from="regiao_gamer" to="." method="_on_regiao_gamer_body_entered"]
+[connection signal="body_exited" from="regiao_gamer" to="." method="_on_regiao_gamer_body_exited"]
+[connection signal="pressed" from="regiao_gamer/slot_terrain/Panel/Button" to="." method="_on_button_pressed"]
+
+[editable path="regiao_gamer/slot_terrain"]
