@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dgc2fb00vlvsl" path="res://prefab/controls_world.tscn" id="8_nvr3f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lt41r"]
-radius = 5.25
+radius = 4.75
 height = 17.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2wobf"]

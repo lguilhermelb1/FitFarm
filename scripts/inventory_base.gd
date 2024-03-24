@@ -41,7 +41,7 @@ var inventory = [
 	
 	{
 		name = "Potato",
-		price = 20,
+		price = 0,
 		payment="cristal",
 		scale=0.15,
 		icon_scale=0.85,		
@@ -59,7 +59,7 @@ var inventory = [
 	
 	{
 		name = "Barn",
-		price = 1000,
+		price = 0, #10000
 		payment="cristal",
 		scale=0.15,
 		icon_scale=0.15,

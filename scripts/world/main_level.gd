@@ -5,14 +5,15 @@ extends Node2D
 @onready var inv = $camera/Inventory
 
 # Nos Terrenos o que falta
-# 1) adicionar os terrenos mais caros
+# 1) desconfundir o cenário
 # 2) condição de inserir caso não esteja dentro da área planejada
 # 3) Atualziar os valores comprados no terreno
-# 4) Corrigr o bug do celeiro
+# 4) Problema na Inserção do celeiro
 
 
 # 640 x 320
 func _ready():	
+	print(get_tree().get_nodes_in_group("insercao_celeiro"))
 	$camera/Inventory/ScrollContainer/GridContainer.main_update()
 	inv.visible = false
 	

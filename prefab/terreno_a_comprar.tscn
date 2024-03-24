@@ -9,7 +9,7 @@ radius = 61.0328
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4axvo"]
 size = Vector2(390, 520)
 
-[node name="Terreno_A_Comprar" type="Node2D"]
+[node name="Terreno_A_Comprar" type="Node2D" groups=["terreno_compra"]]
 script = ExtResource("1_x5g4n")
 
 [node name="regiao_gamer" type="Area2D" parent="."]

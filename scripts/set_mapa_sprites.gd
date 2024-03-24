@@ -9,3 +9,5 @@ func modificar_celulas_posicoes(pos1: Vector2i, pos2: Vector2i):
 	
 	# OBS: provavelmente teria que salvar as coordenadas que estão 
 	# de verde para poder atualizar o mapa
+
+

@@ -8,9 +8,9 @@ func lotado():
 		
 	for x in $area2d.get_overlapping_bodies():
 		if x.is_in_group("animal"):
-			cont += 1
-			
+			cont += 1			
 	return cont == 4
+
 
 func _on_area_porta_body_entered(body):
 	if body.name == "player_world":
@@ -23,11 +23,10 @@ func _on_area_porta_body_exited(body):
 
 func play_open_door():
 	var sprite = $Sprite2D.texture.get_path().get_file().replace(".png", "")
-	print(sprite)
-	if sprite == "celeiro_aberto":
-		$AnimationPlayer.play_backwards("door")
-		#await($AnimationPlayer.animation_finished)
 		
-	elif sprite == "celeiro_fechado":
-		$AnimationPlayer.play("door")
-		#await($AnimationPlayer.animation_finished)
+	if sprite == "celeiro_fechado":
+		$Sprite2D.texture = load("res://assets/Objects/celeiro_aberto.png")
+		$barreira_porta.disabled = true
+	else:
+		$Sprite2D.texture = load("res://assets/Objects/celeiro_fechado.png")
+		$barreira_porta.disabled = false

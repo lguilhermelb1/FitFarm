@@ -3,10 +3,13 @@ extends Panel
 var _pagamento = null
 var _label_cristals = null
 var _label_moedas = null
+var main_map: tile_map
 
 func _ready():
 	$result.visible = false
 	await(get_tree().current_scene.name == "Mundo01")
+	main_map =  get_tree().current_scene.get_node("mapa")
+	
 	_label_cristals = get_tree().current_scene.get_node("camera").get_node("Control").get_node("label_cristais")
 	_label_moedas = get_tree().current_scene.get_node("camera").get_node("Control").get_node("label_moedas")
 
@@ -46,15 +49,21 @@ func _on_gui_input(event):
 				print(area_insercao)
 				
 				if area_insercao != null:
-					node_celeiro.position.x = area_insercao.global_position.x
-					node_celeiro.position.y = area_insercao.global_position.y
-		
+					var pos_p = main_map.local_to_map(area_insercao.global_position)
+					print("Principal_posicao: ", pos_p)
+					node_celeiro.position.x = pos_p[0]
+					node_celeiro.position.y = pos_p[1]
+				
+					#node_celeiro.position.x = area_insercao.global_position.x
+					#node_celeiro.position.y = area_insercao.global_position.y
+					
 					Global.lista.append({"type": "celeiro",
 						"node": "res://prefab/celeiro.tscn", 
-						"position": area_insercao.global_position})
-						
+						"position": pos_p})  #area_insercao.global_position
+					
+					area_insercao.add_child(node_celeiro)			
 					get_tree().get_root().add_child(node_celeiro)	
-					area_insercao.add_child(node_celeiro)
+
 			else:
 				var node_animal = load("res://actors/" + file_name + ".tscn")
 				var container = _celeiro_vazio()
@@ -99,10 +108,13 @@ func _on_gui_input(event):
 	
 func _container_nao_lotado() -> vegetables_grid:
 	for container in get_tree().get_nodes_in_group("plantacao"):
-		if container.lotado() == false:
+		print("Global_Position_Container: ", container.global_position)
+		if container.lotado() == false and \
+			_verificacao_posicao(container.global_position) == true:
 			return container
 			break
 	return null			
+		
 		
 func _celeiro_vazio() -> barn:
 	for celeiro in get_tree().get_nodes_in_group("celeiro"):
@@ -111,12 +123,21 @@ func _celeiro_vazio() -> barn:
 			break
 	return null		
 	
+
 func _area_inserir():
-	for area in get_tree().get_nodes_in_group("insercao_celeiro"):		
-		if area.get_child_count() == 1:
+	for area in get_tree().get_nodes_in_group("insercao_celeiro"):	
+		if area.get_child_count() == 1 and \
+		_verificacao_posicao(area.get_children()[0].global_position) == true:
 			return area
 			break
-	return null			
+	return null	
+	
+
+func _verificacao_posicao(pos):
+	for area in get_tree().get_nodes_in_group("terreno_compra"):
+		if area.dentro_area(pos) == true:
+			return true
+	return false
 	
 		
 func _mudanca_texto(frase: String):
