@@ -3,6 +3,7 @@ extends Node2D
 @onready var camera := $camera as Camera2D
 @onready var player := $player_world as Main_Player
 @onready var inv = $camera/Inventory
+var nd = null
 
 # Nos Terrenos o que falta
 # 1) desconfundir o cenário
@@ -20,6 +21,7 @@ func _ready():
 	Global.setTransition($camera/transition)
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
 	atualizar()
+	print(get_node("Terreno_A_Comprar"))
 		
 	if Global.time_label == null:
 		Global.time_label = Label.new()
@@ -58,30 +60,37 @@ func update_values():
 	
 	
 func atualizar():		
+	print(Global.lista)
 	for x in Global.lista:
-		if x != null:	
-			var nd = load(x['node']).instantiate()	
-			nd.z_index=0
+		if x != null:
+			if x['type'] == 'terreno':
+				$mapa.modificar_celulas_posicoes(x['cords'][0], x['cords'][1])
+				print(x)
+				print(get_node(str(x['name'])))
+				get_node(str(x['name'])).queue_free()				
+			else:
+				nd = load(x['node']).instantiate()	
+				nd.z_index=0
 					
-			if x['type'] == 'animal':
-				print("VALOR_ANIMAL: ", x)
-				nd.set_script(load(x['script']))
-				nd.global_position = x['position']		
-				self.add_child(nd)	
-				
-			elif x['type'] == 'celeiro':
-				nd.global_position = x['position'] 
-				var area_inserir = _area_inserir()
-				
-				if area_inserir != null:
+				if x['type'] == 'animal':
+					print("VALOR_ANIMAL: ", x)
+					nd.set_script(load(x['script']))
+					nd.global_position = x['position']		
 					self.add_child(nd)	
-					area_inserir.add_child(nd)
+				
+				elif x['type'] == 'celeiro':
+					nd.global_position = x['position'] 
+					var area_inserir = _area_inserir()
+				
+					if area_inserir != null:
+						self.add_child(nd)	
+						area_inserir.add_child(nd)
 												
-			elif x['type'] == "vegetable":
-				nd.get_node("main_image").texture = load(x['icon'])
-				nd.set_current_timer(x['current_time'])		
-				nd.set_status(x['status'])					
-				self.get_node("vegetable_grid_container").inserir(nd)
+				elif x['type'] == "vegetable":
+					nd.get_node("main_image").texture = load(x['icon'])
+					nd.set_current_timer(x['current_time'])		
+					nd.set_status(x['status'])					
+					self.get_node("vegetable_grid_container").inserir(nd)
 	
 	Global.att_db()		
 	

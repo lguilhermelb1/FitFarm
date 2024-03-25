@@ -21,9 +21,9 @@ func change_scene(path: String):
 func _update_values():
 	if get_tree().current_scene.name == "Mundo01":
 		for x in Global.lista:
-			for v in get_tree().get_nodes_in_group("vegetable"):
-				if v.global_position == x['position']:				
-					v.get_node("timer").paused=true
-					x['current_time'] = v.get_node("timer").time_left	
-					x['status'] = v.get_status()
-	
+			if 'position' in x.keys():
+				for v in get_tree().get_nodes_in_group("vegetable"):
+					if v.global_position == x['position']:				
+						v.get_node("timer").paused=true
+						x['current_time'] = v.get_node("timer").time_left	
+						x['status'] = v.get_status()

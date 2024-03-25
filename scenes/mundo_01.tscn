@@ -5094,7 +5094,6 @@ position = Vector2(330, 200)
 position = Vector2(1219, 185)
 map = NodePath("../mapa")
 tipo_pagamento = ExtResource("16_gojqu")
-preco = 3000.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 

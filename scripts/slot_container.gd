@@ -46,20 +46,16 @@ func _on_gui_input(event):
 			elif file_name == "celeiro":
 				var node_celeiro = load("res://prefab/celeiro.tscn").instantiate()
 				var area_insercao = _area_inserir()
-				print(area_insercao)
 				
 				if area_insercao != null:
 					var pos_p = main_map.local_to_map(area_insercao.global_position)
 					print("Principal_posicao: ", pos_p)
-					node_celeiro.position.x = pos_p[0]
-					node_celeiro.position.y = pos_p[1]
-				
-					#node_celeiro.position.x = area_insercao.global_position.x
-					#node_celeiro.position.y = area_insercao.global_position.y
-					
+					node_celeiro.position.x = pos_p[0] # area_insercao.global_position.x
+					node_celeiro.position.y = pos_p[1] # area_insercao.global_position.y
+
 					Global.lista.append({"type": "celeiro",
 						"node": "res://prefab/celeiro.tscn", 
-						"position": pos_p})  #area_insercao.global_position
+						"position": area_insercao.global_position})
 					
 					area_insercao.add_child(node_celeiro)			
 					get_tree().get_root().add_child(node_celeiro)	
@@ -99,6 +95,9 @@ func _on_gui_input(event):
 							"status": node_vegetable.get_status(), 
 							"position": node_vegetable.global_position,
 							'current_time': 7})
+							
+						print("Vegetal_Inserido")
+						
 						Global.att_db()
 						node_vegetable.play_animation()
 						efetuar_pagamento()

@@ -56,8 +56,7 @@ func dentro_area(pos):
 								- $regiao/CollisionShape2D.shape.extents)
 	bottom_right = map.local_to_map($regiao/CollisionShape2D.global_position 
 									+ $regiao/CollisionShape2D.shape.extents)
-	
-	
+									
 	print("POS_MAPA: ", pos_mapa, "\n", top_left, " ; ", bottom_right, "\n")
 	
 	return ((top_left[0] >= pos_mapa[0] and pos_mapa[0] <= bottom_right[0])  
@@ -72,18 +71,30 @@ func _on_button_pressed():
 	bottom_right = map.local_to_map($regiao/CollisionShape2D.global_position 
 									+ $regiao/CollisionShape2D.shape.extents)
 	
-	if file != null and (file.get_path().get_file().replace(".png", "") == "coin") \
+	if file != null and (file.get_path().get_file().replace(".png","") == "coin") \
 		and Global.moedas >= int(preco):
+			
 		Global.remove_coins(preco)
 		label_moedas.text = "%08d" % Global.moedas
 		map.modificar_celulas_posicoes(top_left, bottom_right)
+		
+		Global.lista.append({"type": "terreno",
+			"name": name, "cords": [top_left, bottom_right]
+		}) 
+						
 		queue_free()
 		
-	elif file != null and (file.get_path().get_file().replace(".png", "") == "cristal") \
+	elif file != null and (file.get_path().get_file().replace(".png","") == "cristal") \
 		and Global.cristais >= int(preco):
+			
 		Global.remove_cristals(preco)		
 		label_cristais.text = "%08d" % Global.cristais
 		map.modificar_celulas_posicoes(top_left, bottom_right)
+		
+		Global.lista.append({"type": "terreno",
+			"name": name, "cords": [top_left, bottom_right]
+		}) 
+
 		queue_free()		
 	else:
 		$regiao_gamer/slot_terrain/Panel/insuficiente.visible=true
