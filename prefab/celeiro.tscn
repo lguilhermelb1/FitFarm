@@ -36,6 +36,7 @@ script = ExtResource("1_k5233")
 metadata/_edit_horizontal_guides_ = []
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.509804)
 texture_filter = 1
 position = Vector2(96, 85)
 scale = Vector2(1.05494, 1.25373)
@@ -57,7 +58,7 @@ shape = SubResource("RectangleShape2D_2qpot")
 collision_layer = 2
 collision_mask = 21
 
-[node name="collision" type="CollisionShape2D" parent="area2d"]
+[node name="collision" type="CollisionShape2D" parent="area2d" groups=["area_insercao_animal"]]
 position = Vector2(96, 82)
 shape = SubResource("RectangleShape2D_s1xoe")
 debug_color = Color(0, 1, 0, 0.419608)
@@ -85,6 +86,9 @@ scale = Vector2(0.8, 0.8)
 collision_layer = 2
 collision_mask = 21
 
+[node name="Sprite2D" parent="objeto_celeiro" index="0"]
+modulate = Color(1, 1, 1, 0.666667)
+
 [node name="CollisionShape2D" parent="objeto_celeiro" index="1"]
 position = Vector2(-3.05176e-05, -3.8147e-06)
 scale = Vector2(0.999999, 0.999999)
@@ -95,6 +99,7 @@ collision_layer = 2
 collision_mask = 21
 
 [node name="Sprite2D" parent="objeto_celeiro2" index="0"]
+modulate = Color(1, 1, 0.996078, 0.392157)
 texture = ExtResource("5_gtcb1")
 
 [node name="barreira_porta" type="CollisionShape2D" parent="."]

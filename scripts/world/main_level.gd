@@ -4,6 +4,7 @@ extends Node2D
 @onready var player := $player_world as Main_Player
 @onready var inv = $camera/Inventory
 var nd = null
+var celeiro = null
 
 # Nos Terrenos o que falta
 # 1) desconfundir o cenário
@@ -39,10 +40,11 @@ func _ready():
 	player.position = Vector2(330,200)
 	$camera/Control/label_cristais.text = "%08d" % Global.cristais
 	$camera/Control/label_moedas.text = "%08d" % Global.moedas
+	$celeiro.change_visibility()
 	
 	player.follow_camera(camera) 
 	#update_values()
-	_area_inserir()
+	#_area_inserir()
 
 
 #func _process(delta):
@@ -64,10 +66,21 @@ func atualizar():
 	for x in Global.lista:
 		if x != null:
 			if x['type'] == 'terreno':
+				var celeiro = get_node(str(x['name'])).tem_celeiro()
+				var pos = null
+				
+				if celeiro != null:
+					pos = celeiro.global_position
+					get_node(str(x['name'])).remove_child(celeiro)
+					celeiro.position = pos
+					add_child(celeiro)	
+							
 				$mapa.modificar_celulas_posicoes(x['cords'][0], x['cords'][1])
-				print(x)
-				print(get_node(str(x['name'])))
-				get_node(str(x['name'])).queue_free()				
+				get_node(str(x['name'])).queue_free()
+								
+			elif x['type'] == "celeiro":
+					celeiro = _buscar_celeiro(x['name'])
+					celeiro.change_visibility()
 			else:
 				nd = load(x['node']).instantiate()	
 				nd.z_index=0
@@ -77,15 +90,7 @@ func atualizar():
 					nd.set_script(load(x['script']))
 					nd.global_position = x['position']		
 					self.add_child(nd)	
-				
-				elif x['type'] == 'celeiro':
-					nd.global_position = x['position'] 
-					var area_inserir = _area_inserir()
-				
-					if area_inserir != null:
-						self.add_child(nd)	
-						area_inserir.add_child(nd)
-												
+													
 				elif x['type'] == "vegetable":
 					nd.get_node("main_image").texture = load(x['icon'])
 					nd.set_current_timer(x['current_time'])		
@@ -102,6 +107,18 @@ func _area_inserir():
 			return area
 			break
 	return null		
+
+
+func _buscar_celeiro(name:String):
+	for celeiro in get_tree().get_nodes_in_group("celeiro"):
+		if celeiro.name == name:
+			return celeiro
+			break
+	return null		
+
+
+
+
 
 
 #func checagem_area_bloqueada(area_posicao):

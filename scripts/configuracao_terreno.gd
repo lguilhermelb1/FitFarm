@@ -10,6 +10,8 @@ var file: Object
 var top_left: Vector2i
 var bottom_right: Vector2i
 var pos_mapa: Vector2i
+var celeiro = null
+var pos = null
 
 #	var lt = get_used_cells_by_id(0, 0, Vector2i(3,1))	# permitido passagem 
 # 	var lt2 = get_used_cells_by_id(0, 4, Vector2(2,4))  # bloqueado
@@ -29,6 +31,7 @@ func _ready():
 		$regiao_gamer/slot_terrain/Panel/type_payment.transform[1][1] = .3
 
 	$regiao_gamer/slot_terrain.visible=false
+	tem_celeiro()
 
 
 func _on_regiao_gamer_body_entered(body):
@@ -76,6 +79,16 @@ func _on_button_pressed():
 			
 		Global.remove_coins(preco)
 		label_moedas.text = "%08d" % Global.moedas
+		
+		var celeiro = tem_celeiro()
+		var pos = null
+		if celeiro != null:
+			pos = celeiro.global_position
+			remove_child(celeiro)			
+											
+			get_parent().add_child(celeiro)				
+			celeiro.position = pos
+			
 		map.modificar_celulas_posicoes(top_left, bottom_right)
 		
 		Global.lista.append({"type": "terreno",
@@ -86,17 +99,38 @@ func _on_button_pressed():
 		
 	elif file != null and (file.get_path().get_file().replace(".png","") == "cristal") \
 		and Global.cristais >= int(preco):
-			
+		
 		Global.remove_cristals(preco)		
 		label_cristais.text = "%08d" % Global.cristais
+		
+		var celeiro = tem_celeiro()
+		var pos = null
+		if celeiro != null:
+			pos = celeiro.global_position
+			remove_child(celeiro)		
+			get_parent().add_child(celeiro)				
+			celeiro.position = pos
+			
 		map.modificar_celulas_posicoes(top_left, bottom_right)
 		
 		Global.lista.append({"type": "terreno",
 			"name": name, "cords": [top_left, bottom_right]
 		}) 
-
+				
 		queue_free()		
 	else:
 		$regiao_gamer/slot_terrain/Panel/insuficiente.visible=true
 		await(get_tree().create_timer(10).timeout)
 		$regiao_gamer/slot_terrain/Panel/insuficiente.visible=false	
+		
+
+
+func tem_celeiro():
+	for x in get_children():
+		if len(x.get_groups()) > 0 and x.get_groups()[0] == "celeiro":
+			return x
+	return null
+
+
+
+

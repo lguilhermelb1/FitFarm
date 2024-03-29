@@ -5,7 +5,7 @@ extends GridContainer
 var inventory = [
 	{
 		name = "goat",
-		price = 250,
+		price = 40,
 		payment="coin",
 		scale=1,
 		icon_scale=0.85,
