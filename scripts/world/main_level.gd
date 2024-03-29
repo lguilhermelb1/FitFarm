@@ -4,14 +4,14 @@ extends Node2D
 @onready var player := $player_world as Main_Player
 @onready var inv = $camera/Inventory
 var nd = null
-var celeiro = null
+var nodes_celeiro = null
+var nodes_plantacao = null
 
 # Nos Terrenos o que falta
 # 1) desconfundir o cenário
 # 2) condição de inserir caso não esteja dentro da área planejada
 # 3) Atualziar os valores comprados no terreno
 # 4) Problema na Inserção do celeiro
-
 
 # 640 x 320
 func _ready():	
@@ -41,7 +41,7 @@ func _ready():
 	$camera/Control/label_cristais.text = "%08d" % Global.cristais
 	$camera/Control/label_moedas.text = "%08d" % Global.moedas
 	$celeiro.change_visibility()
-	
+	print(get_tree().get_nodes_in_group("plantacao"))
 	player.follow_camera(camera) 
 	#update_values()
 	#_area_inserir()
@@ -62,31 +62,25 @@ func update_values():
 	
 	
 func atualizar():		
-	print(Global.lista)
 	for x in Global.lista:
 		if x != null:
 			if x['type'] == 'terreno':
-				var celeiro = get_node(str(x['name'])).tem_celeiro()
-				var pos = null
+				nodes_celeiro = get_node(str(x['name'])).retorno_objetos("celeiro")
+				get_node(str(x['name'])).remocao_valores(nodes_celeiro)
 				
-				if celeiro != null:
-					pos = celeiro.global_position
-					get_node(str(x['name'])).remove_child(celeiro)
-					celeiro.position = pos
-					add_child(celeiro)	
-							
+				nodes_plantacao = get_node(str(x['name'])).busca_valor("plantacao")
+				get_node(str(x['name'])).remocao_valor(nodes_plantacao)
+			
 				$mapa.modificar_celulas_posicoes(x['cords'][0], x['cords'][1])
 				get_node(str(x['name'])).queue_free()
 								
 			elif x['type'] == "celeiro":
-					celeiro = _buscar_celeiro(x['name'])
-					celeiro.change_visibility()
+				_buscar_celeiro(x['name']).change_visibility()
 			else:
 				nd = load(x['node']).instantiate()	
 				nd.z_index=0
 					
 				if x['type'] == 'animal':
-					print("VALOR_ANIMAL: ", x)
 					nd.set_script(load(x['script']))
 					nd.global_position = x['position']		
 					self.add_child(nd)	
@@ -94,19 +88,10 @@ func atualizar():
 				elif x['type'] == "vegetable":
 					nd.get_node("main_image").texture = load(x['icon'])
 					nd.set_current_timer(x['current_time'])		
-					nd.set_status(x['status'])					
-					self.get_node("vegetable_grid_container").inserir(nd)
+					nd.set_status(x['status'])			
+					self.get_node(str(x['parent'])).inserir(nd)
 	
 	Global.att_db()		
-	
-	
-# OBS: na area de inserir teria que verificar se a posição está dentro da area bloqueada
-func _area_inserir():
-	for area in get_tree().get_nodes_in_group("insercao_celeiro"):
-		if area.get_child_count() == 1:
-			return area
-			break
-	return null		
 
 
 func _buscar_celeiro(name:String):
@@ -116,16 +101,6 @@ func _buscar_celeiro(name:String):
 			break
 	return null		
 
-
-
-
-
-
-#func checagem_area_bloqueada(area_posicao):
-#	var lt = get_node("mapa").get_used_cells_by_id(0, 4, Vector2(2,4))
-#	area_posicao = Vector2i(int(area_posicao[0]), int(area_posicao[1]))
-#	return area_posicao in lt
-	
 
 #func update_timer():
 #	if Global.tempo_final != null:		

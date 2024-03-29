@@ -1,7 +1,6 @@
 extends StaticBody2D
 class_name barn
 
-var permitido = false
 var visivel
 	
 func _ready():

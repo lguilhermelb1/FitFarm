@@ -5051,66 +5051,66 @@ position = Vector2(159, 167)
 [node name="player_world" parent="." instance=ExtResource("12_1kp32")]
 position = Vector2(330, 200)
 
-[node name="Terreno_A_Comprar" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
+[node name="Terreno_A_Comprar" parent="." instance=ExtResource("24_jpm8u")]
 position = Vector2(1219, 185)
-map = NodePath("../mapa")
 tipo_pagamento = ExtResource("16_gojqu")
-label_moedas = NodePath("../camera/Control/label_moedas")
-label_cristais = NodePath("../camera/Control/label_cristais")
+map = null
+label_moedas = null
+label_cristais = null
 
 [node name="celeiro4" parent="Terreno_A_Comprar" instance=ExtResource("14_xgvew")]
 position = Vector2(-96, 15)
 
-[node name="Terreno_A_Comprar2" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
+[node name="Terreno_A_Comprar2" parent="." instance=ExtResource("24_jpm8u")]
 position = Vector2(1620, 185)
-map = NodePath("../mapa")
-tipo_pagamento = ExtResource("16_gojqu")
 preco = 3000.0
-label_moedas = NodePath("../camera/Control/label_moedas")
-label_cristais = NodePath("../camera/Control/label_cristais")
+tipo_pagamento = ExtResource("16_gojqu")
+map = null
+label_moedas = null
+label_cristais = null
 
-[node name="Terreno_A_Comprar3" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
+[node name="Terreno_A_Comprar3" parent="." instance=ExtResource("24_jpm8u")]
 position = Vector2(1219, 711)
-map = NodePath("../mapa")
-tipo_pagamento = ExtResource("16_gojqu")
 preco = 3000.0
-label_moedas = NodePath("../camera/Control/label_moedas")
-label_cristais = NodePath("../camera/Control/label_cristais")
+tipo_pagamento = ExtResource("16_gojqu")
+map = null
+label_moedas = null
+label_cristais = null
 
-[node name="Terreno_A_Comprar4" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
+[node name="Terreno_A_Comprar4" parent="." instance=ExtResource("24_jpm8u")]
 position = Vector2(1620, 711)
-map = NodePath("../mapa")
-tipo_pagamento = ExtResource("16_gojqu")
 preco = 3000.0
-label_moedas = NodePath("../camera/Control/label_moedas")
-label_cristais = NodePath("../camera/Control/label_cristais")
+tipo_pagamento = ExtResource("16_gojqu")
+map = null
+label_moedas = null
+label_cristais = null
 
 [node name="celeiro7" parent="Terreno_A_Comprar4" instance=ExtResource("14_xgvew")]
 position = Vector2(-90, 3)
 
-[node name="Terreno_A_Comprar5" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
+[node name="Terreno_A_Comprar5" parent="." instance=ExtResource("24_jpm8u")]
 position = Vector2(1219, -345)
-map = NodePath("../mapa")
-tipo_pagamento = ExtResource("16_gojqu")
 preco = 3000.0
-label_moedas = NodePath("../camera/Control/label_moedas")
-label_cristais = NodePath("../camera/Control/label_cristais")
+tipo_pagamento = ExtResource("16_gojqu")
+map = null
+label_moedas = null
+label_cristais = null
 
-[node name="Terreno_A_Comprar6" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
+[node name="Terreno_A_Comprar6" parent="." instance=ExtResource("24_jpm8u")]
 position = Vector2(1620, -345)
-map = NodePath("../mapa")
-tipo_pagamento = ExtResource("16_gojqu")
 preco = 3000.0
-label_moedas = NodePath("../camera/Control/label_moedas")
-label_cristais = NodePath("../camera/Control/label_cristais")
+tipo_pagamento = ExtResource("16_gojqu")
+map = null
+label_moedas = null
+label_cristais = null
 
-[node name="Terreno_A_Comprar7" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
+[node name="Terreno_A_Comprar7" parent="." instance=ExtResource("24_jpm8u")]
 position = Vector2(-676, 184)
-map = NodePath("../mapa")
-tipo_pagamento = ExtResource("16_gojqu")
 preco = 3000.0
-label_moedas = NodePath("../camera/Control/label_moedas")
-label_cristais = NodePath("../camera/Control/label_cristais")
+tipo_pagamento = ExtResource("16_gojqu")
+map = null
+label_moedas = null
+label_cristais = null
 
 [node name="slot_terrain" parent="Terreno_A_Comprar7/regiao_gamer" index="0"]
 position = Vector2(85, -22)
@@ -5121,13 +5121,13 @@ position = Vector2(160, 13)
 [node name="celeiro6" parent="Terreno_A_Comprar7" instance=ExtResource("14_xgvew")]
 position = Vector2(-156, 27)
 
-[node name="Terreno_A_Comprar8" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
+[node name="Terreno_A_Comprar8" parent="." instance=ExtResource("24_jpm8u")]
 position = Vector2(-676, 710)
-map = NodePath("../mapa")
-tipo_pagamento = ExtResource("16_gojqu")
 preco = 3000.0
-label_moedas = NodePath("../camera/Control/label_moedas")
-label_cristais = NodePath("../camera/Control/label_cristais")
+tipo_pagamento = ExtResource("16_gojqu")
+map = null
+label_moedas = null
+label_cristais = null
 
 [node name="slot_terrain" parent="Terreno_A_Comprar8/regiao_gamer" index="0"]
 position = Vector2(85, -22)
@@ -5135,13 +5135,13 @@ position = Vector2(85, -22)
 [node name="CollisionShape2D" parent="Terreno_A_Comprar8/regiao_gamer" index="1"]
 position = Vector2(160, 13)
 
-[node name="Terreno_A_Comprar9" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
+[node name="Terreno_A_Comprar9" parent="." instance=ExtResource("24_jpm8u")]
 position = Vector2(-676, -346)
-map = NodePath("../mapa")
-tipo_pagamento = ExtResource("16_gojqu")
 preco = 3000.0
-label_moedas = NodePath("../camera/Control/label_moedas")
-label_cristais = NodePath("../camera/Control/label_cristais")
+tipo_pagamento = ExtResource("16_gojqu")
+map = null
+label_moedas = null
+label_cristais = null
 
 [node name="slot_terrain" parent="Terreno_A_Comprar9/regiao_gamer" index="0"]
 position = Vector2(85, -22)
@@ -5152,13 +5152,13 @@ position = Vector2(160, 13)
 [node name="celeiro9" parent="Terreno_A_Comprar9" instance=ExtResource("14_xgvew")]
 position = Vector2(1781, -177)
 
-[node name="Terreno_A_Comprar10" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
+[node name="Terreno_A_Comprar10" parent="." instance=ExtResource("24_jpm8u")]
 position = Vector2(-278, 187)
-map = NodePath("../mapa")
-tipo_pagamento = ExtResource("16_gojqu")
 preco = 3000.0
-label_moedas = NodePath("../camera/Control/label_moedas")
-label_cristais = NodePath("../camera/Control/label_cristais")
+tipo_pagamento = ExtResource("16_gojqu")
+map = null
+label_moedas = null
+label_cristais = null
 
 [node name="slot_terrain" parent="Terreno_A_Comprar10/regiao_gamer" index="0"]
 position = Vector2(85, -22)
@@ -5166,13 +5166,13 @@ position = Vector2(85, -22)
 [node name="CollisionShape2D" parent="Terreno_A_Comprar10/regiao_gamer" index="1"]
 position = Vector2(160, 13)
 
-[node name="Terreno_A_Comprar11" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
+[node name="Terreno_A_Comprar11" parent="." instance=ExtResource("24_jpm8u")]
 position = Vector2(-278, -346)
-map = NodePath("../mapa")
-tipo_pagamento = ExtResource("16_gojqu")
 preco = 3000.0
-label_moedas = NodePath("../camera/Control/label_moedas")
-label_cristais = NodePath("../camera/Control/label_cristais")
+tipo_pagamento = ExtResource("16_gojqu")
+map = null
+label_moedas = null
+label_cristais = null
 
 [node name="slot_terrain" parent="Terreno_A_Comprar11/regiao_gamer" index="0"]
 position = Vector2(85, -22)
@@ -5180,13 +5180,13 @@ position = Vector2(85, -22)
 [node name="CollisionShape2D" parent="Terreno_A_Comprar11/regiao_gamer" index="1"]
 position = Vector2(160, 13)
 
-[node name="Terreno_A_Comprar12" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
+[node name="Terreno_A_Comprar12" parent="." instance=ExtResource("24_jpm8u")]
 position = Vector2(-278, 711)
-map = NodePath("../mapa")
-tipo_pagamento = ExtResource("16_gojqu")
 preco = 3000.0
-label_moedas = NodePath("../camera/Control/label_moedas")
-label_cristais = NodePath("../camera/Control/label_cristais")
+tipo_pagamento = ExtResource("16_gojqu")
+map = null
+label_moedas = null
+label_cristais = null
 
 [node name="slot_terrain" parent="Terreno_A_Comprar12/regiao_gamer" index="0"]
 position = Vector2(85, -22)
@@ -5206,12 +5206,12 @@ offset_top = -227.0
 offset_right = 99.0
 offset_bottom = -121.0
 
-[node name="Terreno_A_Comprar13" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
+[node name="Terreno_A_Comprar13" parent="." instance=ExtResource("24_jpm8u")]
 position = Vector2(701, -341)
-map = NodePath("../mapa")
 tipo_pagamento = ExtResource("15_f2jvs")
-label_moedas = NodePath("../camera/Control/label_moedas")
-label_cristais = NodePath("../camera/Control/label_cristais")
+map = null
+label_moedas = null
+label_cristais = null
 
 [node name="slot_terrain" parent="Terreno_A_Comprar13/regiao_gamer" index="0"]
 position = Vector2(-45, 175)
@@ -5224,20 +5224,18 @@ position = Vector2(60, -1.5)
 shape = SubResource("RectangleShape2D_7qosc")
 
 [node name="vegetable_grid_container4" parent="Terreno_A_Comprar13" instance=ExtResource("20_jg8a1")]
-offset_left = -151.0
-offset_top = -215.0
-offset_right = 94.0
-offset_bottom = -64.0
-theme_override_constants/h_separation = 20
-columns = 20
+offset_left = -156.0
+offset_top = -216.0
+offset_right = 97.0
+offset_bottom = -58.0
 
-[node name="Terreno_A_Comprar14" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
+[node name="Terreno_A_Comprar14" parent="." instance=ExtResource("24_jpm8u")]
 position = Vector2(150, -341)
-map = NodePath("../mapa")
-tipo_pagamento = ExtResource("15_f2jvs")
 preco = 30000.0
-label_moedas = NodePath("../camera/Control/label_moedas")
-label_cristais = NodePath("../camera/Control/label_cristais")
+tipo_pagamento = ExtResource("15_f2jvs")
+map = null
+label_moedas = null
+label_cristais = null
 
 [node name="slot_terrain" parent="Terreno_A_Comprar14/regiao_gamer" index="0"]
 position = Vector2(-45, 175)
@@ -5252,13 +5250,13 @@ shape = SubResource("RectangleShape2D_x6mer")
 [node name="celeiro8" parent="Terreno_A_Comprar14" instance=ExtResource("14_xgvew")]
 position = Vector2(-26, -203)
 
-[node name="Terreno_A_Comprar15" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
+[node name="Terreno_A_Comprar15" parent="." instance=ExtResource("24_jpm8u")]
 position = Vector2(701, 715)
-map = NodePath("../mapa")
-tipo_pagamento = ExtResource("15_f2jvs")
 preco = 30000.0
-label_moedas = NodePath("../camera/Control/label_moedas")
-label_cristais = NodePath("../camera/Control/label_cristais")
+tipo_pagamento = ExtResource("15_f2jvs")
+map = null
+label_moedas = null
+label_cristais = null
 
 [node name="slot_terrain" parent="Terreno_A_Comprar15/regiao_gamer" index="0"]
 position = Vector2(70, -260)
@@ -5270,13 +5268,13 @@ position = Vector2(120, -240)
 position = Vector2(60, -1.5)
 shape = SubResource("RectangleShape2D_7qosc")
 
-[node name="Terreno_A_Comprar16" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
+[node name="Terreno_A_Comprar16" parent="." instance=ExtResource("24_jpm8u")]
 position = Vector2(150, 714)
-map = NodePath("../mapa")
-tipo_pagamento = ExtResource("15_f2jvs")
 preco = 30000.0
-label_moedas = NodePath("../camera/Control/label_moedas")
-label_cristais = NodePath("../camera/Control/label_cristais")
+tipo_pagamento = ExtResource("15_f2jvs")
+map = null
+label_moedas = null
+label_cristais = null
 
 [node name="slot_terrain" parent="Terreno_A_Comprar16/regiao_gamer" index="0"]
 position = Vector2(130, -260)

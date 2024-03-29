@@ -4,9 +4,6 @@ class_name vegetable_item
 var _status = "fade_in"
 var _current_time = 7
 @onready var time = $timer
-
-func _ready():
-	print(time)
 	
 	
 func get_status():
