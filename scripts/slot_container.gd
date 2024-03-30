@@ -94,7 +94,8 @@ func _on_gui_input(event):
 						node_vegetable.get_node("main_image").texture = $icon.texture
 						node_vegetable.z_index = 0
 						container.inserir(node_vegetable)
-												
+						print("POS: ", node_vegetable.global_position)
+						
 						Global.lista.append({
 							"type": "vegetable",
 							"node": "res://prefab/vegetable.tscn", 

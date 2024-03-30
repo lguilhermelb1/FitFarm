@@ -23,7 +23,7 @@ var inventory = [
 	
 	{
 		name = "Broccoli",
-		price = 30,
+		price = 30, # 30
 		payment="cristal",
 		scale=0.15,
 		icon_scale=0.85,		
@@ -32,7 +32,7 @@ var inventory = [
 	
 	{
 		name = "Carrot",
-		price = 20,
+		price = 0, # 20
 		payment="coin",
 		scale=1,		
 		icon_scale=0.85,
@@ -41,7 +41,7 @@ var inventory = [
 	
 	{
 		name = "Potato",
-		price = 0,
+		price = 0, # 20
 		payment="cristal",
 		scale=0.15,
 		icon_scale=0.85,		

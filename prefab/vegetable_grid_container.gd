@@ -1,6 +1,20 @@
 extends GridContainer
 class_name vegetables_grid
 
+@export var number_children = 12
+var control_name = null
+func _ready():
+	_novos_filhos()
+	print(name, " -> ", get_children())
+
+
+
+func _novos_filhos():
+	for x in range(number_children - len(get_children())):		
+		add_child(Control.new())
+
+
+
 func lotado():
 	for x in get_children():
 		if x.get_child_count() == 0:

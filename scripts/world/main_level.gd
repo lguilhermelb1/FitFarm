@@ -41,7 +41,6 @@ func _ready():
 	$camera/Control/label_cristais.text = "%08d" % Global.cristais
 	$camera/Control/label_moedas.text = "%08d" % Global.moedas
 	$celeiro.change_visibility()
-	print(get_tree().get_nodes_in_group("plantacao"))
 	player.follow_camera(camera) 
 	#update_values()
 	#_area_inserir()
@@ -68,8 +67,8 @@ func atualizar():
 				nodes_celeiro = get_node(str(x['name'])).retorno_objetos("celeiro")
 				get_node(str(x['name'])).remocao_valores(nodes_celeiro)
 				
-				nodes_plantacao = get_node(str(x['name'])).busca_valor("plantacao")
-				get_node(str(x['name'])).remocao_valor(nodes_plantacao)
+				nodes_plantacao = get_node(str(x['name'])).retorno_objetos("plantacao")
+				get_node(str(x['name'])).remocao_valores(nodes_plantacao)
 			
 				$mapa.modificar_celulas_posicoes(x['cords'][0], x['cords'][1])
 				get_node(str(x['name'])).queue_free()
