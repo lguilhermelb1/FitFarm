@@ -1,6 +1,6 @@
 extends Control
 
-var webApiKey = "AIzaSyCpyA9AMffZszLkUhiKPq7VoMFEq-syef4"
+var webApiKey = "AIzaSyDlw1EbW8GgrIHfGNl-jfugamFCyMGNSKk"
 var loginUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key="
 
 # Função login e sign up
@@ -16,12 +16,10 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 	
 	if response_code == 200:
 		var user_id = response.localId
-		Global.user_id = user_id		
-		print(response)
-		# Agora você pode usar o user_id para recuperar dados específicos do usuário no Firebase
+		Global.user_id = user_id
 		
 		# Construa o URL para recuperar dados do usuário
-		var url = "https://db-nutricamp-default-rtdb.firebaseio.com/usuarios/" + user_id + ".json"
+		var url = "https://fit-farm-db-default-rtdb.firebaseio.com/usuarios/" + user_id + ".json"
 		
 		# Crie uma instância de HTTPRequest
 		var request = HTTPRequest.new()
@@ -29,8 +27,6 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 		
 		# Configure a solicitação para recuperar dados do Firebase
 		request.request(url)
-		
-		print(result, " ; ", response_code, " ; ", headers)
 		
 		# Use uma função anônima para encapsular a chamada à sua função
 		var request_callback = func(result, response_code, headers, body):
@@ -56,6 +52,12 @@ func _on_request_user_data_completed(result, response_code, headers, body):
 		Global.pin = str(user["pin"])
 		Global.moedas = user["moedas"]
 		Global.cristais = user["cristais"]
+		if "lista" in user:
+			# Se estiver presente, atribui o valor de user["lista"] a Global.lista
+			Global.lista = user["lista"]
+		else:
+			# Se não estiver presente, atribui uma lista vazia a Global.lista
+			Global.lista = []
 		
 		print(Global.pin)
 		print(Global.moedas)

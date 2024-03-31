@@ -57,7 +57,7 @@ func get_cristals():
 
 
 func att_db():
-	var saveUserDataUrl = "https://db-nutricamp-default-rtdb.firebaseio.com/usuarios/" + user_id + "/" + user_key + ".json"
+	var saveUserDataUrl = "https://fit-farm-db-default-rtdb.firebaseio.com/usuarios/" + user_id + "/" + user_key + ".json"
 	var url = saveUserDataUrl
 	
 	# Solicitação para salvar dados no Realtime Database
