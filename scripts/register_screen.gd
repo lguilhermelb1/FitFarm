@@ -1,6 +1,6 @@
 extends Control
 
-var webApiKey = "AIzaSyCpyA9AMffZszLkUhiKPq7VoMFEq-syef4"
+var webApiKey = "AIzaSyDlw1EbW8GgrIHfGNl-jfugamFCyMGNSKk"
 var signUpUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key="
 
 func _signUp(url: String, email: String, password: String, pin: String):
@@ -33,14 +33,14 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 			$UsernameErrorMessage.text = "Credenciais incorretas."
 
 func save_user_data(user_id, pin):
-	var saveUserDataUrl = "https://db-nutricamp-default-rtdb.firebaseio.com/usuarios/" + user_id + ".json"
+	var saveUserDataUrl = "https://fit-farm-db-default-rtdb.firebaseio.com/usuarios/" + user_id + ".json"
 	var url = saveUserDataUrl
 	
 	# Solicitação para salvar dados no Realtime Database
 	var request = HTTPRequest.new()
 	add_child(request)
 	request.request_completed.connect(self._on_request_save_user_data_completed)
-	
+	print(request)
 	# Dados iniciais do usuário
 	var jsonObject = JSON.new()
 	var initial_data = jsonObject.stringify({

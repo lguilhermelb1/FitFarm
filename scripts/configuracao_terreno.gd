@@ -91,6 +91,7 @@ func _on_button_pressed():
 		}) 
 						
 		queue_free()
+		Global.att_db()
 		
 	elif file != null and (file.get_path().get_file().replace(".png","") == "cristal") \
 		and Global.cristais >= int(preco):
@@ -110,7 +111,8 @@ func _on_button_pressed():
 			"name": name, "cords": [top_left, bottom_right]
 		}) 
 				
-		queue_free()		
+		queue_free()	
+		Global.att_db()	
 	else:
 		$regiao_gamer/slot_terrain/Panel/insuficiente.visible=true
 		await(get_tree().create_timer(10).timeout)

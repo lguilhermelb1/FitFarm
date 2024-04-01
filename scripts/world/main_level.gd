@@ -42,7 +42,6 @@ func _ready():
 	$camera/Control/label_moedas.text = "%08d" % Global.moedas
 	$celeiro.change_visibility()
 	player.follow_camera(camera) 
-	#update_values()
 	#_area_inserir()
 
 
@@ -54,11 +53,6 @@ func _on_button_label_inventory_pressed():
 	if (get_tree().get_root().get_node("Dialog_Node") == null):
 		inv.visible = true
 
-
-func update_values():
-	$camera/Control/label_cristais.text = "%08d" % Global.cristais
-	$camera/Control/label_moedas.text = "%08d" % Global.moedas
-	
 	
 func atualizar():		
 	for x in Global.lista:
@@ -70,9 +64,26 @@ func atualizar():
 				nodes_plantacao = get_node(str(x['name'])).retorno_objetos("plantacao")
 				get_node(str(x['name'])).remocao_valores(nodes_plantacao)
 			
-				$mapa.modificar_celulas_posicoes(x['cords'][0], x['cords'][1])
+				var cords = x['cords']
+				# Verifica se a lista de coordenadas existe e tem pelo menos dois elementos
+				if cords and cords.size() >= 2:
+					# Processa a primeira string para obter os valores numéricos
+					var coords_1 = str(cords[0]).replace("(", "").replace(")", "").split(",")
+
+					# Processa a segunda string para obter os valores numéricos
+					var coords_2 = str(cords[1]).replace("(", "").replace(")", "").split(",")
+
+					# Cria os Vector2 com os valores obtidos
+					var vector2_cords_1 = Vector2(float(coords_1[0]), float(coords_1[1]))
+					var vector2_cords_2 = Vector2(float(coords_2[0]), float(coords_2[1]))
+
+					# Chama o método modificar_celulas_posicoes com os Vector2 criados
+					$mapa.modificar_celulas_posicoes(vector2_cords_1, vector2_cords_2)
+				else:
+					print("Erro: Lista de coordenadas ausente ou incompleta.")
+
 				get_node(str(x['name'])).queue_free()
-								
+			
 			elif x['type'] == "celeiro":
 				_buscar_celeiro(x['name']).change_visibility()
 			else:

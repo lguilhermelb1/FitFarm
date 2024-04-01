@@ -1,36 +1,35 @@
 extends Control
 
-var webApiKey = "AIzaSyCpyA9AMffZszLkUhiKPq7VoMFEq-syef4"
+var webApiKey = "AIzaSyDlw1EbW8GgrIHfGNl-jfugamFCyMGNSKk"
 var loginUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key="
 
 # Função login e sign up
 func _login(url: String, email: String, password: String):
 	var http = $HTTPRequest
 	var jsonObject = JSON.new()
-	var body = jsonObject.stringify({'email' : email, 'password' : password})
-	var headers = ['Content-Type: application/json']
+	var body = jsonObject.stringify({'email' : email, 'password' : password, "returnSecureToken": true})
+	var headers = ['Content-Type: application/json']	
 	var error = await http.request(url, headers, HTTPClient.METHOD_POST, body)
+
 
 func _on_http_request_request_completed(result, response_code, headers, body):
 	var response = JSON.parse_string(body.get_string_from_utf8())
-	
 	if response_code == 200:
 		var user_id = response.localId
 		Global.user_id = user_id		
-		print(response)
+		print(response, "\n\n\n", user_id, "\n\n")
 		# Agora você pode usar o user_id para recuperar dados específicos do usuário no Firebase
 		
 		# Construa o URL para recuperar dados do usuário
-		var url = "https://db-nutricamp-default-rtdb.firebaseio.com/usuarios/" + user_id + ".json"
-		
+		var url = "https://fit-farm-db-default-rtdb.firebaseio.com/usuarios/" + user_id + ".json"
+#
+
 		# Crie uma instância de HTTPRequest
 		var request = HTTPRequest.new()
 		add_child(request)
 		
 		# Configure a solicitação para recuperar dados do Firebase
 		request.request(url)
-		
-		print(result, " ; ", response_code, " ; ", headers)
 		
 		# Use uma função anônima para encapsular a chamada à sua função
 		var request_callback = func(result, response_code, headers, body):
@@ -43,7 +42,6 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 
 
 func _on_request_user_data_completed(result, response_code, headers, body):
-	print("RESULT: ", result)
 	if response_code == 200:
 		print("Dados do usuário salvos com sucesso!")
 		var user_data = JSON.parse_string(body.get_string_from_utf8())
