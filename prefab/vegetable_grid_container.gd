@@ -5,7 +5,6 @@ class_name vegetables_grid
 var control_name = null
 func _ready():
 	_novos_filhos()
-	print(name, " -> ", get_children())
 
 
 

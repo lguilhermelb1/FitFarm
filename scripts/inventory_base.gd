@@ -64,7 +64,8 @@ var inventory = [
 		scale=0.1,
 		icon_scale=0.11,
 		path = "res://assets/Objects/celeiro.png" 
-	}
+	},
+
 ]
 
 
@@ -72,10 +73,18 @@ func main_update():
 	for x in len(inventory):
 		_update_slot(x)
 	
-	if get_child_count() % 2 == 1 and get_child_count() > 2:
-		custom_minimum_size[1] = 50 * (get_child_count() - 2)
+	if get_child_count() <= 4:
+		custom_minimum_size[1] = 50
 	else:
-		custom_minimum_size[1] = 50 * (get_child_count()/2)
+		custom_minimum_size[1] = (68 + 35* ((get_child_count()/4)-1))
+
+
+	#if get_child_count() % 4 == 1 and get_child_count() > 4:
+	#	custom_minimum_size[1] = 68 * (get_child_count() - 4)
+	#else:
+		#custom_minimum_size[1] = (68 * (get_child_count()/4))
+	#	custom_minimum_size[1] = (68 + 30* ((get_child_count()/4)-1))
+
 
 func _update_slot(pos):
 	var slt = load("res://prefab/slot.tscn").instantiate()

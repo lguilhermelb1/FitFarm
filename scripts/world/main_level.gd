@@ -15,14 +15,12 @@ var nodes_plantacao = null
 
 # 640 x 320
 func _ready():	
-	print(get_tree().get_nodes_in_group("insercao_celeiro"))
 	$camera/Inventory/ScrollContainer/GridContainer.main_update()
 	inv.visible = false
 	
 	Global.setTransition($camera/transition)
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
 	atualizar()
-	print(get_node("Terreno_A_Comprar"))
 		
 	if Global.time_label == null:
 		Global.time_label = Label.new()
