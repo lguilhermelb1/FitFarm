@@ -9,39 +9,39 @@ z_index = 1
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
-offset_left = -82.0
-offset_top = -29.0
-offset_right = 107.0
-offset_bottom = 31.0
+offset_left = -90.0
+offset_top = -40.0
+offset_right = 111.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(98.5, 25)
-scale = Vector2(0.638889, 0.44898)
+position = Vector2(90, 42.5)
+scale = Vector2(0.829365, 0.619048)
 texture = ExtResource("1_fyy2n")
 
 [node name="exit_store_button" type="TouchScreenButton" parent="."]
 texture_filter = 1
-position = Vector2(165, -3)
-scale = Vector2(0.571428, 0.5)
+position = Vector2(174, 4)
+scale = Vector2(0.741, 0.648)
 texture_normal = ExtResource("4_yebsg")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(145, 45)
 layout_mode = 0
-offset_left = 27.0
-offset_top = 7.0
-offset_right = 172.0
-offset_bottom = 52.0
+offset_left = -6.0
+offset_top = 19.0
+offset_right = 185.0
+offset_bottom = 76.0
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 custom_minimum_size = Vector2(145, 50)
 layout_mode = 2
-theme_override_constants/h_separation = 65
-theme_override_constants/v_separation = 50
-columns = 2
+theme_override_constants/h_separation = 45
+theme_override_constants/v_separation = 35
+columns = 4
 script = ExtResource("3_xak58")
 
 [connection signal="pressed" from="exit_store_button" to="ScrollContainer/GridContainer" method="_on_exit_store_button_pressed"]
