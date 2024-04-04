@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxf1tkn5jih6v"]
 
-[ext_resource type="Texture2D" uid="uid://0wwy8yh8kota" path="res://assets/Tiny Wonder UI Free/background_label.png" id="1_j55tf"]
+[ext_resource type="Texture2D" uid="uid://c6y3dp6ax0ij4" path="res://assets/Tiny Wonder UI Free/background_menu.png" id="1_fyy2n"]
 [ext_resource type="Script" path="res://scripts/inventory_base.gd" id="3_xak58"]
 [ext_resource type="Texture2D" uid="uid://vn4uun7jc1pw" path="res://assets/Tiny Wonder UI Free/exit_icon.png" id="4_yebsg"]
 
@@ -18,14 +18,14 @@ size_flags_vertical = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(94.1303, 29.9301)
-scale = Vector2(4.46998, 2.14785)
-texture = ExtResource("1_j55tf")
+position = Vector2(98.5, 25)
+scale = Vector2(0.638889, 0.44898)
+texture = ExtResource("1_fyy2n")
 
 [node name="exit_store_button" type="TouchScreenButton" parent="."]
 texture_filter = 1
-position = Vector2(12, 13)
-scale = Vector2(0.75, 0.75)
+position = Vector2(165, -3)
+scale = Vector2(0.571428, 0.5)
 texture_normal = ExtResource("4_yebsg")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]

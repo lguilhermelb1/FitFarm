@@ -70,12 +70,13 @@ func atualizar():
 				
 				nodes_plantacao = get_node(str(x['name'])).retorno_objetos("plantacao")
 				get_node(str(x['name'])).remocao_valores(nodes_plantacao)
-				
+
 				var cords = x['cords']
 				# Verifica se a lista de coordenadas existe e tem pelo menos dois elementos
 				if cords and cords.size() >= 2:
 					# Processa a primeira string para obter os valores numéricos
 					var coords_1 = str(cords[0]).replace("(", "").replace(")", "").split(",")
+
 					var x_1 = float(coords_1[0])
 					var y_1 = float(coords_1[1])
 					
@@ -88,10 +89,11 @@ func atualizar():
 					var vector2_cords_1 = Vector2(x_1, y_1)
 					var vector2_cords_2 = Vector2(x_2, y_2)
 					
-					# Chama o método modificar_celulas_posicoes com os Vector2 criados
+          
 					$mapa.modificar_celulas_posicoes(vector2_cords_1, vector2_cords_2)
 				else:
 					print("Erro: Lista de coordenadas ausente ou incompleta.")
+
 				get_node(str(x['name'])).queue_free()
 			
 			elif x['type'] == "celeiro":

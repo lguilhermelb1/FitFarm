@@ -30,8 +30,6 @@ func _ready():
 	$Control/Tempo.editable=true
 	$Control/Button.disabled=false
 
-
-
 func _on_button_pressed():
 	
 	if Global.pin != $Control/PIN.text:
@@ -55,6 +53,4 @@ func _on_button_pressed():
 	if Global.pin == $Control/PIN.text and $Control/Tempo.text != "" \
 	and int($Control/Tempo.text) >= 20 and int($Control/Tempo.text) <= 120:
 		Global.setTransition($transition)
-		Global.atualizar_tempo_transicao(float(int($Control/Tempo.text) * 60))
-		print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
-		$transition.change_scene("res://scenes/mundo_01.tscn")
+		$transition.change_scene("res://scenes/lista_exercicios.tscn")
