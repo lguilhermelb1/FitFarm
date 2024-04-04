@@ -40,7 +40,7 @@ func save_user_data(user_id, pin):
 	var request = HTTPRequest.new()
 	add_child(request)
 	request.request_completed.connect(self._on_request_save_user_data_completed)
-	print(request)
+
 	# Dados iniciais do usuário
 	var jsonObject = JSON.new()
 	var initial_data = jsonObject.stringify({
