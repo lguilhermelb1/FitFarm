@@ -74,12 +74,12 @@ func atualizar():
 				# Verifica se a lista de coordenadas existe e tem pelo menos dois elementos
 				if cords and cords.size() >= 2:
 					# Processa a primeira string para obter os valores numéricos
-					var coords_1 = cords[0].replace("(", "").replace(")", "").split(",")
+					var coords_1 = str(cords[0]).replace("(", "").replace(")", "").split(",")
 					var x_1 = float(coords_1[0])
 					var y_1 = float(coords_1[1])
 					
 					# Processa a segunda string para obter os valores numéricos
-					var coords_2 = cords[1].replace("(", "").replace(")", "").split(",")
+					var coords_2 = str(cords[1]).replace("(", "").replace(")", "").split(",")
 					var x_2 = float(coords_2[0])
 					var y_2 = float(coords_2[1])
 					

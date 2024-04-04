@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://rlnbdfadq1ix" path="res://assets/Objects/Payment/cristal.png" id="15_f2jvs"]
 [ext_resource type="Texture2D" uid="uid://bssfrt54mea0f" path="res://assets/Objects/Payment/coin.png" id="16_gojqu"]
 [ext_resource type="PackedScene" uid="uid://bxf1tkn5jih6v" path="res://prefab/inventory.tscn" id="17_k4024"]
-[ext_resource type="Texture2D" uid="uid://dmitfr086kpej" path="res://assets/Objects/shopping_markt_cart.jpg" id="18_qvksg"]
+[ext_resource type="Texture2D" uid="uid://c70mg3b633jpj" path="res://assets/Tiny Wonder UI Free/shop_icon.png" id="19_ee3go"]
 [ext_resource type="PackedScene" uid="uid://ce0ht2e7r088u" path="res://prefab/vegetable_grid_container.tscn" id="20_jg8a1"]
 [ext_resource type="PackedScene" uid="uid://0mt1bonmj82a" path="res://actors/worker.tscn" id="21_41ij5"]
 [ext_resource type="PackedScene" uid="uid://dxc3fh8fct1iw" path="res://prefab/terreno_a_comprar.tscn" id="24_jpm8u"]
@@ -4975,9 +4975,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = -1.0
-offset_bottom = -4.0
+offset_top = -5.0
+offset_right = -5.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -5028,8 +5028,8 @@ texture = ExtResource("16_gojqu")
 
 [node name="button_label_inventory" type="TouchScreenButton" parent="camera/Control"]
 position = Vector2(87, -71)
-scale = Vector2(0.11, 0.11)
-texture_normal = ExtResource("18_qvksg")
+scale = Vector2(0.0972222, 0.0972222)
+texture_normal = ExtResource("19_ee3go")
 
 [node name="Inventory" parent="camera" instance=ExtResource("17_k4024")]
 offset_left = -80.0
@@ -5194,6 +5194,12 @@ preco = 3000.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 
+[node name="slot_terrain" parent="Terreno_A_Comprar12/regiao_gamer" index="0"]
+position = Vector2(85, -22)
+
+[node name="CollisionShape2D" parent="Terreno_A_Comprar12/regiao_gamer" index="1"]
+position = Vector2(160, 13)
+
 [node name="vegetable_grid_container4" parent="Terreno_A_Comprar12" instance=ExtResource("20_jg8a1")]
 offset_left = -168.0
 offset_top = -224.0
@@ -5206,27 +5212,12 @@ offset_top = -224.0
 offset_right = 98.0
 offset_bottom = -120.0
 
-[node name="slot_terrain" parent="Terreno_A_Comprar12/regiao_gamer" index="0"]
-position = Vector2(85, -22)
-
-[node name="CollisionShape2D" parent="Terreno_A_Comprar12/regiao_gamer" index="1"]
-position = Vector2(160, 13)
-
 [node name="Terreno_A_Comprar13" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
 position = Vector2(701, -341)
 map = NodePath("../mapa")
 tipo_pagamento = ExtResource("15_f2jvs")
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
-
-[node name="vegetable_grid_container2" parent="Terreno_A_Comprar13" instance=ExtResource("20_jg8a1")]
-offset_left = -151.0
-offset_top = -213.0
-offset_right = 66.0
-offset_bottom = -109.0
-theme_override_constants/h_separation = 31
-columns = 8
-number_children = 32
 
 [node name="slot_terrain" parent="Terreno_A_Comprar13/regiao_gamer" index="0"]
 position = Vector2(-45, 175)
@@ -5237,6 +5228,15 @@ position = Vector2(-5, 233)
 [node name="CollisionShape2D" parent="Terreno_A_Comprar13/regiao" index="0"]
 position = Vector2(60, -1.5)
 shape = SubResource("RectangleShape2D_7qosc")
+
+[node name="vegetable_grid_container2" parent="Terreno_A_Comprar13" instance=ExtResource("20_jg8a1")]
+offset_left = -151.0
+offset_top = -213.0
+offset_right = 66.0
+offset_bottom = -109.0
+theme_override_constants/h_separation = 31
+columns = 8
+number_children = 32
 
 [node name="Terreno_A_Comprar14" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
 position = Vector2(150, -341)
@@ -5266,15 +5266,6 @@ tipo_pagamento = ExtResource("15_f2jvs")
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 
-[node name="vegetable_grid_container3" parent="Terreno_A_Comprar15" instance=ExtResource("20_jg8a1")]
-offset_left = -151.0
-offset_top = 81.0
-offset_right = 66.0
-offset_bottom = 185.0
-theme_override_constants/h_separation = 31
-columns = 8
-number_children = 32
-
 [node name="slot_terrain" parent="Terreno_A_Comprar15/regiao_gamer" index="0"]
 position = Vector2(70, -260)
 
@@ -5284,6 +5275,15 @@ position = Vector2(120, -240)
 [node name="CollisionShape2D" parent="Terreno_A_Comprar15/regiao" index="0"]
 position = Vector2(60, -1.5)
 shape = SubResource("RectangleShape2D_7qosc")
+
+[node name="vegetable_grid_container3" parent="Terreno_A_Comprar15" instance=ExtResource("20_jg8a1")]
+offset_left = -151.0
+offset_top = 81.0
+offset_right = 66.0
+offset_bottom = 185.0
+theme_override_constants/h_separation = 31
+columns = 8
+number_children = 32
 
 [node name="Terreno_A_Comprar16" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
 position = Vector2(150, 714)
