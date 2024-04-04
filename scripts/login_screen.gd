@@ -7,20 +7,31 @@ var loginUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPas
 func _login(url: String, email: String, password: String):
 	var http = $HTTPRequest
 	var jsonObject = JSON.new()
-	var body = jsonObject.stringify({'email' : email, 'password' : password})
-	var headers = ['Content-Type: application/json']
+	var body = jsonObject.stringify({'email' : email, 'password' : password, "returnSecureToken": true})
+	var headers = ['Content-Type: application/json']	
 	var error = await http.request(url, headers, HTTPClient.METHOD_POST, body)
+
 
 func _on_http_request_request_completed(result, response_code, headers, body):
 	var response = JSON.parse_string(body.get_string_from_utf8())
-	
 	if response_code == 200:
 		var user_id = response.localId
+<<<<<<< HEAD
 		Global.user_id = user_id
 		
 		# Construa o URL para recuperar dados do usuário
 		var url = "https://fit-farm-db-default-rtdb.firebaseio.com/usuarios/" + user_id + ".json"
 		
+=======
+		Global.user_id = user_id		
+		print(response, "\n\n\n", user_id, "\n\n")
+		# Agora você pode usar o user_id para recuperar dados específicos do usuário no Firebase
+		
+		# Construa o URL para recuperar dados do usuário
+		var url = "https://fit-farm-db-default-rtdb.firebaseio.com/usuarios/" + user_id + ".json"
+#
+
+>>>>>>> master
 		# Crie uma instância de HTTPRequest
 		var request = HTTPRequest.new()
 		add_child(request)
@@ -39,7 +50,6 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 
 
 func _on_request_user_data_completed(result, response_code, headers, body):
-	print("RESULT: ", result)
 	if response_code == 200:
 		print("Dados do usuário salvos com sucesso!")
 		var user_data = JSON.parse_string(body.get_string_from_utf8())
