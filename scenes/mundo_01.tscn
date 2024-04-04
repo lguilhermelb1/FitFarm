@@ -5027,7 +5027,7 @@ scale = Vector2(2.33333, 2.125)
 texture = ExtResource("16_gojqu")
 
 [node name="button_label_inventory" type="TouchScreenButton" parent="camera/Control"]
-position = Vector2(87, -71)
+position = Vector2(100, -79)
 scale = Vector2(0.0972222, 0.0972222)
 texture_normal = ExtResource("19_ee3go")
 

@@ -111,24 +111,9 @@ func _on_button_pressed():
 			"name": name, "cords": [top_left, bottom_right]
 		}) 
 				
-<<<<<<< HEAD
-<<<<<<< HEAD
-		queue_free()
-		Global.att_db()
-=======
-<<<<<<< HEAD
-		queue_free()
-		Global.att_db()
-=======
-		queue_free()	
-		Global.att_db()	
->>>>>>> master
->>>>>>> lista-exercicio
-=======
 		queue_free()
 		Global.att_db()
 
->>>>>>> a951a2714816b15e35aee13f2af8549b477701f6
 	else:
 		$regiao_gamer/slot_terrain/Panel/insuficiente.visible=true
 		await(get_tree().create_timer(10).timeout)
