@@ -16,6 +16,7 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 	
 	if response_code == 200:
 		var user_id = response.localId
+
 		Global.user_id = user_id
 		
 		# Construa o URL para recuperar dados do usuário
