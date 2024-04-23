@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc30db8esota4"]
+
+[ext_resource type="Script" path="res://scenes/final_credits/final_credits.gd" id="1_m062j"]
+[ext_resource type="Texture2D" uid="uid://btychgvton2et" path="res://assets_v2/UI/fit _farm_logo.png" id="2_dbcp0"]
+[ext_resource type="Texture2D" uid="uid://coubn4asnuqum" path="res://assets_v2/UI/ui_background.png" id="2_uk22k"]
+
+[node name="FinalCredits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m062j")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 242.0
+grow_vertical = 2
+texture = ExtResource("2_uk22k")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Logo" type="TextureRect" parent="Panel/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dbcp0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -398.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Credits" type="Label" parent="Panel/ColorRect"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -398.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Esses são os créditos do Jogo FitFarm
+Programadores
+Ingrid Moreira
+Luís Guilherme
+Rodrigo Pinto
+
+UXDesigner
+Ísis Benatti"
+horizontal_alignment = 1
+vertical_alignment = 1
