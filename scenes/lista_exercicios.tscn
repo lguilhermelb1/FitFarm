@@ -42,15 +42,15 @@ _data = {
 [node name="lista_exercicios" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 635.0
-offset_bottom = 322.0
+offset_right = 640.0
+offset_bottom = 320.0
 script = ExtResource("1_74aog")
 
 [node name="transition" type="Control" parent="."]
 z_index = 4
 layout_mode = 3
 anchors_preset = 0
-offset_right = 641.0
+offset_right = 640.0
 offset_bottom = 320.0
 script = ExtResource("2_jp237")
 
