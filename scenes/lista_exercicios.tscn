@@ -61,10 +61,9 @@ anchors_preset = -1
 anchor_left = 0.501
 anchor_right = 1.501
 anchor_bottom = 1.5
-offset_left = -319.141
-offset_top = -1.0
-offset_right = -319.141
-offset_bottom = -164.0
+offset_left = -320.64
+offset_right = -320.64
+offset_bottom = -160.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -76,9 +75,9 @@ libraries = {
 
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 254.0
+offset_left = 272.0
 offset_top = 158.0
-offset_right = 333.0
+offset_right = 351.0
 offset_bottom = 199.0
 text = "Iniciar"
 
