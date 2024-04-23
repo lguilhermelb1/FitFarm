@@ -1,17 +1,85 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3qwu562uc5qa"]
+[gd_scene load_steps=6 format=3 uid="uid://bkhnxby3t8wc4"]
 
 [ext_resource type="Script" path="res://scripts/lista_exercicios.gd" id="1_74aog"]
+[ext_resource type="Script" path="res://scripts/transition.gd" id="2_jp237"]
+
+[sub_resource type="Animation" id="Animation_ijdqq"]
+resource_name = "fade_in"
+length = 1.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.3)
+}
+
+[sub_resource type="Animation" id="Animation_lktg8"]
+resource_name = "fade_out"
+length = 1.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wcsjq"]
+_data = {
+"fade_in": SubResource("Animation_ijdqq"),
+"fade_out": SubResource("Animation_lktg8")
+}
 
 [node name="lista_exercicios" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 321.0
+offset_right = 635.0
+offset_bottom = 322.0
 script = ExtResource("1_74aog")
+
+[node name="transition" type="Control" parent="."]
+z_index = 4
+layout_mode = 3
+anchors_preset = 0
+offset_right = 641.0
+offset_bottom = 320.0
+script = ExtResource("2_jp237")
+
+[node name="ColorRect" type="ColorRect" parent="transition"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.501
+anchor_right = 1.501
+anchor_bottom = 1.5
+offset_left = -319.141
+offset_top = -1.0
+offset_right = -319.141
+offset_bottom = -164.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="animation" type="AnimationPlayer" parent="transition"]
+libraries = {
+"": SubResource("AnimationLibrary_wcsjq")
+}
 
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 254.0
+offset_top = 158.0
+offset_right = 333.0
+offset_bottom = 199.0
+text = "Iniciar"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

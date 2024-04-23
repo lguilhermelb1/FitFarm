@@ -44,7 +44,7 @@ func _on_request_user_data_completed(result, response_code, headers, body):
 	if response_code == 200:
 		print("Dados do usuário salvos com sucesso!")
 		var user_data = JSON.parse_string(body.get_string_from_utf8())
-		
+		print("VALORES: ", user_data)
 		var key = user_data.keys()[0]
 		Global.user_key = key
 		var user = user_data[key]
