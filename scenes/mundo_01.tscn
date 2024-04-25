@@ -5054,7 +5054,8 @@ position = Vector2(330, 200)
 [node name="Terreno_A_Comprar" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
 position = Vector2(1219, 185)
 map = NodePath("../mapa")
-tipo_pagamento = ExtResource("16_gojqu")
+tipo_pagamento = ExtResource("15_f2jvs")
+preco = 1500.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 
@@ -5065,7 +5066,7 @@ position = Vector2(-96, 15)
 position = Vector2(1620, 185)
 map = NodePath("../mapa")
 tipo_pagamento = ExtResource("16_gojqu")
-preco = 3000.0
+preco = 500.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 
@@ -5073,15 +5074,15 @@ label_cristais = NodePath("../camera/Control/label_cristais")
 position = Vector2(1219, 711)
 map = NodePath("../mapa")
 tipo_pagamento = ExtResource("16_gojqu")
-preco = 3000.0
+preco = 500.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 
 [node name="Terreno_A_Comprar4" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
 position = Vector2(1620, 711)
 map = NodePath("../mapa")
-tipo_pagamento = ExtResource("16_gojqu")
-preco = 3000.0
+tipo_pagamento = ExtResource("15_f2jvs")
+preco = 1500.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 
@@ -5091,8 +5092,8 @@ position = Vector2(-90, 3)
 [node name="Terreno_A_Comprar5" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
 position = Vector2(1219, -345)
 map = NodePath("../mapa")
-tipo_pagamento = ExtResource("16_gojqu")
-preco = 3000.0
+tipo_pagamento = ExtResource("15_f2jvs")
+preco = 1500.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 
@@ -5100,7 +5101,7 @@ label_cristais = NodePath("../camera/Control/label_cristais")
 position = Vector2(1620, -345)
 map = NodePath("../mapa")
 tipo_pagamento = ExtResource("16_gojqu")
-preco = 3000.0
+preco = 1500.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 
@@ -5113,8 +5114,8 @@ offset_bottom = -27.0
 [node name="Terreno_A_Comprar7" parent="." node_paths=PackedStringArray("map", "label_moedas", "label_cristais") instance=ExtResource("24_jpm8u")]
 position = Vector2(-676, 184)
 map = NodePath("../mapa")
-tipo_pagamento = ExtResource("16_gojqu")
-preco = 3000.0
+tipo_pagamento = ExtResource("15_f2jvs")
+preco = 1500.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 
@@ -5131,7 +5132,7 @@ position = Vector2(-156, 27)
 position = Vector2(-676, 710)
 map = NodePath("../mapa")
 tipo_pagamento = ExtResource("16_gojqu")
-preco = 3000.0
+preco = 500.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 
@@ -5145,7 +5146,7 @@ position = Vector2(160, 13)
 position = Vector2(-676, -346)
 map = NodePath("../mapa")
 tipo_pagamento = ExtResource("16_gojqu")
-preco = 3000.0
+preco = 500.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 
@@ -5162,7 +5163,7 @@ position = Vector2(1781, -177)
 position = Vector2(-278, 187)
 map = NodePath("../mapa")
 tipo_pagamento = ExtResource("16_gojqu")
-preco = 3000.0
+preco = 500.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 
@@ -5176,7 +5177,7 @@ position = Vector2(160, 13)
 position = Vector2(-278, -346)
 map = NodePath("../mapa")
 tipo_pagamento = ExtResource("16_gojqu")
-preco = 3000.0
+preco = 500.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 
@@ -5190,7 +5191,7 @@ position = Vector2(160, 13)
 position = Vector2(-278, 711)
 map = NodePath("../mapa")
 tipo_pagamento = ExtResource("16_gojqu")
-preco = 3000.0
+preco = 1500.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 
@@ -5216,6 +5217,7 @@ offset_bottom = -120.0
 position = Vector2(701, -341)
 map = NodePath("../mapa")
 tipo_pagamento = ExtResource("15_f2jvs")
+preco = 10000.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 
@@ -5242,7 +5244,7 @@ number_children = 32
 position = Vector2(150, -341)
 map = NodePath("../mapa")
 tipo_pagamento = ExtResource("15_f2jvs")
-preco = 30000.0
+preco = 10000.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 
@@ -5263,6 +5265,7 @@ position = Vector2(-26, -203)
 position = Vector2(701, 715)
 map = NodePath("../mapa")
 tipo_pagamento = ExtResource("15_f2jvs")
+preco = 10000.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 
@@ -5289,7 +5292,7 @@ number_children = 32
 position = Vector2(150, 714)
 map = NodePath("../mapa")
 tipo_pagamento = ExtResource("15_f2jvs")
-preco = 30000.0
+preco = 10000.0
 label_moedas = NodePath("../camera/Control/label_moedas")
 label_cristais = NodePath("../camera/Control/label_cristais")
 

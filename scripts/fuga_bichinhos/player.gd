@@ -22,7 +22,7 @@ const SPEED = 130.0
 var animal = null
 var direction
 var scores
-var cristais = 0
+var moedas = 0
 var lt = []
 
 func _ready():
@@ -143,14 +143,14 @@ func ganhar_pontos():
 	
 	if scores % 200 == 0:
 		cristal_score_anim.play("fade_in")
-		cristais += 50
-		Global.cristais += 50
+		moedas += 50
+		Global.moedas += 50
 		cristals_sound.play()
 	else:
 		points_sound.play()		
 	
-	cronometro.set_scores(scores, cristais)
+	cronometro.set_scores(scores, moedas)
 	pontuacao.text = "%08d" % scores
 
 func progresso_perdido():
-	Global.cristais -= cristais
+	Global.moedas -= moedas

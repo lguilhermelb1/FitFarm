@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4qx728klsocd"]
 
-[ext_resource type="Texture2D" uid="uid://rlnbdfadq1ix" path="res://assets/Objects/Payment/cristal.png" id="1_7j05v"]
+[ext_resource type="Texture2D" uid="uid://bssfrt54mea0f" path="res://assets/Objects/Payment/coin.png" id="1_kln8l"]
 
 [sub_resource type="Animation" id="Animation_a7y33"]
 resource_name = "fade_in"
@@ -47,7 +47,7 @@ texture_filter = 1
 offset_left = 5.0
 offset_top = -38.0
 offset_right = 36.0
-texture = ExtResource("1_7j05v")
+texture = ExtResource("1_kln8l")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 

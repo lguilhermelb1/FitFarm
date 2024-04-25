@@ -32,20 +32,24 @@ func _ready():
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
 	print(Global.time_label)
 
-
+	Global.setTransition(transition)
+	
 	if Global.time_label == null:
 		Global.createTimeLabel()
 	
-	Global.setTransition(transition)
 	print(Global.time_label)
 		
+	Global.tempo_final.start()
+	print(Global.time_label)	
+	
 	Global.time_label.position = Vector2(170,30)
 	Global.time_label.scale = Vector2(1.3, 1.3)
 	Global.setLabelTime()
 	print(Global.time_label.get_theme_font("empty"))
-		
-	$UILayer/HUD.add_child(Global.time_label)
 	Global.tempo_final.start()
+			
+	$UILayer/HUD.add_child(Global.time_label)
+
 	print("Started")
 	
 	var save_file = FileAccess.open('user://save.data', FileAccess.READ)
@@ -105,13 +109,9 @@ func _on_bug_died(points):
 	score += points
 	
 	if score % 150 == 0:
-		cr += 20
-		Global.cristais += 20
-		player.set_cristal_score_label(20)
-	elif score % 500 == 0:
-		cr += 50
-		Global.cristais += 50
-		player.set_cristal_score_label(50)
+		cr += 40
+		Global.moedas += 40
+		player.set_cristal_score_label(40)
 	
 	if score > high_score:
 		high_score = score
@@ -127,7 +127,7 @@ func _on_player_died():
 
 
 func progresso_perdido():
-	Global.cristais -= cr
+	Global.moedas -= cr
 
 
 func _on_touch_screen_button_pressed():
