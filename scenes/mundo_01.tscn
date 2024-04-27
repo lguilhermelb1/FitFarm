@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b0u4km5xpvt4h"]
+[gd_scene load_steps=43 format=3 uid="uid://b0u4km5xpvt4h"]
 
 [ext_resource type="Script" path="res://scripts/world/main_level.gd" id="1_8so22"]
 [ext_resource type="Texture2D" uid="uid://cxoxw8t3xgbkh" path="res://assets/Tilesets/spring farm tilemap.png" id="2_fqkhm"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bxf1tkn5jih6v" path="res://prefab/inventory.tscn" id="17_k4024"]
 [ext_resource type="Texture2D" uid="uid://c70mg3b633jpj" path="res://assets/Tiny Wonder UI Free/shop_icon.png" id="19_ee3go"]
 [ext_resource type="PackedScene" uid="uid://ce0ht2e7r088u" path="res://prefab/vegetable_grid_container.tscn" id="20_jg8a1"]
+[ext_resource type="Texture2D" uid="uid://drjle1rwmxi5s" path="res://assets/Controls/pause.png" id="20_kdw1u"]
 [ext_resource type="PackedScene" uid="uid://0mt1bonmj82a" path="res://actors/worker.tscn" id="21_41ij5"]
 [ext_resource type="PackedScene" uid="uid://dxc3fh8fct1iw" path="res://prefab/terreno_a_comprar.tscn" id="24_jpm8u"]
 
@@ -5031,6 +5032,11 @@ position = Vector2(100, -79)
 scale = Vector2(0.0972222, 0.0972222)
 texture_normal = ExtResource("19_ee3go")
 
+[node name="button_label_pause" type="TouchScreenButton" parent="camera/Control"]
+position = Vector2(138, -71)
+scale = Vector2(0.0332032, 0.0332032)
+texture_normal = ExtResource("20_kdw1u")
+
 [node name="Inventory" parent="camera" instance=ExtResource("17_k4024")]
 offset_left = -80.0
 offset_top = -37.0
@@ -5319,6 +5325,7 @@ position = Vector2(732, -27)
 position = Vector2(737, 209)
 
 [connection signal="pressed" from="camera/Control/button_label_inventory" to="." method="_on_button_label_inventory_pressed"]
+[connection signal="pressed" from="camera/Control/button_label_pause" to="." method="_on_button_label_pause_pressed"]
 
 [editable path="Terreno_A_Comprar7"]
 [editable path="Terreno_A_Comprar7/regiao_gamer/slot_terrain"]

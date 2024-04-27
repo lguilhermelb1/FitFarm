@@ -46,7 +46,8 @@ func save_user_data(user_id, pin):
 	var initial_data = jsonObject.stringify({
 		"pin": pin,
 		"moedas": 0,  # Valor inicial para moedas (ajuste conforme necessário)
-		"cristais": 0  # Valor inicial para cristais (ajuste conforme necessário)
+		"cristais": 0,  # Valor inicial para cristais (ajuste conforme necessário)
+		"primeiro": true
 	})
 
 	var headers = ['Content-Type: application/json']

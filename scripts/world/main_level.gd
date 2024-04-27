@@ -112,8 +112,6 @@ func atualizar():
 					nd.set_current_timer(x['current_time'])		
 					nd.set_status(x['status'])			
 					self.get_node(str(x['parent'])).inserir(nd)
-	
-	Global.att_db()		
 
 
 func _buscar_celeiro(name:String):
@@ -129,3 +127,15 @@ func _buscar_celeiro(name:String):
 #		$camera/tempo_final/label_tempo_final.text = "%02d : %02d" % \
 #		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
 #		Global.tempo_final.wait_time = Global.tempo_final.time_left
+
+var paused = false
+func _on_button_label_pause_pressed():
+	Global.att_db()
+	if !paused:
+		paused = true
+		Global.tempo_final.stop()
+		get_tree().paused = paused
+	else:
+		paused = false
+		Global.tempo_final.start()
+		get_tree().paused = paused

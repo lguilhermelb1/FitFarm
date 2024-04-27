@@ -28,9 +28,6 @@ var cr = 0
 func _ready():
 	get_tree().paused = false
 	get_window().size = Vector2(515, 650)
-	
-	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
-	print(Global.time_label)
 
 	Global.setTransition(transition)
 	
@@ -38,9 +35,8 @@ func _ready():
 		Global.createTimeLabel()
 	
 	print(Global.time_label)
-		
 	Global.tempo_final.start()
-	print(Global.time_label)	
+	print("TEMPO FINAL: ", Global.time_label)	
 	
 	Global.time_label.position = Vector2(170,30)
 	Global.time_label.scale = Vector2(1.3, 1.3)
@@ -87,7 +83,6 @@ func _process(_delta):
 		timer.wait_time -= _delta * 0.005
 	elif timer.wait_time < 0.5:
 		timer.wait_time = 0.5
-	
 
 func _on_player_spray_shot(shoot_scene, location):
 	var shoot = shoot_scene.instantiate()

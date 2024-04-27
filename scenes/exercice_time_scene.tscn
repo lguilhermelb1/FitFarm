@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1xcintysbmv4"]
+[gd_scene load_steps=11 format=3 uid="uid://d1xcintysbmv4"]
 
 [ext_resource type="Script" path="res://scripts/transition.gd" id="1_h5r45"]
 [ext_resource type="Script" path="res://scripts/exercice_time_scene.gd" id="1_vibgd"]
 [ext_resource type="Texture2D" uid="uid://d0dpnjr05s5ov" path="res://assets/Bug_Invaders_Assets/Background.png" id="3_p10q4"]
-[ext_resource type="Script" path="res://scripts/random_images.gd" id="4_qrmvq"]
 
 [sub_resource type="Animation" id="Animation_ijdqq"]
 resource_name = "fade_in"
@@ -189,32 +188,10 @@ texture = ExtResource("3_p10q4")
 modulate = Color(1, 1, 1, 0)
 offset_left = 300.0
 offset_top = 10.0
-offset_right = 459.0
+offset_right = 461.0
 offset_bottom = 36.0
-scale = Vector2(1.5, 1.5)
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 text = "HORA DO EXERCÍCIO"
-
-[node name="exercice_image" type="Sprite2D" parent="."]
-position = Vector2(305, 89)
-scale = Vector2(1.27684, 0.891304)
-script = ExtResource("4_qrmvq")
-
-[node name="tente novamente" type="Button" parent="exercice_image"]
-offset_left = 64.2212
-offset_top = -14.5854
-offset_right = 163.221
-offset_bottom = 16.4146
-text = "Novamente"
-
-[node name="info" type="Label" parent="exercice_image"]
-modulate = Color(0.635294, 1, 0.180392, 1)
-offset_left = 63.4378
-offset_top = -37.0244
-offset_right = 268.438
-offset_bottom = -11.0244
-scale = Vector2(0.7, 0.7)
-text = "peça ajuda ao responsável"
 
 [node name="animation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -226,8 +203,8 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = 241.0
 offset_top = 189.0
-offset_right = 281.0
-offset_bottom = 229.0
+offset_right = 402.0
+offset_bottom = 189.0
 
 [node name="PIN" type="TextEdit" parent="Control"]
 modulate = Color(1, 1, 1, 0)
@@ -277,5 +254,20 @@ offset_right = 264.0
 offset_bottom = 65.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 
-[connection signal="pressed" from="exercice_image/tente novamente" to="exercice_image" method="_on_tente_novamente_pressed"]
+[node name="ItemList" type="ItemList" parent="."]
+offset_left = 126.0
+offset_top = 49.0
+offset_right = 553.0
+offset_bottom = 168.0
+item_count = 9
+item_0/text = "Ex 1"
+item_1/text = "Ex 2"
+item_2/text = "Ex 3"
+item_3/text = "Ex 4"
+item_4/text = "Ex 5"
+item_5/text = "Ex 6"
+item_6/text = "Ex 7"
+item_7/text = "Ex 8"
+item_8/text = "Ex 9"
+
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
