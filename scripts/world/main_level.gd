@@ -121,4 +121,6 @@ func _buscar_celeiro(name:String):
 #		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
 #		Global.tempo_final.wait_time = Global.tempo_final.time_left
 
-
+func _on_button_label_inventory_pressed():
+	if (get_tree().get_root().get_node("Dialog_Node") == null):
+		$camera/Inventory.visible = true

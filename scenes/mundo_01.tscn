@@ -4995,7 +4995,6 @@ libraries = {
 z_index = 2
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("17_s2glo")
 
 [node name="label_cristais" type="Label" parent="camera/Control"]
 layout_mode = 0
@@ -5034,8 +5033,17 @@ position = Vector2(100, -79)
 scale = Vector2(0.0972222, 0.0972222)
 texture_normal = ExtResource("19_ee3go")
 
-[node name="button_label_pause" type="TouchScreenButton" parent="camera/Control"]
-position = Vector2(138, -71)
+[node name="Button_Control" type="Control" parent="camera"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -323.0
+offset_top = -164.0
+offset_right = 321.0
+offset_bottom = 157.0
+script = ExtResource("17_s2glo")
+
+[node name="button_label_pause" type="TouchScreenButton" parent="camera/Button_Control"]
+position = Vector2(461, 93)
 scale = Vector2(0.0332032, 0.0332032)
 texture_normal = ExtResource("20_kdw1u")
 
@@ -5326,8 +5334,8 @@ position = Vector2(732, -27)
 [node name="celeiro3" parent="." instance=ExtResource("14_xgvew")]
 position = Vector2(737, 209)
 
-[connection signal="pressed" from="camera/Control/button_label_inventory" to="camera/Control" method="_on_button_label_inventory_pressed"]
-[connection signal="pressed" from="camera/Control/button_label_pause" to="camera/Control" method="_on_button_label_pause_pressed"]
+[connection signal="pressed" from="camera/Control/button_label_inventory" to="." method="_on_button_label_inventory_pressed"]
+[connection signal="pressed" from="camera/Button_Control/button_label_pause" to="camera/Button_Control" method="_on_button_label_pause_pressed"]
 
 [editable path="Terreno_A_Comprar7"]
 [editable path="Terreno_A_Comprar7/regiao_gamer/slot_terrain"]
