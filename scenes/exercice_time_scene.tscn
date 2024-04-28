@@ -55,7 +55,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-90, -10), Vector2(-90, -55)]
+"values": [Vector2(-90, -10), Vector2(-90, -43)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -67,7 +67,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(13, 45), Vector2(13, 65)]
+"values": [Vector2(13, 45), Vector2(13, 85)]
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -101,7 +101,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-90, 15), Vector2(-90, 8)]
+"values": [Vector2(-90, 15), Vector2(-90, 17)]
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
@@ -126,7 +126,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(300, -0.25, 0, 0.25, 0, 190, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(400, -0.25, 0, 0.25, 0, 250, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.8)
 }
 tracks/1/type = "bezier"
@@ -186,9 +186,9 @@ texture = ExtResource("3_p10q4")
 
 [node name="exercice_label" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_left = 300.0
+offset_left = 400.0
 offset_top = 10.0
-offset_right = 461.0
+offset_right = 561.0
 offset_bottom = 36.0
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 text = "HORA DO EXERCÍCIO"
@@ -213,7 +213,7 @@ layout_mode = 0
 offset_left = -90.0
 offset_top = -10.0
 offset_right = 265.0
-offset_bottom = 19.0
+offset_bottom = 20.0
 placeholder_text = "PIN"
 editable = false
 
@@ -229,11 +229,12 @@ text = "Voltar ao Jogo"
 
 [node name="Error_message" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = -87.0
-offset_top = -25.0
-offset_right = 261.0
-offset_bottom = 1.0
+offset_left = -90.0
+offset_top = -13.0
+offset_right = 264.0
+offset_bottom = 13.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "Mens1"
 
 [node name="Tempo" type="TextEdit" parent="Control"]
 modulate = Color(1, 1, 1, 0)
@@ -242,23 +243,24 @@ layout_mode = 0
 offset_left = -90.0
 offset_top = 15.0
 offset_right = 265.0
-offset_bottom = 44.9998
+offset_bottom = 44.9996
 placeholder_text = "Tempo"
 editable = false
 
 [node name="Error_Time_Message" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = -91.0
-offset_top = 39.0
-offset_right = 264.0
-offset_bottom = 65.0
+offset_left = -90.0
+offset_top = 49.0
+offset_right = 265.0
+offset_bottom = 75.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "Mens2"
 
 [node name="ItemList" type="ItemList" parent="."]
 offset_left = 126.0
 offset_top = 49.0
 offset_right = 553.0
-offset_bottom = 168.0
+offset_bottom = 135.0
 item_count = 9
 item_0/text = "Ex 1"
 item_1/text = "Ex 2"

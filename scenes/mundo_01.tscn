@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b0u4km5xpvt4h"]
+[gd_scene load_steps=44 format=3 uid="uid://b0u4km5xpvt4h"]
 
 [ext_resource type="Script" path="res://scripts/world/main_level.gd" id="1_8so22"]
 [ext_resource type="Texture2D" uid="uid://cxoxw8t3xgbkh" path="res://assets/Tilesets/spring farm tilemap.png" id="2_fqkhm"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://rlnbdfadq1ix" path="res://assets/Objects/Payment/cristal.png" id="15_f2jvs"]
 [ext_resource type="Texture2D" uid="uid://bssfrt54mea0f" path="res://assets/Objects/Payment/coin.png" id="16_gojqu"]
 [ext_resource type="PackedScene" uid="uid://bxf1tkn5jih6v" path="res://prefab/inventory.tscn" id="17_k4024"]
+[ext_resource type="Script" path="res://scripts/main_labels.gd" id="17_s2glo"]
 [ext_resource type="Texture2D" uid="uid://c70mg3b633jpj" path="res://assets/Tiny Wonder UI Free/shop_icon.png" id="19_ee3go"]
 [ext_resource type="PackedScene" uid="uid://ce0ht2e7r088u" path="res://prefab/vegetable_grid_container.tscn" id="20_jg8a1"]
 [ext_resource type="Texture2D" uid="uid://drjle1rwmxi5s" path="res://assets/Controls/pause.png" id="20_kdw1u"]
@@ -4994,6 +4995,7 @@ libraries = {
 z_index = 2
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("17_s2glo")
 
 [node name="label_cristais" type="Label" parent="camera/Control"]
 layout_mode = 0
@@ -5324,8 +5326,8 @@ position = Vector2(732, -27)
 [node name="celeiro3" parent="." instance=ExtResource("14_xgvew")]
 position = Vector2(737, 209)
 
-[connection signal="pressed" from="camera/Control/button_label_inventory" to="." method="_on_button_label_inventory_pressed"]
-[connection signal="pressed" from="camera/Control/button_label_pause" to="." method="_on_button_label_pause_pressed"]
+[connection signal="pressed" from="camera/Control/button_label_inventory" to="camera/Control" method="_on_button_label_inventory_pressed"]
+[connection signal="pressed" from="camera/Control/button_label_pause" to="camera/Control" method="_on_button_label_pause_pressed"]
 
 [editable path="Terreno_A_Comprar7"]
 [editable path="Terreno_A_Comprar7/regiao_gamer/slot_terrain"]
