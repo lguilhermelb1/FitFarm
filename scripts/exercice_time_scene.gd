@@ -17,7 +17,6 @@ func _ready():
 	$Control/Error_Time_Message.visible=false
 	$Control/Error_Time_Message.text=""
 	
-	
 	await($animation.is_playing() == false)
 	
 	if name == 'Scene_SetTime':
@@ -30,10 +29,6 @@ func _ready():
 	$Control/PIN.editable=true
 	$Control/Tempo.editable=true
 	$Control/Button.disabled=false
-
-	print("Pin: ",$Control/PIN.editable, "\nTempo: ", $Control/Tempo.editable)
-	print("BUTTON_DISABLES: ", $Control/Button.disabled)
-	#$Control/Button.disabled=false
 
 
 func _on_button_pressed():
