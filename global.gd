@@ -18,7 +18,8 @@ var time_label: Label
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	tempo_final = Timer.new()
-	tempo_final.wait_time = 300
+	#tempo_final.wait_time = 300
+	tempo_final.wait_time = 60
 	createTimeLabel()
 	self.time_label.process_mode = Node.PROCESS_MODE_ALWAYS
 	
