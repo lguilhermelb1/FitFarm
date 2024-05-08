@@ -44,7 +44,7 @@ func _on_request_user_data_completed(result, response_code, headers, body):
 	if response_code == 200:
 		print("Dados do usuário salvos com sucesso!")
 		var user_data = JSON.parse_string(body.get_string_from_utf8())
-		
+		print("VALORES: ", user_data)
 		var key = user_data.keys()[0]
 		Global.user_key = key
 		var user = user_data[key]
@@ -53,6 +53,7 @@ func _on_request_user_data_completed(result, response_code, headers, body):
 		Global.pin = str(user["pin"])
 		Global.moedas = user["moedas"]
 		Global.cristais = user["cristais"]
+		Global.primeiro = user["primeiro"]
 		if "lista" in user:
 			# Se estiver presente, atribui o valor de user["lista"] a Global.lista
 			Global.lista = user["lista"]
@@ -60,12 +61,15 @@ func _on_request_user_data_completed(result, response_code, headers, body):
 			# Se não estiver presente, atribui uma lista vazia a Global.lista
 			Global.lista = []
 		
-		print(Global.pin)
-		print(Global.moedas)
-		print(Global.cristais)
-		
-		# Agora você pode acessar essas variáveis globais em qualquer lugar do seu projeto
-		get_tree().change_scene_to_file("res://prefab/label_set_time.tscn")
+		if Global.primeiro:
+			# Agora você pode acessar essas variáveis globais em qualquer lugar do seu projeto
+			get_tree().change_scene_to_file("res://prefab/label_set_time.tscn")
+		else:
+			Global.atualizar_tempo_transicao(int(user["tempo_restante"]))
+			if int(user["tempo_restante"]) < 1:
+				get_tree().change_scene_to_file("res://scenes/exercice_time_scene.tscn")
+			else:
+				get_tree().change_scene_to_file("res://scenes/mundo_01.tscn")
 	else:
 		handle_data_error(response_code)
 		print("Falha ao salvar dados do usuário:", response_code)

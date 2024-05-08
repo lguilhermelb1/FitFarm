@@ -61,7 +61,7 @@ offset_right = 109.19
 offset_bottom = 23.625
 scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 25
-text = "Cristais: 00000000"
+text = "Moedas: 00000000"
 metadata/_edit_use_anchors_ = true
 
 [node name="retry" type="Button" parent="Panel"]

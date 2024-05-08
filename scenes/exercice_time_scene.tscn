@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1xcintysbmv4"]
+[gd_scene load_steps=11 format=3 uid="uid://d1xcintysbmv4"]
 
 [ext_resource type="Script" path="res://scripts/transition.gd" id="1_h5r45"]
 [ext_resource type="Script" path="res://scripts/exercice_time_scene.gd" id="1_vibgd"]
 [ext_resource type="Texture2D" uid="uid://d0dpnjr05s5ov" path="res://assets/Bug_Invaders_Assets/Background.png" id="3_p10q4"]
-[ext_resource type="Script" path="res://scripts/random_images.gd" id="4_qrmvq"]
 
 [sub_resource type="Animation" id="Animation_ijdqq"]
 resource_name = "fade_in"
@@ -56,7 +55,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-90, -10), Vector2(-90, -55)]
+"values": [Vector2(-90, -10), Vector2(-90, -43)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -68,7 +67,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(13, 45), Vector2(13, 65)]
+"values": [Vector2(13, 45), Vector2(13, 85)]
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -102,7 +101,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-90, 15), Vector2(-90, 8)]
+"values": [Vector2(-90, 15), Vector2(-90, 17)]
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
@@ -127,7 +126,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(300, -0.25, 0, 0.25, 0, 190, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(400, -0.25, 0, 0.25, 0, 250, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.8)
 }
 tracks/1/type = "bezier"
@@ -187,34 +186,12 @@ texture = ExtResource("3_p10q4")
 
 [node name="exercice_label" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_left = 300.0
+offset_left = 400.0
 offset_top = 10.0
-offset_right = 459.0
+offset_right = 561.0
 offset_bottom = 36.0
-scale = Vector2(1.5, 1.5)
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 text = "HORA DO EXERCÍCIO"
-
-[node name="exercice_image" type="Sprite2D" parent="."]
-position = Vector2(305, 89)
-scale = Vector2(1.27684, 0.891304)
-script = ExtResource("4_qrmvq")
-
-[node name="tente novamente" type="Button" parent="exercice_image"]
-offset_left = 64.2212
-offset_top = -14.5854
-offset_right = 163.221
-offset_bottom = 16.4146
-text = "Novamente"
-
-[node name="info" type="Label" parent="exercice_image"]
-modulate = Color(0.635294, 1, 0.180392, 1)
-offset_left = 63.4378
-offset_top = -37.0244
-offset_right = 268.438
-offset_bottom = -11.0244
-scale = Vector2(0.7, 0.7)
-text = "peça ajuda ao responsável"
 
 [node name="animation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -226,8 +203,8 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = 241.0
 offset_top = 189.0
-offset_right = 281.0
-offset_bottom = 229.0
+offset_right = 402.0
+offset_bottom = 189.0
 
 [node name="PIN" type="TextEdit" parent="Control"]
 modulate = Color(1, 1, 1, 0)
@@ -236,7 +213,7 @@ layout_mode = 0
 offset_left = -90.0
 offset_top = -10.0
 offset_right = 265.0
-offset_bottom = 19.0
+offset_bottom = 20.0
 placeholder_text = "PIN"
 editable = false
 
@@ -252,11 +229,12 @@ text = "Voltar ao Jogo"
 
 [node name="Error_message" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = -87.0
-offset_top = -25.0
-offset_right = 261.0
-offset_bottom = 1.0
+offset_left = -90.0
+offset_top = -13.0
+offset_right = 264.0
+offset_bottom = 13.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "Mens1"
 
 [node name="Tempo" type="TextEdit" parent="Control"]
 modulate = Color(1, 1, 1, 0)
@@ -265,17 +243,33 @@ layout_mode = 0
 offset_left = -90.0
 offset_top = 15.0
 offset_right = 265.0
-offset_bottom = 44.9998
+offset_bottom = 44.9996
 placeholder_text = "Tempo"
 editable = false
 
 [node name="Error_Time_Message" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = -91.0
-offset_top = 39.0
-offset_right = 264.0
-offset_bottom = 65.0
+offset_left = -90.0
+offset_top = 49.0
+offset_right = 265.0
+offset_bottom = 75.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "Mens2"
 
-[connection signal="pressed" from="exercice_image/tente novamente" to="exercice_image" method="_on_tente_novamente_pressed"]
+[node name="ItemList" type="ItemList" parent="."]
+offset_left = 126.0
+offset_top = 49.0
+offset_right = 553.0
+offset_bottom = 135.0
+item_count = 9
+item_0/text = "Ex 1"
+item_1/text = "Ex 2"
+item_2/text = "Ex 3"
+item_3/text = "Ex 4"
+item_4/text = "Ex 5"
+item_5/text = "Ex 6"
+item_6/text = "Ex 7"
+item_7/text = "Ex 8"
+item_8/text = "Ex 9"
+
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var camera := $camera as Camera2D
 @onready var player := $player_world as Main_Player
-@onready var inv = $camera/Inventory
 var nd = null
 var nodes_celeiro = null
 var nodes_plantacao = null
@@ -17,7 +16,7 @@ var nodes_plantacao = null
 func _ready():	
 	print(get_tree().get_nodes_in_group("insercao_celeiro"))
 	$camera/Inventory/ScrollContainer/GridContainer.main_update()
-	inv.visible = false
+	$camera/Inventory.visible = false
 	
 	Global.setTransition($camera/transition)
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
@@ -48,12 +47,6 @@ func _ready():
 
 #func _process(delta):
 #	Global.setLabelTime()
-
-
-
-func _on_button_label_inventory_pressed():
-	if (get_tree().get_root().get_node("Dialog_Node") == null):
-		inv.visible = true
 
 
 func update_values():
@@ -112,8 +105,6 @@ func atualizar():
 					nd.set_current_timer(x['current_time'])		
 					nd.set_status(x['status'])			
 					self.get_node(str(x['parent'])).inserir(nd)
-	
-	Global.att_db()		
 
 
 func _buscar_celeiro(name:String):
@@ -129,3 +120,7 @@ func _buscar_celeiro(name:String):
 #		$camera/tempo_final/label_tempo_final.text = "%02d : %02d" % \
 #		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
 #		Global.tempo_final.wait_time = Global.tempo_final.time_left
+
+func _on_button_label_inventory_pressed():
+	if (get_tree().get_root().get_node("Dialog_Node") == null):
+		$camera/Inventory.visible = true

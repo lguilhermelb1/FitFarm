@@ -7,6 +7,7 @@ var moedas = 0
 var user_id : String = ""
 var user_key : String = ""
 var pin : String = ""
+var primeiro = false
 var tempo_final : Timer
 var lista = []
 var status=true
@@ -17,7 +18,8 @@ var time_label: Label
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	tempo_final = Timer.new()
-	tempo_final.wait_time = 300
+	#tempo_final.wait_time = 300
+	tempo_final.wait_time = 60
 	createTimeLabel()
 	self.time_label.process_mode = Node.PROCESS_MODE_ALWAYS
 	
@@ -71,6 +73,8 @@ func att_db():
 		"pin": pin,
 		"moedas": moedas,  # Valor inicial para moedas (ajuste conforme necessário)
 		"cristais": cristais,  # Valor inicial para cristais (ajuste conforme necessário)
+		"primeiro": false,
+		"tempo_restante": tempo_final.wait_time,
 		"lista": lista
 	})
 
@@ -88,6 +92,7 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 func on_tempo_final_timeout():
 	tempo_final.stop()
 	tempo_final.wait_time=0
+	att_db()
 	transition.change_scene("res://scenes/exercice_time_scene.tscn")
 	
 	

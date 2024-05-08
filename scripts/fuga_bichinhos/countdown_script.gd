@@ -14,7 +14,7 @@ var transition  = null
 
 func _ready():
 	game_over_label.visible = false
-	timer.wait_time = 120
+	timer.wait_time = 60
 	timer.start()
 
 func _process(delta):

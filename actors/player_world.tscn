@@ -132,4 +132,4 @@ animation = &"idle"
 [node name="remote" type="RemoteTransform2D" parent="."]
 
 [node name="controls_world" parent="." instance=ExtResource("8_nvr3f")]
-position = Vector2(-152, -49)
+position = Vector2(-154.5, -34)
