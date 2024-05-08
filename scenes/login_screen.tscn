@@ -8,59 +8,92 @@ shadow_size = 3
 
 [node name="login_screen" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_4i84q")
 
-[node name="Username" type="TextEdit" parent="."]
-layout_mode = 0
-offset_right = 355.0
-offset_bottom = 38.0
-placeholder_text = "E-mail"
-
-[node name="UsernameErrorMessage" type="Label" parent="."]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 40.0
-offset_right = 348.0
-offset_bottom = 63.0
-label_settings = SubResource("LabelSettings_i8j3e")
-
-[node name="Password" type="LineEdit" parent="."]
-layout_mode = 0
-offset_top = 65.0
-offset_right = 355.0
-offset_bottom = 103.0
-placeholder_text = "Senha"
-secret = true
-
-[node name="PasswordErrorMessage" type="Label" parent="."]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 104.0
-offset_right = 350.0
-offset_bottom = 127.0
-label_settings = SubResource("LabelSettings_i8j3e")
-
-[node name="Create" type="Button" parent="."]
-layout_mode = 0
-offset_left = 268.0
-offset_top = 136.0
-offset_right = 355.0
-offset_bottom = 173.0
-text = "Cadastrar"
-
-[node name="Login" type="Button" parent="."]
-layout_mode = 0
-offset_top = 136.0
-offset_right = 87.0
-offset_bottom = 173.0
-text = "Login"
+[node name="Creditos" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -223.0
+offset_top = -99.0
+offset_right = -76.0
+offset_bottom = -49.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "Créditos
+"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [node name="HTTPRequest2" type="HTTPRequest" parent="."]
 
-[connection signal="pressed" from="Create" to="." method="_on_create_pressed"]
-[connection signal="pressed" from="Login" to="." method="_on_login_pressed"]
+[node name="HFlowContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -318.0
+offset_top = -212.0
+offset_right = 318.0
+offset_bottom = 212.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Username" type="LineEdit" parent="HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Email"
+theme_override_font_sizes/font_size = 25
+placeholder_text = "E-mail"
+
+[node name="UsernameErrorMessage" type="Label" parent="HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_i8j3e")
+
+[node name="Password" type="LineEdit" parent="HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+placeholder_text = "Senha"
+secret = true
+
+[node name="PasswordErrorMessage" type="Label" parent="HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_i8j3e")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HFlowContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Create" type="Button" parent="HFlowContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Cadastrar"
+
+[node name="Login" type="Button" parent="HFlowContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Login"
+
+[connection signal="pressed" from="Creditos" to="." method="_on_creditos_pressed"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
 [connection signal="request_completed" from="HTTPRequest2" to="." method="_on_request_user_data_completed"]
+[connection signal="pressed" from="HFlowContainer/HBoxContainer/Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="HFlowContainer/HBoxContainer/Login" to="." method="_on_login_pressed"]
