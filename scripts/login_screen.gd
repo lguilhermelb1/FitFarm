@@ -18,7 +18,7 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 		var user_id = response.localId
 
 		Global.user_id = user_id
-		
+		print("Login realizado")
 		# Construa o URL para recuperar dados do usuário
 		var url = "https://fit-farm-db-default-rtdb.firebaseio.com/usuarios/" + user_id + ".json"
 		
@@ -78,11 +78,11 @@ func _on_request_user_data_completed(result, response_code, headers, body):
 func handle_login_error(error_message: String) -> void:
 	print(error_message)
 	if error_message == "INVALID_EMAIL":
-		$UsernameErrorMessage.text = "E-mail inválido."
+		%UsernameErrorMessage.text = "E-mail inválido."
 	elif error_message == "MISSING_PASSWORD":
-		$PasswordErrorMessage.text = "Senha inválida."
+		%PasswordErrorMessage.text = "Senha inválida."
 	elif error_message == "INVALID_LOGIN_CREDENTIALS":
-		$UsernameErrorMessage.text = "Credenciais incorretas."
+		%UsernameErrorMessage.text = "Credenciais incorretas."
 	else:
 		# Lidar com outros erros, se necessário
 		pass
@@ -99,9 +99,13 @@ func _on_create_pressed():
 
 func _on_login_pressed():
 	var url = loginUrl + webApiKey
-	var email = $Username.text
-	var password = $Password.text
+	var email = %Username.text
+	var password = %Password.text
 	_login(url, email, password)
 
 func getGlobal():
 	return Global
+
+
+func _on_creditos_pressed():
+	get_tree().change_scene_to_file("res://scenes/final_credits/final_credits.tscn")
