@@ -106,6 +106,7 @@ offset_right = 640.0
 offset_bottom = 26.0
 text = "V: 0.8.0"
 
-[connection signal="pressed" from="Create" to="." method="_on_create_pressed"]
-[connection signal="pressed" from="Login" to="." method="_on_login_pressed"]
-
+[connection signal="pressed" from="Creditos" to="." method="_on_creditos_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
+[connection signal="pressed" from="HFlowContainer/HBoxContainer/Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="HFlowContainer/HBoxContainer/Login" to="." method="_on_login_pressed"]
