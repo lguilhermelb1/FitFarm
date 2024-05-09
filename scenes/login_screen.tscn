@@ -95,9 +95,7 @@ text = "Login"
 
 [connection signal="pressed" from="Creditos" to="." method="_on_creditos_pressed"]
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[node name="HTTPRequest2" type="HTTPRequest" parent="."]
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
