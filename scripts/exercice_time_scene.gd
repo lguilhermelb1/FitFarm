@@ -28,7 +28,14 @@ func _ready():
 	await($animation.is_playing())
 	$Control/PIN.editable=true
 	$Control/Tempo.editable=true
-	$Control/Button.disabled=true
+	
+	var item_list = get_node("res://prefab/label_set_time/Control/ItemList")
+	
+	# Verifique se a referência não é nula
+	if item_list != null:
+		$Control/Button.disabled=true
+	else:
+		$Control/Button.disabled=false
 
 
 func _on_button_pressed():
@@ -55,7 +62,4 @@ func _on_button_pressed():
 	and int($Control/Tempo.text) >= 20 and int($Control/Tempo.text) <= 120:
 		Global.atualizar_tempo_transicao(int($Control/Tempo.text)*60)
 		Global.setTransition($transition)
-		$transition.change_scene("res://scenes/lista_exercicios.tscn")
-
-func _on_item_list_item_clicked(index, at_position, mouse_button_index):
-	$Control/Button.disabled=false
+		$transition.change_scene("res://scenes/mundo_01.tscn")

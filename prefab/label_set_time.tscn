@@ -203,7 +203,7 @@ offset_top = 120.0
 offset_right = 479.0
 offset_bottom = 146.0
 scale = Vector2(1.5, 1.5)
-text = "INSIRA O TEMPO LIMTE"
+text = "INSIRA O TEMPO LIMITE"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

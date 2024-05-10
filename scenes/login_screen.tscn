@@ -92,11 +92,6 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 25
 text = "Login"
 
-
-[connection signal="pressed" from="Creditos" to="." method="_on_creditos_pressed"]
-
-
-
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 555.0

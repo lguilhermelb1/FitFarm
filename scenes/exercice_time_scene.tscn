@@ -286,4 +286,4 @@ item_6/text = "OUTROS"
 item_6/icon = ExtResource("10_6rqf7")
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
-[connection signal="item_clicked" from="ItemList" to="." method="_on_item_list_item_clicked"]
+[connection signal="text_changed" from="Control/Tempo" to="." method="_on_tempo_text_changed"]
