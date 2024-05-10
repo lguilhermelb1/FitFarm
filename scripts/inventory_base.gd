@@ -32,7 +32,7 @@ var inventory = [
 	
 	{
 		name = "Carrot",
-		price = 0, # 20
+		price = 30, # 20
 		payment="coin",
 		scale=.9,
 		icon_scale=0.5,
@@ -41,7 +41,7 @@ var inventory = [
 	
 	{
 		name = "Potato",
-		price = 0, # 20
+		price = 20, # 20
 		payment="cristal",
 		scale=0.1,
 		icon_scale=0.8,		
@@ -49,17 +49,17 @@ var inventory = [
 	},
 	
 	{
-		name = "Coin",
-		price = 300,
-		payment="cristal",
-		scale=0.1,
-		icon_scale=1.5,		
-		path = "res://assets/Objects/Payment/coin.png" 
+		name = "Cristal",
+		price = 400,
+		payment="coin",
+		scale=.9,
+		icon_scale=.2,		
+		path = "res://assets/Objects/Payment/cristal.png" 
 	},
 	
 	{
 		name = "Barn",
-		price = 0, #10000
+		price = 1000, #10000
 		payment="cristal",
 		scale=0.1,
 		icon_scale=0.11,
