@@ -28,7 +28,7 @@ func _ready():
 	await($animation.is_playing())
 	$Control/PIN.editable=true
 	$Control/Tempo.editable=true
-	$Control/Button.disabled=false
+	$Control/Button.disabled=true
 
 
 func _on_button_pressed():
@@ -56,3 +56,6 @@ func _on_button_pressed():
 		Global.atualizar_tempo_transicao(int($Control/Tempo.text)*60)
 		Global.setTransition($transition)
 		$transition.change_scene("res://scenes/lista_exercicios.tscn")
+
+func _on_item_list_item_clicked(index, at_position, mouse_button_index):
+	$Control/Button.disabled=false

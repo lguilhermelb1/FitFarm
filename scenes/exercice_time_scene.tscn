@@ -1,8 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1xcintysbmv4"]
+[gd_scene load_steps=18 format=3 uid="uid://d1xcintysbmv4"]
 
 [ext_resource type="Script" path="res://scripts/transition.gd" id="1_h5r45"]
 [ext_resource type="Script" path="res://scripts/exercice_time_scene.gd" id="1_vibgd"]
 [ext_resource type="Texture2D" uid="uid://d0dpnjr05s5ov" path="res://assets/Bug_Invaders_Assets/Background.png" id="3_p10q4"]
+[ext_resource type="Texture2D" uid="uid://dlu2ku25darud" path="res://assets/Exercicies/flexão.png" id="4_slujn"]
+[ext_resource type="Texture2D" uid="uid://b3oysmyx1md7i" path="res://assets/Exercicies/rosca.png" id="5_iia4a"]
+[ext_resource type="Texture2D" uid="uid://btfcpbhix7idq" path="res://assets/Exercicies/Arremessar bola.png" id="6_u1jmo"]
+[ext_resource type="Texture2D" uid="uid://d02l4grpqr5h8" path="res://assets/Exercicies/sentar e levantar.png" id="7_utrdj"]
+[ext_resource type="Texture2D" uid="uid://bc71qeu20j0m3" path="res://assets/Exercicies/corrida.png" id="8_ugl8q"]
+[ext_resource type="Texture2D" uid="uid://dhfopvhpu8nsk" path="res://assets/Exercicies/saltos.png" id="9_xc2bw"]
+[ext_resource type="Texture2D" uid="uid://bgotcm8bmvdxb" path="res://assets/Exercicies/Outros.png" id="10_6rqf7"]
 
 [sub_resource type="Animation" id="Animation_ijdqq"]
 resource_name = "fade_in"
@@ -261,15 +268,22 @@ offset_left = 126.0
 offset_top = 49.0
 offset_right = 553.0
 offset_bottom = 135.0
-item_count = 9
-item_0/text = "Ex 1"
-item_1/text = "Ex 2"
-item_2/text = "Ex 3"
-item_3/text = "Ex 4"
-item_4/text = "Ex 5"
-item_5/text = "Ex 6"
-item_6/text = "Ex 7"
-item_7/text = "Ex 8"
-item_8/text = "Ex 9"
+select_mode = 1
+item_count = 7
+item_0/text = "APOIO DE FRENTE"
+item_0/icon = ExtResource("4_slujn")
+item_1/text = "ROSCA COM PESO"
+item_1/icon = ExtResource("5_iia4a")
+item_2/text = "ARREMESSAR BOLA (ACOMPANHADO OU SÓ)"
+item_2/icon = ExtResource("6_u1jmo")
+item_3/text = "SENTAR E LEVANTAR"
+item_3/icon = ExtResource("7_utrdj")
+item_4/text = "CORRIDA LATERAL"
+item_4/icon = ExtResource("8_ugl8q")
+item_5/text = "SALTOS (PULAR CORDA OU AFINS)"
+item_5/icon = ExtResource("9_xc2bw")
+item_6/text = "OUTROS"
+item_6/icon = ExtResource("10_6rqf7")
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="item_clicked" from="ItemList" to="." method="_on_item_list_item_clicked"]
