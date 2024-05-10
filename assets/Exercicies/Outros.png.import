@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl3yqygx00h1"
-path="res://.godot/imported/alongamento.jpg-0b707f9def97208a29c4b8e4da182e6a.ctex"
+uid="uid://bgotcm8bmvdxb"
+path="res://.godot/imported/Outros.png-fd249c82b8ccbd500efe39b21101ed93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Exercicies/alongamento.jpg"
-dest_files=["res://.godot/imported/alongamento.jpg-0b707f9def97208a29c4b8e4da182e6a.ctex"]
+source_file="res://assets/Exercicies/Outros.png"
+dest_files=["res://.godot/imported/Outros.png-fd249c82b8ccbd500efe39b21101ed93.ctex"]
 
 [params]
 

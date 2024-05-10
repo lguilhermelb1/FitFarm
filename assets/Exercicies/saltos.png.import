@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4lc8ysc0ip6p"
-path="res://.godot/imported/caminhada.jpg-4039c594e8e858b15ac9cf6c17a6f48b.ctex"
+uid="uid://dhfopvhpu8nsk"
+path="res://.godot/imported/saltos.png-ba5e6f13ed1500931ad8445c5f8d6adf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Exercicies/caminhada.jpg"
-dest_files=["res://.godot/imported/caminhada.jpg-4039c594e8e858b15ac9cf6c17a6f48b.ctex"]
+source_file="res://assets/Exercicies/saltos.png"
+dest_files=["res://.godot/imported/saltos.png-ba5e6f13ed1500931ad8445c5f8d6adf.ctex"]
 
 [params]
 
