@@ -31,7 +31,7 @@ func _on_timer_timeout():
 	Global.att_db()
 	
 func set_scores(s: int, cr: int):
-	cristais.text = "Cristais: %08d" % cr
+	cristais.text = "Moedas: %08d" % cr
 	pontos.text = "Pontuação: %08d" % s 
 
 func setTransition(t: Transition):

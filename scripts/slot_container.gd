@@ -36,11 +36,11 @@ func _on_gui_input(event):
 			or (_pagamento == "coin" and Global.moedas >= int($preco.text))):
 		
 			var file_name = $icon.texture.get_path().get_file().replace(".png", "")
-			
-			if file_name== "coin":
+					
+			if file_name== "cristal":
 				efetuar_pagamento()
-				Global.add_coins(20)	
-				_label_moedas.text = "%08d" % Global.moedas
+				Global.add_cristals(30)
+				_label_cristals.text = "%08d" % Global.cristais
 				Global.att_db()
 									
 			elif file_name == "celeiro":
