@@ -1,6 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://daqpb4jfd88fu"]
+[gd_scene load_steps=10 format=3 uid="uid://daqpb4jfd88fu"]
 
 [ext_resource type="Script" path="res://scripts/login_screen.gd" id="1_4i84q"]
+[ext_resource type="Texture2D" uid="uid://b7q117d87ujyo" path="res://assets/Tiny Wonder UI Free/fundo_fazenda.png" id="2_tdbcr"]
+[ext_resource type="Texture2D" uid="uid://0ybsns1bxitn" path="res://assets/Tiny Wonder UI Free/barra_clara.png" id="3_hp0qt"]
+[ext_resource type="Texture2D" uid="uid://ba78kj3sqixan" path="res://assets/Tiny Wonder UI Free/fit _farm_logo.png" id="4_yit71"]
+[ext_resource type="FontFile" uid="uid://cutg2f3cmjb8g" path="res://fonts/Retro Gaming.ttf" id="6_sxs31"]
+[ext_resource type="Texture2D" uid="uid://du0tcjpclrq8x" path="res://assets/Tiny Wonder UI Free/botao_claro_v4.png" id="6_ue5x3"]
+[ext_resource type="AudioStream" uid="uid://c4mmhy14gs7ha" path="res://sounds/gentle_fields_trilha.mp3" id="7_f6g8o"]
+[ext_resource type="Texture2D" uid="uid://5v1sbrb3gnbo" path="res://assets/Tiny Wonder UI Free/botao_claro_v3.png" id="7_imxqa"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i8j3e"]
 font_color = Color(1, 0, 0, 1)
@@ -15,6 +22,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4i84q")
 
+[node name="FundoFazenda" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tdbcr")
+expand_mode = 1
+
+[node name="FitFarmLogo" type="Sprite2D" parent="."]
+position = Vector2(615.75, 106.625)
+scale = Vector2(0.534843, 0.534843)
+texture = ExtResource("4_yit71")
+
 [node name="Creditos" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -22,15 +44,20 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -223.0
-offset_top = -99.0
-offset_right = -76.0
-offset_bottom = -49.0
+offset_left = -1200.0
+offset_top = -58.0
+offset_right = -1065.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 25
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.709804, 0.411765, 0.290196, 1)
+theme_override_fonts/font = ExtResource("6_sxs31")
+theme_override_font_sizes/font_size = 18
 text = "Créditos
 "
+icon = ExtResource("6_ue5x3")
+flat = true
+icon_alignment = 1
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
@@ -38,25 +65,40 @@ text = "Créditos
 
 [node name="HFlowContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
+anchors_preset = -1
+anchor_left = 0.531831
+anchor_top = 0.499741
+anchor_right = 0.531831
 anchor_bottom = 0.5
-offset_left = -318.0
-offset_top = -212.0
-offset_right = 318.0
-offset_bottom = 212.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -349.324
+offset_top = -171.86
+offset_right = 296.676
+offset_bottom = 262.0
 alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BarraClaraSenha" type="Sprite2D" parent="HFlowContainer"]
+position = Vector2(318.999, 199)
+scale = Vector2(3.03266, 1.87097)
+texture = ExtResource("3_hp0qt")
+
+[node name="BarraClaraEmail" type="Sprite2D" parent="HFlowContainer"]
+position = Vector2(319.374, 130)
+scale = Vector2(3.03266, 1.93548)
+texture = ExtResource("3_hp0qt")
 
 [node name="Username" type="LineEdit" parent="HFlowContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 0
 tooltip_text = "Email"
-theme_override_font_sizes/font_size = 25
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0.403922)
+theme_override_colors/font_outline_color = Color(0.945098, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_sxs31")
+theme_override_font_sizes/font_size = 23
 placeholder_text = "E-mail"
+flat = true
 
 [node name="UsernameErrorMessage" type="Label" parent="HFlowContainer"]
 unique_name_in_owner = true
@@ -66,8 +108,12 @@ label_settings = SubResource("LabelSettings_i8j3e")
 [node name="Password" type="LineEdit" parent="HFlowContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0.403922)
+theme_override_fonts/font = ExtResource("6_sxs31")
+theme_override_font_sizes/font_size = 23
 placeholder_text = "Senha"
+flat = true
 secret = true
 
 [node name="PasswordErrorMessage" type="Label" parent="HFlowContainer"]
@@ -83,21 +129,39 @@ alignment = 1
 [node name="Create" type="Button" parent="HFlowContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.709804, 0.411765, 0.290196, 1)
+theme_override_fonts/font = ExtResource("6_sxs31")
+theme_override_font_sizes/font_size = 22
 text = "Cadastrar"
+icon = ExtResource("7_imxqa")
+flat = true
+icon_alignment = 1
 
 [node name="Login" type="Button" parent="HFlowContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.709804, 0.411765, 0.290196, 1)
+theme_override_fonts/font = ExtResource("6_sxs31")
+theme_override_font_sizes/font_size = 22
 text = "Login"
+icon = ExtResource("7_imxqa")
+flat = true
+icon_alignment = 1
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 555.0
-offset_right = 640.0
-offset_bottom = 26.0
+offset_left = 1126.0
+offset_top = 516.0
+offset_right = 1197.0
+offset_bottom = 537.0
+theme_override_fonts/font = ExtResource("6_sxs31")
 text = "V: 0.8.0"
+
+[node name="musica_fundo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_f6g8o")
+autoplay = true
 
 [connection signal="pressed" from="Creditos" to="." method="_on_creditos_pressed"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

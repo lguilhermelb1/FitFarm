@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cc30db8esota4"]
+[gd_scene load_steps=7 format=3 uid="uid://cc30db8esota4"]
 
 [ext_resource type="Script" path="res://scripts/final_credits/final_credits.gd" id="1_m062j"]
-[ext_resource type="Texture2D" path="res://assets_v2/UI/fit _farm_logo.png" id="2_dbcp0"]
-[ext_resource type="Texture2D" path="res://assets_v2/UI/ui_background.png" id="2_uk22k"]
-[ext_resource type="Texture2D" path="res://assets_v2/UI/back_image.png" id="4_fq4te"]
+[ext_resource type="Texture2D" uid="uid://btychgvton2et" path="res://assets_v2/UI/fit _farm_logo.png" id="2_dbcp0"]
+[ext_resource type="Texture2D" uid="uid://coubn4asnuqum" path="res://assets_v2/UI/ui_background.png" id="2_uk22k"]
+[ext_resource type="Texture2D" uid="uid://d1geg767jm0u0" path="res://assets_v2/UI/back_image.png" id="4_fq4te"]
 [ext_resource type="FontFile" uid="uid://6i6v188wgi48" path="res://fonts/Crang.ttf" id="4_srrej"]
+[ext_resource type="AudioStream" uid="uid://c4mmhy14gs7ha" path="res://sounds/gentle_fields_trilha.mp3" id="6_u3y3d"]
 
 [node name="FinalCredits" type="Control"]
 layout_mode = 3
@@ -101,5 +102,10 @@ horizontal_alignment = 1
 layout_mode = 0
 offset_right = 12.0
 offset_bottom = 10.0
+
+[node name="musica_fundo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_u3y3d")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="pressed" from="Panel/Background/TextureButton" to="." method="_on_texture_button_pressed"]

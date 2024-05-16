@@ -12,7 +12,7 @@ config_version=5
 
 config/name="login teste"
 run/main_scene="res://scenes/login_screen.tscn"
-config/features=PackedStringArray("4.1", "Mobile")
+config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -23,7 +23,8 @@ Global="*res://prefab/global.tscn"
 
 window/size/viewport_width=1204
 window/size/viewport_height=540
-window/stretch/aspect="ignore"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [input]
 

@@ -32,7 +32,6 @@ func _ready():
 	Global.tempo_final.start()
 	print("Started")
 	
-	get_window().size = Vector2(640, 320)
 	if Global.status == false:	
 		$Worker.queue_free()
 	

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0najr07e3fsp"]
+[gd_scene load_steps=5 format=3 uid="uid://c0najr07e3fsp"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_w8elm"]
 [ext_resource type="Texture2D" uid="uid://caswup5a0t7yp" path="res://assets/Tiny Wonder UI Free/exit_button.png" id="2_hktlb"]
+[ext_resource type="FontFile" uid="uid://cutg2f3cmjb8g" path="res://fonts/Retro Gaming.ttf" id="2_kyo30"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7cma5"]
 font_size = 48
@@ -29,7 +30,8 @@ offset_right = 278.419
 offset_bottom = 30.6
 grow_horizontal = 2
 scale = Vector2(0.55, 0.55)
-text = "SCORE: 000000000"
+theme_override_fonts/font = ExtResource("2_kyo30")
+text = "PONTOS: 00000"
 label_settings = SubResource("LabelSettings_7cma5")
 horizontal_alignment = 1
 vertical_alignment = 1

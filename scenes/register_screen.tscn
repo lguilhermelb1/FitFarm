@@ -1,6 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://2c7e4tsthixk"]
+[gd_scene load_steps=8 format=3 uid="uid://2c7e4tsthixk"]
 
 [ext_resource type="Script" path="res://scripts/register_screen.gd" id="1_0h1d0"]
+[ext_resource type="Texture2D" uid="uid://b7q117d87ujyo" path="res://assets/Tiny Wonder UI Free/fundo_fazenda.png" id="2_caauj"]
+[ext_resource type="Texture2D" uid="uid://0ybsns1bxitn" path="res://assets/Tiny Wonder UI Free/barra_clara.png" id="3_gs571"]
+[ext_resource type="Texture2D" uid="uid://du0tcjpclrq8x" path="res://assets/Tiny Wonder UI Free/botao_claro_v4.png" id="5_6i7u5"]
+[ext_resource type="FontFile" uid="uid://cutg2f3cmjb8g" path="res://fonts/Retro Gaming.ttf" id="5_me4ey"]
+[ext_resource type="AudioStream" uid="uid://c4mmhy14gs7ha" path="res://sounds/gentle_fields_trilha.mp3" id="6_bc1f0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k27mc"]
 font_color = Color(1, 0, 0, 1)
@@ -8,91 +13,184 @@ shadow_size = 3
 
 [node name="register_screen" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_0h1d0")
 
-[node name="Username" type="TextEdit" parent="."]
+[node name="FundoFazenda" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_caauj")
+expand_mode = 1
+
+[node name="BarraClaraEmail" type="Sprite2D" parent="."]
+position = Vector2(180, 26)
+scale = Vector2(1.66129, 1.66129)
+texture = ExtResource("3_gs571")
+
+[node name="BarraClaraConfirmarSenha" type="Sprite2D" parent="."]
+position = Vector2(180, 155)
+scale = Vector2(1.66129, 1.66129)
+texture = ExtResource("3_gs571")
+
+[node name="BarraClaraSenha" type="Sprite2D" parent="."]
+position = Vector2(180, 91)
+scale = Vector2(1.66129, 1.66129)
+texture = ExtResource("3_gs571")
+
+[node name="BarraClaraPIN" type="Sprite2D" parent="."]
+position = Vector2(180, 220)
+scale = Vector2(1.66129, 1.66129)
+texture = ExtResource("3_gs571")
+
+[node name="Username" type="LineEdit" parent="."]
 layout_mode = 0
-offset_right = 355.0
-offset_bottom = 38.0
+offset_left = 2.0
+offset_top = 6.0
+offset_right = 357.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0.4)
+theme_override_fonts/font = ExtResource("5_me4ey")
+theme_override_font_sizes/font_size = 18
 placeholder_text = "E-mail"
+flat = true
 
 [node name="UsernameErrorMessage" type="Label" parent="."]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 40.0
-offset_right = 348.0
-offset_bottom = 63.0
+offset_left = 4.0
+offset_top = 46.0
+offset_right = 350.0
+offset_bottom = 69.0
 label_settings = SubResource("LabelSettings_k27mc")
 
 [node name="Password" type="LineEdit" parent="."]
 layout_mode = 0
-offset_top = 65.0
-offset_right = 355.0
-offset_bottom = 103.0
+offset_left = 2.0
+offset_top = 71.0
+offset_right = 357.0
+offset_bottom = 109.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0.403922)
+theme_override_fonts/font = ExtResource("5_me4ey")
+theme_override_font_sizes/font_size = 18
 placeholder_text = "Senha"
+flat = true
 secret = true
 
 [node name="PasswordErrorMessage" type="Label" parent="."]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 104.0
-offset_right = 350.0
-offset_bottom = 127.0
+offset_left = 6.0
+offset_top = 110.0
+offset_right = 352.0
+offset_bottom = 133.0
 label_settings = SubResource("LabelSettings_k27mc")
 
 [node name="ConfirmPassword" type="LineEdit" parent="."]
 layout_mode = 0
-offset_top = 129.0
-offset_right = 355.0
-offset_bottom = 167.0
+offset_left = 2.0
+offset_top = 135.0
+offset_right = 357.0
+offset_bottom = 173.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0.403922)
+theme_override_fonts/font = ExtResource("5_me4ey")
+theme_override_font_sizes/font_size = 18
 placeholder_text = "Confirmar senha"
+flat = true
 secret = true
 
 [node name="ConfirmPasswordErrorMessage" type="Label" parent="."]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 169.0
-offset_right = 348.0
-offset_bottom = 192.0
+offset_left = 4.0
+offset_top = 175.0
+offset_right = 350.0
+offset_bottom = 198.0
 label_settings = SubResource("LabelSettings_k27mc")
 
-[node name="PIN" type="TextEdit" parent="."]
+[node name="PIN" type="LineEdit" parent="."]
 layout_mode = 0
-offset_top = 194.0
-offset_right = 355.0
-offset_bottom = 232.0
+offset_left = 2.0
+offset_top = 200.0
+offset_right = 357.0
+offset_bottom = 238.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0.403922)
+theme_override_fonts/font = ExtResource("5_me4ey")
+theme_override_font_sizes/font_size = 20
 placeholder_text = "PIN"
+flat = true
 
 [node name="PINErrorMessage" type="Label" parent="."]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 234.0
-offset_right = 350.0
-offset_bottom = 257.0
+offset_left = 6.0
+offset_top = 240.0
+offset_right = 352.0
+offset_bottom = 263.0
 label_settings = SubResource("LabelSettings_k27mc")
 
 [node name="Create" type="Button" parent="."]
 layout_mode = 0
-offset_left = 268.0
-offset_top = 265.0
-offset_right = 355.0
-offset_bottom = 302.0
+offset_left = 206.0
+offset_top = 272.0
+offset_right = 341.0
+offset_bottom = 330.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.709804, 0.411765, 0.290196, 1)
+theme_override_fonts/font = ExtResource("5_me4ey")
+theme_override_font_sizes/font_size = 18
 text = "Finalizar"
+icon = ExtResource("5_6i7u5")
+flat = true
+icon_alignment = 1
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 265.0
-offset_right = 91.0
-offset_bottom = 302.0
+offset_left = 7.0
+offset_top = 272.0
+offset_right = 94.0
+offset_bottom = 309.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.709804, 0.411765, 0.290196, 1)
+theme_override_fonts/font = ExtResource("5_me4ey")
+theme_override_font_sizes/font_size = 18
 text = "Voltar"
+icon = ExtResource("5_6i7u5")
+flat = true
+icon_alignment = 1
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [node name="HTTPRequest2" type="HTTPRequest" parent="."]
+
+[node name="musica_fundo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_bc1f0")
+volume_db = -10.0
+autoplay = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 706.0
+offset_top = 392.0
+offset_right = 777.0
+offset_bottom = 413.0
+theme_override_fonts/font = ExtResource("5_me4ey")
+text = "V: 0.8.0"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
 
 [connection signal="pressed" from="Create" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_create_pressed"]
