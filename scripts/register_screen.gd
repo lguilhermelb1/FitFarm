@@ -24,13 +24,13 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 	else:
 		print(response.error.message)
 		if response.error.message == "INVALID_EMAIL":
-			$UsernameErrorMessage.text = "E-mail inválido."
+			$UsernameErrorMessage.text = "E-mail inválido"
 		elif response.error.message == "EMAIL_EXISTS":
-			$UsernameErrorMessage.text = "E-mail já existente."
+			$UsernameErrorMessage.text = "E-mail já existente"
 		elif response.error.message == "MISSING_PASSWORD":
 			$PasswordErrorMessage.text = "Senha inválida."
 		elif response.error.message == "INVALID_LOGIN_CREDENTIALS":
-			$UsernameErrorMessage.text = "Credenciais incorretas."
+			$UsernameErrorMessage.text = "Credenciais incorretas"
 
 func save_user_data(user_id, pin):
 	var saveUserDataUrl = "https://fit-farm-db-default-rtdb.firebaseio.com/usuarios/" + user_id + ".json"

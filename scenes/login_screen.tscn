@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://daqpb4jfd88fu"]
+[gd_scene load_steps=11 format=3 uid="uid://daqpb4jfd88fu"]
 
 [ext_resource type="Script" path="res://scripts/login_screen.gd" id="1_4i84q"]
 [ext_resource type="Texture2D" uid="uid://b7q117d87ujyo" path="res://assets/Tiny Wonder UI Free/fundo_fazenda.png" id="2_tdbcr"]
@@ -12,6 +12,10 @@
 [sub_resource type="LabelSettings" id="LabelSettings_i8j3e"]
 font_color = Color(1, 0, 0, 1)
 shadow_size = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_wwlw2"]
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [node name="login_screen" type="Control"]
 layout_mode = 3
@@ -152,12 +156,13 @@ icon_alignment = 1
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1126.0
-offset_top = 516.0
-offset_right = 1197.0
-offset_bottom = 537.0
+offset_left = 1129.0
+offset_top = 518.0
+offset_right = 1200.0
+offset_bottom = 539.0
 theme_override_fonts/font = ExtResource("6_sxs31")
 text = "V: 0.8.0"
+label_settings = SubResource("LabelSettings_wwlw2")
 
 [node name="musica_fundo" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_f6g8o")
