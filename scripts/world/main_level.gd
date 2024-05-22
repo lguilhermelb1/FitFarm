@@ -17,7 +17,7 @@ func _ready():
 	print(get_tree().get_nodes_in_group("insercao_celeiro"))
 	$camera/Inventory/ScrollContainer/GridContainer.main_update()
 	$camera/Inventory.visible = false
-	
+
 	Global.setTransition($camera/transition)
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
 	atualizar()
@@ -31,7 +31,7 @@ func _ready():
 	$camera/Control.add_child(Global.time_label)
 	Global.tempo_final.start()
 	print("Started")
-	
+
 	if Global.status == false:	
 		$Worker.queue_free()
 	

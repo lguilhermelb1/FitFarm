@@ -74,6 +74,7 @@ func att_db():
 		"moedas": moedas,  # Valor inicial para moedas (ajuste conforme necessário)
 		"cristais": cristais,  # Valor inicial para cristais (ajuste conforme necessário)
 		"primeiro": false,
+		"status": status,
 		"tempo_restante": tempo_final.wait_time,
 		"lista": lista
 	})

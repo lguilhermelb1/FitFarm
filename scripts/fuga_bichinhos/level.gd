@@ -31,7 +31,7 @@ func _ready():
 	$camera/time_control.add_child(Global.time_label)
 	Global.tempo_final.start()	
 	print(Global.time_label.text)
-	
+
 	print("Started")
 	player.follow_camera(camera) 
 

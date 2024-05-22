@@ -54,6 +54,8 @@ func _on_request_user_data_completed(result, response_code, headers, body):
 		Global.moedas = user["moedas"]
 		Global.cristais = user["cristais"]
 		Global.primeiro = user["primeiro"]
+		Global.status = user['status']
+		
 		if "lista" in user:
 			# Se estiver presente, atribui o valor de user["lista"] a Global.lista
 			Global.lista = user["lista"]
