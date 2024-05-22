@@ -17,7 +17,7 @@ func set_score(score):
 	$Panel/Score.text = "PONTUAÇÃO: " + str(score)
 	
 func set_high_score(score):
-	$Panel/HighScore.text = "MAIOR PONTUAÇÃO: " + str(score)
+	$Panel/HighScore.text = "Moedas: " + str(score)
 
 func play_animation_apperence():
 	anim.play("show_label")

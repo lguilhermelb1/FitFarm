@@ -48,12 +48,12 @@ func _ready():
 
 	print("Started")
 	
-	var save_file = FileAccess.open('user://save.data', FileAccess.READ)
-	if save_file != null:
-		high_score = save_file.get_32()
-	else:
-		high_score = 0
-		save_game()
+	#var save_file = FileAccess.open('user://save.data', FileAccess.READ)
+	#if save_file != null:
+	#	high_score = save_file.get_32()
+	#else:
+	#	high_score = 0
+		#save_game()
 		
 	score = 0
 	player = get_tree().get_first_node_in_group("player_bug_invader")
@@ -69,8 +69,8 @@ func _ready():
 		
 	
 func save_game():
-	var save_file = FileAccess.open('user://save.data', FileAccess.WRITE)
-	save_file.store_32(high_score)
+	#var save_file = FileAccess.open('user://save.data', FileAccess.WRITE)
+	#save_file.store_32(high_score)
 	Global.att_db()
 	
 func _process(_delta):
@@ -103,17 +103,17 @@ func _on_bug_died(points):
 	hitSound.play()
 	score += points
 	
-	if score % 150 == 0:
-		cr += 40
-		Global.moedas += 40
-		player.set_cristal_score_label(40)
+	if score % 100 == 0:
+		cr += 10
+		Global.moedas += 10
+		player.set_cristal_score_label(10)
 	
-	if score > high_score:
-		high_score = score
+	#if score > high_score:
+		#high_score = score
 
 func _on_player_died():
 	gameOverScreen.set_score(score)
-	gameOverScreen.set_high_score(high_score)
+	gameOverScreen.set_high_score(cr)
 	save_game()
 	await get_tree().create_timer(0.5).timeout		
 	gameOverScreen.visible = true	
