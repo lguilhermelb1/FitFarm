@@ -5000,9 +5000,9 @@ anchors_preset = 0
 
 [node name="label_cristais" type="Label" parent="camera/Control"]
 layout_mode = 0
-offset_left = -122.0
+offset_left = -150.0
 offset_top = -75.0
-offset_right = -10.0
+offset_right = -38.0
 offset_bottom = -37.0
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("17_461lq")
@@ -5011,15 +5011,15 @@ text = "0000"
 
 [node name="sprite_cristal" type="Sprite2D" parent="camera/Control"]
 texture_filter = 1
-position = Vector2(-133, -69)
+position = Vector2(-160, -69)
 scale = Vector2(0.23125, 0.253389)
 texture = ExtResource("15_f2jvs")
 
 [node name="label_moedas" type="Label" parent="camera/Control"]
 layout_mode = 0
-offset_left = -122.0
+offset_left = -150.0
 offset_top = -56.0
-offset_right = -10.0
+offset_right = -38.0
 offset_bottom = -18.0
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("17_461lq")
@@ -5028,7 +5028,7 @@ text = "0000"
 
 [node name="sprite_moeda" type="Sprite2D" parent="camera/Control"]
 texture_filter = 1
-position = Vector2(-133, -48)
+position = Vector2(-160, -48)
 scale = Vector2(0.05, 0.046)
 texture = ExtResource("18_jy6wh")
 
