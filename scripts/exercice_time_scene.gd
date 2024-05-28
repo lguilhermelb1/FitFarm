@@ -8,7 +8,7 @@ extends Control
 @onready var scroll_container = %ScrollContainer
 var keyboard_height = 0
 
-func _process(delta):
+func _process(_delta):
 	if(DisplayServer.has_feature(DisplayServer.FEATURE_VIRTUAL_KEYBOARD)):
 		var new_keyboard_height = DisplayServer.virtual_keyboard_get_height()
 		if(keyboard_height == 0 and new_keyboard_height != 0):
