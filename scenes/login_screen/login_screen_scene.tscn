@@ -1,0 +1,140 @@
+[gd_scene load_steps=9 format=3 uid="uid://daqpb4jfd88fu"]
+
+[ext_resource type="Script" path="res://scenes/login_screen/login_screen_script.gd" id="1_kvu3q"]
+[ext_resource type="PackedScene" uid="uid://cmj3rhes5epv5" path="res://prefab/background.tscn" id="2_jp551"]
+[ext_resource type="Texture2D" uid="uid://ba78kj3sqixan" path="res://assets/Tiny Wonder UI Free/fit _farm_logo.png" id="3_ucolg"]
+[ext_resource type="FontFile" uid="uid://cutg2f3cmjb8g" path="res://fonts/Retro Gaming.ttf" id="4_hoqam"]
+[ext_resource type="Texture2D" uid="uid://du0tcjpclrq8x" path="res://assets/Tiny Wonder UI Free/botao_claro_v4.png" id="5_dfpk5"]
+[ext_resource type="Theme" uid="uid://d24s1qif08h56" path="res://themes/light_theme.tres" id="6_gln8l"]
+[ext_resource type="Texture2D" uid="uid://5v1sbrb3gnbo" path="res://assets/Tiny Wonder UI Free/botao_claro_v3.png" id="7_mpq82"]
+[ext_resource type="AudioStream" uid="uid://c4mmhy14gs7ha" path="res://sounds/gentle_fields_trilha.mp3" id="8_4qcvc"]
+
+[node name="login_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kvu3q")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+unique_name_in_owner = true
+
+[node name="HTTPRequest2" type="HTTPRequest" parent="."]
+
+[node name="Background" parent="." instance=ExtResource("2_jp551")]
+layout_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_gln8l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="FitFarmLogo" type="TextureRect" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = ExtResource("3_ucolg")
+expand_mode = 3
+
+[node name="Username" type="LineEdit" parent="Background/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("6_gln8l")
+placeholder_text = "E-mail"
+
+[node name="UsernameErrorMessage" type="Label" parent="Background/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("6_gln8l")
+theme_type_variation = &"ErrorMessage"
+
+[node name="Password" type="LineEdit" parent="Background/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("6_gln8l")
+placeholder_text = "Senha"
+secret = true
+
+[node name="PasswordErrorMessage" type="Label" parent="Background/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("6_gln8l")
+theme_type_variation = &"ErrorMessage"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Create" type="Button" parent="Background/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_gln8l")
+text = "Cadastrar"
+icon = ExtResource("7_mpq82")
+flat = true
+icon_alignment = 1
+
+[node name="Login" type="Button" parent="Background/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_gln8l")
+text = "Login"
+icon = ExtResource("7_mpq82")
+flat = true
+icon_alignment = 1
+
+[node name="musica_fundo" type="AudioStreamPlayer" parent="Background/MarginContainer"]
+stream = ExtResource("8_4qcvc")
+autoplay = true
+
+[node name="CreditsButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -90.0
+offset_right = 167.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.709804, 0.411765, 0.290196, 1)
+theme_override_fonts/font = ExtResource("4_hoqam")
+theme_override_font_sizes/font_size = 18
+text = "Créditos
+"
+icon = ExtResource("5_dfpk5")
+flat = true
+icon_alignment = 1
+
+[node name="VersionLabel" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -111.0
+offset_top = -61.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("6_gln8l")
+theme_type_variation = &"VersionLabel"
+text = "V: 0.8.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/HBoxContainer/Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/HBoxContainer/Login" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="Background/CreditsButton" to="." method="_on_creditos_pressed"]

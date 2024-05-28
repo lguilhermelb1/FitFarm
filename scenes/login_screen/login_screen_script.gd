@@ -65,11 +65,11 @@ func _on_request_user_data_completed(result, response_code, headers, body):
 		
 		if Global.primeiro:
 			# Agora você pode acessar essas variáveis globais em qualquer lugar do seu projeto
-			get_tree().change_scene_to_file("res://prefab/label_set_time.tscn")
+			get_tree().change_scene_to_file("res://scenes/set_timer_first_access/set_timer_first_access_scene.tscn")
 		else:
 			Global.atualizar_tempo_transicao(int(user["tempo_restante"]))
 			if int(user["tempo_restante"]) < 1:
-				get_tree().change_scene_to_file("res://scenes/exercice_time_scene.tscn")
+				get_tree().change_scene_to_file("res://scenes/exercise_time/exercise_time_scene.tscn")
 			else:
 				get_tree().change_scene_to_file("res://scenes/mundo_01.tscn")
 	else:

@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn8aw4kec1d7x"]
+
+[ext_resource type="Script" path="res://scenes/set_timer_first_access/set_timer_first_access_script.gd" id="1_4r8i1"]
+[ext_resource type="PackedScene" uid="uid://cmj3rhes5epv5" path="res://prefab/background.tscn" id="2_61qrr"]
+[ext_resource type="Theme" uid="uid://d24s1qif08h56" path="res://themes/light_theme.tres" id="3_n5g2s"]
+
+[node name="Scene_SetTime" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4r8i1")
+
+[node name="Background" parent="." instance=ExtResource("2_61qrr")]
+layout_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_n5g2s")
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="PIN" type="LineEdit" parent="Background/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_n5g2s")
+placeholder_text = "PIN"
+
+[node name="ErrorMessagePin" type="Label" parent="Background/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_n5g2s")
+theme_type_variation = &"ErrorMessage"
+
+[node name="Tempo" type="LineEdit" parent="Background/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_n5g2s")
+placeholder_text = "Tempo"
+virtual_keyboard_type = 2
+
+[node name="ErrorMessageTime" type="Label" parent="Background/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_n5g2s")
+theme_type_variation = &"ErrorMessage"
+
+[node name="Button" type="Button" parent="Background/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_n5g2s")
+text = "Continuar"
+
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

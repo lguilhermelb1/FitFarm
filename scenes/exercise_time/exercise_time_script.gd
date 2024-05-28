@@ -19,12 +19,9 @@ func _process(_delta):
 			scrollcontainer_fit_keyboard(false)
 			#
 func _ready():
+	clean_error_messages()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().paused = false
-	error_message.visible=false
-	error_message.text=""
-	error_time_message.visible=false
-	error_time_message.text=""
 	const exercise_list = [
 		{"label": "Apoio de Frente", "image": "flexão.png"},
 		{"label": "Rosca com Peso", "image": "rosca.png"},
@@ -44,6 +41,8 @@ func _ready():
 		var label = Label.new()
 		label.add_theme_font_size_override("font_size", 30)
 		label.text = exercise["label"]
+		label.theme = load("res://themes/light_theme.tres")
+		label.theme_type_variation = "ExerciseLabel"
 		
 	
 		grid_container.add_theme_constant_override("h_separation", 50)
@@ -51,28 +50,22 @@ func _ready():
 		grid_container.add_child(label)
 
 func _on_button_pressed():
-	
+	clean_error_messages()
 	if Global.pin != pin.text:
 		error_message.text = "PIN INVÁLIDO, INSIRA NOVAMENTE"
-		error_message.visible=true
-		await(get_tree().create_timer(3).timeout)
-		error_message.visible=false
 	
-	elif tempo.value == 0:
+	elif int(tempo.text) == 0:
 		error_time_message.text = "TEMPO LIMITE INVÁLIDO, INSIRA NOVAMENTE"
 		error_time_message.visible=true
 		await(get_tree().create_timer(3).timeout)
 		error_time_message.visible=false
 		
-	elif int(tempo.value) < 20 or int(tempo.value) > 120 and tempo.editable == true:
+	elif int(tempo.text) < 20 or int(tempo.text) > 120 and tempo.editable == true:
 		error_time_message.text = "O TEMPO LIMITE DEVE SER ENTRE 20 e 120 minutos"
-		error_time_message.visible=true
-		await(get_tree().create_timer(3).timeout)
-		error_time_message.visible=false
+
 		
 	else: 
-		Global.atualizar_tempo_transicao(int(tempo.value)*60)
-		Global.setTransition($transition)
+		Global.atualizar_tempo_transicao(int(tempo.text)*60)
 		change_scene("res://scenes/mundo_01.tscn")
 
 
@@ -103,7 +96,9 @@ func scrollcontainer_fit_keyboard(is_keyboard_visible:bool, ):
 		scroller.value = scroller.max_value
 	else:
 		scroll_container.size.y += 300
-	
 
+func clean_error_messages():
+	error_message.text = ""
+	error_time_message.text = ""
 
 
