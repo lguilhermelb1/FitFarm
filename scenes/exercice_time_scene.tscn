@@ -1,289 +1,119 @@
-[gd_scene load_steps=18 format=3 uid="uid://d1xcintysbmv4"]
+[gd_scene load_steps=4 format=3 uid="uid://d1xcintysbmv4"]
 
-[ext_resource type="Script" path="res://scripts/transition.gd" id="1_h5r45"]
 [ext_resource type="Script" path="res://scripts/exercice_time_scene.gd" id="1_vibgd"]
-[ext_resource type="Texture2D" uid="uid://d0dpnjr05s5ov" path="res://assets/Bug_Invaders_Assets/Background.png" id="3_p10q4"]
-[ext_resource type="Texture2D" uid="uid://dlu2ku25darud" path="res://assets/Exercicies/flexão.png" id="4_slujn"]
-[ext_resource type="Texture2D" uid="uid://b3oysmyx1md7i" path="res://assets/Exercicies/rosca.png" id="5_iia4a"]
-[ext_resource type="Texture2D" uid="uid://btfcpbhix7idq" path="res://assets/Exercicies/Arremessar bola.png" id="6_u1jmo"]
-[ext_resource type="Texture2D" uid="uid://d02l4grpqr5h8" path="res://assets/Exercicies/sentar e levantar.png" id="7_utrdj"]
-[ext_resource type="Texture2D" uid="uid://bc71qeu20j0m3" path="res://assets/Exercicies/corrida.png" id="8_ugl8q"]
-[ext_resource type="Texture2D" uid="uid://dhfopvhpu8nsk" path="res://assets/Exercicies/saltos.png" id="9_xc2bw"]
-[ext_resource type="Texture2D" uid="uid://bgotcm8bmvdxb" path="res://assets/Exercicies/Outros.png" id="10_6rqf7"]
+[ext_resource type="Texture2D" uid="uid://coubn4asnuqum" path="res://assets_v2/UI/ui_background.png" id="2_rs4q2"]
+[ext_resource type="Theme" path="res://themes/tela_de_exercicios.tres" id="3_xiwi7"]
 
-[sub_resource type="Animation" id="Animation_ijdqq"]
-resource_name = "fade_in"
-length = 1.3
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.3)
-}
-
-[sub_resource type="Animation" id="Animation_lktg8"]
-resource_name = "fade_out"
-length = 1.3
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.3)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wcsjq"]
-_data = {
-"fade_in": SubResource("Animation_ijdqq"),
-"fade_out": SubResource("Animation_lktg8")
-}
-
-[sub_resource type="Animation" id="Animation_fqtwn"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_g7g85"]
-resource_name = "criacao_pin"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/PIN:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-90, -10), Vector2(-90, -43)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control/Button:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(13, 45), Vector2(13, 85)]
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Control/PIN:modulate:a")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Control/Button:modulate:a")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Control/Tempo:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-90, 15), Vector2(-90, 17)]
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Control/Tempo:modulate:a")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-
-[sub_resource type="Animation" id="Animation_xbteb"]
-resource_name = "opening"
-length = 0.8
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("exercice_label:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(400, -0.25, 0, 0.25, 0, 250, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.8)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("exercice_label:modulate:a")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.8)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_b3cjq"]
-_data = {
-"RESET": SubResource("Animation_fqtwn"),
-"criacao_pin": SubResource("Animation_g7g85"),
-"opening": SubResource("Animation_xbteb")
-}
-
-[node name="Exercice_Time_Scene" type="Node2D"]
-script = ExtResource("1_vibgd")
-
-[node name="transition" type="Control" parent="."]
-z_index = 4
+[node name="Exercice_Time_Scene" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 641.0
-offset_bottom = 320.0
-script = ExtResource("1_h5r45")
-
-[node name="ColorRect" type="ColorRect" parent="transition"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.501
-anchor_right = 1.501
-anchor_bottom = 1.5
-offset_left = -319.141
-offset_top = -1.0
-offset_right = -319.141
-offset_bottom = -164.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+script = ExtResource("1_vibgd")
 
-[node name="animation" type="AnimationPlayer" parent="transition"]
-libraries = {
-"": SubResource("AnimationLibrary_wcsjq")
-}
-
-[node name="background" type="Sprite2D" parent="."]
-position = Vector2(319, 161)
-scale = Vector2(3.205, 1.6)
-texture = ExtResource("3_p10q4")
-
-[node name="exercice_label" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0)
-offset_left = 400.0
-offset_top = 10.0
-offset_right = 561.0
-offset_bottom = 36.0
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-text = "HORA DO EXERCÍCIO"
-
-[node name="animation" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_b3cjq")
-}
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 241.0
-offset_top = 189.0
-offset_right = 402.0
-offset_bottom = 189.0
-
-[node name="PIN" type="TextEdit" parent="Control"]
-modulate = Color(1, 1, 1, 0)
-z_index = 1
+[node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = -90.0
-offset_top = -10.0
-offset_right = 265.0
-offset_bottom = 20.0
+offset_right = 9.0
+offset_bottom = 26.0
+
+[node name="ColorRect" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rs4q2")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/MarginContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="PIN" type="LineEdit" parent="ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_xiwi7")
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
 placeholder_text = "PIN"
-editable = false
+flat = true
 
-[node name="Button" type="Button" parent="Control"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 13.0
-offset_top = 45.0
-offset_right = 129.0
-offset_bottom = 76.0
-disabled = true
-text = "Voltar ao Jogo"
-
-[node name="Error_message" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = -90.0
-offset_top = -13.0
-offset_right = 264.0
-offset_bottom = 13.0
+[node name="Error_message" type="Label" parent="ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_xiwi7")
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "Mens1"
 
-[node name="Tempo" type="TextEdit" parent="Control"]
-modulate = Color(1, 1, 1, 0)
-z_index = 1
-layout_mode = 0
-offset_left = -90.0
-offset_top = 15.0
-offset_right = 265.0
-offset_bottom = 44.9996
-placeholder_text = "Tempo"
-editable = false
+[node name="Tempo" type="LineEdit" parent="ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_xiwi7")
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
+placeholder_text = "Tempo (Em minutos)"
+virtual_keyboard_type = 2
+flat = true
 
-[node name="Error_Time_Message" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = -90.0
-offset_top = 49.0
-offset_right = 265.0
-offset_bottom = 75.0
+[node name="Error_Time_Message" type="Label" parent="ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_xiwi7")
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "Mens2"
 
-[node name="ItemList" type="ItemList" parent="."]
-offset_left = 126.0
-offset_top = 49.0
-offset_right = 553.0
-offset_bottom = 135.0
-select_mode = 1
-item_count = 7
-item_0/text = "APOIO DE FRENTE"
-item_0/icon = ExtResource("4_slujn")
-item_1/text = "ROSCA COM PESO"
-item_1/icon = ExtResource("5_iia4a")
-item_2/text = "ARREMESSAR BOLA (ACOMPANHADO OU SÓ)"
-item_2/icon = ExtResource("6_u1jmo")
-item_3/text = "SENTAR E LEVANTAR"
-item_3/icon = ExtResource("7_utrdj")
-item_4/text = "CORRIDA LATERAL"
-item_4/icon = ExtResource("8_ugl8q")
-item_5/text = "SALTOS (PULAR CORDA OU AFINS)"
-item_5/icon = ExtResource("9_xc2bw")
-item_6/text = "OUTROS"
-item_6/icon = ExtResource("10_6rqf7")
+[node name="Button" type="Button" parent="ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_xiwi7")
+theme_override_font_sizes/font_size = 25
+text = "Voltar ao Jogo"
 
-[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
-[connection signal="text_changed" from="Control/Tempo" to="." method="_on_tempo_text_changed"]
+[connection signal="focus_entered" from="ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer/PIN" to="." method="_on_pin_focus_entered"]
+[connection signal="pressed" from="ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
