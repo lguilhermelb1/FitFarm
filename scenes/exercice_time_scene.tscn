@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/exercice_time_scene.gd" id="1_vibgd"]
 [ext_resource type="Texture2D" uid="uid://coubn4asnuqum" path="res://assets_v2/UI/ui_background.png" id="2_rs4q2"]
-[ext_resource type="Theme" path="res://themes/tela_de_exercicios.tres" id="3_xiwi7"]
+[ext_resource type="Theme" uid="uid://bxlo1kisnolxt" path="res://themes/tela_de_exercicios.tres" id="3_xiwi7"]
 
 [node name="Exercice_Time_Scene" type="Control"]
 layout_mode = 3
@@ -115,5 +115,4 @@ theme = ExtResource("3_xiwi7")
 theme_override_font_sizes/font_size = 25
 text = "Voltar ao Jogo"
 
-[connection signal="focus_entered" from="ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer/PIN" to="." method="_on_pin_focus_entered"]
 [connection signal="pressed" from="ColorRect/MarginContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
