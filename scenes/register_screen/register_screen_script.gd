@@ -58,7 +58,7 @@ func save_user_data(user_id, pin):
 # Função chamada quando a solicitação de salvar dados do usuário é concluída
 func _on_request_save_user_data_completed(result, response_code, headers, body):
 	if response_code == 200:
-		get_tree().change_scene_to_file("res://scenes/login_screen/login_screen_scene.tscn")
+		get_tree().change_scene_to_file(Global.LOGIN_SCREEN_SCENE)
 		print("Dados do usuário salvos com sucesso!")
 	else:
 		print("Falha ao salvar dados do usuário:", response_code)
@@ -90,4 +90,4 @@ func _on_create_pressed():
 
 
 func _on_back_pressed():
-	get_tree().change_scene_to_file("res://scenes/login_screen.tscn")
+	get_tree().change_scene_to_file(Global.LOGIN_SCREEN_SCENE)

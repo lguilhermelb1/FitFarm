@@ -14,7 +14,13 @@ var status=true
 var transition: Transition
 var time_label: Label
 
-
+# Agrupamento das cenas para usar e não precisar mudar em todo o projeto caso haja mudança do path
+const LOGIN_SCREEN_SCENE = "res://scenes/login_screen/login_screen_scene.tscn"
+const REGISTER_SCREEN_SCENE = "res://scenes/register_screen/register_screen_scene.tscn"
+const FINAL_CREDITS_SCENE = "res://scenes/final_credits/final_credits.tscn"
+const EXERCISE_TIME_SCENE  = "res://scenes/exercise_time/exercise_time_scene.tscn"
+const SET_TIMER_FIRST_ACCESS_SCENE = "res://scenes/set_timer_first_access/set_timer_first_access_scene.tscn"
+const MAIN_GAME_SCENE = "res://scenes/mundo_01.tscn"
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	tempo_final = Timer.new()
@@ -94,7 +100,7 @@ func on_tempo_final_timeout():
 	tempo_final.stop()
 	tempo_final.wait_time=0
 	att_db()
-	transition.change_scene("res://scenes/exercice_time_scene.tscn")
+	transition.change_scene(Global.EXERCISE_TIME_SCENE)
 	
 	
 func setTransition(t: Transition):

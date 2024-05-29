@@ -23,6 +23,4 @@ func play_animation_apperence():
 	anim.play("show_label")
 
 func _on_exit_pressed():
-	transition.change_scene("res://scenes/mundo_01.tscn")
-	#await(anim.animation_finished)
-	#get_tree().change_scene_to_file("res://scenes/mundo_01.tscn")
+	transition.change_scene(Global.MAIN_GAME_SCENE)

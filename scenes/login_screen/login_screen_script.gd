@@ -65,13 +65,13 @@ func _on_request_user_data_completed(result, response_code, headers, body):
 		
 		if Global.primeiro:
 			# Agora você pode acessar essas variáveis globais em qualquer lugar do seu projeto
-			get_tree().change_scene_to_file("res://scenes/set_timer_first_access/set_timer_first_access_scene.tscn")
+			get_tree().change_scene_to_file(Global.SET_TIMER_FIRST_ACCESS_SCENE)
 		else:
 			Global.atualizar_tempo_transicao(int(user["tempo_restante"]))
 			if int(user["tempo_restante"]) < 1:
-				get_tree().change_scene_to_file("res://scenes/exercise_time/exercise_time_scene.tscn")
+				get_tree().change_scene_to_file(Global.EXERCISE_TIME_SCENE)
 			else:
-				get_tree().change_scene_to_file("res://scenes/mundo_01.tscn")
+				get_tree().change_scene_to_file(Global.MAIN_GAME_SCENE)
 	else:
 		handle_data_error(response_code)
 		print("Falha ao salvar dados do usuário:", response_code)
@@ -97,7 +97,7 @@ func handle_data_error(response_code: int) -> void:
 
 
 func _on_create_pressed():
-	get_tree().change_scene_to_file("res://scenes/register_screen.tscn")
+	get_tree().change_scene_to_file(Global.REGISTER_SCREEN_SCENE)
 
 func _on_login_pressed():
 	var url = loginUrl + webApiKey
@@ -110,4 +110,4 @@ func getGlobal():
 
 
 func _on_creditos_pressed():
-	get_tree().change_scene_to_file("res://scenes/final_credits/final_credits.tscn")
+	get_tree().change_scene_to_file(Global.FINAL_CREDITS_SCENE)
