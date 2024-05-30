@@ -28,7 +28,7 @@ func criar_animal():
 	elif qual_animal == 1:
 		animal = animal2.instantiate()
 
-	animal.script = load("res://scripts/fuga_bichinhos/animal_controller.gd")
+	animal.script = load("res://scenes/minigames/animals_escape/prefabs/animal_controller.gd")
 	
 	qual_velocidade = randi() % 3
 	

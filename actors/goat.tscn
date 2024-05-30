@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://cjp4gjq2cmkxm"]
 
-[ext_resource type="Script" path="res://scripts/fuga_bichinhos/animal_controller.gd" id="1_t4slp"]
+[ext_resource type="Script" path="res://scenes/minigames/animals_escape/prefabs/animal_controller.gd" id="1_t4slp"]
 [ext_resource type="Texture2D" uid="uid://byoroqi2hsxb8" path="res://assets/Characters/animals/goat/walk/right/spritesheet.png" id="2_a6dgm"]
 [ext_resource type="Texture2D" uid="uid://cyux7m3ruqqvp" path="res://assets/Characters/animals/goat/walk/back/spritesheet.png" id="3_dd8oj"]
 [ext_resource type="Texture2D" uid="uid://ce607qio5vofv" path="res://assets/Characters/animals/goat/walk/front/spritesheet.png" id="4_7f4x5"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgvxt36w0hysg"]
 
-[ext_resource type="Script" path="res://scripts/fuga_bichinhos/game_over_label.gd" id="1_qyu3s"]
+[ext_resource type="Script" path="res://scenes/minigames/animals_escape/prefabs/game_over_label.gd" id="1_qyu3s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_no1ny"]
 bg_color = Color(0.862745, 0.607843, 0.384314, 1)

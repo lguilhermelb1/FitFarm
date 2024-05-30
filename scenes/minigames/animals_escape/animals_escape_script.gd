@@ -9,7 +9,6 @@ extends Node2D
 
 func _ready():	
 	get_tree().paused = false
-	get_window().size = Vector2(640, 320)
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
 
 	Global.setTransition(transition)

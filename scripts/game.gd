@@ -27,7 +27,6 @@ var cr = 0
 
 func _ready():
 	get_tree().paused = false
-	get_window().size = Vector2(515, 650)
 
 	Global.setTransition(transition)
 	

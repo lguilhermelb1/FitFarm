@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bwpk63dssg76w"]
 
-[ext_resource type="Script" path="res://scripts/fuga_bichinhos/countdown_script.gd" id="1_v8an8"]
+[ext_resource type="Script" path="res://scenes/minigames/animals_escape/prefabs/countdown_script.gd" id="1_v8an8"]
 [ext_resource type="Texture2D" uid="uid://caswup5a0t7yp" path="res://assets/Tiny Wonder UI Free/exit_button.png" id="2_iqymx"]
 [ext_resource type="AudioStream" uid="uid://cbve8aq5i4tod" path="res://sounds/timeout-90320.mp3" id="2_yh1p5"]
 [ext_resource type="PackedScene" uid="uid://bgvxt36w0hysg" path="res://prefab/game_over_label.tscn" id="3_vspxf"]

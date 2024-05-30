@@ -4959,13 +4959,13 @@ libraries = {
 "": SubResource("AnimationLibrary_wcsjq")
 }
 
-[node name="area_minigame" parent="." instance=ExtResource("14_arwcc")]
+[node name="area_minigame_animals_escape" parent="." instance=ExtResource("14_arwcc")]
 position = Vector2(517, 363)
-next_world = "res://scenes/fuga_dos_bichinhos.tscn"
+next_world = "MINIGAME_ANIMALS_SCAPE_SCENE"
 
-[node name="area_minigame2" parent="." instance=ExtResource("14_arwcc")]
+[node name="area_minigame_bug_invaders" parent="." instance=ExtResource("14_arwcc")]
 position = Vector2(173, 377)
-next_world = "res://scenes/game.tscn"
+next_world = "MINIGAME_BUG_INVADERS_SCENE"
 
 [node name="Worker" parent="." instance=ExtResource("21_41ij5")]
 position = Vector2(159, 167)
