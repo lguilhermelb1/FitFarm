@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwpk63dssg76w"]
+[gd_scene load_steps=10 format=3 uid="uid://bwpk63dssg76w"]
 
 [ext_resource type="Script" path="res://scenes/minigames/animals_escape/prefabs/countdown_script.gd" id="1_v8an8"]
 [ext_resource type="Texture2D" uid="uid://caswup5a0t7yp" path="res://assets/Tiny Wonder UI Free/exit_button.png" id="2_iqymx"]
+[ext_resource type="FontFile" uid="uid://cutg2f3cmjb8g" path="res://fonts/Retro Gaming.ttf" id="2_lj1sm"]
 [ext_resource type="AudioStream" uid="uid://cbve8aq5i4tod" path="res://sounds/timeout-90320.mp3" id="2_yh1p5"]
 [ext_resource type="PackedScene" uid="uid://bgvxt36w0hysg" path="res://prefab/game_over_label.tscn" id="3_vspxf"]
 [ext_resource type="PackedScene" uid="uid://cnv86s1qb4u7a" path="res://prefab/comfirm_exit.tscn" id="5_1slow"]
@@ -33,7 +34,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.1, 0.1), Vector2(1, 1)]
+"values": [Vector2(0.1, 0.1), Vector2(0.8, 0.8)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p0bhx"]
@@ -53,6 +54,7 @@ offset_top = -56.0
 offset_right = 56.0
 offset_bottom = -11.0
 scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_lj1sm")
 theme_override_font_sizes/font_size = 30
 text = "10:00"
 

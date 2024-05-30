@@ -25,7 +25,7 @@ func change_scene_by_path(scene_path: String) -> Error:
 		return ERR_FILE_NOT_FOUND
 
 func change_scene_by_name(name : String) -> Error:
-	var path = PATHS.get("name")
+	var path = PATHS.get(name)
 	var next_scene = load(path)
 	if next_scene:
 		var result = get_tree().change_scene_to_packed(next_scene)
