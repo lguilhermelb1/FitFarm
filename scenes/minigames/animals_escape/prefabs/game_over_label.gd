@@ -12,5 +12,5 @@ func setTransition(t: Transition):
 	transition = t
 
 func _on_exit_pressed():
-	transition.change_scene(Global.MAIN_GAME_SCENE)
+	transition.change_scene_by_name("MAIN_GAME_SCENE")
 

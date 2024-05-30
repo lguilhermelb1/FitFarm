@@ -15,7 +15,7 @@ func setPlayer(p: Node2D):
 
 func _on_yes_button_pressed():
 	player.progresso_perdido()
-	SceneGameManager.change_scene(Global.MAIN_GAME_SCENE)
+	SceneGameManager.change_scene_by_name("MAIN_GAME_SCENE")
 
 func _on_no_button_pressed():
 	visible=false

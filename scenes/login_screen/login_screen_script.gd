@@ -65,13 +65,13 @@ func _on_request_user_data_completed(result, response_code, headers, body):
 		
 		if Global.primeiro:
 			# Agora você pode acessar essas variáveis globais em qualquer lugar do seu projeto
-			SceneGameManager.change_scene(Global.SET_TIMER_FIRST_ACCESS_SCENE)
+			SceneGameManager.change_scene_by_name("SET_TIMER_FIRST_ACCESS_SCENE")
 		else:
 			Global.atualizar_tempo_transicao(int(user["tempo_restante"]))
 			if int(user["tempo_restante"]) < 1:
-				SceneGameManager.change_scene(Global.EXERCISE_TIME_SCENE)
+				SceneGameManager.change_scene_by_name("EXERCISE_TIME_SCENE")
 			else:
-				SceneGameManager.change_scene(Global.MAIN_GAME_SCENE)
+				SceneGameManager.change_scene_by_name("MAIN_GAME_SCENE")
 	else:
 		handle_data_error(response_code)
 		print("Falha ao salvar dados do usuário:", response_code)
@@ -97,7 +97,7 @@ func handle_data_error(response_code: int) -> void:
 
 
 func _on_create_pressed():
-	SceneGameManager.change_scene(Global.REGISTER_SCREEN_SCENE)
+	SceneGameManager.change_scene_by_name("REGISTER_SCREEN_SCENE")
 
 func _on_login_pressed():
 	var url = loginUrl + webApiKey
@@ -110,4 +110,4 @@ func getGlobal():
 
 
 func _on_creditos_pressed():
-	SceneGameManager.change_scene(Global.FINAL_CREDITS_SCENE)
+	SceneGameManager.change_scene_by_name("FINAL_CREDITS_SCENE")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=3 uid="uid://b8rn7vwnv4rum"]
 
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_qmq0e"]
+[ext_resource type="Script" path="res://scenes/minigames/bug_invaders/bug_invaders_script.gd" id="1_qmq0e"]
 [ext_resource type="PackedScene" uid="uid://dq3nphcyf63wm" path="res://scenes/bug.tscn" id="2_57jjv"]
 [ext_resource type="PackedScene" uid="uid://mxfibfbf8tns" path="res://scenes/speedest_bug.tscn" id="3_v5py0"]
 [ext_resource type="Texture2D" uid="uid://dd8j02xreyrcj" path="res://assets/Tilesets/Wooden House.png" id="4_c27if"]

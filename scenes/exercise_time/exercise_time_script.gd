@@ -73,7 +73,7 @@ func _on_button_pressed():
 func change_scene(path: String):
 	get_tree().paused = true
 	_update_values()
-	assert(SceneGameManager.change_scene(path) == OK)
+	assert(SceneGameManager.change_scene_by_path(path) == OK)
 
 
 func _update_values():

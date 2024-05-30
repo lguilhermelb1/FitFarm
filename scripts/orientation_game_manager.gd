@@ -15,7 +15,6 @@ var orientations_list = {
 func _ready():
 	update_orientation(ScreenOrientation.DEFAULT)
 	SceneGameManager.connect("scene_changed", _on_scene_change)
-	#get_node("/root").
 	
 func set_orientation(orientation):
 	match orientation:
@@ -31,11 +30,10 @@ func set_orientation(orientation):
 func update_orientation(scene_name):
 		if scene_name in orientations_list:
 			var orientation = orientations_list[scene_name]
-			print(orientation)
 			set_orientation(orientation)
 		else:
 			set_orientation(ScreenOrientation.DEFAULT)
 		print("Orientation: %s" %DisplayServer.screen_get_orientation())
 
-func _on_scene_change():
-	print("A cena mudou")
+func _on_scene_change(scene_name : String):
+	update_orientation(scene_name)

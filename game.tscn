@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://3wb7xfvlv6oh"]
 
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_3t6yw"]
+[ext_resource type="Script" path="res://scenes/minigames/bug_invaders/bug_invaders_script.gd" id="1_3t6yw"]
 [ext_resource type="PackedScene" uid="uid://dj8crjcbpsbi2" path="res://scenes/player.tscn" id="2_3bdsq"]
 [ext_resource type="PackedScene" uid="uid://c0najr07e3fsp" path="res://scenes/hud.tscn" id="4_elgqs"]
 [ext_resource type="PackedScene" uid="uid://dq3nphcyf63wm" path="res://scenes/bug.tscn" id="4_mvnpw"]
