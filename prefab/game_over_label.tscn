@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgvxt36w0hysg"]
+[gd_scene load_steps=4 format=3 uid="uid://bgvxt36w0hysg"]
 
 [ext_resource type="Script" path="res://scenes/minigames/animals_escape/prefabs/game_over_label.gd" id="1_qyu3s"]
+[ext_resource type="FontFile" uid="uid://cutg2f3cmjb8g" path="res://fonts/Retro Gaming.ttf" id="2_6q13b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_no1ny"]
 bg_color = Color(0.862745, 0.607843, 0.384314, 1)
@@ -30,6 +31,7 @@ offset_right = 166.0
 offset_bottom = 39.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_6q13b")
 theme_override_font_sizes/font_size = 25
 text = "Game Over"
 metadata/_edit_use_anchors_ = true
@@ -37,14 +39,15 @@ metadata/_edit_use_anchors_ = true
 [node name="pontos" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0154135
-anchor_top = 0.147826
-anchor_right = 0.995721
-anchor_bottom = 0.282609
+anchor_left = 0.0530075
+anchor_top = 0.173913
+anchor_right = 1.62023
+anchor_bottom = 0.308696
 offset_left = -0.0500002
 offset_right = 127.51
 offset_bottom = 22.5
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.35, 0.35)
+theme_override_fonts/font = ExtResource("2_6q13b")
 theme_override_font_sizes/font_size = 25
 text = "Pontuação: 00000000"
 metadata/_edit_use_anchors_ = true
@@ -52,14 +55,15 @@ metadata/_edit_use_anchors_ = true
 [node name="cristais" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0748872
-anchor_top = 0.295652
-anchor_right = 0.884887
-anchor_bottom = 0.491652
+anchor_left = 0.135038
+anchor_top = 0.330435
+anchor_right = 1.44218
+anchor_bottom = 0.526435
 offset_left = 0.04
 offset_right = 109.19
 offset_bottom = 23.625
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.35, 0.35)
+theme_override_fonts/font = ExtResource("2_6q13b")
 theme_override_font_sizes/font_size = 25
 text = "Moedas: 00000000"
 metadata/_edit_use_anchors_ = true
@@ -67,14 +71,15 @@ metadata/_edit_use_anchors_ = true
 [node name="retry" type="Button" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.232669
-anchor_top = 0.478261
-anchor_right = 0.752092
-anchor_bottom = 0.695652
+anchor_left = 0.217632
+anchor_top = 0.486957
+anchor_right = 1.01105
+anchor_bottom = 0.678261
 offset_left = 0.0549984
 offset_right = 67.53
 offset_bottom = 25.0
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.4, 0.4)
+theme_override_fonts/font = ExtResource("2_6q13b")
 theme_override_font_sizes/font_size = 30
 text = "Reiniciar"
 metadata/_edit_use_anchors_ = true
@@ -82,14 +87,15 @@ metadata/_edit_use_anchors_ = true
 [node name="exit" type="Button" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.24797
-anchor_top = 0.73913
-anchor_right = 0.72897
-anchor_bottom = 0.956522
+anchor_left = 0.270526
+anchor_top = 0.721739
+anchor_right = 0.751526
+anchor_bottom = 0.939131
 offset_left = 0.0199986
 offset_right = 62.49
 offset_bottom = 25.0
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.45, 0.45)
+theme_override_fonts/font = ExtResource("2_6q13b")
 theme_override_font_sizes/font_size = 30
 text = "Sair"
 metadata/_edit_use_anchors_ = true
