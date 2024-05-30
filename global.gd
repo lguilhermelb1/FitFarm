@@ -20,7 +20,7 @@ const REGISTER_SCREEN_SCENE = "res://scenes/register_screen/register_screen_scen
 const FINAL_CREDITS_SCENE = "res://scenes/final_credits/final_credits.tscn"
 const EXERCISE_TIME_SCENE  = "res://scenes/exercise_time/exercise_time_scene.tscn"
 const SET_TIMER_FIRST_ACCESS_SCENE = "res://scenes/set_timer_first_access/set_timer_first_access_scene.tscn"
-const MAIN_GAME_SCENE = "res://scenes/mundo_01.tscn"
+const MAIN_GAME_SCENE = "res://scenes/main/mundo_01.tscn"
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	tempo_final = Timer.new()
