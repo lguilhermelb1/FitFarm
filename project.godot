@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://prefab/global.tscn"
+OrientationGameManager="*res://scripts/orientation_game_manager.gd"
+SceneGameManager="*res://scripts/scene_game_manager.gd"
 
 [display]
 

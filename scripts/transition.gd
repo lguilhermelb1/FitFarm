@@ -15,7 +15,7 @@ func change_scene(path: String):
 	_update_values()
 	animation.play("fade_in")
 	await(animation.animation_finished)
-	assert(get_tree().change_scene_to_file(path) == OK)
+	assert(SceneGameManager.change_scene(path) == OK)
 
 
 func _update_values():

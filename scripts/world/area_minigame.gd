@@ -20,5 +20,5 @@ func _on_body_exited(body):
 	_dentro_area = false
 
 func _on_start_button_pressed():
-	if _dentro_area == true and hud.inventory.visible == false: 
-		transition.change_scene(next_world)
+	if _dentro_area == true and hud.inventory.visible == false:
+		transition.change_scene(Global.get(next_world))
