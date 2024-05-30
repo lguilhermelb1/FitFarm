@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnv86s1qb4u7a"]
+[gd_scene load_steps=7 format=3 uid="uid://cnv86s1qb4u7a"]
 
 [ext_resource type="Texture2D" uid="uid://0wwy8yh8kota" path="res://assets/Tiny Wonder UI Free/background_label.png" id="1_dte4w"]
 [ext_resource type="Script" path="res://prefab/comfirm_exit.gd" id="1_kojin"]
+[ext_resource type="FontFile" uid="uid://cutg2f3cmjb8g" path="res://fonts/Retro Gaming.ttf" id="3_kije4"]
 
 [sub_resource type="Animation" id="Animation_52mqh"]
 resource_name = "exit_label1"
@@ -27,7 +28,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.1, 0.1), Vector2(1, 1)]
+"values": [Vector2(0.1, 0.1), Vector2(0.85, 0.85)]
 }
 
 [sub_resource type="Animation" id="Animation_5mbll"]
@@ -83,6 +84,7 @@ texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.137153
+anchor_right = 0.322835
 anchor_bottom = -0.137153
 offset_top = 1.0122
 offset_right = 126.0
@@ -93,41 +95,48 @@ metadata/_edit_use_anchors_ = true
 [node name="yes_button" type="Button" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.072
-anchor_top = -0.0487805
-anchor_right = -0.072
-anchor_bottom = -0.0487805
+anchor_left = -0.00113384
+anchor_top = -0.110257
+anchor_right = -0.00113384
+anchor_bottom = -0.110257
 offset_left = 28.144
 offset_top = 43.0488
 offset_right = 65.144
 offset_bottom = 74.0488
 scale = Vector2(0.7, 0.7)
+theme_override_fonts/font = ExtResource("3_kije4")
 text = "Sim"
 metadata/_edit_use_anchors_ = true
 
 [node name="no_button" type="Button" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -0.0487805
-anchor_bottom = -0.0487805
+anchor_left = 0.19685
+anchor_top = -0.096559
+anchor_right = 0.244094
+anchor_bottom = -0.0965589
 offset_left = 69.0
 offset_top = 43.0488
 offset_right = 109.0
 offset_bottom = 74.0488
 scale = Vector2(0.7, 0.7)
+theme_override_fonts/font = ExtResource("3_kije4")
 text = "Não"
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -0.0639826
-anchor_bottom = -0.0639826
+anchor_left = -0.023622
+anchor_top = -0.0639822
+anchor_right = 0.582677
+anchor_bottom = -0.0639822
 offset_left = 13.0
 offset_top = 11.6707
 offset_right = 225.0
 offset_bottom = 63.6707
 scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("3_kije4")
 text = "Deseja mesmo sair? 
 Seu progresso será perdido"
 metadata/_edit_use_anchors_ = true

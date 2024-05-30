@@ -15,6 +15,8 @@ func setPlayer(p: Node2D):
 
 func _on_yes_button_pressed():
 	player.progresso_perdido()
+	transition.animation.play("fade_in")
+	await(transition.animation.animation_finished)
 	SceneGameManager.change_scene_by_name("MAIN_GAME_SCENE")
 
 func _on_no_button_pressed():

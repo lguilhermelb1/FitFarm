@@ -4,27 +4,20 @@ class_name DialogueCreation
 var data: Dictionary = {
 	0: {
 		"name"="Faz tudo",
-		"dialog"="Olá, bem vindo ao Fit Farm"
+		"dialog"="Olá, bem vindo ao Fit Farm. O jogo irá lhe ajudar a equilibrar o tempo de jogo com o tempo de atividade física"
 	},
 	
 	1: {
 		"name": "Faz tudo",
-		"dialog": "O jogo irá ajudar a equilibrar o tempo de uso no celular
-		 com as práticas de atividade física"
+		"dialog": "Eu preciso que você compre alguns recursos para melhorar a fazenda"
 	},
-	
+
 	2: {
 		"name": "Faz tudo",
-		"dialog": "Eu preciso que você compre alguns recursos para melhorar a fazenda"
+		"dialog": "Irei dar a você algumas moedas para começar.Jogue nos minigames para conseguir cristais e desbloquear novos recursos"
 	},
 	
 	3: {
-		"name": "Faz tudo",
-		"dialog": "Irei lhe dar algumas moedas para começar.Jogue nos minigames
-		 para conseguir cristais e desbloquear novos recursos"
-	},
-	
-	4: {
 		"name": "Faz tudo",
 		"dialog": "Tenha um bom dia"
 	}
@@ -77,5 +70,6 @@ func give_coins():
 	Global.status=false
 	Global.moedas += 30
 	Global.att_db()
-	get_tree().get_root().get_child(1).get_node("camera").get_node("Control")\
-	.get_node("label_moedas").text = "%08d" % Global.moedas
+	get_tree().get_root().get_child(3).get_node("HUD").update_values_resources()
+	#get_tree().get_root().get_child(1).get_node("camera").get_node("Control")\
+	#.get_node("label_moedas").text = "%08d" % Global.moedas

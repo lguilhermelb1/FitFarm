@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxgf3ic563c1i"]
+[gd_scene load_steps=9 format=3 uid="uid://cxgf3ic563c1i"]
 
 [ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_e742g"]
+[ext_resource type="FontFile" uid="uid://cutg2f3cmjb8g" path="res://fonts/Retro Gaming.ttf" id="2_qqrv3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qdq8"]
 bg_color = Color(0.698039, 0.490196, 0.278431, 1)
@@ -69,8 +70,8 @@ layout_mode = 1
 anchors_preset = -1
 offset_left = 1.0
 offset_top = 1.0
-offset_right = 330.0
-offset_bottom = 273.0
+offset_right = 306.0
+offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.1, 0.1)
@@ -82,12 +83,13 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -107.167
-offset_top = 18.6667
-offset_right = 203.833
-offset_bottom = 95.6667
+offset_left = -130.628
+offset_top = 7.0
+offset_right = 225.372
+offset_bottom = 84.0
 grow_horizontal = 2
 scale = Vector2(0.7, 0.7)
+theme_override_fonts/font = ExtResource("2_qqrv3")
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_dfny4")
 
@@ -95,12 +97,13 @@ label_settings = SubResource("LabelSettings_dfny4")
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
-offset_left = 85.872
-offset_top = 102.0
-offset_right = 364.872
-offset_bottom = 155.0
+offset_left = 55.872
+offset_top = 88.0
+offset_right = 355.372
+offset_bottom = 141.0
 grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_qqrv3")
 text = "Moedas: 9999"
 label_settings = SubResource("LabelSettings_liq8o")
 
@@ -109,12 +112,13 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -115.628
-offset_top = 73.0
-offset_right = 317.372
-offset_bottom = 125.0
+offset_left = -124.128
+offset_top = 59.0
+offset_right = 308.872
+offset_bottom = 111.0
 grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_qqrv3")
 text = "PONTUAÇÃO: 9999"
 label_settings = SubResource("LabelSettings_nimdr")
 horizontal_alignment = 1
@@ -126,13 +130,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -101.833
-offset_top = 69.3334
-offset_right = 168.167
-offset_bottom = 133.333
+offset_left = -68.628
+offset_top = 67.5
+offset_right = 83.372
+offset_bottom = 131.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.7, 0.7)
+theme_override_fonts/font = ExtResource("2_qqrv3")
 theme_override_font_sizes/font_size = 40
 text = "Sair"
 
@@ -143,13 +148,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -91.1667
-offset_top = 13.3333
-offset_right = 145.833
-offset_bottom = 76.3333
+offset_left = -94.628
+offset_top = 5.49998
+offset_right = 142.372
+offset_bottom = 68.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.7, 0.7)
+theme_override_fonts/font = ExtResource("2_qqrv3")
 theme_override_font_sizes/font_size = 40
 text = "Reiniciar"
 

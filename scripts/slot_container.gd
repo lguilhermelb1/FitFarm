@@ -18,12 +18,12 @@ func set_pagamento(tipo_pagamento: String):
 func efetuar_pagamento():
 	if (_pagamento == "cristal"):
 		Global.remove_cristals(int($preco.text))
-		_label_cristals.text = "%08d" % Global.cristais
+		#_label_cristals.text = "%08d" % Global.cristais
 		
 	elif (_pagamento == "coin"):
 		Global.remove_coins(int($preco.text))
-		_label_moedas.text = "%08d" % Global.moedas
-
+		#_label_moedas.text = "%08d" % Global.moedas
+	get_tree().get_root().get_child(3).get_node("HUD").update_values_resources()
 
 func _on_gui_input(event):
 	
@@ -37,8 +37,10 @@ func _on_gui_input(event):
 			if file_name== "cristal":
 				efetuar_pagamento()
 				Global.add_cristals(30)
-				_label_cristals.text = "%08d" % Global.cristais
+				get_tree().get_root().get_child(3).get_node("HUD").update_values_resources()
+				#_label_cristals.text = "%08d" % Global.cristais
 				Global.att_db()
+				
 									
 			elif file_name == "celeiro":
 				var node_celeiro = _buscar_celeiro()

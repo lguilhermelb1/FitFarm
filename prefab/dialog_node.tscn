@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://crrthfbh7gjqv"]
+[gd_scene load_steps=4 format=3 uid="uid://crrthfbh7gjqv"]
 
 [ext_resource type="Script" path="res://scripts/dialog_screen.gd" id="1_babxk"]
 [ext_resource type="Texture2D" uid="uid://h6sasusmriri" path="res://assets/Tiny Wonder UI Free/background_button.png" id="2_sbqmg"]
+[ext_resource type="FontFile" uid="uid://cutg2f3cmjb8g" path="res://fonts/Retro Gaming.ttf" id="3_04dq4"]
 
 [node name="Dialog_Node" type="Node2D"]
 z_index = 1
@@ -19,8 +20,8 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.3499
-anchor_bottom = 1.03223
+anchor_right = 1.76454
+anchor_bottom = 1.75803
 offset_right = -0.0380096
 offset_bottom = 0.0019989
 texture = ExtResource("2_sbqmg")
@@ -28,13 +29,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="character_name" type="Label" parent="Dialog_Control"]
 layout_mode = 2
-anchor_left = 0.121951
-anchor_right = 0.121951
+anchor_left = 0.292683
+anchor_top = 0.0483871
+anchor_right = 0.487805
+anchor_bottom = 0.0483871
 offset_left = 34.0
 offset_top = 2.0
 offset_right = 125.0
 offset_bottom = 27.0
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.6, 0.6)
+theme_override_fonts/font = ExtResource("3_04dq4")
 theme_override_font_sizes/font_size = 15
 text = "Personagem"
 metadata/_edit_use_anchors_ = true
@@ -42,14 +46,15 @@ metadata/_edit_use_anchors_ = true
 [node name="dialog" type="RichTextLabel" parent="Dialog_Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.10526
-anchor_top = 0.193258
-anchor_right = 1.08748
-anchor_bottom = 0.738871
+anchor_left = 0.145911
+anchor_top = 0.338419
+anchor_right = 1.29073
+anchor_bottom = 1.41629
 offset_left = 0.0529995
 offset_top = 0.0179996
 offset_right = 190.24
 offset_bottom = 55.19
-scale = Vector2(0.45, 0.45)
+scale = Vector2(0.55, 0.55)
+theme_override_fonts/normal_font = ExtResource("3_04dq4")
 text = "t"
 metadata/_edit_use_anchors_ = true

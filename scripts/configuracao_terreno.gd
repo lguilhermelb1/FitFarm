@@ -76,7 +76,8 @@ func _on_button_pressed():
 		and Global.moedas >= int(preco):
 			
 		Global.remove_coins(preco)
-		label_moedas.text = "%08d" % Global.moedas
+		#label_moedas.text = "%08d" % Global.moedas
+		get_tree().get_root().get_child(3).get_node("HUD").update_values_resources()
 		
 		node = retorno_objetos("celeiro")
 		remocao_valores(node)
@@ -97,7 +98,8 @@ func _on_button_pressed():
 		and Global.cristais >= int(preco):
 		
 		Global.remove_cristals(preco)		
-		label_cristais.text = "%08d" % Global.cristais
+		#label_cristais.text = "%08d" % Global.cristais
+		get_tree().get_root().get_child(3).get_node("HUD").update_values_resources()
 		
 		node = retorno_objetos("celeiro")
 		remocao_valores(node)

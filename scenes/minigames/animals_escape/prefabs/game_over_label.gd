@@ -12,6 +12,7 @@ func setTransition(t: Transition):
 	transition = t
 
 func _on_exit_pressed():
-	print(transition)
+	transition.animation.play("fade_in")
+	await(transition.animation.animation_finished)
 	SceneGameManager.change_scene_by_name("MAIN_GAME_SCENE")
 
