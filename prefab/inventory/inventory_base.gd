@@ -1,5 +1,6 @@
 extends GridContainer
 
+
 # OBS: não tinha dado certo criar um prefab para o slot
 # então eu instanciei dentro mesmo
 var inventory = [
@@ -95,5 +96,4 @@ func _update_slot(pos):
 	add_child(slt)
 
 
-func _on_exit_store_button_pressed():
-	get_parent().get_parent().hide()
+

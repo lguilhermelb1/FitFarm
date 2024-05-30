@@ -2,6 +2,9 @@ extends Node2D
 
 @onready var camera := $camera as Camera2D
 @onready var player := $player_world as Main_Player
+@onready var hud = %HUD
+
+
 var nd = null
 var nodes_celeiro = null
 var nodes_plantacao = null
@@ -15,20 +18,11 @@ var nodes_plantacao = null
 # 640 x 320
 func _ready():	
 	print(get_tree().get_nodes_in_group("insercao_celeiro"))
-	$camera/Inventory/ScrollContainer/GridContainer.main_update()
-	$camera/Inventory.visible = false
 
 	Global.setTransition($camera/transition)
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
 	atualizar()
 	print(get_node("Terreno_A_Comprar"))
-		
-	if Global.time_label == null:
-		Global.time_label = Label.new()
-		
-	Global.time_label.position = Vector2(-60,-70)
-	Global.time_label.scale = Vector2(.6, .6)
-	$camera/Control.add_child(Global.time_label)
 	Global.tempo_final.start()
 	print("Started")
 
@@ -36,8 +30,6 @@ func _ready():
 		$Worker.queue_free()
 	
 	player.position = Vector2(330,200)
-	$camera/Control/label_cristais.text = "%08d" % Global.cristais
-	$camera/Control/label_moedas.text = "%08d" % Global.moedas
 	$celeiro.change_visibility()
 	player.follow_camera(camera) 
 	#update_values()
@@ -49,8 +41,7 @@ func _ready():
 
 
 func update_values():
-	$camera/Control/label_cristais.text = "%08d" % Global.cristais
-	$camera/Control/label_moedas.text = "%08d" % Global.moedas
+	hud.update_values_resources()
 	
 	
 func atualizar():		
@@ -120,6 +111,4 @@ func _buscar_celeiro(name:String):
 #		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
 #		Global.tempo_final.wait_time = Global.tempo_final.time_left
 
-func _on_button_label_inventory_pressed():
-	if (get_tree().get_root().get_node("Dialog_Node") == null):
-		$camera/Inventory.visible = true
+
