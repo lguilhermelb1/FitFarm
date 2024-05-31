@@ -23,4 +23,4 @@ func play_animation_apperence():
 	anim.play("show_label")
 
 func _on_exit_pressed():
-	transition.change_scene(Global.MAIN_GAME_SCENE)
+	transition.change_scene(SceneGameManager.Paths.MAIN_GAME_SCENE)
