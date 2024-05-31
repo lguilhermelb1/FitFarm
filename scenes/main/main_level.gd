@@ -32,12 +32,7 @@ func _ready():
 	player.position = Vector2(330,200)
 	$celeiro.change_visibility()
 	player.follow_camera(camera) 
-	#update_values()
-	#_area_inserir()
 
-
-#func _process(delta):
-#	Global.setLabelTime()
 
 
 func update_values():
@@ -105,10 +100,5 @@ func _buscar_celeiro(name:String):
 	return null		
 
 
-#func update_timer():
-#	if Global.tempo_final != null:		
-#		$camera/tempo_final/label_tempo_final.text = "%02d : %02d" % \
-#		[(int(Global.tempo_final.time_left/60)), (int(fmod(Global.tempo_final.time_left, 60)))]
-#		Global.tempo_final.wait_time = Global.tempo_final.time_left
 
 
