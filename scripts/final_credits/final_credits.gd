@@ -94,4 +94,4 @@ func add_line(n, pos):
 
 
 func _on_texture_button_pressed():
-	SceneGameManager.change_scene(Global.LOGIN_SCREEN_SCENE)
+	SceneGameManager.change_scene(SceneGameManager.PATHS.LOGIN_SCREEN_SCENE)

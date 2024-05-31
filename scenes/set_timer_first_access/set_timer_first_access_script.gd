@@ -20,7 +20,7 @@ func _on_button_pressed():
 		error_message_time.text = "O tempo limite deve ser entre 20 e 120 minutos"	
 	else: 
 		Global.atualizar_tempo_transicao(int(tempo.text)*60)
-		change_scene(Global.MAIN_GAME_SCENE)
+		change_scene(SceneGameManager.PATHS.MAIN_GAME_SCENE)
 
 func change_scene(path: String):
 	get_tree().paused = true
