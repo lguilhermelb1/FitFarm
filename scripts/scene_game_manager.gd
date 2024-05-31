@@ -1,5 +1,4 @@
 extends Node
-signal scene_changed(scene_name : String)
 
 const PATHS = {
 	"LOGIN_SCREEN_SCENE": "res://scenes/login_screen/login_screen_scene.tscn",
@@ -18,8 +17,8 @@ func change_scene_by_path(scene_path: String) -> Error:
 	var next_scene = load(scene_path)
 	var scene_name : String = PATHS.find_key(scene_path)
 	if next_scene:
+		OrientationGameManager.update_orientation(scene_name)
 		var result = get_tree().change_scene_to_packed(next_scene)
-		scene_changed.emit(scene_name)
 		return result
 	else:
 		return ERR_FILE_NOT_FOUND
@@ -28,8 +27,8 @@ func change_scene_by_name(name : String) -> Error:
 	var path = PATHS.get(name)
 	var next_scene = load(path)
 	if next_scene:
+		OrientationGameManager.update_orientation(name)
 		var result = get_tree().change_scene_to_packed(next_scene)
-		scene_changed.emit()
 		return result
 	else:
 		return ERR_FILE_NOT_FOUND

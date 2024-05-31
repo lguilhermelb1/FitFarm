@@ -14,28 +14,6 @@ var status=true
 var transition: Transition
 var time_label: Label
 
-const PATHS = {
-	"LOGIN_SCREEN_SCENE": "res://scenes/login_screen/login_screen_scene.tscn",
-	"REGISTER_SCREEN_SCENE" : "res://scenes/register_screen/register_screen_scene.tscn",
-	"FINAL_CREDITS_SCENE": "res://scenes/final_credits/final_credits.tscn",
-	"EXERCISE_TIME_SCENE"  : "res://scenes/exercise_time/exercise_time_scene.tscn",
-	"SET_TIMER_FIRST_ACCESS_SCENE" :"res://scenes/set_timer_first_access/set_timer_first_access_scene.tscn",
-	"MAIN_GAME_SCENE" : "res://scenes/main/mundo_01.tscn",
- 	#Minigames
-	"MINIGAME_ANIMALS_SCAPE_SCENE" :"res://scenes/minigames/animals_escape/animals_escape_scene.tscn",
-	"MINIGAME_BUG_INVADERS_SCENE":"res://scenes/minigames/bug_invaders/bug_invaders_scene.tscn"
-}
-
-# Agrupamento das cenas para usar e não precisar mudar em todo o projeto caso haja mudança do path
-const LOGIN_SCREEN_SCENE = "res://scenes/login_screen/login_screen_scene.tscn"
-const REGISTER_SCREEN_SCENE = "res://scenes/register_screen/register_screen_scene.tscn"
-const FINAL_CREDITS_SCENE = "res://scenes/final_credits/final_credits.tscn"
-const EXERCISE_TIME_SCENE  = "res://scenes/exercise_time/exercise_time_scene.tscn"
-const SET_TIMER_FIRST_ACCESS_SCENE = "res://scenes/set_timer_first_access/set_timer_first_access_scene.tscn"
-const MAIN_GAME_SCENE = "res://scenes/main/mundo_01.tscn"
- #Minigames
-const MINIGAME_ANIMALS_SCAPE_SCENE = "res://scenes/minigames/animals_escape/animals_escape_scene.tscn"
-const MINIGAME_BUG_INVADERS_SCENE = "res://scenes/minigames/bug_invaders/bug_invaders_scene.tscn"
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -116,7 +94,7 @@ func on_tempo_final_timeout():
 	tempo_final.stop()
 	tempo_final.wait_time=0
 	att_db()
-	transition.change_scene(Global.EXERCISE_TIME_SCENE)
+	transition.change_scene(SceneGameManager.PATHS.EXERCISE_TIME_SCENE)
 	
 	
 func setTransition(t: Transition):

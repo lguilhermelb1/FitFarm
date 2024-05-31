@@ -9,12 +9,13 @@ enum ScreenOrientation {
 
 var orientations_list = {
 	"MINIGAME_ANIMALS_SCAPE_SCENE": ScreenOrientation.LANDSCAPE,
-	"MINIGAME_BUG_INVADERS_SCENE": ScreenOrientation.PORTRAIT,   
+	"MINIGAME_BUG_INVADERS_SCENE": ScreenOrientation.PORTRAIT,
 }
 
 func _ready():
-	update_orientation(ScreenOrientation.DEFAULT)
-	SceneGameManager.connect("scene_changed", _on_scene_change)
+	if(get_tree().current_scene.get_path().get_concatenated_names() == SceneGameManager.PATHS.MAIN_GAME_SCENE):
+		update_orientation(ScreenOrientation.DEFAULT)	 
+	
 	
 func set_orientation(orientation):
 	match orientation:
@@ -35,5 +36,4 @@ func update_orientation(scene_name):
 			set_orientation(ScreenOrientation.DEFAULT)
 		print("Orientation: %s" %DisplayServer.screen_get_orientation())
 
-func _on_scene_change(scene_name : String):
-	update_orientation(scene_name)
+
