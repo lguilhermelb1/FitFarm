@@ -2,18 +2,20 @@ extends StaticBody2D
 class_name barn
 
 var visivel
-	
+var lista_animais = []
 func _ready():
 	visivel=false
 
 
 func lotado():
-	var cont = 0
-	for x in $area2d.get_overlapping_bodies():
-		if x.is_in_group("animal"):
-			cont += 1			
-	return cont == 4
+	#var cont = 0
+	#for x in $area2d.get_overlapping_bodies():
+		#if x.is_in_group("animal"):
+		#	cont += 1			
+	return len(lista_animais) == 4
 
+func append_animal(nd: Node2D):
+	lista_animais.append(nd)
 
 func _on_area_porta_body_entered(body):
 	if body.name == "player_world":
