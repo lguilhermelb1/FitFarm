@@ -71,16 +71,21 @@ process_mode = 3
 [node name="transition" type="Control" parent="UILayer"]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 0
-offset_right = 542.0
-offset_bottom = 705.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("20_k3jvn")
 
 [node name="ColorRect" type="ColorRect" parent="UILayer/transition"]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_right = 541.0
-offset_bottom = 708.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="animation" type="AnimationPlayer" parent="UILayer/transition"]
@@ -92,20 +97,12 @@ libraries = {
 process_mode = 3
 
 [node name="Comfirm_Exit" parent="UILayer" instance=ExtResource("21_71ouw")]
-position = Vector2(202, 147)
 
 [node name="GameOverScreen" parent="UILayer" instance=ExtResource("22_1nwx1")]
-offset_left = 93.72
-offset_top = 181.0
-offset_right = 111.0
-offset_bottom = 188.12
 
 [node name="BugSpwanTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
-
-[node name="Player" parent="." instance=ExtResource("23_wec7n")]
-position = Vector2(501, 379)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(288, 394)
@@ -114,6 +111,11 @@ position = Vector2(288, 394)
 
 [node name="BugContainer" type="Node2D" parent="."]
 position = Vector2(218, 26)
+
+[node name="Player" parent="." instance=ExtResource("23_wec7n")]
+unique_name_in_owner = true
+position = Vector2(501, 379)
+scale = Vector2(3, 3)
 
 [connection signal="exit_button_pressed" from="UILayer/HUD" to="." method="_on_hud_exit_button_pressed"]
 [connection signal="timeout" from="BugSpwanTimer" to="." method="_on_bug_spwan_timer_timeout"]

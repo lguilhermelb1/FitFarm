@@ -2,6 +2,9 @@ extends Control
 
 var transition: Transition = null
 @onready var anim = $anim
+@onready var coin_label = %CoinLabel
+@onready var score_label = %ScoreLabel
+
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -14,10 +17,10 @@ func _on_retry_pressed():
 	get_tree().reload_current_scene()
 
 func set_score(score):
-	$Panel/Score.text = "PONTUAÇÃO: " + str(score)
+	score_label.text = "PONTUAÇÃO: " + str(score)
 	
 func set_high_score(score):
-	$Panel/HighScore.text = "Moedas: " + str(score)
+	coin_label.text = "Moedas: " + str(score)
 
 func play_animation_apperence():
 	anim.play("show_label")

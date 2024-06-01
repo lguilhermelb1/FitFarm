@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var transition : Transition = null
 var player = null

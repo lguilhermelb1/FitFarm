@@ -66,7 +66,7 @@ func _on_button_pressed():
 		
 	else: 
 		Global.atualizar_tempo_transicao(int(tempo.text)*60)
-		change_scene(Global.MAIN_GAME_SCENE)
+		change_scene(SceneGameManager.PATHS.MAIN_GAME_SCENE)
 
 
 

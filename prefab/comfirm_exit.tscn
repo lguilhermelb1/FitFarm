@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnv86s1qb4u7a"]
+[gd_scene load_steps=8 format=3 uid="uid://cnv86s1qb4u7a"]
 
 [ext_resource type="Texture2D" uid="uid://0wwy8yh8kota" path="res://assets/Tiny Wonder UI Free/background_label.png" id="1_dte4w"]
 [ext_resource type="Script" path="res://prefab/comfirm_exit.gd" id="1_kojin"]
@@ -28,7 +28,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.1, 0.1), Vector2(0.85, 0.85)]
+"values": [Vector2(0.1, 0.1), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_5mbll"]
@@ -55,7 +55,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.1, 0.1), Vector2(2, 2)]
+"values": [Vector2(0.1, 0.1), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6ac33"]
@@ -64,10 +64,21 @@ _data = {
 "exit_label2": SubResource("Animation_5mbll")
 }
 
-[node name="Comfirm_Exit" type="Node2D"]
-modulate = Color(1, 1, 1, 0)
-z_index = 1
-scale = Vector2(0.1, 0.1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a3mtn"]
+content_margin_left = 30.0
+content_margin_top = 30.0
+content_margin_right = 30.0
+content_margin_bottom = 30.0
+texture = ExtResource("1_dte4w")
+
+[node name="Comfirm_Exit" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
 script = ExtResource("1_kojin")
 
 [node name="anim" type="AnimationPlayer" parent="."]
@@ -75,71 +86,44 @@ libraries = {
 "": SubResource("AnimationLibrary_6ac33")
 }
 
-[node name="Panel" type="Panel" parent="."]
-offset_right = 127.0
-offset_bottom = 73.0
-
-[node name="TextureRect" type="TextureRect" parent="Panel"]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_top = -0.137153
-anchor_right = 0.322835
-anchor_bottom = -0.137153
-offset_top = 1.0122
-offset_right = 126.0
-offset_bottom = 83.0122
-texture = ExtResource("1_dte4w")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.5
+offset_top = -85.5
+offset_right = 160.5
+offset_bottom = 85.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_a3mtn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_kije4")
+text = "Deseja mesmo sair? 
+Seu progresso será perdido"
+horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="yes_button" type="Button" parent="Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.00113384
-anchor_top = -0.110257
-anchor_right = -0.00113384
-anchor_bottom = -0.110257
-offset_left = 28.144
-offset_top = 43.0488
-offset_right = 65.144
-offset_bottom = 74.0488
-scale = Vector2(0.7, 0.7)
+[node name="yes_button" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("3_kije4")
 text = "Sim"
 metadata/_edit_use_anchors_ = true
 
-[node name="no_button" type="Button" parent="Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.19685
-anchor_top = -0.096559
-anchor_right = 0.244094
-anchor_bottom = -0.0965589
-offset_left = 69.0
-offset_top = 43.0488
-offset_right = 109.0
-offset_bottom = 74.0488
-scale = Vector2(0.7, 0.7)
+[node name="no_button" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("3_kije4")
 text = "Não"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.023622
-anchor_top = -0.0639822
-anchor_right = 0.582677
-anchor_bottom = -0.0639822
-offset_left = 13.0
-offset_top = 11.6707
-offset_right = 225.0
-offset_bottom = 63.6707
-scale = Vector2(0.5, 0.5)
-theme_override_fonts/font = ExtResource("3_kije4")
-text = "Deseja mesmo sair? 
-Seu progresso será perdido"
-metadata/_edit_use_anchors_ = true
-
-[connection signal="pressed" from="Panel/yes_button" to="." method="_on_yes_button_pressed"]
-[connection signal="pressed" from="Panel/no_button" to="." method="_on_no_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/yes_button" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/no_button" to="." method="_on_no_button_pressed"]

@@ -1,14 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxgf3ic563c1i"]
+[gd_scene load_steps=10 format=3 uid="uid://cxgf3ic563c1i"]
 
 [ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_e742g"]
+[ext_resource type="Texture2D" uid="uid://0wwy8yh8kota" path="res://assets/Tiny Wonder UI Free/background_label.png" id="2_bloxn"]
 [ext_resource type="FontFile" uid="uid://cutg2f3cmjb8g" path="res://fonts/Retro Gaming.ttf" id="2_qqrv3"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qdq8"]
-bg_color = Color(0.698039, 0.490196, 0.278431, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ogrvy"]
+content_margin_left = 30.0
+content_margin_top = 30.0
+content_margin_right = 30.0
+content_margin_bottom = 30.0
+texture = ExtResource("2_bloxn")
 
 [sub_resource type="LabelSettings" id="LabelSettings_dfny4"]
 font_size = 54
@@ -52,109 +53,66 @@ _data = {
 }
 
 [node name="GameOverScreen" type="Control"]
-z_index = 1
 layout_mode = 3
-anchor_left = 0.002
-anchor_right = 0.5
-anchor_bottom = 0.834
-offset_left = -0.28
-offset_top = 1.0
-offset_right = -319.0
-offset_bottom = -265.88
-script = ExtResource("1_e742g")
-
-[node name="Panel" type="Panel" parent="."]
-modulate = Color(1, 1, 1, 0)
-z_index = 1
-layout_mode = 1
-anchors_preset = -1
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 306.0
-offset_bottom = 256.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.1, 0.1)
-theme_override_styles/panel = SubResource("StyleBoxFlat_0qdq8")
+script = ExtResource("1_e742g")
 
-[node name="GameOver" type="Label" parent="Panel"]
-modulate = Color(1, 0.25098, 0, 1)
+[node name="Panel" type="PanelContainer" parent="."]
+texture_filter = 1
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -130.628
-offset_top = 7.0
-offset_right = 225.372
-offset_bottom = 84.0
+anchor_bottom = 0.5
+offset_left = -221.0
+offset_top = -190.0
+offset_right = 222.0
+offset_bottom = 191.0
 grow_horizontal = 2
-scale = Vector2(0.7, 0.7)
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ogrvy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="GameOver" type="Label" parent="Panel/VBoxContainer"]
+modulate = Color(1, 0.25098, 0, 1)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_qqrv3")
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_dfny4")
 
-[node name="HighScore" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.5
-offset_left = 55.872
-offset_top = 88.0
-offset_right = 355.372
-offset_bottom = 141.0
-grow_horizontal = 2
-scale = Vector2(0.5, 0.5)
+[node name="CoinLabel" type="Label" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_qqrv3")
 text = "Moedas: 9999"
 label_settings = SubResource("LabelSettings_liq8o")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Score" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -124.128
-offset_top = 59.0
-offset_right = 308.872
-offset_bottom = 111.0
-grow_horizontal = 2
-scale = Vector2(0.5, 0.5)
+[node name="ScoreLabel" type="Label" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_qqrv3")
 text = "PONTUAÇÃO: 9999"
 label_settings = SubResource("LabelSettings_nimdr")
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Exit" type="Button" parent="Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -68.628
-offset_top = 67.5
-offset_right = 83.372
-offset_bottom = 131.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.7, 0.7)
+[node name="Exit" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_qqrv3")
 theme_override_font_sizes/font_size = 40
 text = "Sair"
 
-[node name="Retry" type="Button" parent="Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -94.628
-offset_top = 5.49998
-offset_right = 142.372
-offset_bottom = 68.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.7, 0.7)
+[node name="Retry" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_qqrv3")
 theme_override_font_sizes/font_size = 40
 text = "Reiniciar"
@@ -164,5 +122,5 @@ libraries = {
 "": SubResource("AnimationLibrary_gl8un")
 }
 
-[connection signal="pressed" from="Panel/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="Panel/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
