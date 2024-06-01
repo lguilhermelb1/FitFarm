@@ -1,12 +1,19 @@
-extends Panel
+extends PanelContainer
 
 var _pagamento = null
-var _label_cristals = null
-var _label_moedas = null
+@onready var preco = %preco
+@onready var result = %result
+@onready var icon = %icon
+
+
+const PATHS = {
+		"cristal":"res://assets/Objects/cristal.png",
+		"coin":"res://assets/Objects/coin_icon.png"
+	}
 var main_map: tile_map
 
 func _ready():
-	$result.visible = false
+	result.visible = false
 	await(get_tree().current_scene.name == "Mundo01")
 	main_map =  get_tree().current_scene.get_node("mapa")
 
@@ -17,11 +24,11 @@ func set_pagamento(tipo_pagamento: String):
 
 func efetuar_pagamento():
 	if (_pagamento == "cristal"):
-		Global.remove_cristals(int($preco.text))
+		Global.remove_cristals(_get_price_from_label())
 		#_label_cristals.text = "%08d" % Global.cristais
 		
 	elif (_pagamento == "coin"):
-		Global.remove_coins(int($preco.text))
+		Global.remove_coins(_get_price_from_label())
 		#_label_moedas.text = "%08d" % Global.moedas
 	get_tree().get_root().get_child(3).get_node("HUD").update_values_resources()
 
@@ -29,10 +36,10 @@ func _on_gui_input(event):
 	
 	if event is InputEventScreenTouch and event.is_pressed():
 	
-		if ((_pagamento == "cristal" and Global.cristais >= int($preco.text)) \
-			or (_pagamento == "coin" and Global.moedas >= int($preco.text))):
+		if ((_pagamento == "cristal" and Global.cristais >= _get_price_from_label()) \
+			or (_pagamento == "coin" and Global.moedas >= _get_price_from_label())):
 		
-			var file_name = $icon.texture.get_path().get_file().replace(".png", "")
+			var file_name = icon.texture.get_path().get_file().replace(".png", "")
 					
 			if file_name== "cristal":
 				efetuar_pagamento()
@@ -90,7 +97,7 @@ func _on_gui_input(event):
 					if container != null:
 						print("Container_Insercao: ", container.name)						
 						var node_vegetable: vegetable_item = load("res://prefab/vegetable.tscn").instantiate()
-						node_vegetable.get_node("main_image").texture = $icon.texture
+						node_vegetable.get_node("main_image").texture = icon.texture
 						node_vegetable.z_index = 0
 						container.inserir(node_vegetable)
 						print("POS: ", node_vegetable.global_position)
@@ -153,14 +160,14 @@ func _verificacao_posicao(name: String, tipo: String):
 		
 func _mudanca_texto(frase: String):
 	$timer.wait_time = 5
-	$result.text =  frase
-	$result.visible = true
+	result.text =  frase
+	result.visible = true
 	$timer.start()
 
 
 func _on_timer_timeout():
 	$timer.stop()
-	$result.visible = false
+	result.visible = false
 
 
 #func _area_inserir():
@@ -170,3 +177,22 @@ func _on_timer_timeout():
 #			return area
 #			break
 #	return null	
+
+func add_icon():
+	pass
+
+func _get_price_from_label():
+	return int(preco.get_parsed_text())
+	
+
+func set_icon(path: String):
+	get_node("VBoxContainer/icon").texture = load(path)
+	#icon.transform[0][0] = inventory[pos]['icon_scale']
+	#icon.transform[1][1] = inventory[pos]['icon_scale']
+func set_payment(value: int,type: String):
+	_pagamento = type
+	var label = get_node("VBoxContainer/preco")
+	var text = "[center]%d[img=30]%s[/img][/center]" %[value, PATHS.get(type)]
+	label.set_text(text)
+	
+	

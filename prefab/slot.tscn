@@ -1,54 +1,64 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8opciy6uhtyw"]
+[gd_scene load_steps=7 format=3 uid="uid://c8opciy6uhtyw"]
 
 [ext_resource type="Script" path="res://scripts/slot_container.gd" id="1_v34xp"]
 [ext_resource type="Texture2D" uid="uid://h6sasusmriri" path="res://assets/Tiny Wonder UI Free/background_button.png" id="2_tsc01"]
 [ext_resource type="Texture2D" uid="uid://b1agavbxnp8lf" path="res://assets/Inventory_Items/goat.png" id="3_exhw1"]
-[ext_resource type="Texture2D" uid="uid://rlnbdfadq1ix" path="res://assets/Objects/Payment/cristal.png" id="4_n0j8v"]
 
-[node name="slot" type="Panel"]
-offset_right = 44.0
-offset_bottom = 31.0
-script = ExtResource("1_v34xp")
-
-[node name="background" type="TextureRect" parent="."]
-texture_filter = 1
-layout_mode = 0
-offset_right = 43.0
-offset_bottom = 31.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_34r5m"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
 texture = ExtResource("2_tsc01")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h26g3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qu6hk"]
+
+[node name="slot" type="PanelContainer"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -751.0
+offset_bottom = -345.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_34r5m")
+script = ExtResource("1_v34xp")
 
 [node name="timer" type="Timer" parent="."]
 
-[node name="preco" type="Label" parent="."]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 18.0
-offset_right = 54.0
-offset_bottom = 44.0
-scale = Vector2(0.4, 0.4)
-text = "250"
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
 
-[node name="icon" type="Sprite2D" parent="."]
+[node name="icon" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
 texture_filter = 1
-position = Vector2(21, 10)
-scale = Vector2(0.6, 0.6)
+layout_mode = 2
+size_flags_vertical = 3
 texture = ExtResource("3_exhw1")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="result" type="Label" parent="."]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 7.0
-offset_right = 116.0
-offset_bottom = 33.0
-scale = Vector2(0.3, 0.3)
+[node name="preco" type="RichTextLabel" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h26g3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qu6hk")
+bbcode_enabled = true
+text = "[center]250[img=20]res://assets/Objects/cristal.png[/img][/center]"
+fit_content = true
+
+[node name="result" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "INDISPONÍVEL"
-
-[node name="pagamento" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(9, 21)
-scale = Vector2(0.11, 0.11)
-texture = ExtResource("4_n0j8v")
+horizontal_alignment = 1
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

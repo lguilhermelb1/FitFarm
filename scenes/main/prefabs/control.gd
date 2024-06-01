@@ -34,6 +34,7 @@ func pause_game():
 
 func _on_button_store_pressed():
 	button_store.disabled = true
+	get_tree().paused = true
 	inventory.visible = true
 
 
@@ -41,5 +42,6 @@ func _on_button_store_pressed():
 func _on_inventory_store_closed():
 	inventory.visible = false
 	button_store.disabled = false
+	get_tree().paused = false
 	
 
