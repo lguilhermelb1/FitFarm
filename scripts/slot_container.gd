@@ -60,15 +60,18 @@ func _on_gui_input(event):
 				if node_animal != null and container != null:
 						node_animal = node_animal.instantiate()
 						node_animal.z_index = 0
-						node_animal.set_script(load("res://scripts/animal_script.gd"))
-						node_animal.position = container.get_node("area2d/collision").transform.origin
-											
-						container.get_node("area2d").add_child(node_animal)
-						print("GB: ", node_animal.global_position)
+						node_animal.set_script(load("res://scripts/animal_script.gd"))						
+						node_animal.position = container.get_node("area2d/collision").global_position
+						
+						get_tree().current_scene.add_child(node_animal)	
+						#container.get_node("area2d").add_child(node_animal)
+						
+						print("GB: ", node_animal.position)
 						Global.lista.append({"type": "animal",
 							"node": "res://actors/" + file_name + ".tscn", 
 							"script": "res://scripts/animal_script.gd",
-							"position": node_animal.global_position})	
+							"position": node_animal.position,
+							"local_insercao": container.name})	
 						Global.att_db()								
 						efetuar_pagamento()
 						
@@ -92,13 +95,12 @@ func _on_gui_input(event):
 							"position": node_vegetable.global_position,
 							'current_time': 7})
 						node_vegetable.play_animation()
-						
 					else:
 						_mudanca_texto("INDISPONIVEL")
 				efetuar_pagamento()
+				
 			get_tree().get_root().get_child(3).get_node("HUD").update_values_resources()
 			Global.att_db()
-				
 		else:
 			_mudanca_texto("INSUFICIENTE")
 		
@@ -115,9 +117,6 @@ func _container_nao_lotado() -> vegetables_grid:
 	return null			
 
 
-
-
-	
 func _buscar_celeiro():
 	for celeiro in get_tree().get_nodes_in_group("celeiro"):
 		if celeiro.visivel == false and _verificacao_posicao(celeiro.name, "celeiro") == false:

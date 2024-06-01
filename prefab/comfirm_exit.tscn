@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnv86s1qb4u7a"]
+[gd_scene load_steps=9 format=3 uid="uid://cnv86s1qb4u7a"]
 
 [ext_resource type="Texture2D" uid="uid://0wwy8yh8kota" path="res://assets/Tiny Wonder UI Free/background_label.png" id="1_dte4w"]
 [ext_resource type="Script" path="res://prefab/comfirm_exit.gd" id="1_kojin"]
@@ -58,10 +58,38 @@ tracks/1/keys = {
 "values": [Vector2(0.1, 0.1), Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_hsbac"]
+resource_name = "exit_label3"
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(0.55, 0.55)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6ac33"]
 _data = {
 "exit_label1": SubResource("Animation_52mqh"),
-"exit_label2": SubResource("Animation_5mbll")
+"exit_label2": SubResource("Animation_5mbll"),
+"exit_label3": SubResource("Animation_hsbac")
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a3mtn"]
@@ -72,13 +100,14 @@ content_margin_bottom = 30.0
 texture = ExtResource("1_dte4w")
 
 [node name="Comfirm_Exit" type="Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(0.1, 0.1)
 script = ExtResource("1_kojin")
 
 [node name="anim" type="AnimationPlayer" parent="."]

@@ -5,7 +5,7 @@ class_name cronometro
 @onready var timer := $timer as Timer
 @onready var anim := $anim as AnimationPlayer
 @onready var game_over_label := $game_over_label as Node2D
-@onready var confirm_exit := $Comfirm_Exit as Node2D
+@onready var confirm_exit := $Comfirm_Exit as Control
 @onready var cristais := $game_over_label/Panel/cristais as Label
 @onready var pontos := $game_over_label/Panel/pontos as Label
 @onready var timeout := $timeout as AudioStreamPlayer
@@ -40,7 +40,7 @@ func setTransition(t: Transition):
 func _on_exit_button_pressed():
 	if $game_over_label.visible == false:
 		confirm_exit.visible=true
-		confirm_exit.get_node("anim").play("exit_label1")
+		confirm_exit.get_node("anim").play("exit_label3")
 		await(confirm_exit.get_node("anim").animation_finished)
 		get_tree().paused=true
 
