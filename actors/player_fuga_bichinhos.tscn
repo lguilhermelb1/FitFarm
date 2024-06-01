@@ -193,4 +193,3 @@ stream = ExtResource("12_c3l6o")
 volume_db = -10.0
 
 [connection signal="body_entered" from="animal_detector" to="." method="_on_animal_detector_body_entered"]
-[connection signal="body_exited" from="animal_detector" to="." method="_on_animal_detector_body_exited"]

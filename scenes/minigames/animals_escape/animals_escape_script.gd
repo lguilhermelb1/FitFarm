@@ -33,13 +33,3 @@ func _ready():
 
 	print("Started")
 	player.follow_camera(camera) 
-
-func _on_insercao_body_entered(body):
-	if body.is_in_group("animal"):
-		player.ganhar_pontos()
-		body.queue_free()
-
-func _on_remocao_body_entered(body):
-	if body.is_in_group("animal"):
-		body.queue_free()
-		game_fail.play()

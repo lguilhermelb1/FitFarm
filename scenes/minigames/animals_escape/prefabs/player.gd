@@ -54,58 +54,16 @@ func _physics_process(delta):
 		footsteps.play()
 		
 	_set_state()
-	_captura_animal()
 	move_and_slide()
 	
-
-func _set_animal_detector():
-	
-	if (direction.x > 0 and direction.y==0) or (anim.scale.x == -1):
-		animal_detector.position.x = 13
-		animal_detector.position.y = 0
-				
-	elif (direction.x < 0 and direction.y == 0) or (anim.scale.x == 1):
-		animal_detector.position.x = -13
-		animal_detector.position.y = 0
-		
-	elif direction.x == 0 and direction.y > 0:
-		animal_detector.position.x = 0
-		animal_detector.position.y = 13
-		
-	elif direction.x == 0 and direction.y < 0:
-		animal_detector.position.x = 0
-		animal_detector.position.y = -13
-	
-	elif direction.x > 0 and direction.y > 0:
-		animal_detector.position.x = 12
-		animal_detector.position.y = 12
-	
-	elif direction.x > 0 and direction.y < 0:
-		animal_detector.position.x = 10
-		animal_detector.position.y = -10
-		
-	elif direction.x < 0 and direction.y > 0:
-		animal_detector.position.x = -12
-		animal_detector.position.y = 12
-		
-	elif direction.x < 0 and direction.y < 0:
-		animal_detector.position.x = -10
-		animal_detector.position.y = -10
 		
 
-func _captura_animal():
-	_set_animal_detector()
-	
-	if len(lt) == 1 and lt[0] == null:
-		lt.pop_front()
-
-	if Input.get_action_strength("ui_capture"):		
-		if animal != null and len(lt) == 0:
-			collect_sound.play()
-			lt.append(animal)
-			button_capture.visible = false
-			add_collision_exception_with(animal)
-			animal.setTargetlayer(get_path())
+func _captura_animal(animal):	
+	if animal != null:
+		collect_sound.play()
+		lt.append(animal)
+		add_collision_exception_with(animal)
+		animal.setTargetlayer(get_path())
 
 
 func _set_state():
@@ -128,14 +86,11 @@ func tem_animal():
 
 
 func _on_animal_detector_body_entered(body):
-	if body.is_in_group("animal") and len(lt) == 0:
-		button_capture.visible = true
-		button_capture.play("default")	
-		animal = body
+	if body.is_in_group("animal") and body not in lt:
+		_captura_animal(body)
+		ganhar_pontos()
 
-func _on_animal_detector_body_exited(body):
-	button_capture.visible = false
-	animal = null
+
 
 
 func ganhar_pontos():
