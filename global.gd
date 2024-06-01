@@ -59,7 +59,7 @@ func get_cristals():
 
 
 func att_db():
-	var saveUserDataUrl = "https://fit-farm-db-default-rtdb.firebaseio.com/usuarios/" + user_id + "/" + user_key + ".json"
+	var saveUserDataUrl = "https://fit-farm-db-default-rtdb.firebaseio.com/usuarios/" + user_id + ".json"
 	var url = saveUserDataUrl
 	
 	# Solicitação para salvar dados no Realtime Database
@@ -80,7 +80,7 @@ func att_db():
 	})
 
 	var headers = ['Content-Type: application/json']
-	request.request(url, headers, HTTPClient.METHOD_PUT, initial_data)
+	request.request(url, headers, HTTPClient.METHOD_PATCH, initial_data)
 
 
 func _on_http_request_request_completed(result, response_code, headers, body):

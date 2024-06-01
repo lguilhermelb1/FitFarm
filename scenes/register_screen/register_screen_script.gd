@@ -53,7 +53,7 @@ func save_user_data(user_id, pin):
 
 	var headers = ['Content-Type: application/json']
 	
-	request.request(url, headers, HTTPClient.METHOD_POST, initial_data)
+	request.request(url, headers, HTTPClient.METHOD_PUT, initial_data)
 
 # Função chamada quando a solicitação de salvar dados do usuário é concluída
 func _on_request_save_user_data_completed(result, response_code, headers, body):

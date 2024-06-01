@@ -27,7 +27,7 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 		add_child(request)
 		
 		# Configure a solicitação para recuperar dados do Firebase
-		request.request(url)
+		request.request(url, [], HTTPClient.METHOD_GET)
 		
 		# Use uma função anônima para encapsular a chamada à sua função
 		var request_callback = func(result, response_code, headers, body):
@@ -44,10 +44,7 @@ func _on_request_user_data_completed(result, response_code, headers, body):
 	if response_code == 200:
 		print("Dados do usuário salvos com sucesso!")
 		var user_data = JSON.parse_string(body.get_string_from_utf8())
-		print("VALORES: ", user_data)
-		var key = user_data.keys()[0]
-		Global.user_key = key
-		var user = user_data[key]
+		var user = user_data
 		
 		# Atualize as variáveis globais com os dados do usuário
 		Global.pin = str(user["pin"])
@@ -57,8 +54,9 @@ func _on_request_user_data_completed(result, response_code, headers, body):
 		Global.status = user['status']
 		
 		if "lista" in user:
+				
 			# Se estiver presente, atribui o valor de user["lista"] a Global.lista
-			Global.lista = user["lista"]
+			Global.lista = user["lista"].map(convert_fields)
 		else:
 			# Se não estiver presente, atribui uma lista vazia a Global.lista
 			Global.lista = []
@@ -111,3 +109,9 @@ func getGlobal():
 
 func _on_creditos_pressed():
 	SceneGameManager.change_scene_by_name("FINAL_CREDITS_SCENE")
+
+func convert_fields(s):
+	var trimmed = s["position"].strip_edges()
+	var parts = trimmed.split(",")
+	s["position"] = Vector2(parts[0].to_float(), parts[1].to_float())
+	return s

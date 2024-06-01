@@ -42,13 +42,7 @@ func _on_gui_input(event):
 			var file_name = icon.texture.get_path().get_file().replace(".png", "")
 					
 			if file_name== "cristal":
-				efetuar_pagamento()
-				Global.add_cristals(30)
-				get_tree().get_root().get_child(3).get_node("HUD").update_values_resources()
-				#_label_cristals.text = "%08d" % Global.cristais
-				Global.att_db()
-				
-									
+				Global.add_cristals(30)						
 			elif file_name == "celeiro":
 				var node_celeiro = _buscar_celeiro()
 				
@@ -59,19 +53,6 @@ func _on_gui_input(event):
 					"name": node_celeiro.name, 
 					"pos": global_position,
 					"visible": true}) # "position": area_insercao.global_position
-					
-					efetuar_pagamento()
-									
-					#area_insercao.add_child(node_celeiro)			
-					#get_tree().get_root().add_child(node_celeiro)	
-				
-				#var area_insercao = _area_inserir()
-				
-				#if area_insercao != null:
-					#var pos_p = main_map.local_to_map(area_insercao.global_position)
-					#print("Principal_posicao: ", pos_p)
-					#node_celeiro.position.x = pos_p[0] # area_insercao.global_position.x
-					#node_celeiro.position.y = pos_p[1] # area_insercao.global_position.y
 			else:
 				var node_animal = load("res://actors/" + file_name + ".tscn")
 				var container = _celeiro_vazio()
@@ -110,12 +91,14 @@ func _on_gui_input(event):
 							"parent": container.name,
 							"position": node_vegetable.global_position,
 							'current_time': 7})
-						
-						Global.att_db()
 						node_vegetable.play_animation()
-						efetuar_pagamento()
+						
 					else:
 						_mudanca_texto("INDISPONIVEL")
+				efetuar_pagamento()
+			get_tree().get_root().get_child(3).get_node("HUD").update_values_resources()
+			Global.att_db()
+				
 		else:
 			_mudanca_texto("INSUFICIENTE")
 		
