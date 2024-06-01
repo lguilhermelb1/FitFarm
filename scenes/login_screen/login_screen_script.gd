@@ -54,7 +54,7 @@ func _on_request_user_data_completed(result, response_code, headers, body):
 		Global.status = user['status']
 		
 		if "lista" in user:
-				
+			print("LISTA: ", user['lista'])
 			# Se estiver presente, atribui o valor de user["lista"] a Global.lista
 			Global.lista = user["lista"].map(convert_fields)
 		else:
@@ -113,5 +113,5 @@ func _on_creditos_pressed():
 func convert_fields(s):
 	var trimmed = s["position"].strip_edges()
 	var parts = trimmed.split(",")
-	s["position"] = Vector2(parts[0].to_float(), parts[1].to_float())
+	s["position"] = Vector2(parts[0].replace("(","").to_float(), parts[1].replace(")", "").to_float())
 	return s

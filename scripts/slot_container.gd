@@ -51,7 +51,7 @@ func _on_gui_input(event):
 					
 					Global.lista.append({"type": "celeiro",
 					"name": node_celeiro.name, 
-					"pos": global_position,
+					"position": global_position,
 					"visible": true}) # "position": area_insercao.global_position
 			else:
 				var node_animal = load("res://actors/" + file_name + ".tscn")
@@ -65,16 +65,17 @@ func _on_gui_input(event):
 						
 						get_tree().current_scene.add_child(node_animal)	
 						#container.get_node("area2d").add_child(node_animal)
+						container.append_animal(node_animal)
 						
-						print("GB: ", node_animal.position)
 						Global.lista.append({"type": "animal",
 							"node": "res://actors/" + file_name + ".tscn", 
 							"script": "res://scripts/animal_script.gd",
 							"position": node_animal.position,
 							"local_insercao": container.name})	
-						Global.att_db()								
+						#Global.att_db()								
 						efetuar_pagamento()
-						
+				elif node_animal != null and container == null:
+					_mudanca_texto("INDISPONIVEL")
 				elif node_animal == null:
 					container = _container_nao_lotado()
 				

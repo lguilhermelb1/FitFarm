@@ -81,7 +81,6 @@ func atualizar():
 				nd.z_index=0
 					
 				if x['type'] == 'animal':
-					print("ANIMAL_POSITION: ", x['position'])
 					nd.set_script(load(x['script']))
 					nd.global_position = x['position']	
 					_buscar_celeiro(x['local_insercao']).append_animal(nd)	
