@@ -13,6 +13,7 @@ func _ready():
 func _on_body_entered(body):
 	start_button.visible = true
 	if body.name == "player_world":
+		$animation.play("animation_loop")
 		_dentro_area = true
 
 func _on_body_exited(body):
