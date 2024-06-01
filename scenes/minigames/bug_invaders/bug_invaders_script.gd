@@ -53,12 +53,7 @@ func _ready():
 func save_game():
 	Global.att_db()
 	
-func _process(_delta):
-	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
-	elif Input.is_action_just_pressed("reset"):
-		get_tree().reload_current_scene()
-		
+func _process(_delta):	
 	if timer.wait_time > 0.5:
 		timer.wait_time -= _delta * 0.005
 	elif timer.wait_time < 0.5:
