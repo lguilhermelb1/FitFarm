@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=12 format=3 uid="uid://d24s1qif08h56"]
 
-[ext_resource type="Texture2D" uid="uid://0ybsns1bxitn" path="res://assets/Tiny Wonder UI Free/barra_clara.png" id="1_2irpu"]
+[ext_resource type="Texture2D" uid="uid://d3biimguo2yt6" path="res://assets/Tiny Wonder UI Free/barra_clara.png" id="1_2irpu"]
 [ext_resource type="FontFile" uid="uid://cutg2f3cmjb8g" path="res://fonts/Retro Gaming.ttf" id="1_kwhiq"]
 [ext_resource type="Texture2D" uid="uid://5v1sbrb3gnbo" path="res://assets/Tiny Wonder UI Free/botao_claro_v3.png" id="2_hayo1"]
 
