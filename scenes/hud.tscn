@@ -1,43 +1,60 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0najr07e3fsp"]
+[gd_scene load_steps=9 format=3 uid="uid://c0najr07e3fsp"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_w8elm"]
-[ext_resource type="Texture2D" uid="uid://caswup5a0t7yp" path="res://assets/Tiny Wonder UI Free/exit_button.png" id="2_hktlb"]
 [ext_resource type="FontFile" uid="uid://cutg2f3cmjb8g" path="res://fonts/Retro Gaming.ttf" id="2_kyo30"]
+[ext_resource type="Texture2D" uid="uid://vn4uun7jc1pw" path="res://assets/icons/exit_icon.png" id="3_pld2y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7cma5"]
 font_size = 48
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tcgfo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_18n8i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wyjtv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_465g2"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 151.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w8elm")
 
 [node name="Score" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.197
-anchor_top = 0.125
-anchor_right = 0.691
-anchor_bottom = 0.245
-offset_left = -40.827
-offset_top = -1.0
-offset_right = 278.419
-offset_bottom = 30.6
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -223.5
+offset_top = 50.0
+offset_right = 223.5
+offset_bottom = 120.0
 grow_horizontal = 2
-scale = Vector2(0.55, 0.55)
 theme_override_fonts/font = ExtResource("2_kyo30")
 text = "PONTOS: 00000"
 label_settings = SubResource("LabelSettings_7cma5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+[node name="ExitButton" type="Button" parent="."]
 texture_filter = 1
-position = Vector2(40, 18)
+layout_mode = 1
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 76.0
+offset_bottom = 74.0
 scale = Vector2(3, 3)
-texture_normal = ExtResource("2_hktlb")
+theme_override_colors/icon_pressed_color = Color(0.862745, 0.607843, 0.384314, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tcgfo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_18n8i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wyjtv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_465g2")
+icon = ExtResource("3_pld2y")
+flat = true
+icon_alignment = 1
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

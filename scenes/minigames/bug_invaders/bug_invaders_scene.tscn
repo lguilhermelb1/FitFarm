@@ -68,15 +68,8 @@ stream = ExtResource("17_xqfk5")
 [node name="UILayer" type="CanvasLayer" parent="." groups=["ui_layer"]]
 process_mode = 3
 
-[node name="HUD" parent="UILayer" instance=ExtResource("19_hxevr")]
-process_mode = 3
-offset_top = 2.0
-offset_right = 68.0
-offset_bottom = -164.0
-
 [node name="transition" type="Control" parent="UILayer"]
 process_mode = 3
-z_index = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 542.0
@@ -95,6 +88,9 @@ libraries = {
 "": SubResource("AnimationLibrary_kfcqe")
 }
 
+[node name="HUD" parent="UILayer" instance=ExtResource("19_hxevr")]
+process_mode = 3
+
 [node name="Comfirm_Exit" parent="UILayer" instance=ExtResource("21_71ouw")]
 position = Vector2(202, 147)
 
@@ -109,7 +105,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource("23_wec7n")]
-position = Vector2(232, -68)
+position = Vector2(501, 379)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(288, 394)
@@ -119,7 +115,5 @@ position = Vector2(288, 394)
 [node name="BugContainer" type="Node2D" parent="."]
 position = Vector2(218, 26)
 
-[connection signal="pressed" from="UILayer/HUD/TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="exit_button_pressed" from="UILayer/HUD" to="." method="_on_hud_exit_button_pressed"]
 [connection signal="timeout" from="BugSpwanTimer" to="." method="_on_bug_spwan_timer_timeout"]
-
-[editable path="UILayer/HUD"]
