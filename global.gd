@@ -78,7 +78,9 @@ func att_db():
 		"tempo_restante": tempo_final.wait_time,
 		"lista": lista
 	})
-
+	
+	print("DT: ", initial_data)
+	
 	var headers = ['Content-Type: application/json']
 	request.request(url, headers, HTTPClient.METHOD_PATCH, initial_data)
 

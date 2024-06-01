@@ -1,0 +1,151 @@
+[gd_scene load_steps=16 format=3 uid="uid://b8rn7vwnv4rum"]
+
+[ext_resource type="Script" path="res://scenes/minigames/bug_invaders/bug_invaders_script.gd" id="1_qmq0e"]
+[ext_resource type="PackedScene" uid="uid://dq3nphcyf63wm" path="res://scenes/bug.tscn" id="2_57jjv"]
+[ext_resource type="PackedScene" uid="uid://mxfibfbf8tns" path="res://scenes/speedest_bug.tscn" id="3_v5py0"]
+[ext_resource type="Texture2D" uid="uid://ev3x01t60fa7" path="res://assets/Bug_Invaders_Assets/background (1204 x 540 px).png" id="6_o06qj"]
+[ext_resource type="Script" path="res://scenes/minigames/bug_invaders/UILayer.gd" id="8_hrsvn"]
+[ext_resource type="AudioStream" uid="uid://cdj4e2rxnrfm1" path="res://sounds/spray.mp3" id="16_fntgp"]
+[ext_resource type="AudioStream" uid="uid://ccd6twuqcfmb2" path="res://sounds/hit.mp3" id="17_xqfk5"]
+[ext_resource type="PackedScene" uid="uid://c0najr07e3fsp" path="res://scenes/hud.tscn" id="19_hxevr"]
+[ext_resource type="Script" path="res://scripts/transition.gd" id="20_k3jvn"]
+[ext_resource type="PackedScene" uid="uid://cnv86s1qb4u7a" path="res://prefab/comfirm_exit.tscn" id="21_71ouw"]
+[ext_resource type="PackedScene" uid="uid://cxgf3ic563c1i" path="res://scenes/game_over_screen.tscn" id="22_1nwx1"]
+[ext_resource type="PackedScene" uid="uid://dj8crjcbpsbi2" path="res://scenes/player.tscn" id="23_wec7n"]
+
+[sub_resource type="Animation" id="Animation_xd0w6"]
+resource_name = "fade_in"
+length = 1.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.3)
+}
+
+[sub_resource type="Animation" id="Animation_qtmtm"]
+resource_name = "fade_out"
+length = 1.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kfcqe"]
+_data = {
+"fade_in": SubResource("Animation_xd0w6"),
+"fade_out": SubResource("Animation_qtmtm")
+}
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_qmq0e")
+bug_scenes = Array[PackedScene]([ExtResource("2_57jjv"), ExtResource("3_v5py0")])
+
+[node name="SFX" type="Node2D" parent="."]
+visible = false
+
+[node name="Shoot" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("16_fntgp")
+
+[node name="Hit" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("17_xqfk5")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+texture = ExtResource("6_o06qj")
+centered = false
+region_enabled = true
+
+[node name="BugSpwanTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Player" parent="." instance=ExtResource("23_wec7n")]
+unique_name_in_owner = true
+position = Vector2(521, 474)
+scale = Vector2(3, 3)
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+
+[node name="ShootContainer" type="Node2D" parent="."]
+
+[node name="BugContainer" type="Node2D" parent="."]
+position = Vector2(218, 26)
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("8_hrsvn")
+
+[node name="HUD" parent="UILayer" instance=ExtResource("19_hxevr")]
+unique_name_in_owner = true
+process_mode = 3
+size_flags_vertical = 3
+
+[node name="Button" parent="UILayer/HUD" index="0"]
+offset_left = 60.0
+offset_top = 100.0
+offset_right = 138.0
+offset_bottom = 178.0
+
+[node name="Score" parent="UILayer/HUD" index="1"]
+offset_top = 100.0
+offset_bottom = 170.0
+
+[node name="transition" type="Control" parent="UILayer"]
+unique_name_in_owner = true
+process_mode = 3
+z_index = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("20_k3jvn")
+
+[node name="ColorRect" type="ColorRect" parent="UILayer/transition"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="animation" type="AnimationPlayer" parent="UILayer/transition"]
+libraries = {
+"": SubResource("AnimationLibrary_kfcqe")
+}
+
+[node name="ConfirmExit" parent="UILayer" instance=ExtResource("21_71ouw")]
+unique_name_in_owner = true
+position = Vector2(202, 147)
+
+[node name="GameOverScreen" parent="UILayer" instance=ExtResource("22_1nwx1")]
+unique_name_in_owner = true
+visible = false
+content_scale_size = Vector2i(10, 10)
+
+[connection signal="timeout" from="BugSpwanTimer" to="." method="_on_bug_spwan_timer_timeout"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="spray_shot" from="Player" to="." method="_on_player_spray_shot"]
+[connection signal="pressed" from="UILayer/HUD/Button" to="UILayer" method="_on_button_pressed"]
+
+[editable path="UILayer/HUD"]

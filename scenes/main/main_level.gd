@@ -82,7 +82,8 @@ func atualizar():
 					
 				if x['type'] == 'animal':
 					nd.set_script(load(x['script']))
-					nd.global_position = x['position']		
+					nd.global_position = x['position']	
+					_buscar_celeiro(x['local_insercao']).append_animal(nd)	
 					self.add_child(nd)	
 													
 				elif x['type'] == "vegetable":
