@@ -8,14 +8,6 @@
 [node name="controls" type="Node2D" groups=["mechanic"]]
 z_index = 1
 
-[node name="capture" type="TouchScreenButton" parent="."]
-z_index = 3
-texture_filter = 1
-position = Vector2(248, 84)
-texture_normal = ExtResource("1_vsvk4")
-passby_press = true
-action = "ui_capture"
-
 [node name="left" type="TouchScreenButton" parent="."]
 z_index = 3
 texture_filter = 1

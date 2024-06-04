@@ -164,7 +164,10 @@ sprite_frames = SubResource("SpriteFrames_q8bcw")
 frame_progress = 0.961474
 
 [node name="controls" parent="." instance=ExtResource("6_vkk02")]
-position = Vector2(-126, -48)
+offset_left = -126.0
+offset_top = -48.0
+offset_right = -126.0
+offset_bottom = -48.0
 
 [node name="cristal_score" parent="." instance=ExtResource("8_68q44")]
 z_index = 2
