@@ -22,4 +22,4 @@ func _on_body_exited(body):
 
 func _on_start_button_pressed():
 	if _dentro_area == true and hud.inventory.visible == false:
-		transition.change_scene(SceneGameManager.PATHS.get(next_world))
+		transition.change_scene(SceneGameManager.PATHS[next_world])
