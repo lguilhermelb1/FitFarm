@@ -78,7 +78,7 @@ volume_db = -20.0
 
 [node name="game_over_label" parent="." instance=ExtResource("3_vspxf")]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(-1, 27)
+position = Vector2(602, 270)
 scale = Vector2(0.1, 0.1)
 
 [node name="exit_button" type="Button" parent="."]
