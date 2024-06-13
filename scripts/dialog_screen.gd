@@ -49,7 +49,7 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("ui_next"):
 		_id += 1
-		if _id == len(data):
+		if _id == len(data) and Global.status==true:
 			give_coins()
 			queue_free()
 			return
