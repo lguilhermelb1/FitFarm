@@ -3,10 +3,10 @@ extends CharacterBody2D
 var _dialog_screen: DialogueCreation
 
 func _process(delta):
-	removed()
+	start_dialog()
 
 func _on_area_2d_body_entered(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and Global.status==true:
 		_dialog_screen =  load("res://prefab/dialog_node.tscn").instantiate()
 		
 		_dialog_screen.transform.origin[0] = transform.origin[0] - 90
@@ -18,8 +18,8 @@ func _on_area_2d_body_exited(body):
 		if _dialog_screen != null:
 			_dialog_screen.queue_free()
 			
-func removed():
-	if _dialog_screen != null:
+func start_dialog():
+	if _dialog_screen != null and Global.status==true:
 		if _dialog_screen._dialog.visible_ratio == 1 and _dialog_screen._id == len(_dialog_screen.data)-1 \
 		and Input.is_action_just_pressed("ui_next"):
-			queue_free()
+			_dialog_screen.queue_free()
