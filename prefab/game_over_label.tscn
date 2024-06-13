@@ -16,12 +16,18 @@ script = ExtResource("1_qyu3s")
 
 [node name="Panel" type="Panel" parent="."]
 texture_filter = 1
-offset_left = -63.0
-offset_top = -63.0
-offset_right = 70.0
-offset_bottom = 52.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.5
+offset_top = -57.5
+offset_right = 66.5
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_no1ny")
-metadata/_edit_use_anchors_ = true
 
 [node name="status" type="Label" parent="Panel"]
 layout_mode = 1
@@ -46,11 +52,12 @@ anchor_bottom = 0.308696
 offset_left = -0.0500002
 offset_right = 127.51
 offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.35, 0.35)
 theme_override_fonts/font = ExtResource("2_6q13b")
 theme_override_font_sizes/font_size = 25
 text = "Pontuação: 00000000"
-metadata/_edit_use_anchors_ = true
 
 [node name="cristais" type="Label" parent="Panel"]
 layout_mode = 1
@@ -69,6 +76,7 @@ text = "Moedas: 00000000"
 metadata/_edit_use_anchors_ = true
 
 [node name="retry" type="Button" parent="Panel"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.217632
@@ -85,6 +93,7 @@ text = "Reiniciar"
 metadata/_edit_use_anchors_ = true
 
 [node name="exit" type="Button" parent="Panel"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.270526

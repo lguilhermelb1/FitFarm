@@ -2059,6 +2059,19 @@ position = Vector2(278, 175)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="pontuacao" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 30.0
+offset_right = 96.0
+offset_bottom = 77.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("13_iupcc")
+theme_override_font_sizes/font_size = 30
+text = "00000000"
+
 [node name="transition" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
@@ -2083,19 +2096,6 @@ color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_wcsjq")
 }
-
-[node name="pontuacao" type="Label" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -96.0
-offset_top = 30.0
-offset_right = 96.0
-offset_bottom = 77.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("13_iupcc")
-theme_override_font_sizes/font_size = 30
-text = "00000000"
 
 [node name="Cronometro" parent="CanvasLayer" groups=["player"] instance=ExtResource("15_mj0ij")]
 
