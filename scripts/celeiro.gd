@@ -4,7 +4,32 @@ class_name barn
 var visivel
 var lista_animais = []
 func _ready():
+	if name != "celeiro":
+		desabilitar()
 	visivel=false
+
+func desabilitar():
+	$Collision1.disabled=true
+	$Collision2.disabled=true
+	$Collision3.disabled=true
+	$Collision4.disabled=true
+	$Collision5.disabled=true
+	$objeto_celeiro/CollisionShape2D.disabled=true
+	$objeto_celeiro2/CollisionShape2D.disabled=true
+	
+func habilitar():
+	$Collision1.disabled=false
+	$Collision2.disabled=false
+	$Collision3.disabled=false
+	$Collision4.disabled=false
+	$Collision5.disabled=false
+	$objeto_celeiro/CollisionShape2D.disabled=false
+	$objeto_celeiro2/CollisionShape2D.disabled=false
+	
+
+
+
+
 
 
 func lotado():
@@ -37,6 +62,7 @@ func play_open_door():
 
 func change_visibility():
 	visivel=true
+	habilitar()
 	$Sprite2D.modulate.a=255
 	$objeto_celeiro/Sprite2D.modulate.a=255
 	$objeto_celeiro2/Sprite2D.modulate.a=255
