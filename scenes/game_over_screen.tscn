@@ -62,6 +62,7 @@ grow_vertical = 2
 script = ExtResource("1_e742g")
 
 [node name="Panel" type="PanelContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -75,6 +76,7 @@ offset_right = 222.0
 offset_bottom = 191.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.1, 0.1)
 theme_override_styles/panel = SubResource("StyleBoxTexture_ogrvy")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]

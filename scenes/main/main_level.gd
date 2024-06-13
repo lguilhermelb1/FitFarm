@@ -22,9 +22,19 @@ func _ready():
 	Global.setTransition($camera/transition)
 	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
 	atualizar()
+	
+	if Global.time_label == null:
+		Global.createTimeLabel()
+		
+	Global.time_label.position = Vector2(500,25)	
+	Global.time_label.scale = Vector2(1.2, 1.2)	
+	
+	
 	print(get_node("Terreno_A_Comprar"))
 	Global.tempo_final.start()
 	print("Started")
+
+
 
 	if Global.status == false:	
 		$Worker.queue_free()
