@@ -91,3 +91,7 @@ func _buscar_celeiro(name:String):
 			return celeiro
 			break
 	return null		
+
+
+func _on_touch_screen_button_pressed():
+	Global.on_tempo_final_timeout()
