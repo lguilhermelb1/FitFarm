@@ -60,8 +60,8 @@ func _on_button_pressed():
 		await(get_tree().create_timer(3).timeout)
 		error_time_message.visible=false
 		
-	elif int(tempo.text) < 20 or int(tempo.text) > 120 and tempo.editable == true:
-		error_time_message.text = "O TEMPO LIMITE DEVE SER ENTRE 20 e 120 minutos"
+	elif int(tempo.text) < 1 or int(tempo.text) > 120 and tempo.editable == true:
+		error_time_message.text = "O TEMPO LIMITE DEVE SER ENTRE 1 e 120 minutos"
 
 		
 	else: 

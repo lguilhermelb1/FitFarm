@@ -16,8 +16,8 @@ func _on_button_pressed():
 		error_message_pin.text = "PIN inválido. Insira novamente."
 	elif tempo.text == "":
 		error_message_time.text = "Tempo limite inválido. Insira novamente"	
-	elif int(tempo.text) < 20 or int(tempo.text) > 120 and tempo.editable == true:
-		error_message_time.text = "O tempo limite deve ser entre 20 e 120 minutos"	
+	elif int(tempo.text) < 1 or int(tempo.text) > 120 and tempo.editable == true:
+		error_message_time.text = "O tempo limite deve ser entre 1 e 120 minutos"	
 	else: 
 		Global.atualizar_tempo_transicao(int(tempo.text)*60)
 		change_scene(SceneGameManager.PATHS.MAIN_GAME_SCENE)
