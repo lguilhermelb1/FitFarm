@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://btf74en0epjeg"]
+[gd_scene load_steps=24 format=3 uid="uid://btf74en0epjeg"]
 
 [ext_resource type="Script" path="res://scripts/world/player_world.gd" id="1_ksv7y"]
 [ext_resource type="Texture2D" uid="uid://b6q0cyfk13a7f" path="res://assets_v2/Tiny Wonder Farm Free/characters/main character/idle.png" id="2_syv51"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://c2cvd4nsajoiy" path="res://sounds/coin-pickup-98269.mp3" id="5_fe6q4"]
 [ext_resource type="AudioStream" uid="uid://sp3ykjtvkb8r" path="res://sounds/pop-1-35897.mp3" id="6_851lj"]
 [ext_resource type="AudioStream" uid="uid://dbj6q1aaaq6vk" path="res://sounds/070255_footsteps-on-grass-39950.mp3" id="7_56bu7"]
+[ext_resource type="Script" path="res://scripts/transition.gd" id="8_cp34a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lt41r"]
 radius = 4.75
@@ -95,6 +96,42 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_ijdqq"]
+resource_name = "fade_in"
+length = 1.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.3)
+}
+
+[sub_resource type="Animation" id="Animation_lktg8"]
+resource_name = "fade_out"
+length = 1.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wcsjq"]
+_data = {
+"fade_in": SubResource("Animation_ijdqq"),
+"fade_out": SubResource("Animation_lktg8")
+}
+
 [node name="player_world" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(2, 2)
 collision_mask = 2
@@ -128,4 +165,33 @@ scale = Vector2(0.875, 0.85)
 sprite_frames = SubResource("SpriteFrames_sceuf")
 animation = &"idle"
 
-[node name="remote" type="RemoteTransform2D" parent="."]
+[node name="camera" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+
+[node name="transition" type="Control" parent="camera"]
+z_index = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = -321.0
+offset_top = -162.0
+offset_right = 320.0
+offset_bottom = 163.0
+script = ExtResource("8_cp34a")
+
+[node name="ColorRect" type="ColorRect" parent="camera/transition"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="animation" type="AnimationPlayer" parent="camera/transition"]
+libraries = {
+"": SubResource("AnimationLibrary_wcsjq")
+}

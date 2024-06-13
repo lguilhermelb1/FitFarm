@@ -14,12 +14,11 @@ var direction
 
 func _ready():
 	_set_state("idle")
+	Global.setTransition($camera/transition)
 	
 func _set_state(state : String):
 	anim.play(state)
 
-func follow_camera(camera):
-	remote.remote_path = camera.get_path()
 	
 func _input(event):
 	if event is InputEventScreenDrag:

@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var camera := $camera as Camera2D
+
+
 @onready var player := $player_world as Main_Player
 @onready var hud = %HUD
 
@@ -9,18 +10,7 @@ var nd = null
 var nodes_celeiro = null
 var nodes_plantacao = null
 
-# Nos Terrenos o que falta
-# 1) desconfundir o cenário
-# 2) condição de inserir caso não esteja dentro da área planejada
-# 3) Atualziar os valores comprados no terreno
-# 4) Problema na Inserção do celeiro
-
-# 640 x 320
 func _ready():	
-	print(get_tree().get_nodes_in_group("insercao_celeiro"))
-
-	Global.setTransition($camera/transition)
-	print("NOVO_TEMPO: ", Global.tempo_final.wait_time)
 	atualizar()
 	
 	if Global.time_label == null:
@@ -28,11 +18,8 @@ func _ready():
 		
 	Global.time_label.position = Vector2(500,25)	
 	Global.time_label.scale = Vector2(1.2, 1.2)	
-	
-	
-	print(get_node("Terreno_A_Comprar"))
 	Global.tempo_final.start()
-	print("Started")
+
 
 
 
@@ -41,7 +28,6 @@ func _ready():
 	
 	player.position = Vector2(330,200)
 	$celeiro.change_visibility()
-	player.follow_camera(camera) 
 
 
 
