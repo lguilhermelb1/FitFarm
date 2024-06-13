@@ -1,12 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://bma6hkif1c8lc"]
+[gd_scene load_steps=22 format=3 uid="uid://bma6hkif1c8lc"]
 
 [ext_resource type="Script" path="res://scenes/minigames/animals_escape/prefabs/player.gd" id="1_x4qgo"]
 [ext_resource type="Texture2D" uid="uid://b6q0cyfk13a7f" path="res://assets_v2/Tiny Wonder Farm Free/characters/main character/idle.png" id="2_fpqd0"]
-[ext_resource type="FontFile" uid="uid://cutg2f3cmjb8g" path="res://fonts/Retro Gaming.ttf" id="2_htelt"]
 [ext_resource type="Texture2D" uid="uid://cmt5w1tsocryj" path="res://assets_v2/Tiny Wonder Farm Free/characters/main character/walk.png" id="3_xtjke"]
-[ext_resource type="Texture2D" uid="uid://bltu8p0cal7ra" path="res://assets/Controls/action_button.png" id="4_mh0ci"]
-[ext_resource type="Texture2D" uid="uid://3vfx3lnip7ws" path="res://assets/Controls/action_button_press.png" id="5_77xfb"]
-[ext_resource type="PackedScene" uid="uid://bwpk63dssg76w" path="res://prefab/cronometro.tscn" id="7_icf0o"]
 [ext_resource type="PackedScene" uid="uid://c4qx728klsocd" path="res://prefab/cristal_score.tscn" id="8_68q44"]
 [ext_resource type="AudioStream" uid="uid://bpwu2fy28buy4" path="res://sounds/collectcoin-6075.mp3" id="10_gk47x"]
 [ext_resource type="AudioStream" uid="uid://c2cvd4nsajoiy" path="res://sounds/coin-pickup-98269.mp3" id="11_jp81h"]
@@ -103,20 +99,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_mnqh5"]
 radius = 6.26387
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_q8bcw"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_mh0ci")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_77xfb")
-}],
-"loop": true,
-"name": &"default",
-"speed": 3.5
-}]
-
 [node name="player_fuga_bichinhos" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 collision_mask = 2
@@ -126,25 +108,12 @@ script = ExtResource("1_x4qgo")
 position = Vector2(-0.25, 1)
 shape = SubResource("CapsuleShape2D_wwbsc")
 
-[node name="pontuacao" type="Label" parent="."]
-z_index = 1
-offset_left = 54.0
-offset_top = -69.5
-offset_right = 238.0
-offset_bottom = -24.5
-scale = Vector2(0.55, 0.55)
-theme_override_fonts/font = ExtResource("2_htelt")
-theme_override_font_sizes/font_size = 30
-text = "00000000"
-
 [node name="anim" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-1, 1.5)
 scale = Vector2(0.875, 0.85)
 sprite_frames = SubResource("SpriteFrames_f0h7v")
 animation = &"idle"
-
-[node name="remote" type="RemoteTransform2D" parent="."]
 
 [node name="animal_detector" type="Area2D" parent="."]
 collision_layer = 8
@@ -155,20 +124,9 @@ scale = Vector2(1.2, 1.2)
 shape = SubResource("CircleShape2D_mnqh5")
 debug_color = Color(0.94902, 0, 0.580392, 0.419608)
 
-[node name="button_capture" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-position = Vector2(-4.23516e-22, -14)
-scale = Vector2(0.609375, 0.59375)
-sprite_frames = SubResource("SpriteFrames_q8bcw")
-frame_progress = 0.961474
-
 [node name="cristal_score" parent="." instance=ExtResource("8_68q44")]
 z_index = 2
 position = Vector2(-25.5, -7)
-
-[node name="Cronometro" parent="." groups=["player"] instance=ExtResource("7_icf0o")]
-z_index = 1
-position = Vector2(0.5, -13)
 
 [node name="audio" type="Node2D" parent="."]
 

@@ -3,19 +3,13 @@ class_name Player_1
 
 const SPEED = 130
 
-@onready var anim := $anim as AnimatedSprite2D
-@onready var remote := $remote as RemoteTransform2D
-@onready var animal_detector := $animal_detector as Area2D
-@onready var button_capture := $button_capture as AnimatedSprite2D
-@onready var pontuacao := $pontuacao as Label
+signal earn_points(scores, coins)
 
+@onready var anim := $anim as AnimatedSprite2D
+@onready var animal_detector := $animal_detector as Area2D
 @onready var cristal_score_anim := $cristal_score/anim as AnimationPlayer
 @onready var cistal_score := $cristal_score as Node2D
-
-@onready var cronometro = $Cronometro
-
 @onready var cristals_sound := $audio/cristals_sound as AudioStreamPlayer
-@onready var points_sound := $audio/points_sound as AudioStreamPlayer
 @onready var collect_sound := $audio/collect_sound as AudioStreamPlayer
 @onready var footsteps := $audio/footsteps as AudioStreamPlayer
 
@@ -28,8 +22,6 @@ var lt = []
 func _ready():
 	animal = null
 	scores = 0
-	button_capture.visible = false
-	pontuacao.text = "%08d" % scores
 	$cristal_score.transform['x'][0] = 1
 	$cristal_score.transform['y'][1] = 1
 	
@@ -54,26 +46,6 @@ func _input(event):
 			footsteps.stop()
 		_set_state(state)
 	
-
-#func _physics_process(delta):
-	#direction = Vector2(
-		#Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"), 
-		#Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	#).normalized()
-#
-	#if direction.x > 0:
-		#anim.scale.x = -1
-	#elif direction.x < 0:
-		#anim.scale.x = 1
-			#
-	#velocity = direction * SPEED
-	#
-	#if velocity == Vector2.ZERO:
-		#footsteps.play()
-		#
-	#_set_state()
-	#move_and_slide()
-	#
 		
 
 func _captura_animal(animal):	
@@ -87,10 +59,6 @@ func _captura_animal(animal):
 func _set_state(state : String):
 	anim.play(state)
 
-
-func follow_camera(camera):
-	remote.remote_path = camera.get_path()
-
 func getDirection():
 	return direction
 
@@ -103,22 +71,15 @@ func _on_animal_detector_body_entered(body):
 		_captura_animal(body)
 		ganhar_pontos()
 
-
-
-
 func ganhar_pontos():
-	scores += 50
-	
+	scores += 50	
 	if scores % 200 == 0:
 		cristal_score_anim.play("fade_in")
 		moedas += 50
 		Global.moedas += 50
 		cristals_sound.play()
-	else:
-		points_sound.play()		
-	
-	cronometro.set_scores(scores, moedas)
-	pontuacao.text = "%08d" % scores
+	earn_points.emit(scores, moedas)
+
 
 func progresso_perdido():
 	Global.moedas -= moedas

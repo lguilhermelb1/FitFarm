@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dwbf4c74ulg76"]
+[gd_scene load_steps=26 format=3 uid="uid://dwbf4c74ulg76"]
 
 [ext_resource type="Script" path="res://scenes/minigames/animals_escape/animals_escape_script.gd" id="1_mkghy"]
 [ext_resource type="Texture2D" uid="uid://btm1bsuapgweu" path="res://assets/Tilesets/spring tilemap.png" id="2_ffgpo"]
@@ -12,6 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://ngnp4p2gnmrh" path="res://sounds/game-fail-90322.mp3" id="10_wpli7"]
 [ext_resource type="PackedScene" uid="uid://c66quc748td7v" path="res://prefab/spawner.tscn" id="11_w370e"]
 [ext_resource type="PackedScene" uid="uid://bma6hkif1c8lc" path="res://actors/player_fuga_bichinhos.tscn" id="12_q6yk6"]
+[ext_resource type="FontFile" uid="uid://cutg2f3cmjb8g" path="res://fonts/Retro Gaming.ttf" id="13_iupcc"]
+[ext_resource type="PackedScene" uid="uid://bwpk63dssg76w" path="res://prefab/cronometro.tscn" id="15_mj0ij"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kndcr"]
 texture = ExtResource("2_ffgpo")
@@ -2015,6 +2017,12 @@ _data = {
 [node name="FugaDosBichinhos" type="Node2D"]
 script = ExtResource("1_mkghy")
 
+[node name="camera" type="Camera2D" parent="."]
+process_mode = 3
+position = Vector2(-60, -20)
+anchor_mode = 0
+zoom = Vector2(1.5, 1.5)
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_1if7k")
 format = 2
@@ -2032,51 +2040,6 @@ layer_4/tile_data = PackedInt32Array(0, 4, 2, 1, 65540, 2, 2, 65540, 2, 3, 65540
 layer_5/name = "porta"
 layer_5/tile_data = PackedInt32Array(458735, 393221, 3, 524271, 393221, 4, 458736, 458757, 3, 524272, 458757, 4)
 
-[node name="camera" type="Camera2D" parent="."]
-process_mode = 3
-z_index = 5
-position = Vector2(320, 160)
-
-[node name="transition" type="Control" parent="camera"]
-z_index = 2
-layout_mode = 3
-anchors_preset = 0
-offset_left = -321.0
-offset_top = -163.0
-offset_right = 320.0
-offset_bottom = 163.0
-script = ExtResource("9_t5vy8")
-
-[node name="ColorRect" type="ColorRect" parent="camera/transition"]
-modulate = Color(1, 1, 1, 0)
-z_index = 2
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 1.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="animation" type="AnimationPlayer" parent="camera/transition"]
-libraries = {
-"": SubResource("AnimationLibrary_wcsjq")
-}
-
-[node name="time_control" type="Control" parent="camera"]
-process_mode = 3
-z_index = 1
-layout_mode = 3
-anchors_preset = 0
-offset_left = -278.0
-offset_top = -120.0
-offset_right = -110.0
-offset_bottom = -78.0
-
 [node name="game_fail" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_wpli7")
 volume_db = -15.0
@@ -2093,3 +2056,47 @@ position = Vector2(-18, 143)
 
 [node name="player_fuga_bichinhos" parent="." instance=ExtResource("12_q6yk6")]
 position = Vector2(278, 175)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="transition" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_t5vy8")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/transition"]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="animation" type="AnimationPlayer" parent="CanvasLayer/transition"]
+libraries = {
+"": SubResource("AnimationLibrary_wcsjq")
+}
+
+[node name="pontuacao" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 30.0
+offset_right = 96.0
+offset_bottom = 77.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("13_iupcc")
+theme_override_font_sizes/font_size = 30
+text = "00000000"
+
+[node name="Cronometro" parent="CanvasLayer" groups=["player"] instance=ExtResource("15_mj0ij")]
+
+[connection signal="earn_points" from="player_fuga_bichinhos" to="." method="_on_player_fuga_bichinhos_earn_points"]

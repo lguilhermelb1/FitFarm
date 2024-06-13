@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 class_name cronometro
 
 @onready var countdown := $countdown as Label

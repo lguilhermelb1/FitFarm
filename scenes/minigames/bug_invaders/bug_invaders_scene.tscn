@@ -97,6 +97,11 @@ libraries = {
 process_mode = 3
 
 [node name="Comfirm_Exit" parent="UILayer" instance=ExtResource("21_71ouw")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 
 [node name="GameOverScreen" parent="UILayer" instance=ExtResource("22_1nwx1")]
 
