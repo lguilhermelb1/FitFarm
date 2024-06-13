@@ -4,7 +4,6 @@ class_name Main_Player
 const SPEED = 130
 
 @onready var anim := $anim as AnimatedSprite2D
-@onready var remote := $remote as RemoteTransform2D
 
 @onready var cristals_sound := $audio/cristals_sound as AudioStreamPlayer
 @onready var points_sound := $audio/points_sound as AudioStreamPlayer

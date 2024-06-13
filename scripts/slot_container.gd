@@ -14,7 +14,7 @@ var main_map: tile_map
 
 func _ready():
 	result.visible = false
-	await(get_tree().current_scene.name == "Mundo01")
+	get_tree().current_scene.name == "Mundo01"
 	main_map =  get_tree().current_scene.get_node("mapa")
 
 

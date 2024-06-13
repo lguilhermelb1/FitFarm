@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var start_button := $start_button
 @export var next_world = ""
-@onready var transition = $"../camera/transition"
+@onready var transition = get_viewport().get_camera_2d().get_node("transition")
 var _dentro_area = false
 @onready var hud = %HUD
 
