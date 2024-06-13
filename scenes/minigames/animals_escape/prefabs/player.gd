@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player_1
 
-const SPEED = 130.0
+const SPEED = 130
 
 @onready var anim := $anim as AnimatedSprite2D
 @onready var remote := $remote as RemoteTransform2D
@@ -20,7 +20,7 @@ const SPEED = 130.0
 @onready var footsteps := $audio/footsteps as AudioStreamPlayer
 
 var animal = null
-var direction
+var direction 
 var scores
 var moedas = 0
 var lt = []
@@ -34,28 +34,46 @@ func _ready():
 	$cristal_score.transform['y'][1] = 1
 	
 	
-	
+func _input(event):
+	if event is InputEventScreenDrag:
+		direction = event.relative.normalized()
+		velocity = direction * SPEED
+		if direction.x > 0:
+			anim.scale.x = -1
+		elif direction.x < 0:
+			anim.scale.x = 1	
+		velocity = direction * SPEED
+		_set_state("walk")
+		move_and_slide()
+	if event is InputEventScreenTouch:
+		var state = "idle"
+		if(event.is_pressed()):
+			footsteps.play()
+			state = "walk"
+		else:
+			footsteps.stop()
+		_set_state(state)
 	
 
-func _physics_process(delta):
-	direction = Vector2(
-		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"), 
-		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	).normalized()
-
-	if direction.x > 0:
-		anim.scale.x = -1
-	elif direction.x < 0:
-		anim.scale.x = 1
-			
-	velocity = direction * SPEED
-	
-	if velocity == Vector2.ZERO:
-		footsteps.play()
-		
-	_set_state()
-	move_and_slide()
-	
+#func _physics_process(delta):
+	#direction = Vector2(
+		#Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"), 
+		#Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	#).normalized()
+#
+	#if direction.x > 0:
+		#anim.scale.x = -1
+	#elif direction.x < 0:
+		#anim.scale.x = 1
+			#
+	#velocity = direction * SPEED
+	#
+	#if velocity == Vector2.ZERO:
+		#footsteps.play()
+		#
+	#_set_state()
+	#move_and_slide()
+	#
 		
 
 func _captura_animal(animal):	
@@ -66,12 +84,7 @@ func _captura_animal(animal):
 		animal.setTargetlayer(get_path())
 
 
-func _set_state():
-	var state = "idle"
-	
-	if direction != Vector2.ZERO:
-		state = "walk"
-		
+func _set_state(state : String):
 	anim.play(state)
 
 

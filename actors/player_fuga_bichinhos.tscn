@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bma6hkif1c8lc"]
+[gd_scene load_steps=27 format=3 uid="uid://bma6hkif1c8lc"]
 
 [ext_resource type="Script" path="res://scenes/minigames/animals_escape/prefabs/player.gd" id="1_x4qgo"]
 [ext_resource type="Texture2D" uid="uid://b6q0cyfk13a7f" path="res://assets_v2/Tiny Wonder Farm Free/characters/main character/idle.png" id="2_fpqd0"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cmt5w1tsocryj" path="res://assets_v2/Tiny Wonder Farm Free/characters/main character/walk.png" id="3_xtjke"]
 [ext_resource type="Texture2D" uid="uid://bltu8p0cal7ra" path="res://assets/Controls/action_button.png" id="4_mh0ci"]
 [ext_resource type="Texture2D" uid="uid://3vfx3lnip7ws" path="res://assets/Controls/action_button_press.png" id="5_77xfb"]
-[ext_resource type="PackedScene" uid="uid://bc11p1g1dcuao" path="res://prefab/controls.tscn" id="6_vkk02"]
 [ext_resource type="PackedScene" uid="uid://bwpk63dssg76w" path="res://prefab/cronometro.tscn" id="7_icf0o"]
 [ext_resource type="PackedScene" uid="uid://c4qx728klsocd" path="res://prefab/cristal_score.tscn" id="8_68q44"]
 [ext_resource type="AudioStream" uid="uid://bpwu2fy28buy4" path="res://sounds/collectcoin-6075.mp3" id="10_gk47x"]
@@ -162,12 +161,6 @@ position = Vector2(-4.23516e-22, -14)
 scale = Vector2(0.609375, 0.59375)
 sprite_frames = SubResource("SpriteFrames_q8bcw")
 frame_progress = 0.961474
-
-[node name="controls" parent="." instance=ExtResource("6_vkk02")]
-offset_left = -126.0
-offset_top = -48.0
-offset_right = -126.0
-offset_bottom = -48.0
 
 [node name="cristal_score" parent="." instance=ExtResource("8_68q44")]
 z_index = 2
