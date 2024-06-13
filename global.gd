@@ -18,7 +18,6 @@ var time_label: Label
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	tempo_final = Timer.new()
-	#tempo_final.wait_time = 300
 	tempo_final.wait_time = 60
 	createTimeLabel()
 	self.time_label.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -35,7 +34,7 @@ func createTimeLabel():
 
 
 func _process(delta):
-	if !self.tempo_final.is_stopped() and self.time_label != null:
+	if !self.tempo_final.is_stopped() and self.time_label != null and !tempo_final.paused:
 		setLabelTime()
 
 

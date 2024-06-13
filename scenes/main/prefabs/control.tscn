@@ -11,6 +11,7 @@ script = ExtResource("1_77bnh")
 
 [node name="ButtonPause" type="Button" parent="."]
 unique_name_in_owner = true
+process_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -78,5 +79,6 @@ anchor_bottom = 0.5
 offset_left = 28.0
 offset_right = 28.0
 
+[connection signal="pressed" from="ButtonPause" to="." method="_on_button_pause_pressed"]
 [connection signal="pressed" from="ButtonStore" to="." method="_on_button_store_pressed"]
 [connection signal="store_closed" from="Inventory" to="." method="_on_inventory_store_closed"]
