@@ -42,15 +42,15 @@ position = Vector2(96, 85)
 scale = Vector2(1.05494, 1.25373)
 texture = ExtResource("2_1pwb0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collision1" type="CollisionShape2D" parent="."]
 position = Vector2(4, 76.5)
 shape = SubResource("RectangleShape2D_v35vp")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="Collision2" type="CollisionShape2D" parent="."]
 position = Vector2(188, 76)
 shape = SubResource("RectangleShape2D_w5xb6")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+[node name="Collision3" type="CollisionShape2D" parent="."]
 position = Vector2(96, 8.5)
 shape = SubResource("RectangleShape2D_2qpot")
 
@@ -63,11 +63,11 @@ position = Vector2(96, 82)
 shape = SubResource("RectangleShape2D_s1xoe")
 debug_color = Color(0, 1, 0, 0.419608)
 
-[node name="porta1" type="CollisionShape2D" parent="."]
+[node name="Collision4" type="CollisionShape2D" parent="."]
 position = Vector2(25.7625, 158.5)
 shape = SubResource("RectangleShape2D_n7l7n")
 
-[node name="porta2" type="CollisionShape2D" parent="."]
+[node name="Collision5" type="CollisionShape2D" parent="."]
 position = Vector2(138.235, 158.5)
 shape = SubResource("RectangleShape2D_gx61t")
 

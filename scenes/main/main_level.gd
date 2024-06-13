@@ -19,10 +19,6 @@ func _ready():
 	Global.time_label.position = Vector2(500,25)	
 	Global.time_label.scale = Vector2(1.2, 1.2)	
 	Global.tempo_final.start()
-
-
-
-
 	if Global.status == false:	
 		$Worker.queue_free()
 	
@@ -95,7 +91,3 @@ func _buscar_celeiro(name:String):
 			return celeiro
 			break
 	return null		
-
-
-
-
