@@ -32,3 +32,9 @@ func _create_time_label():
 	Global.time_label.position = Vector2(x, 30)
 	Global.setLabelTime()		
 	$CanvasLayer.add_child(Global.time_label)
+
+
+
+func _on_animal_collision_area_body_entered(body):
+	if body.is_in_group("animal"):
+		body.queue_free()
