@@ -1,6 +1,8 @@
-extends Node2D
+extends Control
 
 var transition = null
+@onready var pontos = %pontos
+@onready var cristais = %cristais
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS

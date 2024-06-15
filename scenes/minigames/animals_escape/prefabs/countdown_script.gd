@@ -4,10 +4,10 @@ class_name cronometro
 @onready var countdown := $countdown as Label
 @onready var timer := $timer as Timer
 @onready var anim := $anim as AnimationPlayer
-@onready var game_over_label := $game_over_label as Node2D
+@onready var game_over_label := $game_over_label as Control
 @onready var confirm_exit := $Comfirm_Exit as Control
-@onready var cristais := $game_over_label/Panel/cristais as Label
-@onready var pontos := $game_over_label/Panel/pontos as Label
+@onready var cristais := game_over_label.cristais  as Label
+@onready var pontos := game_over_label.pontos as Label
 @onready var timeout := $timeout as AudioStreamPlayer
 
 var transition  = null

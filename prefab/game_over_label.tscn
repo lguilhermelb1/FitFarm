@@ -1,113 +1,84 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgvxt36w0hysg"]
+[gd_scene load_steps=5 format=3 uid="uid://bgvxt36w0hysg"]
 
 [ext_resource type="Script" path="res://scenes/minigames/animals_escape/prefabs/game_over_label.gd" id="1_qyu3s"]
 [ext_resource type="FontFile" uid="uid://cutg2f3cmjb8g" path="res://fonts/Retro Gaming.ttf" id="2_6q13b"]
+[ext_resource type="Texture2D" uid="uid://0wwy8yh8kota" path="res://assets/Tiny Wonder UI Free/background_label.png" id="2_oqu70"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_no1ny"]
-bg_color = Color(0.862745, 0.607843, 0.384314, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_851kp"]
+content_margin_left = 30.0
+content_margin_top = 40.0
+content_margin_right = 30.0
+content_margin_bottom = 50.0
+texture = ExtResource("2_oqu70")
 
-[node name="game_over_label" type="Node2D"]
-z_index = 1
+[node name="game_over_label" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_qyu3s")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="PanelContainer" parent="."]
 texture_filter = 1
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -66.5
-offset_top = -57.5
-offset_right = 66.5
-offset_bottom = 57.5
+offset_left = -192.0
+offset_top = -44.5
+offset_right = 192.0
+offset_bottom = 44.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_no1ny")
+theme_override_styles/panel = SubResource("StyleBoxTexture_851kp")
 
-[node name="status" type="Label" parent="Panel"]
-layout_mode = 1
-offset_left = 30.0
-offset_top = 1.0
-offset_right = 166.0
-offset_bottom = 39.0
-scale = Vector2(0.5, 0.5)
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="status" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_6q13b")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 30
 text = "Game Over"
+horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="pontos" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0530075
-anchor_top = 0.173913
-anchor_right = 1.62023
-anchor_bottom = 0.308696
-offset_left = -0.0500002
-offset_right = 127.51
-offset_bottom = 22.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.35, 0.35)
+[node name="pontos" type="Label" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6q13b")
 theme_override_font_sizes/font_size = 25
 text = "Pontuação: 00000000"
 
-[node name="cristais" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.135038
-anchor_top = 0.330435
-anchor_right = 1.44218
-anchor_bottom = 0.526435
-offset_left = 0.04
-offset_right = 109.19
-offset_bottom = 23.625
-scale = Vector2(0.35, 0.35)
+[node name="cristais" type="Label" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6q13b")
 theme_override_font_sizes/font_size = 25
 text = "Moedas: 00000000"
+horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="retry" type="Button" parent="Panel"]
+[node name="retry" type="Button" parent="Panel/VBoxContainer"]
 process_mode = 3
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.217632
-anchor_top = 0.486957
-anchor_right = 1.01105
-anchor_bottom = 0.678261
-offset_left = 0.0549984
-offset_right = 67.53
-offset_bottom = 25.0
-scale = Vector2(0.4, 0.4)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6q13b")
 theme_override_font_sizes/font_size = 30
 text = "Reiniciar"
 metadata/_edit_use_anchors_ = true
 
-[node name="exit" type="Button" parent="Panel"]
+[node name="exit" type="Button" parent="Panel/VBoxContainer"]
 process_mode = 3
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.270526
-anchor_top = 0.721739
-anchor_right = 0.751526
-anchor_bottom = 0.939131
-offset_left = 0.0199986
-offset_right = 62.49
-offset_bottom = 25.0
-scale = Vector2(0.45, 0.45)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6q13b")
 theme_override_font_sizes/font_size = 30
 text = "Sair"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="Panel/retry" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="Panel/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/exit" to="." method="_on_exit_pressed"]
